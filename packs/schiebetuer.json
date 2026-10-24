@@ -1,0 +1,37 @@
+{
+ "id": "schiebetuer",
+ "label": "Schiebetüren & Raumteiler",
+ "description": "Schiebetürenschränke, Raumteiler und Dachschrägen-Lösungen mit Schiebetüren.",
+ "types": ["schrank", "tuer", "regal", "wand"],
+ "templates": [
+  {"id": "schiebetuerschrank", "label": "Schiebetürenschrank", "type": "schrank", "text": "2 Türen als Schiebetüren, laufen voreinander auf einer Deckenschiene, keine Griffe außen", "d": 65, "full_height": true, "doors": {"per": 100}},
+  {"id": "raumteiler", "label": "Raumteiler-Schiebetür", "type": "tuer", "text": "raumhohe Schiebetür als Raumteiler, läuft vor der Wand auf einer sichtbaren Schiene", "w": 120, "h": 250, "d": 4},
+  {"id": "schiebe_dachschraege", "label": "Schiebetüren unter der Dachschräge", "type": "schrank", "text": "Schiebetüren unter der Dachschräge, Oberkante folgt der Schräge", "d": 60, "doors": {"per": 90}},
+  {"id": "nische_schiebe", "label": "Nische mit Schiebetüren", "type": "schrank", "text": "Nische wandbündig mit Schiebetüren geschlossen, innen Kleiderstange und Böden", "d": 60, "full_height": true, "doors": {"per": 100}}
+ ],
+ "company": {"material": "weiss", "handles": "leiste", "plinth": 0, "board": 19},
+ "type_defaults": {
+  "schrank": {"d": 65, "full_height": true, "doors": {"per": 100}},
+  "tuer": {"w": 120, "h": 250, "d": 4}
+ },
+ "aliases": {
+  "type": {
+   "Schiebetürenschrank": "schiebetuerschrank", "Schwebetürenschrank": "schiebetuerschrank", "Schiebetüren": "schiebetuerschrank",
+   "Schwebetüren": "schiebetuerschrank", "Raumteiler": "raumteiler", "Schiebetür": "raumteiler", "Scheunentor": "raumteiler",
+   "Dachschräge": "schiebe_dachschraege", "Nische": "nische_schiebe", "Einbauschrank": "schrank", "Schrank": "schrank",
+   "Regal": "regal"
+  },
+  "material": {
+   "Weißlack": "weiss", "weiß lackiert": "weiss", "Lack weiß": "weiss", "Anthrazit": "anthrazit", "Eiche": "eiche",
+   "Eiche weiß": "eicheweiss", "Spiegel": "custom:Spiegelglas", "Spiegeltür": "custom:Spiegelglas",
+   "Glas satiniert": "custom:Glas satiniert", "Milchglas": "custom:Glas satiniert", "Nussbaum": "nuss"
+  },
+  "handles": {"grifflos": "push", "Griffleiste": "leiste", "Griffmulde": "leiste", "Muschelgriff": "leiste", "Messing": "messing", "schwarz": "schwarz"}
+ },
+ "wording": {
+  "notes_de": "Schiebetüren: Türen laufen voreinander (Überlappung ca. 3 cm), Laufschiene oben, Schrank 65 tief.",
+  "prompt_en": "Sliding doors on a top track that overlap in front of each other, flush frameless panels, no hinges.",
+  "judge_en": "Sliding doors must sit in front of each other on a track, not open outward on hinges; no protruding handles."
+ },
+ "quality": "entwurf"
+}

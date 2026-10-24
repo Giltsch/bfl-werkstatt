@@ -1,0 +1,7531 @@
+{
+ "date": "2026-10-18",
+ "note": "run 1: native,grid,grid2 + SAM box/point/none; run 2: native_short + native again (place only). Latencies measured while another agent shared the VLM server (2 concurrent requests).",
+ "run1": {
+  "place": {
+   "native": {
+    "hit": [
+     36,
+     42
+    ],
+    "near": [
+     40,
+     42
+    ],
+    "surface_agree": [
+     27,
+     35
+    ],
+    "latency": "mean 8.26 s, p50 8.48 s, max 10.11 s"
+   },
+   "grid": {
+    "hit": [
+     31,
+     42
+    ],
+    "near": [
+     37,
+     42
+    ],
+    "surface_agree": [
+     25,
+     35
+    ],
+    "latency": "mean 4.75 s, p50 4.54 s, max 6.80 s"
+   },
+   "grid2": {
+    "hit": [
+     34,
+     42
+    ],
+    "near": [
+     38,
+     42
+    ],
+    "surface_agree": [
+     26,
+     35
+    ],
+    "latency": "mean 9.37 s, p50 9.18 s, max 11.32 s"
+   }
+  },
+  "object": {
+   "box": {
+    "point_hit": [
+     42,
+     43
+    ],
+    "vlm_box_iou50": [
+     40,
+     43
+    ],
+    "final_iou50": [
+     42,
+     43
+    ],
+    "mean_vlm_iou": 0.791,
+    "mean_final_iou": 0.829,
+    "refined": [
+     43,
+     43
+    ],
+    "latency": "mean 11.39 s, p50 10.95 s, max 23.45 s",
+    "latency_vlm": "mean 10.81 s, p50 10.60 s, max 13.97 s",
+    "latency_sam": "mean 0.58 s, p50 0.29 s, max 12.86 s"
+   },
+   "point": {
+    "point_hit": [
+     42,
+     43
+    ],
+    "vlm_box_iou50": [
+     40,
+     43
+    ],
+    "final_iou50": [
+     39,
+     43
+    ],
+    "mean_vlm_iou": 0.791,
+    "mean_final_iou": 0.797,
+    "refined": [
+     38,
+     43
+    ],
+    "latency": "mean 12.64 s, p50 12.01 s, max 19.62 s",
+    "latency_vlm": "mean 12.34 s, p50 11.73 s, max 19.32 s",
+    "latency_sam": "mean 0.29 s, p50 0.29 s, max 0.31 s"
+   },
+   "none": {
+    "point_hit": [
+     42,
+     43
+    ],
+    "vlm_box_iou50": [
+     40,
+     43
+    ],
+    "final_iou50": [
+     40,
+     43
+    ],
+    "mean_vlm_iou": 0.79,
+    "mean_final_iou": 0.79,
+    "refined": [
+     0,
+     43
+    ],
+    "latency": "mean 13.43 s, p50 13.20 s, max 19.98 s",
+    "latency_vlm": "mean 13.43 s, p50 13.20 s, max 19.98 s",
+    "latency_sam": "mean 0.00 s, p50 0.00 s, max 0.00 s"
+   }
+  },
+  "cases": [
+   {
+    "id": "g05",
+    "method": "native",
+    "phrase": "rechts neben dem Fernsehschrank an der Rückwand",
+    "status": "ok",
+    "point": [
+     588.0,
+     625.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "rechts neben dem Fernsehschrank, Rückwand (Wand hinten)",
+    "seconds": 9.62,
+    "surface_ok": false
+   },
+   {
+    "id": "g06",
+    "method": "native",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     160.0,
+     460.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.85,
+    "why": "Rückwand unter dem Fenster (Wand links)",
+    "seconds": 7.06,
+    "surface_ok": true
+   },
+   {
+    "id": "g07",
+    "method": "native",
+    "phrase": "Mitte des Raums",
+    "status": "ok",
+    "point": [
+     450.0,
+     800.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "floor",
+    "wall": null,
+    "confidence": 0.85,
+    "why": "Mitte des sichtbaren Bodens",
+    "seconds": 6.02,
+    "surface_ok": true
+   },
+   {
+    "id": "g08",
+    "method": "native",
+    "phrase": "in der hinteren rechten Ecke",
+    "status": "ok",
+    "point": [
+     880.0,
+     620.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": null,
+    "wall": "w2",
+    "confidence": 0.85,
+    "why": "hintere rechte Ecke, Wand (Wand rechts)",
+    "seconds": 8.39,
+    "surface_ok": null
+   },
+   {
+    "id": "g12",
+    "method": "native",
+    "phrase": "zwischen den beiden Fenstern",
+    "status": "ok",
+    "point": [
+     800.0,
+     350.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.85,
+    "why": "Rückwand, Wandfläche zwischen den beiden Fenstern (Wand rechts)",
+    "seconds": 6.71,
+    "surface_ok": true
+   },
+   {
+    "id": "g13",
+    "method": "native",
+    "phrase": "an der Rückwand links",
+    "status": "ok",
+    "point": [
+     250.0,
+     450.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "Rückwand, linke Seite (Wand hinten)",
+    "seconds": 8.33,
+    "surface_ok": true
+   },
+   {
+    "id": "g14",
+    "method": "native",
+    "phrase": "unter dem rechten Fenster",
+    "status": "ok",
+    "point": [
+     925.0,
+     640.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.85,
+    "why": "unter dem rechten Fenster, Rückwand (Wand rechts)",
+    "seconds": 8.29,
+    "surface_ok": true
+   },
+   {
+    "id": "g18",
+    "method": "native",
+    "phrase": "wo die alte Kommode steht",
+    "status": "ok",
+    "point": [
+     590.0,
+     620.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": null,
+    "wall": "w0",
+    "confidence": 0.75,
+    "why": "Rückwand, rechts neben dem Sofa (Wand hinten)",
+    "seconds": 9.09,
+    "surface_ok": null
+   },
+   {
+    "id": "g19",
+    "method": "native",
+    "phrase": "rechts neben der Kommode an der Wand",
+    "status": "ok",
+    "point": [
+     740.0,
+     580.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "rechts neben der Kommode, Rückwand (Wand hinten)",
+    "seconds": 8.5,
+    "surface_ok": true
+   },
+   {
+    "id": "g20",
+    "method": "native",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     218.0,
+     588.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.85,
+    "why": "Rückwand unter dem Fenster (Wand links)",
+    "seconds": 8.24,
+    "surface_ok": true
+   },
+   {
+    "id": "g24",
+    "method": "native",
+    "phrase": "zwischen den Fenstern",
+    "status": "ok",
+    "point": [
+     775.0,
+     350.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.85,
+    "why": "Rückwand, Wandfläche zwischen den beiden Fenstern (Wand rechts)",
+    "seconds": 7.7,
+    "surface_ok": true
+   },
+   {
+    "id": "g25",
+    "method": "native",
+    "phrase": "an der Rückwand links vom Tisch",
+    "status": "ok",
+    "point": [
+     200.0,
+     800.0
+    ],
+    "hit": false,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": null,
+    "confidence": 0.85,
+    "why": "Rückwand, links vom Tisch",
+    "seconds": 8.48,
+    "surface_ok": false
+   },
+   {
+    "id": "g26",
+    "method": "native",
+    "phrase": "in der hinteren Ecke",
+    "status": "ok",
+    "point": [
+     560.0,
+     700.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": null,
+    "wall": null,
+    "confidence": 0.85,
+    "why": "hintere Ecke, wo die Wände aufeinandertreffen",
+    "seconds": 10.11,
+    "surface_ok": null
+   },
+   {
+    "id": "g30",
+    "method": "native",
+    "phrase": "rechts neben dem Sideboard",
+    "status": "ok",
+    "point": [
+     685.0,
+     660.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "rechts neben dem Sideboard, Rückwand (Wand hinten)",
+    "seconds": 8.6,
+    "surface_ok": false
+   },
+   {
+    "id": "g31",
+    "method": "native",
+    "phrase": "Mitte des Raums",
+    "status": "ok",
+    "point": [
+     480.0,
+     820.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "floor",
+    "wall": null,
+    "confidence": 0.85,
+    "why": "Mitte des sichtbaren Bodens",
+    "seconds": 8.5,
+    "surface_ok": true
+   },
+   {
+    "id": "g34",
+    "method": "native",
+    "phrase": "zwischen den beiden Fenstern",
+    "status": "ok",
+    "point": [
+     725.0,
+     480.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": null,
+    "confidence": 0.55,
+    "why": "Rückwand, Wandfläche zwischen den beiden Fenstern – von der Decke auf die Wand darunter verschoben",
+    "seconds": 7.47,
+    "surface_ok": false
+   },
+   {
+    "id": "g35",
+    "method": "native",
+    "phrase": "an der Rückwand neben dem Lichtschalter",
+    "status": "ok",
+    "point": [
+     250.0,
+     475.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "Rückwand, neben dem Lichtschalter (Wand hinten)",
+    "seconds": 6.34,
+    "surface_ok": true
+   },
+   {
+    "id": "g36",
+    "method": "native",
+    "phrase": "unter dem linken Fenster",
+    "status": "ok",
+    "point": [
+     625.0,
+     600.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": null,
+    "confidence": 0.75,
+    "why": "unter dem linken Fenster, Rückwand",
+    "seconds": 6.09,
+    "surface_ok": false
+   },
+   {
+    "id": "g39",
+    "method": "native",
+    "phrase": "rechts neben dem Fernseher an der Wand",
+    "status": "ok",
+    "point": [
+     640.0,
+     480.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "rechts neben dem Fernseher, Rückwand (Wand hinten)",
+    "seconds": 9.28,
+    "surface_ok": true
+   },
+   {
+    "id": "g40",
+    "method": "native",
+    "phrase": "wo der alte Fernsehschrank steht",
+    "status": "ok",
+    "point": [
+     545.0,
+     580.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": null,
+    "wall": "w0",
+    "confidence": 0.75,
+    "why": "Standort des alten Fernsehschrankes, Rückwand (Wand hinten)",
+    "seconds": 9.11,
+    "surface_ok": null
+   },
+   {
+    "id": "g41",
+    "method": "native",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     272.0,
+     555.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.85,
+    "why": "Rückwand unter dem Fenster (Wand links)",
+    "seconds": 9.07,
+    "surface_ok": true
+   },
+   {
+    "id": "g45",
+    "method": "native",
+    "phrase": "zwischen den Fenstern",
+    "status": "ok",
+    "point": [
+     755.0,
+     300.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.85,
+    "why": "Rückwand, Wandfläche zwischen den beiden Fenstern (Wand rechts)",
+    "seconds": 9.22,
+    "surface_ok": true
+   },
+   {
+    "id": "g46",
+    "method": "native",
+    "phrase": "an der Rückwand links",
+    "status": "ok",
+    "point": [
+     250.0,
+     350.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "Rückwand, linke Seite (Wand hinten)",
+    "seconds": 8.4,
+    "surface_ok": true
+   },
+   {
+    "id": "g47",
+    "method": "native",
+    "phrase": "in der linken hinteren Ecke",
+    "status": "ok",
+    "point": [
+     100.0,
+     650.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": null,
+    "wall": "w2",
+    "confidence": 0.85,
+    "why": "linke hintere Ecke, Wand (Wand links)",
+    "seconds": 8.97,
+    "surface_ok": null
+   },
+   {
+    "id": "g51",
+    "method": "native",
+    "phrase": "an der freien Rückwand",
+    "status": "ok",
+    "point": [
+     550.0,
+     450.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "freie Rückwand, Mitte (Wand hinten)",
+    "seconds": 6.01,
+    "surface_ok": true
+   },
+   {
+    "id": "g52",
+    "method": "native",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     893.0,
+     600.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.85,
+    "why": "unter dem Fenster, rechte Wand (Wand rechts)",
+    "seconds": 6.07,
+    "surface_ok": true
+   },
+   {
+    "id": "g53",
+    "method": "native",
+    "phrase": "rechts neben dem Kühlschrank",
+    "status": "ok",
+    "point": [
+     446.0,
+     781.0
+    ],
+    "hit": false,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "rechts neben dem Kühlschrank, Rückwand (Wand hinten)",
+    "seconds": 6.07,
+    "surface_ok": false
+   },
+   {
+    "id": "g57",
+    "method": "native",
+    "phrase": "unter der Dachschräge",
+    "status": "ok",
+    "point": [
+     450.0,
+     350.0
+    ],
+    "hit": false,
+    "near": false,
+    "surface": "wall",
+    "want_surface": null,
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "unter der Dachschräge, Wand hinter dem Kommode (Wand hinten)",
+    "seconds": 9.67,
+    "surface_ok": null
+   },
+   {
+    "id": "g58",
+    "method": "native",
+    "phrase": "an der Rückwand",
+    "status": "ok",
+    "point": [
+     350.0,
+     300.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "Rückwand, Wand hinter dem Bett (Wand hinten)",
+    "seconds": 8.49,
+    "surface_ok": true
+   },
+   {
+    "id": "g59",
+    "method": "native",
+    "phrase": "in der Mitte des Zimmers",
+    "status": "ok",
+    "point": [
+     500.0,
+     850.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "floor",
+    "wall": null,
+    "confidence": 0.85,
+    "why": "Mitte des sichtbaren Bodens",
+    "seconds": 8.99,
+    "surface_ok": true
+   },
+   {
+    "id": "g63",
+    "method": "native",
+    "phrase": "an der linken Wand",
+    "status": "ok",
+    "point": [
+     270.0,
+     450.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.85,
+    "why": "linke Wand, Flur (Wand links)",
+    "seconds": 8.46,
+    "surface_ok": true
+   },
+   {
+    "id": "g64",
+    "method": "native",
+    "phrase": "an der rechten Wand vor der Tür",
+    "status": "ok",
+    "point": [
+     680.0,
+     550.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "an der rechten Wand, vor der offenen Tür (Wand rechts)",
+    "seconds": 8.7,
+    "surface_ok": true
+   },
+   {
+    "id": "g65",
+    "method": "native",
+    "phrase": "am Ende des Flurs",
+    "status": "ok",
+    "point": [
+     520.0,
+     700.0
+    ],
+    "hit": false,
+    "near": true,
+    "surface": "floor",
+    "want_surface": null,
+    "wall": "w2",
+    "confidence": 0.85,
+    "why": "am Ende des Flurs, vor der Tür (Wand hinten)",
+    "seconds": 9.24,
+    "surface_ok": null
+   },
+   {
+    "id": "g70",
+    "method": "native",
+    "phrase": "über dem Waschbecken",
+    "status": "ok",
+    "point": [
+     565.0,
+     420.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "Rückwand, Wandfläche über dem Waschbecken (Wand hinten)",
+    "seconds": 9.2,
+    "surface_ok": true
+   },
+   {
+    "id": "g71",
+    "method": "native",
+    "phrase": "zwischen Waschbecken und Toilette",
+    "status": "ok",
+    "point": [
+     620.0,
+     850.0
+    ],
+    "hit": false,
+    "near": false,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "Boden zwischen Waschbecken und Toilette (Wand hinten)",
+    "seconds": 8.26,
+    "surface_ok": false
+   },
+   {
+    "id": "g76",
+    "method": "native",
+    "phrase": "zwischen Tür und Fenster",
+    "status": "ok",
+    "point": [
+     500.0,
+     450.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "Rückwand, zwischen der Tür und dem Fenster (Wand hinten)",
+    "seconds": 8.94,
+    "surface_ok": true
+   },
+   {
+    "id": "g77",
+    "method": "native",
+    "phrase": "links neben der Tür",
+    "status": "ok",
+    "point": [
+     295.0,
+     680.0
+    ],
+    "hit": false,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "links neben der Tür, Rückwand (Wand hinten)",
+    "seconds": 9.21,
+    "surface_ok": false
+   },
+   {
+    "id": "g78",
+    "method": "native",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     760.0,
+     580.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.85,
+    "why": "unter dem Fenster, Rückwand (Wand rechts)",
+    "seconds": 8.29,
+    "surface_ok": true
+   },
+   {
+    "id": "g79",
+    "method": "native",
+    "phrase": "Mitte des Raums",
+    "status": "ok",
+    "point": [
+     500.0,
+     800.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "floor",
+    "wall": null,
+    "confidence": 0.85,
+    "why": "Mitte des sichtbaren Bodens",
+    "seconds": 8.51,
+    "surface_ok": true
+   },
+   {
+    "id": "g83",
+    "method": "native",
+    "phrase": "an der linken Wand",
+    "status": "ok",
+    "point": [
+     200.0,
+     450.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "linke Wand (Wand links)",
+    "seconds": 8.79,
+    "surface_ok": true
+   },
+   {
+    "id": "g84",
+    "method": "native",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     608.0,
+     468.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.85,
+    "why": "unter dem Fenster, Rückwand (Wand hinten)",
+    "seconds": 8.31,
+    "surface_ok": true
+   },
+   {
+    "id": "g85",
+    "method": "native",
+    "phrase": "an der grünen Wand",
+    "status": "ok",
+    "point": [
+     640.0,
+     250.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.85,
+    "why": "grüne Wand, Rückwand (Wand hinten)",
+    "seconds": 8.29,
+    "surface_ok": true
+   },
+   {
+    "id": "g05",
+    "method": "grid",
+    "phrase": "rechts neben dem Fernsehschrank an der Rückwand",
+    "status": "ok",
+    "point": [
+     625.0,
+     562.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.7,
+    "why": "rechts neben dem Fernsehschrank, Rückwand (Wand hinten)",
+    "seconds": 5.51,
+    "surface_ok": true
+   },
+   {
+    "id": "g06",
+    "method": "grid",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     208.3,
+     562.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.7,
+    "why": "unter dem Fenster, linke Wand (Wand links)",
+    "seconds": 4.23,
+    "surface_ok": true
+   },
+   {
+    "id": "g07",
+    "method": "grid",
+    "phrase": "Mitte des Raums",
+    "status": "ok",
+    "point": [
+     458.3,
+     812.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "floor",
+    "wall": null,
+    "confidence": 0.7,
+    "why": "Mitte des sichtbaren Bodens",
+    "seconds": 4.17,
+    "surface_ok": true
+   },
+   {
+    "id": "g08",
+    "method": "grid",
+    "phrase": "in der hinteren rechten Ecke",
+    "status": "ok",
+    "point": [
+     875.0,
+     437.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": null,
+    "wall": "w0",
+    "confidence": 0.7,
+    "why": "hintere rechte Ecke, Rückwand (Wand hinten)",
+    "seconds": 4.08,
+    "surface_ok": null
+   },
+   {
+    "id": "g12",
+    "method": "grid",
+    "phrase": "zwischen den beiden Fenstern",
+    "status": "ok",
+    "point": [
+     625.0,
+     562.5
+    ],
+    "hit": false,
+    "near": false,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": null,
+    "confidence": 0.7,
+    "why": "Rückwand zwischen den beiden Fenstern",
+    "seconds": 4.28,
+    "surface_ok": false
+   },
+   {
+    "id": "g13",
+    "method": "grid",
+    "phrase": "an der Rückwand links",
+    "status": "ok",
+    "point": [
+     208.3,
+     562.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.7,
+    "why": "Rückwand, linke Seite (Wand hinten)",
+    "seconds": 4.66,
+    "surface_ok": true
+   },
+   {
+    "id": "g14",
+    "method": "grid",
+    "phrase": "unter dem rechten Fenster",
+    "status": "ok",
+    "point": [
+     958.3,
+     687.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": null,
+    "confidence": 0.7,
+    "why": "unter dem rechten Fenster, Rückwand",
+    "seconds": 4.18,
+    "surface_ok": false
+   },
+   {
+    "id": "g18",
+    "method": "grid",
+    "phrase": "wo die alte Kommode steht",
+    "status": "ok",
+    "point": [
+     541.7,
+     687.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": null,
+    "wall": null,
+    "confidence": 0.7,
+    "why": "alte Kommode an der Rückwand",
+    "seconds": 5.18,
+    "surface_ok": null
+   },
+   {
+    "id": "g19",
+    "method": "grid",
+    "phrase": "rechts neben der Kommode an der Wand",
+    "status": "ok",
+    "point": [
+     708.3,
+     687.5
+    ],
+    "hit": false,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.7,
+    "why": "rechts neben der Kommode, Rückwand (Wand hinten)",
+    "seconds": 4.33,
+    "surface_ok": false
+   },
+   {
+    "id": "g20",
+    "method": "grid",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     208.3,
+     687.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.7,
+    "why": "unter dem Fenster, Rückwand (Wand links)",
+    "seconds": 4.04,
+    "surface_ok": false
+   },
+   {
+    "id": "g24",
+    "method": "grid",
+    "phrase": "zwischen den Fenstern",
+    "status": "ok",
+    "point": [
+     708.3,
+     437.5
+    ],
+    "hit": false,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.7,
+    "why": "Rückwand zwischen den beiden Fenstern (Wand rechts)",
+    "seconds": 5.32,
+    "surface_ok": true
+   },
+   {
+    "id": "g25",
+    "method": "grid",
+    "phrase": "an der Rückwand links vom Tisch",
+    "status": "ok",
+    "point": [
+     208.3,
+     812.5
+    ],
+    "hit": false,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": null,
+    "confidence": 0.7,
+    "why": "Rückwand, links vom Tisch",
+    "seconds": 4.2,
+    "surface_ok": false
+   },
+   {
+    "id": "g26",
+    "method": "grid",
+    "phrase": "in der hinteren Ecke",
+    "status": "ok",
+    "point": [
+     41.7,
+     812.5
+    ],
+    "hit": false,
+    "near": false,
+    "surface": "floor",
+    "want_surface": null,
+    "wall": "w0",
+    "confidence": 0.7,
+    "why": "hinterer linker Winkel, Rückwand (Wand hinten)",
+    "seconds": 4.31,
+    "surface_ok": null
+   },
+   {
+    "id": "g30",
+    "method": "grid",
+    "phrase": "rechts neben dem Sideboard",
+    "status": "ok",
+    "point": [
+     708.3,
+     687.5
+    ],
+    "hit": false,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.7,
+    "why": "rechts neben dem Sideboard, Rückwand (Wand hinten)",
+    "seconds": 5.53,
+    "surface_ok": false
+   },
+   {
+    "id": "g31",
+    "method": "grid",
+    "phrase": "Mitte des Raums",
+    "status": "ok",
+    "point": [
+     541.7,
+     812.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "floor",
+    "wall": null,
+    "confidence": 0.7,
+    "why": "Mitte des sichtbaren Bodens",
+    "seconds": 6.14,
+    "surface_ok": true
+   },
+   {
+    "id": "g34",
+    "method": "grid",
+    "phrase": "zwischen den beiden Fenstern",
+    "status": "ok",
+    "point": [
+     708.3,
+     812.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": null,
+    "confidence": 0.7,
+    "why": "Rückwand, zwischen den beiden Fenstern",
+    "seconds": 5.68,
+    "surface_ok": false
+   },
+   {
+    "id": "g35",
+    "method": "grid",
+    "phrase": "an der Rückwand neben dem Lichtschalter",
+    "status": "ok",
+    "point": [
+     291.7,
+     562.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.7,
+    "why": "Rückwand, links neben dem Lichtschalter (Wand hinten)",
+    "seconds": 4.6,
+    "surface_ok": true
+   },
+   {
+    "id": "g36",
+    "method": "grid",
+    "phrase": "unter dem linken Fenster",
+    "status": "ok",
+    "point": [
+     708.3,
+     812.5
+    ],
+    "hit": false,
+    "near": false,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": null,
+    "confidence": 0.7,
+    "why": "unter dem linken Fenster, Rückwand",
+    "seconds": 5.31,
+    "surface_ok": false
+   },
+   {
+    "id": "g39",
+    "method": "grid",
+    "phrase": "rechts neben dem Fernseher an der Wand",
+    "status": "ok",
+    "point": [
+     625.0,
+     562.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.7,
+    "why": "rechts neben dem Fernseher, Rückwand (Wand hinten)",
+    "seconds": 4.27,
+    "surface_ok": true
+   },
+   {
+    "id": "g40",
+    "method": "grid",
+    "phrase": "wo der alte Fernsehschrank steht",
+    "status": "ok",
+    "point": [
+     541.7,
+     562.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": null,
+    "wall": "w0",
+    "confidence": 0.7,
+    "why": "Standort des alten Fernsehschranks an der Rückwand (Wand hinten)",
+    "seconds": 6.8,
+    "surface_ok": null
+   },
+   {
+    "id": "g41",
+    "method": "grid",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     291.7,
+     562.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.7,
+    "why": "unter dem Fenster, Rückwand (Wand links)",
+    "seconds": 4.06,
+    "surface_ok": true
+   },
+   {
+    "id": "g45",
+    "method": "grid",
+    "phrase": "zwischen den Fenstern",
+    "status": "ok",
+    "point": [
+     791.7,
+     437.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.7,
+    "why": "Rückwand zwischen den beiden Fenstern (Wand rechts)",
+    "seconds": 4.5,
+    "surface_ok": true
+   },
+   {
+    "id": "g46",
+    "method": "grid",
+    "phrase": "an der Rückwand links",
+    "status": "ok",
+    "point": [
+     208.3,
+     562.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.7,
+    "why": "Rückwand, linke Seite (Wand hinten)",
+    "seconds": 4.18,
+    "surface_ok": true
+   },
+   {
+    "id": "g47",
+    "method": "grid",
+    "phrase": "in der linken hinteren Ecke",
+    "status": "ok",
+    "point": [
+     125.0,
+     687.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": null,
+    "wall": "w0",
+    "confidence": 0.7,
+    "why": "linke hintere Ecke, Wand (Wand hinten)",
+    "seconds": 5.58,
+    "surface_ok": null
+   },
+   {
+    "id": "g51",
+    "method": "grid",
+    "phrase": "an der freien Rückwand",
+    "status": "ok",
+    "point": [
+     541.7,
+     437.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.7,
+    "why": "freie Rückwand, Mitte (Wand hinten)",
+    "seconds": 3.99,
+    "surface_ok": true
+   },
+   {
+    "id": "g52",
+    "method": "grid",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     875.0,
+     812.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.7,
+    "why": "unter dem Fenster, rechte Wand (Wand rechts)",
+    "seconds": 5.46,
+    "surface_ok": true
+   },
+   {
+    "id": "g53",
+    "method": "grid",
+    "phrase": "rechts neben dem Kühlschrank",
+    "status": "ok",
+    "point": [
+     458.3,
+     562.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.7,
+    "why": "rechts neben dem Kühlschrank, Rückwand (Wand hinten)",
+    "seconds": 4.19,
+    "surface_ok": true
+   },
+   {
+    "id": "g57",
+    "method": "grid",
+    "phrase": "unter der Dachschräge",
+    "status": "ok",
+    "point": [
+     708.3,
+     812.5
+    ],
+    "hit": false,
+    "near": false,
+    "surface": "floor",
+    "want_surface": null,
+    "wall": null,
+    "confidence": 0.7,
+    "why": "unter der Dachschräge, rechts neben dem Bett",
+    "seconds": 5.68,
+    "surface_ok": null
+   },
+   {
+    "id": "g58",
+    "method": "grid",
+    "phrase": "an der Rückwand",
+    "status": "ok",
+    "point": [
+     291.7,
+     437.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.7,
+    "why": "Mitte der Rückwand (Wand hinten)",
+    "seconds": 4.75,
+    "surface_ok": true
+   },
+   {
+    "id": "g59",
+    "method": "grid",
+    "phrase": "in der Mitte des Zimmers",
+    "status": "ok",
+    "point": [
+     458.3,
+     937.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "floor",
+    "wall": null,
+    "confidence": 0.7,
+    "why": "Mitte des sichtbaren Bodens",
+    "seconds": 3.95,
+    "surface_ok": true
+   },
+   {
+    "id": "g63",
+    "method": "grid",
+    "phrase": "an der linken Wand",
+    "status": "ok",
+    "point": [
+     291.7,
+     562.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.7,
+    "why": "linke Wand, Mitte (Wand links)",
+    "seconds": 5.15,
+    "surface_ok": true
+   },
+   {
+    "id": "g64",
+    "method": "grid",
+    "phrase": "an der rechten Wand vor der Tür",
+    "status": "ok",
+    "point": [
+     708.3,
+     812.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.7,
+    "why": "an der rechten Wand, vor der Tür (Wand rechts)",
+    "seconds": 5.49,
+    "surface_ok": true
+   },
+   {
+    "id": "g65",
+    "method": "grid",
+    "phrase": "am Ende des Flurs",
+    "status": "ok",
+    "point": [
+     541.7,
+     687.5
+    ],
+    "hit": false,
+    "near": true,
+    "surface": "floor",
+    "want_surface": null,
+    "wall": "w2",
+    "confidence": 0.7,
+    "why": "am Ende des Flurs, Rückwand (Wand hinten)",
+    "seconds": 4.31,
+    "surface_ok": null
+   },
+   {
+    "id": "g70",
+    "method": "grid",
+    "phrase": "über dem Waschbecken",
+    "status": "ok",
+    "point": [
+     625.0,
+     437.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.7,
+    "why": "Rückwand über dem Waschbecken (Wand hinten)",
+    "seconds": 5.18,
+    "surface_ok": true
+   },
+   {
+    "id": "g71",
+    "method": "grid",
+    "phrase": "zwischen Waschbecken und Toilette",
+    "status": "ok",
+    "point": [
+     541.7,
+     812.5
+    ],
+    "hit": false,
+    "near": false,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.7,
+    "why": "zwischen Waschbecken und Toilette, Rückwand (Wand hinten)",
+    "seconds": 4.71,
+    "surface_ok": false
+   },
+   {
+    "id": "g76",
+    "method": "grid",
+    "phrase": "zwischen Tür und Fenster",
+    "status": "ok",
+    "point": [
+     541.7,
+     562.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.7,
+    "why": "zwischen Tür und Fenster, Rückwand (Wand hinten)",
+    "seconds": 4.25,
+    "surface_ok": true
+   },
+   {
+    "id": "g77",
+    "method": "grid",
+    "phrase": "links neben der Tür",
+    "status": "ok",
+    "point": [
+     291.7,
+     562.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.7,
+    "why": "links neben der Tür, Rückwand (Wand hinten)",
+    "seconds": 5.34,
+    "surface_ok": true
+   },
+   {
+    "id": "g78",
+    "method": "grid",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     791.7,
+     687.5
+    ],
+    "hit": false,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.7,
+    "why": "unter dem Fenster, Rückwand rechts (Wand rechts)",
+    "seconds": 5.0,
+    "surface_ok": false
+   },
+   {
+    "id": "g79",
+    "method": "grid",
+    "phrase": "Mitte des Raums",
+    "status": "ok",
+    "point": [
+     541.7,
+     812.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "floor",
+    "wall": null,
+    "confidence": 0.7,
+    "why": "Mitte des sichtbaren Bodens",
+    "seconds": 4.18,
+    "surface_ok": true
+   },
+   {
+    "id": "g83",
+    "method": "grid",
+    "phrase": "an der linken Wand",
+    "status": "ok",
+    "point": [
+     208.3,
+     562.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.7,
+    "why": "linke Wand, Mitte (Wand links)",
+    "seconds": 4.11,
+    "surface_ok": true
+   },
+   {
+    "id": "g84",
+    "method": "grid",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     625.0,
+     562.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.7,
+    "why": "unter dem Fenster, Rückwand (Wand hinten)",
+    "seconds": 4.05,
+    "surface_ok": true
+   },
+   {
+    "id": "g85",
+    "method": "grid",
+    "phrase": "an der grünen Wand",
+    "status": "ok",
+    "point": [
+     625.0,
+     312.5
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.7,
+    "why": "Mitte der grünen Wand, hinter dem Bett (Wand hinten)",
+    "seconds": 4.57,
+    "surface_ok": true
+   },
+   {
+    "id": "g05",
+    "method": "grid2",
+    "phrase": "rechts neben dem Fernsehschrank an der Rückwand",
+    "status": "ok",
+    "point": [
+     562.5,
+     656.2
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": null,
+    "confidence": 0.75,
+    "why": "rechts neben dem Fernsehschrank, Rückwand",
+    "seconds": 10.84,
+    "surface_ok": false
+   },
+   {
+    "id": "g06",
+    "method": "grid2",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     187.5,
+     593.8
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.75,
+    "why": "unter dem Fenster, linke Wand (Wand links)",
+    "seconds": 7.77,
+    "surface_ok": true
+   },
+   {
+    "id": "g07",
+    "method": "grid2",
+    "phrase": "Mitte des Raums",
+    "status": "ok",
+    "point": [
+     437.5,
+     843.8
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "floor",
+    "wall": null,
+    "confidence": 0.75,
+    "why": "Mitte des sichtbaren Bodens",
+    "seconds": 9.68,
+    "surface_ok": true
+   },
+   {
+    "id": "g08",
+    "method": "grid2",
+    "phrase": "in der hinteren rechten Ecke",
+    "status": "ok",
+    "point": [
+     937.5,
+     531.2
+    ],
+    "hit": false,
+    "near": true,
+    "surface": "wall",
+    "want_surface": null,
+    "wall": "w2",
+    "confidence": 0.75,
+    "why": "hintere rechte Ecke, Rückwand (Wand rechts)",
+    "seconds": 9.5,
+    "surface_ok": null
+   },
+   {
+    "id": "g12",
+    "method": "grid2",
+    "phrase": "zwischen den beiden Fenstern",
+    "status": "ok",
+    "point": [
+     645.8,
+     531.2
+    ],
+    "hit": false,
+    "near": false,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.75,
+    "why": "Rückwand zwischen den beiden Fenstern (Wand rechts)",
+    "seconds": 8.3,
+    "surface_ok": true
+   },
+   {
+    "id": "g13",
+    "method": "grid2",
+    "phrase": "an der Rückwand links",
+    "status": "ok",
+    "point": [
+     104.1,
+     593.8
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.75,
+    "why": "Rückwand, linke Seite (Wand hinten)",
+    "seconds": 9.04,
+    "surface_ok": true
+   },
+   {
+    "id": "g14",
+    "method": "grid2",
+    "phrase": "unter dem rechten Fenster",
+    "status": "ok",
+    "point": [
+     958.3,
+     718.8
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": null,
+    "confidence": 0.75,
+    "why": "unter dem rechten Fenster, Rückwand",
+    "seconds": 7.68,
+    "surface_ok": false
+   },
+   {
+    "id": "g18",
+    "method": "grid2",
+    "phrase": "wo die alte Kommode steht",
+    "status": "ok",
+    "point": [
+     562.5,
+     593.8
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": null,
+    "wall": "w0",
+    "confidence": 0.75,
+    "why": "alte Kommode an der Rückwand (Wand hinten)",
+    "seconds": 10.07,
+    "surface_ok": null
+   },
+   {
+    "id": "g19",
+    "method": "grid2",
+    "phrase": "rechts neben der Kommode an der Wand",
+    "status": "ok",
+    "point": [
+     729.1,
+     593.8
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.75,
+    "why": "rechts neben der Kommode, Rückwand (Wand hinten)",
+    "seconds": 9.58,
+    "surface_ok": true
+   },
+   {
+    "id": "g20",
+    "method": "grid2",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     229.1,
+     718.8
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.75,
+    "why": "unter dem Fenster, Rückwand (Wand links)",
+    "seconds": 7.78,
+    "surface_ok": false
+   },
+   {
+    "id": "g24",
+    "method": "grid2",
+    "phrase": "zwischen den Fenstern",
+    "status": "ok",
+    "point": [
+     729.1,
+     593.8
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.75,
+    "why": "Rückwand zwischen den beiden Fenstern (Wand rechts)",
+    "seconds": 10.83,
+    "surface_ok": true
+   },
+   {
+    "id": "g25",
+    "method": "grid2",
+    "phrase": "an der Rückwand links vom Tisch",
+    "status": "ok",
+    "point": [
+     145.8,
+     781.2
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.75,
+    "why": "Rückwand, links vom Tisch (Wand hinten)",
+    "seconds": 9.18,
+    "surface_ok": false
+   },
+   {
+    "id": "g26",
+    "method": "grid2",
+    "phrase": "in der hinteren Ecke",
+    "status": "ok",
+    "point": [
+     41.7,
+     781.2
+    ],
+    "hit": false,
+    "near": false,
+    "surface": "floor",
+    "want_surface": null,
+    "wall": "w0",
+    "confidence": 0.75,
+    "why": "hinterer linker Winkel, Rückwand (Wand hinten)",
+    "seconds": 8.56,
+    "surface_ok": null
+   },
+   {
+    "id": "g30",
+    "method": "grid2",
+    "phrase": "rechts neben dem Sideboard",
+    "status": "ok",
+    "point": [
+     687.5,
+     718.8
+    ],
+    "hit": false,
+    "near": false,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": null,
+    "confidence": 0.75,
+    "why": "rechts neben dem Sideboard, Rückwand",
+    "seconds": 10.65,
+    "surface_ok": false
+   },
+   {
+    "id": "g31",
+    "method": "grid2",
+    "phrase": "Mitte des Raums",
+    "status": "ok",
+    "point": [
+     520.9,
+     843.8
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "floor",
+    "wall": null,
+    "confidence": 0.75,
+    "why": "Mitte des sichtbaren Bodens",
+    "seconds": 11.14,
+    "surface_ok": true
+   },
+   {
+    "id": "g34",
+    "method": "grid2",
+    "phrase": "zwischen den beiden Fenstern",
+    "status": "ok",
+    "point": [
+     729.1,
+     718.8
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": null,
+    "confidence": 0.75,
+    "why": "Rückwand, zwischen den beiden Fenstern",
+    "seconds": 9.66,
+    "surface_ok": false
+   },
+   {
+    "id": "g35",
+    "method": "grid2",
+    "phrase": "an der Rückwand neben dem Lichtschalter",
+    "status": "ok",
+    "point": [
+     229.2,
+     531.2
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.75,
+    "why": "Rückwand, links neben dem Lichtschalter (Wand hinten)",
+    "seconds": 10.64,
+    "surface_ok": true
+   },
+   {
+    "id": "g36",
+    "method": "grid2",
+    "phrase": "unter dem linken Fenster",
+    "status": "ok",
+    "point": [
+     687.5,
+     781.2
+    ],
+    "hit": false,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": null,
+    "confidence": 0.75,
+    "why": "unter dem linken Fenster, Rückwand",
+    "seconds": 9.09,
+    "surface_ok": false
+   },
+   {
+    "id": "g39",
+    "method": "grid2",
+    "phrase": "rechts neben dem Fernseher an der Wand",
+    "status": "ok",
+    "point": [
+     645.8,
+     468.8
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.75,
+    "why": "rechts neben dem Fernseher, Rückwand (Wand hinten)",
+    "seconds": 10.06,
+    "surface_ok": true
+   },
+   {
+    "id": "g40",
+    "method": "grid2",
+    "phrase": "wo der alte Fernsehschrank steht",
+    "status": "ok",
+    "point": [
+     562.5,
+     593.8
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": null,
+    "wall": "w0",
+    "confidence": 0.75,
+    "why": "Standort des alten Fernsehschranks an der Rückwand (Wand hinten)",
+    "seconds": 9.89,
+    "surface_ok": null
+   },
+   {
+    "id": "g41",
+    "method": "grid2",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     312.5,
+     593.8
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.75,
+    "why": "unter dem Fenster, Rückwand (Wand links)",
+    "seconds": 9.87,
+    "surface_ok": true
+   },
+   {
+    "id": "g45",
+    "method": "grid2",
+    "phrase": "zwischen den Fenstern",
+    "status": "ok",
+    "point": [
+     812.5,
+     468.8
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.75,
+    "why": "Rückwand zwischen den beiden Fenstern (Wand rechts)",
+    "seconds": 8.35,
+    "surface_ok": true
+   },
+   {
+    "id": "g46",
+    "method": "grid2",
+    "phrase": "an der Rückwand links",
+    "status": "ok",
+    "point": [
+     104.1,
+     656.2
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w2",
+    "confidence": 0.75,
+    "why": "Rückwand, linke Seite (Wand links)",
+    "seconds": 9.19,
+    "surface_ok": true
+   },
+   {
+    "id": "g47",
+    "method": "grid2",
+    "phrase": "in der linken hinteren Ecke",
+    "status": "ok",
+    "point": [
+     62.5,
+     718.8
+    ],
+    "hit": false,
+    "near": true,
+    "surface": "wall",
+    "want_surface": null,
+    "wall": "w2",
+    "confidence": 0.75,
+    "why": "linke hintere Ecke, Wand (Wand links)",
+    "seconds": 8.95,
+    "surface_ok": null
+   },
+   {
+    "id": "g51",
+    "method": "grid2",
+    "phrase": "an der freien Rückwand",
+    "status": "ok",
+    "point": [
+     520.9,
+     406.2
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.75,
+    "why": "freie Rückwand, Mitte (Wand hinten)",
+    "seconds": 7.59,
+    "surface_ok": true
+   },
+   {
+    "id": "g52",
+    "method": "grid2",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     958.3,
+     843.8
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.75,
+    "why": "unter dem Fenster, rechte Wand (Wand rechts)",
+    "seconds": 10.54,
+    "surface_ok": true
+   },
+   {
+    "id": "g53",
+    "method": "grid2",
+    "phrase": "rechts neben dem Kühlschrank",
+    "status": "ok",
+    "point": [
+     437.5,
+     656.2
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.75,
+    "why": "rechts neben dem Kühlschrank, Rückwand (Wand hinten)",
+    "seconds": 9.13,
+    "surface_ok": true
+   },
+   {
+    "id": "g57",
+    "method": "grid2",
+    "phrase": "unter der Dachschräge",
+    "status": "ok",
+    "point": [
+     687.5,
+     781.2
+    ],
+    "hit": false,
+    "near": true,
+    "surface": "floor",
+    "want_surface": null,
+    "wall": null,
+    "confidence": 0.75,
+    "why": "unter der Dachschräge, rechts neben dem Bett",
+    "seconds": 9.8,
+    "surface_ok": null
+   },
+   {
+    "id": "g58",
+    "method": "grid2",
+    "phrase": "an der Rückwand",
+    "status": "ok",
+    "point": [
+     312.5,
+     406.2
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.75,
+    "why": "Mitte der Rückwand, über dem Bett (Wand hinten)",
+    "seconds": 10.98,
+    "surface_ok": true
+   },
+   {
+    "id": "g59",
+    "method": "grid2",
+    "phrase": "in der Mitte des Zimmers",
+    "status": "ok",
+    "point": [
+     437.5,
+     895.8
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "floor",
+    "wall": null,
+    "confidence": 0.75,
+    "why": "Mitte des sichtbaren Bodens",
+    "seconds": 8.93,
+    "surface_ok": true
+   },
+   {
+    "id": "g63",
+    "method": "grid2",
+    "phrase": "an der linken Wand",
+    "status": "ok",
+    "point": [
+     187.5,
+     531.2
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.75,
+    "why": "linke Wand, Mitte (Wand links)",
+    "seconds": 8.66,
+    "surface_ok": true
+   },
+   {
+    "id": "g64",
+    "method": "grid2",
+    "phrase": "an der rechten Wand vor der Tür",
+    "status": "ok",
+    "point": [
+     770.8,
+     843.8
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.75,
+    "why": "an der rechten Wand, vor der Tür (Wand rechts)",
+    "seconds": 11.32,
+    "surface_ok": true
+   },
+   {
+    "id": "g65",
+    "method": "grid2",
+    "phrase": "am Ende des Flurs",
+    "status": "ok",
+    "point": [
+     520.9,
+     656.2
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": null,
+    "wall": "w2",
+    "confidence": 0.75,
+    "why": "am Ende des Flurs, Rückwand (Wand hinten)",
+    "seconds": 9.45,
+    "surface_ok": null
+   },
+   {
+    "id": "g70",
+    "method": "grid2",
+    "phrase": "über dem Waschbecken",
+    "status": "ok",
+    "point": [
+     604.2,
+     468.8
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.75,
+    "why": "Rückwand über dem Waschbecken (Wand hinten)",
+    "seconds": 9.18,
+    "surface_ok": true
+   },
+   {
+    "id": "g71",
+    "method": "grid2",
+    "phrase": "zwischen Waschbecken und Toilette",
+    "status": "ok",
+    "point": [
+     562.5,
+     781.2
+    ],
+    "hit": false,
+    "near": false,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.75,
+    "why": "zwischen Waschbecken und Toilette, Rückwand (Wand hinten)",
+    "seconds": 8.82,
+    "surface_ok": false
+   },
+   {
+    "id": "g76",
+    "method": "grid2",
+    "phrase": "zwischen Tür und Fenster",
+    "status": "ok",
+    "point": [
+     479.2,
+     531.2
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.75,
+    "why": "zwischen Tür und Fenster, Rückwand (Wand hinten)",
+    "seconds": 8.84,
+    "surface_ok": true
+   },
+   {
+    "id": "g77",
+    "method": "grid2",
+    "phrase": "links neben der Tür",
+    "status": "ok",
+    "point": [
+     270.9,
+     593.8
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.75,
+    "why": "links neben der Tür, Rückwand (Wand hinten)",
+    "seconds": 9.1,
+    "surface_ok": true
+   },
+   {
+    "id": "g78",
+    "method": "grid2",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     770.9,
+     656.2
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.75,
+    "why": "unter dem Fenster, Rückwand rechts (Wand rechts)",
+    "seconds": 9.57,
+    "surface_ok": false
+   },
+   {
+    "id": "g79",
+    "method": "grid2",
+    "phrase": "Mitte des Raums",
+    "status": "ok",
+    "point": [
+     520.9,
+     843.8
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "floor",
+    "wall": null,
+    "confidence": 0.75,
+    "why": "Mitte des sichtbaren Bodens",
+    "seconds": 8.8,
+    "surface_ok": true
+   },
+   {
+    "id": "g83",
+    "method": "grid2",
+    "phrase": "an der linken Wand",
+    "status": "ok",
+    "point": [
+     104.1,
+     531.2
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.75,
+    "why": "linke Wand, Mitte (Wand links)",
+    "seconds": 8.38,
+    "surface_ok": true
+   },
+   {
+    "id": "g84",
+    "method": "grid2",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     562.5,
+     468.8
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.75,
+    "why": "unter dem Fenster, Rückwand (Wand hinten)",
+    "seconds": 9.65,
+    "surface_ok": true
+   },
+   {
+    "id": "g85",
+    "method": "grid2",
+    "phrase": "an der grünen Wand",
+    "status": "ok",
+    "point": [
+     604.2,
+     468.8
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.75,
+    "why": "Mitte der grünen Wand, hinter dem Bett (Wand hinten)",
+    "seconds": 8.41,
+    "surface_ok": true
+   },
+   {
+    "id": "g01",
+    "sam": "box",
+    "phrase": "der alte Fernsehschrank",
+    "status": "ok",
+    "point": [
+     466.0,
+     565.0
+    ],
+    "box": [
+     503,
+     395,
+     628,
+     538
+    ],
+    "hit": true,
+    "vlm_iou": 0.878,
+    "final_iou": 0.806,
+    "refined": true,
+    "sam_vs_vlm": 0.847,
+    "seconds": 23.45,
+    "vlm_seconds": 10.59,
+    "sam_seconds": 12.86,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g02",
+    "sam": "box",
+    "phrase": "das graue Sofa",
+    "status": "ok",
+    "point": [
+     820.0,
+     720.0
+    ],
+    "box": [
+     493,
+     735,
+     962,
+     905
+    ],
+    "hit": true,
+    "vlm_iou": 0.868,
+    "final_iou": 0.926,
+    "refined": true,
+    "sam_vs_vlm": 0.859,
+    "seconds": 12.76,
+    "vlm_seconds": 12.47,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g03",
+    "sam": "box",
+    "phrase": "die Pflanze in der Ecke",
+    "status": "ok",
+    "point": [
+     365.0,
+     500.0
+    ],
+    "box": [
+     398,
+     325,
+     604,
+     410
+    ],
+    "hit": true,
+    "vlm_iou": 0.712,
+    "final_iou": 0.837,
+    "refined": true,
+    "sam_vs_vlm": 0.701,
+    "seconds": 13.35,
+    "vlm_seconds": 13.06,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g04",
+    "sam": "box",
+    "phrase": "der Heizkörper unter dem Fenster",
+    "status": "ok",
+    "point": [
+     205.0,
+     565.0
+    ],
+    "box": [
+     473,
+     134,
+     662,
+     276
+    ],
+    "hit": true,
+    "vlm_iou": 0.841,
+    "final_iou": 0.878,
+    "refined": true,
+    "sam_vs_vlm": 0.845,
+    "seconds": 12.38,
+    "vlm_seconds": 12.09,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g09",
+    "sam": "box",
+    "phrase": "der runde Tisch",
+    "status": "ok",
+    "point": [
+     465.0,
+     600.0
+    ],
+    "box": [
+     572,
+     378,
+     874,
+     555
+    ],
+    "hit": true,
+    "vlm_iou": 0.897,
+    "final_iou": 0.856,
+    "refined": true,
+    "sam_vs_vlm": 0.897,
+    "seconds": 12.38,
+    "vlm_seconds": 12.09,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g10",
+    "sam": "box",
+    "phrase": "der linke Stuhl",
+    "status": "ok",
+    "point": [
+     370.0,
+     700.0
+    ],
+    "box": [
+     571,
+     309,
+     858,
+     445
+    ],
+    "hit": true,
+    "vlm_iou": 0.827,
+    "final_iou": 0.896,
+    "refined": true,
+    "sam_vs_vlm": 0.86,
+    "seconds": 9.96,
+    "vlm_seconds": 9.67,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g11",
+    "sam": "box",
+    "phrase": "die Steckdosen an der linken Wand",
+    "status": "ok",
+    "point": [
+     140.0,
+     672.0
+    ],
+    "box": [
+     656,
+     115,
+     688,
+     165
+    ],
+    "hit": true,
+    "vlm_iou": 0.566,
+    "final_iou": 0.654,
+    "refined": true,
+    "sam_vs_vlm": 0.766,
+    "seconds": 10.13,
+    "vlm_seconds": 9.85,
+    "sam_seconds": 0.28,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g15",
+    "sam": "box",
+    "phrase": "die alte Kommode",
+    "status": "ok",
+    "point": [
+     589.0,
+     588.0
+    ],
+    "box": [
+     493,
+     478,
+     684,
+     700
+    ],
+    "hit": true,
+    "vlm_iou": 0.9,
+    "final_iou": 0.888,
+    "refined": true,
+    "sam_vs_vlm": 0.895,
+    "seconds": 11.46,
+    "vlm_seconds": 11.16,
+    "sam_seconds": 0.31,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g16",
+    "sam": "box",
+    "phrase": "die Zimmerpflanze",
+    "status": "ok",
+    "point": [
+     438.0,
+     450.0
+    ],
+    "box": [
+     338,
+     385,
+     618,
+     496
+    ],
+    "hit": true,
+    "vlm_iou": 0.751,
+    "final_iou": 0.878,
+    "refined": true,
+    "sam_vs_vlm": 0.794,
+    "seconds": 10.19,
+    "vlm_seconds": 9.9,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g17",
+    "sam": "box",
+    "phrase": "das Sofa",
+    "status": "ok",
+    "point": [
+     780.0,
+     780.0
+    ],
+    "box": [
+     528,
+     670,
+     995,
+     872
+    ],
+    "hit": true,
+    "vlm_iou": 0.82,
+    "final_iou": 0.9,
+    "refined": true,
+    "sam_vs_vlm": 0.856,
+    "seconds": 11.85,
+    "vlm_seconds": 11.55,
+    "sam_seconds": 0.3,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g21",
+    "sam": "box",
+    "phrase": "der Tisch",
+    "status": "ok",
+    "point": [
+     448.0,
+     610.0
+    ],
+    "box": [
+     580,
+     343,
+     918,
+     552
+    ],
+    "hit": true,
+    "vlm_iou": 0.895,
+    "final_iou": 0.937,
+    "refined": true,
+    "sam_vs_vlm": 0.9,
+    "seconds": 10.69,
+    "vlm_seconds": 10.4,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g22",
+    "sam": "box",
+    "phrase": "der rechte Stuhl",
+    "status": "ok",
+    "point": [
+     552.0,
+     720.0
+    ],
+    "box": [
+     576,
+     503,
+     878,
+     593
+    ],
+    "hit": true,
+    "vlm_iou": 0.79,
+    "final_iou": 0.886,
+    "refined": true,
+    "sam_vs_vlm": 0.808,
+    "seconds": 10.09,
+    "vlm_seconds": 9.8,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g23",
+    "sam": "box",
+    "phrase": "der Heizkörper",
+    "status": "ok",
+    "point": [
+     890.0,
+     713.0
+    ],
+    "box": [
+     596,
+     806,
+     831,
+     975
+    ],
+    "hit": true,
+    "vlm_iou": 0.914,
+    "final_iou": 0.827,
+    "refined": true,
+    "sam_vs_vlm": 0.829,
+    "seconds": 12.47,
+    "vlm_seconds": 12.18,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g27",
+    "sam": "box",
+    "phrase": "der Schrank an der Rückwand",
+    "status": "ok",
+    "point": [
+     543.0,
+     590.0
+    ],
+    "box": [
+     515,
+     432,
+     678,
+     656
+    ],
+    "hit": true,
+    "vlm_iou": 0.764,
+    "final_iou": 0.784,
+    "refined": true,
+    "sam_vs_vlm": 0.894,
+    "seconds": 12.85,
+    "vlm_seconds": 12.57,
+    "sam_seconds": 0.28,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g28",
+    "sam": "box",
+    "phrase": "die Pflanzen auf der Fensterbank",
+    "status": "ok",
+    "point": [
+     272.0,
+     465.0
+    ],
+    "box": [
+     408,
+     238,
+     528,
+     306
+    ],
+    "hit": true,
+    "vlm_iou": 0.628,
+    "final_iou": 0.687,
+    "refined": true,
+    "sam_vs_vlm": 0.791,
+    "seconds": 12.52,
+    "vlm_seconds": 12.23,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g29",
+    "sam": "box",
+    "phrase": "die große Pflanze im Topf",
+    "status": "ok",
+    "point": [
+     400.0,
+     520.0
+    ],
+    "box": [
+     388,
+     362,
+     658,
+     440
+    ],
+    "hit": true,
+    "vlm_iou": 0.685,
+    "final_iou": 0.818,
+    "refined": true,
+    "sam_vs_vlm": 0.716,
+    "seconds": 10.95,
+    "vlm_seconds": 10.66,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g32",
+    "sam": "box",
+    "phrase": "die Sitzgruppe",
+    "status": "ok",
+    "point": [
+     491.0,
+     750.0
+    ],
+    "box": [
+     562,
+     352,
+     992,
+     612
+    ],
+    "hit": true,
+    "vlm_iou": 0.904,
+    "final_iou": 0.956,
+    "refined": true,
+    "sam_vs_vlm": 0.915,
+    "seconds": 10.15,
+    "vlm_seconds": 9.86,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g33",
+    "sam": "box",
+    "phrase": "der Heizkörper unter dem rechten Fenster",
+    "status": "ok",
+    "point": [
+     860.0,
+     700.0
+    ],
+    "box": [
+     605,
+     762,
+     798,
+     958
+    ],
+    "hit": true,
+    "vlm_iou": 0.877,
+    "final_iou": 0.906,
+    "refined": true,
+    "sam_vs_vlm": 0.91,
+    "seconds": 10.89,
+    "vlm_seconds": 10.6,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g37",
+    "sam": "box",
+    "phrase": "der Fernseher",
+    "status": "ok",
+    "point": [
+     544.0,
+     455.0
+    ],
+    "box": [
+     405,
+     511,
+     506,
+     578
+    ],
+    "hit": true,
+    "vlm_iou": 0.724,
+    "final_iou": 0.85,
+    "refined": true,
+    "sam_vs_vlm": 0.768,
+    "seconds": 11.93,
+    "vlm_seconds": 11.64,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g38",
+    "sam": "box",
+    "phrase": "das Sofa rechts",
+    "status": "ok",
+    "point": [
+     880.0,
+     750.0
+    ],
+    "box": [
+     482,
+     758,
+     998,
+     999
+    ],
+    "hit": true,
+    "vlm_iou": 0.903,
+    "final_iou": 0.93,
+    "refined": true,
+    "sam_vs_vlm": 0.942,
+    "seconds": 9.72,
+    "vlm_seconds": 9.45,
+    "sam_seconds": 0.27,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g42",
+    "sam": "box",
+    "phrase": "der Tisch",
+    "status": "ok",
+    "point": [
+     525.0,
+     540.0
+    ],
+    "box": [
+     513,
+     428,
+     831,
+     621
+    ],
+    "hit": true,
+    "vlm_iou": 0.899,
+    "final_iou": 0.889,
+    "refined": true,
+    "sam_vs_vlm": 0.875,
+    "seconds": 10.01,
+    "vlm_seconds": 9.73,
+    "sam_seconds": 0.27,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g43",
+    "sam": "box",
+    "phrase": "der linke Stuhl",
+    "status": "ok",
+    "point": [
+     440.0,
+     680.0
+    ],
+    "box": [
+     515,
+     377,
+     832,
+     518
+    ],
+    "hit": true,
+    "vlm_iou": 0.831,
+    "final_iou": 0.869,
+    "refined": true,
+    "sam_vs_vlm": 0.884,
+    "seconds": 9.62,
+    "vlm_seconds": 9.35,
+    "sam_seconds": 0.27,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g44",
+    "sam": "box",
+    "phrase": "die Steckdose an der Rückwand",
+    "status": "ok",
+    "point": [
+     286.0,
+     571.0
+    ],
+    "box": [
+     560,
+     277,
+     582,
+     296
+    ],
+    "hit": false,
+    "vlm_iou": 0.109,
+    "final_iou": 0.258,
+    "refined": true,
+    "sam_vs_vlm": 0.65,
+    "seconds": 10.42,
+    "vlm_seconds": 10.14,
+    "sam_seconds": 0.29,
+    "vlm_iou50": false,
+    "final_iou50": false
+   },
+   {
+    "id": "g48",
+    "sam": "box",
+    "phrase": "der Kühlschrank",
+    "status": "ok",
+    "point": [
+     355.0,
+     550.0
+    ],
+    "box": [
+     292,
+     300,
+     815,
+     412
+    ],
+    "hit": true,
+    "vlm_iou": 0.717,
+    "final_iou": 0.881,
+    "refined": true,
+    "sam_vs_vlm": 0.746,
+    "seconds": 9.89,
+    "vlm_seconds": 9.61,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g49",
+    "sam": "box",
+    "phrase": "der runde Tisch",
+    "status": "ok",
+    "point": [
+     635.0,
+     595.0
+    ],
+    "box": [
+     570,
+     555,
+     845,
+     715
+    ],
+    "hit": true,
+    "vlm_iou": 0.922,
+    "final_iou": 0.854,
+    "refined": true,
+    "sam_vs_vlm": 0.892,
+    "seconds": 8.22,
+    "vlm_seconds": 7.95,
+    "sam_seconds": 0.27,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g50",
+    "sam": "box",
+    "phrase": "der Heizkörper",
+    "status": "ok",
+    "point": [
+     865.0,
+     750.0
+    ],
+    "box": [
+     602,
+     822,
+     912,
+     910
+    ],
+    "hit": true,
+    "vlm_iou": 0.787,
+    "final_iou": 0.881,
+    "refined": true,
+    "sam_vs_vlm": 0.776,
+    "seconds": 9.55,
+    "vlm_seconds": 9.26,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g54",
+    "sam": "box",
+    "phrase": "das Bett",
+    "status": "ok",
+    "point": [
+     280.0,
+     680.0
+    ],
+    "box": [
+     492,
+     0,
+     875,
+     565
+    ],
+    "hit": true,
+    "vlm_iou": 0.958,
+    "final_iou": 0.948,
+    "refined": true,
+    "sam_vs_vlm": 0.963,
+    "seconds": 11.72,
+    "vlm_seconds": 11.45,
+    "sam_seconds": 0.27,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g55",
+    "sam": "box",
+    "phrase": "die alte Kommode unter der Schräge",
+    "status": "ok",
+    "point": [
+     732.0,
+     600.0
+    ],
+    "box": [
+     476,
+     605,
+     725,
+     860
+    ],
+    "hit": true,
+    "vlm_iou": 0.896,
+    "final_iou": 0.908,
+    "refined": true,
+    "sam_vs_vlm": 0.899,
+    "seconds": 9.61,
+    "vlm_seconds": 9.34,
+    "sam_seconds": 0.27,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g56",
+    "sam": "box",
+    "phrase": "das Dachfenster",
+    "status": "ok",
+    "point": [
+     880.0,
+     240.0
+    ],
+    "box": [
+     47,
+     708,
+     442,
+     999
+    ],
+    "hit": true,
+    "vlm_iou": 0.849,
+    "final_iou": 0.811,
+    "refined": true,
+    "sam_vs_vlm": 0.95,
+    "seconds": 9.99,
+    "vlm_seconds": 9.7,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g60",
+    "sam": "box",
+    "phrase": "das Schuhregal",
+    "status": "ok",
+    "point": [
+     423.0,
+     740.0
+    ],
+    "box": [
+     671,
+     385,
+     810,
+     462
+    ],
+    "hit": true,
+    "vlm_iou": 0.669,
+    "final_iou": 0.577,
+    "refined": true,
+    "sam_vs_vlm": 0.715,
+    "seconds": 9.7,
+    "vlm_seconds": 9.41,
+    "sam_seconds": 0.3,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g61",
+    "sam": "box",
+    "phrase": "die Tür am Ende des Flurs",
+    "status": "ok",
+    "point": [
+     520.0,
+     480.0
+    ],
+    "box": [
+     285,
+     476,
+     663,
+     565
+    ],
+    "hit": true,
+    "vlm_iou": 0.732,
+    "final_iou": 0.895,
+    "refined": true,
+    "sam_vs_vlm": 0.906,
+    "seconds": 11.05,
+    "vlm_seconds": 10.78,
+    "sam_seconds": 0.27,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g62",
+    "sam": "box",
+    "phrase": "die Garderobe",
+    "status": "ok",
+    "point": [
+     446.0,
+     345.0
+    ],
+    "box": [
+     326,
+     428,
+     365,
+     465
+    ],
+    "hit": true,
+    "vlm_iou": 0.428,
+    "final_iou": 0.509,
+    "refined": true,
+    "sam_vs_vlm": 0.543,
+    "seconds": 10.19,
+    "vlm_seconds": 9.92,
+    "sam_seconds": 0.27,
+    "vlm_iou50": false,
+    "final_iou50": true
+   },
+   {
+    "id": "g66",
+    "sam": "box",
+    "phrase": "die Badewanne",
+    "status": "ok",
+    "point": [
+     270.0,
+     750.0
+    ],
+    "box": [
+     568,
+     68,
+     995,
+     481
+    ],
+    "hit": true,
+    "vlm_iou": 0.907,
+    "final_iou": 0.906,
+    "refined": true,
+    "sam_vs_vlm": 0.953,
+    "seconds": 9.64,
+    "vlm_seconds": 9.37,
+    "sam_seconds": 0.27,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g67",
+    "sam": "box",
+    "phrase": "das Waschbecken",
+    "status": "ok",
+    "point": [
+     562.0,
+     535.0
+    ],
+    "box": [
+     503,
+     477,
+     570,
+     648
+    ],
+    "hit": true,
+    "vlm_iou": 0.387,
+    "final_iou": 0.587,
+    "refined": true,
+    "sam_vs_vlm": 0.75,
+    "seconds": 11.55,
+    "vlm_seconds": 11.26,
+    "sam_seconds": 0.29,
+    "vlm_iou50": false,
+    "final_iou50": true
+   },
+   {
+    "id": "g68",
+    "sam": "box",
+    "phrase": "die Toilette",
+    "status": "ok",
+    "point": [
+     760.0,
+     750.0
+    ],
+    "box": [
+     543,
+     638,
+     938,
+     891
+    ],
+    "hit": true,
+    "vlm_iou": 0.882,
+    "final_iou": 0.92,
+    "refined": true,
+    "sam_vs_vlm": 0.881,
+    "seconds": 10.73,
+    "vlm_seconds": 10.44,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g69",
+    "sam": "box",
+    "phrase": "der Spiegel",
+    "status": "ok",
+    "point": [
+     577.0,
+     276.0
+    ],
+    "box": [
+     138,
+     495,
+     415,
+     659
+    ],
+    "hit": true,
+    "vlm_iou": 0.893,
+    "final_iou": 0.909,
+    "refined": true,
+    "sam_vs_vlm": 0.905,
+    "seconds": 11.98,
+    "vlm_seconds": 11.68,
+    "sam_seconds": 0.3,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g72",
+    "sam": "box",
+    "phrase": "der Sessel",
+    "status": "ok",
+    "point": [
+     155.0,
+     650.0
+    ],
+    "box": [
+     503,
+     22,
+     815,
+     292
+    ],
+    "hit": true,
+    "vlm_iou": 0.932,
+    "final_iou": 0.897,
+    "refined": true,
+    "sam_vs_vlm": 0.93,
+    "seconds": 11.62,
+    "vlm_seconds": 11.34,
+    "sam_seconds": 0.28,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g73",
+    "sam": "box",
+    "phrase": "die Umzugskartons",
+    "status": "ok",
+    "point": [
+     540.0,
+     560.0
+    ],
+    "box": [
+     478,
+     448,
+     640,
+     635
+    ],
+    "hit": true,
+    "vlm_iou": 0.885,
+    "final_iou": 0.913,
+    "refined": true,
+    "sam_vs_vlm": 0.896,
+    "seconds": 11.96,
+    "vlm_seconds": 11.67,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g74",
+    "sam": "box",
+    "phrase": "die Tür",
+    "status": "ok",
+    "point": [
+     375.0,
+     450.0
+    ],
+    "box": [
+     237,
+     315,
+     656,
+     435
+    ],
+    "hit": true,
+    "vlm_iou": 0.806,
+    "final_iou": 0.773,
+    "refined": true,
+    "sam_vs_vlm": 0.901,
+    "seconds": 14.26,
+    "vlm_seconds": 13.97,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g75",
+    "sam": "box",
+    "phrase": "der Heizkörper",
+    "status": "ok",
+    "point": [
+     758.0,
+     578.0
+    ],
+    "box": [
+     511,
+     676,
+     645,
+     840
+    ],
+    "hit": true,
+    "vlm_iou": 0.872,
+    "final_iou": 0.803,
+    "refined": true,
+    "sam_vs_vlm": 0.876,
+    "seconds": 13.44,
+    "vlm_seconds": 13.15,
+    "sam_seconds": 0.28,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g80",
+    "sam": "box",
+    "phrase": "das Bett",
+    "status": "ok",
+    "point": [
+     540.0,
+     580.0
+    ],
+    "box": [
+     448,
+     372,
+     708,
+     715
+    ],
+    "hit": true,
+    "vlm_iou": 0.923,
+    "final_iou": 0.917,
+    "refined": true,
+    "sam_vs_vlm": 0.931,
+    "seconds": 11.52,
+    "vlm_seconds": 11.22,
+    "sam_seconds": 0.3,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g81",
+    "sam": "box",
+    "phrase": "der Schreibtisch",
+    "status": "ok",
+    "point": [
+     850.0,
+     620.0
+    ],
+    "box": [
+     488,
+     735,
+     798,
+     935
+    ],
+    "hit": true,
+    "vlm_iou": 0.782,
+    "final_iou": 0.858,
+    "refined": true,
+    "sam_vs_vlm": 0.897,
+    "seconds": 10.82,
+    "vlm_seconds": 10.53,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g82",
+    "sam": "box",
+    "phrase": "der blaue Stuhl",
+    "status": "ok",
+    "point": [
+     795.0,
+     640.0
+    ],
+    "box": [
+     520,
+     735,
+     765,
+     852
+    ],
+    "hit": true,
+    "vlm_iou": 0.802,
+    "final_iou": 0.794,
+    "refined": true,
+    "sam_vs_vlm": 0.846,
+    "seconds": 11.92,
+    "vlm_seconds": 11.65,
+    "sam_seconds": 0.27,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g01",
+    "sam": "point",
+    "phrase": "der alte Fernsehschrank",
+    "status": "ok",
+    "point": [
+     466.0,
+     565.0
+    ],
+    "box": [
+     503,
+     395,
+     628,
+     538
+    ],
+    "hit": true,
+    "vlm_iou": 0.878,
+    "final_iou": 0.795,
+    "refined": true,
+    "sam_vs_vlm": 0.847,
+    "seconds": 10.93,
+    "vlm_seconds": 10.63,
+    "sam_seconds": 0.3,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g02",
+    "sam": "point",
+    "phrase": "das graue Sofa",
+    "status": "ok",
+    "point": [
+     820.0,
+     720.0
+    ],
+    "box": [
+     493,
+     735,
+     962,
+     905
+    ],
+    "hit": true,
+    "vlm_iou": 0.868,
+    "final_iou": 0.93,
+    "refined": true,
+    "sam_vs_vlm": 0.853,
+    "seconds": 15.81,
+    "vlm_seconds": 15.52,
+    "sam_seconds": 0.3,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g03",
+    "sam": "point",
+    "phrase": "die Pflanze in der Ecke",
+    "status": "ok",
+    "point": [
+     365.0,
+     500.0
+    ],
+    "box": [
+     398,
+     325,
+     604,
+     410
+    ],
+    "hit": true,
+    "vlm_iou": 0.712,
+    "final_iou": 0.85,
+    "refined": true,
+    "sam_vs_vlm": 0.695,
+    "seconds": 14.9,
+    "vlm_seconds": 14.61,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g04",
+    "sam": "point",
+    "phrase": "der Heizkörper unter dem Fenster",
+    "status": "ok",
+    "point": [
+     205.0,
+     565.0
+    ],
+    "box": [
+     473,
+     134,
+     662,
+     276
+    ],
+    "hit": true,
+    "vlm_iou": 0.841,
+    "final_iou": 0.844,
+    "refined": true,
+    "sam_vs_vlm": 0.821,
+    "seconds": 16.56,
+    "vlm_seconds": 16.26,
+    "sam_seconds": 0.3,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g09",
+    "sam": "point",
+    "phrase": "der runde Tisch",
+    "status": "ok",
+    "point": [
+     465.0,
+     600.0
+    ],
+    "box": [
+     572,
+     378,
+     874,
+     555
+    ],
+    "hit": true,
+    "vlm_iou": 0.897,
+    "final_iou": 0.922,
+    "refined": true,
+    "sam_vs_vlm": 0.89,
+    "seconds": 13.43,
+    "vlm_seconds": 13.14,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g10",
+    "sam": "point",
+    "phrase": "der linke Stuhl",
+    "status": "ok",
+    "point": [
+     370.0,
+     700.0
+    ],
+    "box": [
+     571,
+     309,
+     858,
+     445
+    ],
+    "hit": true,
+    "vlm_iou": 0.827,
+    "final_iou": 0.896,
+    "refined": true,
+    "sam_vs_vlm": 0.816,
+    "seconds": 11.3,
+    "vlm_seconds": 11.01,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g11",
+    "sam": "point",
+    "phrase": "die Steckdosen an der linken Wand",
+    "status": "ok",
+    "point": [
+     140.0,
+     672.0
+    ],
+    "box": [
+     656,
+     115,
+     688,
+     165
+    ],
+    "hit": true,
+    "vlm_iou": 0.566,
+    "final_iou": 0.566,
+    "refined": false,
+    "sam_vs_vlm": 0.238,
+    "seconds": 12.87,
+    "vlm_seconds": 12.57,
+    "sam_seconds": 0.3,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g15",
+    "sam": "point",
+    "phrase": "die alte Kommode",
+    "status": "ok",
+    "point": [
+     590.0,
+     588.0
+    ],
+    "box": [
+     492,
+     478,
+     685,
+     700
+    ],
+    "hit": true,
+    "vlm_iou": 0.901,
+    "final_iou": 0.882,
+    "refined": true,
+    "sam_vs_vlm": 0.885,
+    "seconds": 11.69,
+    "vlm_seconds": 11.39,
+    "sam_seconds": 0.3,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g16",
+    "sam": "point",
+    "phrase": "die Zimmerpflanze",
+    "status": "ok",
+    "point": [
+     438.0,
+     450.0
+    ],
+    "box": [
+     338,
+     385,
+     618,
+     495
+    ],
+    "hit": true,
+    "vlm_iou": 0.757,
+    "final_iou": 0.879,
+    "refined": true,
+    "sam_vs_vlm": 0.739,
+    "seconds": 12.5,
+    "vlm_seconds": 12.2,
+    "sam_seconds": 0.3,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g17",
+    "sam": "point",
+    "phrase": "das Sofa",
+    "status": "ok",
+    "point": [
+     780.0,
+     780.0
+    ],
+    "box": [
+     528,
+     670,
+     995,
+     872
+    ],
+    "hit": true,
+    "vlm_iou": 0.82,
+    "final_iou": 0.902,
+    "refined": true,
+    "sam_vs_vlm": 0.851,
+    "seconds": 13.65,
+    "vlm_seconds": 13.36,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g21",
+    "sam": "point",
+    "phrase": "der Tisch",
+    "status": "ok",
+    "point": [
+     448.0,
+     610.0
+    ],
+    "box": [
+     580,
+     343,
+     917,
+     552
+    ],
+    "hit": true,
+    "vlm_iou": 0.892,
+    "final_iou": 0.948,
+    "refined": true,
+    "sam_vs_vlm": 0.897,
+    "seconds": 13.89,
+    "vlm_seconds": 13.6,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g22",
+    "sam": "point",
+    "phrase": "der rechte Stuhl",
+    "status": "ok",
+    "point": [
+     552.0,
+     720.0
+    ],
+    "box": [
+     576,
+     503,
+     878,
+     593
+    ],
+    "hit": true,
+    "vlm_iou": 0.79,
+    "final_iou": 0.896,
+    "refined": true,
+    "sam_vs_vlm": 0.816,
+    "seconds": 15.83,
+    "vlm_seconds": 15.53,
+    "sam_seconds": 0.3,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g23",
+    "sam": "point",
+    "phrase": "der Heizkörper",
+    "status": "ok",
+    "point": [
+     890.0,
+     714.0
+    ],
+    "box": [
+     596,
+     806,
+     833,
+     975
+    ],
+    "hit": true,
+    "vlm_iou": 0.914,
+    "final_iou": 0.836,
+    "refined": true,
+    "sam_vs_vlm": 0.797,
+    "seconds": 19.62,
+    "vlm_seconds": 19.32,
+    "sam_seconds": 0.3,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g27",
+    "sam": "point",
+    "phrase": "der Schrank an der Rückwand",
+    "status": "ok",
+    "point": [
+     543.0,
+     590.0
+    ],
+    "box": [
+     515,
+     432,
+     678,
+     656
+    ],
+    "hit": true,
+    "vlm_iou": 0.764,
+    "final_iou": 0.764,
+    "refined": false,
+    "sam_vs_vlm": 0.285,
+    "seconds": 15.31,
+    "vlm_seconds": 15.03,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g28",
+    "sam": "point",
+    "phrase": "die Pflanzen auf der Fensterbank",
+    "status": "ok",
+    "point": [
+     272.0,
+     465.0
+    ],
+    "box": [
+     408,
+     238,
+     528,
+     306
+    ],
+    "hit": true,
+    "vlm_iou": 0.628,
+    "final_iou": 0.712,
+    "refined": true,
+    "sam_vs_vlm": 0.667,
+    "seconds": 17.27,
+    "vlm_seconds": 16.97,
+    "sam_seconds": 0.3,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g29",
+    "sam": "point",
+    "phrase": "die große Pflanze im Topf",
+    "status": "ok",
+    "point": [
+     398.0,
+     520.0
+    ],
+    "box": [
+     388,
+     362,
+     658,
+     440
+    ],
+    "hit": true,
+    "vlm_iou": 0.685,
+    "final_iou": 0.812,
+    "refined": true,
+    "sam_vs_vlm": 0.674,
+    "seconds": 13.88,
+    "vlm_seconds": 13.58,
+    "sam_seconds": 0.3,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g32",
+    "sam": "point",
+    "phrase": "die Sitzgruppe",
+    "status": "ok",
+    "point": [
+     491.0,
+     750.0
+    ],
+    "box": [
+     562,
+     352,
+     992,
+     612
+    ],
+    "hit": true,
+    "vlm_iou": 0.904,
+    "final_iou": 0.376,
+    "refined": true,
+    "sam_vs_vlm": 0.42,
+    "seconds": 10.15,
+    "vlm_seconds": 9.88,
+    "sam_seconds": 0.27,
+    "vlm_iou50": true,
+    "final_iou50": false
+   },
+   {
+    "id": "g33",
+    "sam": "point",
+    "phrase": "der Heizkörper unter dem rechten Fenster",
+    "status": "ok",
+    "point": [
+     860.0,
+     700.0
+    ],
+    "box": [
+     605,
+     762,
+     798,
+     958
+    ],
+    "hit": true,
+    "vlm_iou": 0.877,
+    "final_iou": 0.918,
+    "refined": true,
+    "sam_vs_vlm": 0.873,
+    "seconds": 9.95,
+    "vlm_seconds": 9.68,
+    "sam_seconds": 0.27,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g37",
+    "sam": "point",
+    "phrase": "der Fernseher",
+    "status": "ok",
+    "point": [
+     544.0,
+     455.0
+    ],
+    "box": [
+     405,
+     511,
+     506,
+     578
+    ],
+    "hit": true,
+    "vlm_iou": 0.724,
+    "final_iou": 0.815,
+    "refined": true,
+    "sam_vs_vlm": 0.752,
+    "seconds": 11.8,
+    "vlm_seconds": 11.53,
+    "sam_seconds": 0.28,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g38",
+    "sam": "point",
+    "phrase": "das Sofa rechts",
+    "status": "ok",
+    "point": [
+     880.0,
+     750.0
+    ],
+    "box": [
+     482,
+     758,
+     997,
+     999
+    ],
+    "hit": true,
+    "vlm_iou": 0.905,
+    "final_iou": 0.925,
+    "refined": true,
+    "sam_vs_vlm": 0.942,
+    "seconds": 9.57,
+    "vlm_seconds": 9.28,
+    "sam_seconds": 0.28,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g42",
+    "sam": "point",
+    "phrase": "der Tisch",
+    "status": "ok",
+    "point": [
+     525.0,
+     540.0
+    ],
+    "box": [
+     513,
+     428,
+     831,
+     621
+    ],
+    "hit": true,
+    "vlm_iou": 0.899,
+    "final_iou": 0.896,
+    "refined": true,
+    "sam_vs_vlm": 0.886,
+    "seconds": 10.05,
+    "vlm_seconds": 9.76,
+    "sam_seconds": 0.28,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g43",
+    "sam": "point",
+    "phrase": "der linke Stuhl",
+    "status": "ok",
+    "point": [
+     440.0,
+     680.0
+    ],
+    "box": [
+     515,
+     377,
+     832,
+     518
+    ],
+    "hit": true,
+    "vlm_iou": 0.831,
+    "final_iou": 0.935,
+    "refined": true,
+    "sam_vs_vlm": 0.846,
+    "seconds": 9.62,
+    "vlm_seconds": 9.34,
+    "sam_seconds": 0.28,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g44",
+    "sam": "point",
+    "phrase": "die Steckdose an der Rückwand",
+    "status": "ok",
+    "point": [
+     286.0,
+     571.0
+    ],
+    "box": [
+     560,
+     277,
+     582,
+     296
+    ],
+    "hit": false,
+    "vlm_iou": 0.109,
+    "final_iou": 0.109,
+    "refined": false,
+    "sam_vs_vlm": 0.203,
+    "seconds": 9.95,
+    "vlm_seconds": 9.67,
+    "sam_seconds": 0.28,
+    "vlm_iou50": false,
+    "final_iou50": false
+   },
+   {
+    "id": "g48",
+    "sam": "point",
+    "phrase": "der Kühlschrank",
+    "status": "ok",
+    "point": [
+     355.0,
+     550.0
+    ],
+    "box": [
+     292,
+     300,
+     813,
+     412
+    ],
+    "hit": true,
+    "vlm_iou": 0.72,
+    "final_iou": 0.614,
+    "refined": true,
+    "sam_vs_vlm": 0.527,
+    "seconds": 9.77,
+    "vlm_seconds": 9.49,
+    "sam_seconds": 0.27,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g49",
+    "sam": "point",
+    "phrase": "der runde Tisch",
+    "status": "ok",
+    "point": [
+     635.0,
+     595.0
+    ],
+    "box": [
+     570,
+     555,
+     845,
+     715
+    ],
+    "hit": true,
+    "vlm_iou": 0.922,
+    "final_iou": 0.862,
+    "refined": true,
+    "sam_vs_vlm": 0.832,
+    "seconds": 10.13,
+    "vlm_seconds": 9.84,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g50",
+    "sam": "point",
+    "phrase": "der Heizkörper",
+    "status": "ok",
+    "point": [
+     865.0,
+     750.0
+    ],
+    "box": [
+     602,
+     821,
+     912,
+     910
+    ],
+    "hit": true,
+    "vlm_iou": 0.779,
+    "final_iou": 0.847,
+    "refined": true,
+    "sam_vs_vlm": 0.755,
+    "seconds": 10.74,
+    "vlm_seconds": 10.44,
+    "sam_seconds": 0.3,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g54",
+    "sam": "point",
+    "phrase": "das Bett",
+    "status": "ok",
+    "point": [
+     280.0,
+     680.0
+    ],
+    "box": [
+     492,
+     0,
+     875,
+     565
+    ],
+    "hit": true,
+    "vlm_iou": 0.958,
+    "final_iou": 0.913,
+    "refined": true,
+    "sam_vs_vlm": 0.877,
+    "seconds": 11.77,
+    "vlm_seconds": 11.47,
+    "sam_seconds": 0.3,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g55",
+    "sam": "point",
+    "phrase": "die alte Kommode unter der Schräge",
+    "status": "ok",
+    "point": [
+     732.0,
+     600.0
+    ],
+    "box": [
+     475,
+     605,
+     725,
+     860
+    ],
+    "hit": true,
+    "vlm_iou": 0.893,
+    "final_iou": 0.922,
+    "refined": true,
+    "sam_vs_vlm": 0.887,
+    "seconds": 13.68,
+    "vlm_seconds": 13.38,
+    "sam_seconds": 0.3,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g56",
+    "sam": "point",
+    "phrase": "das Dachfenster",
+    "status": "ok",
+    "point": [
+     870.0,
+     240.0
+    ],
+    "box": [
+     48,
+     708,
+     442,
+     1000
+    ],
+    "hit": true,
+    "vlm_iou": 0.854,
+    "final_iou": 0.806,
+    "refined": true,
+    "sam_vs_vlm": 0.861,
+    "seconds": 15.66,
+    "vlm_seconds": 15.36,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g60",
+    "sam": "point",
+    "phrase": "das Schuhregal",
+    "status": "ok",
+    "point": [
+     423.0,
+     740.0
+    ],
+    "box": [
+     671,
+     385,
+     810,
+     462
+    ],
+    "hit": true,
+    "vlm_iou": 0.669,
+    "final_iou": 0.788,
+    "refined": true,
+    "sam_vs_vlm": 0.644,
+    "seconds": 10.22,
+    "vlm_seconds": 9.92,
+    "sam_seconds": 0.3,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g61",
+    "sam": "point",
+    "phrase": "die Tür am Ende des Flurs",
+    "status": "ok",
+    "point": [
+     520.0,
+     470.0
+    ],
+    "box": [
+     285,
+     476,
+     663,
+     565
+    ],
+    "hit": true,
+    "vlm_iou": 0.732,
+    "final_iou": 0.895,
+    "refined": true,
+    "sam_vs_vlm": 0.889,
+    "seconds": 13.96,
+    "vlm_seconds": 13.66,
+    "sam_seconds": 0.3,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g62",
+    "sam": "point",
+    "phrase": "die Garderobe",
+    "status": "ok",
+    "point": [
+     448.0,
+     345.0
+    ],
+    "box": [
+     326,
+     428,
+     368,
+     468
+    ],
+    "hit": true,
+    "vlm_iou": 0.435,
+    "final_iou": 0.435,
+    "refined": false,
+    "sam_vs_vlm": 0.045,
+    "seconds": 12.01,
+    "vlm_seconds": 11.72,
+    "sam_seconds": 0.29,
+    "vlm_iou50": false,
+    "final_iou50": false
+   },
+   {
+    "id": "g66",
+    "sam": "point",
+    "phrase": "die Badewanne",
+    "status": "ok",
+    "point": [
+     270.0,
+     750.0
+    ],
+    "box": [
+     568,
+     68,
+     995,
+     481
+    ],
+    "hit": true,
+    "vlm_iou": 0.907,
+    "final_iou": 0.919,
+    "refined": true,
+    "sam_vs_vlm": 0.954,
+    "seconds": 11.83,
+    "vlm_seconds": 11.54,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g67",
+    "sam": "point",
+    "phrase": "das Waschbecken",
+    "status": "ok",
+    "point": [
+     562.0,
+     535.0
+    ],
+    "box": [
+     503,
+     477,
+     570,
+     648
+    ],
+    "hit": true,
+    "vlm_iou": 0.387,
+    "final_iou": 0.456,
+    "refined": true,
+    "sam_vs_vlm": 0.791,
+    "seconds": 13.38,
+    "vlm_seconds": 13.08,
+    "sam_seconds": 0.3,
+    "vlm_iou50": false,
+    "final_iou50": false
+   },
+   {
+    "id": "g68",
+    "sam": "point",
+    "phrase": "die Toilette",
+    "status": "ok",
+    "point": [
+     750.0,
+     750.0
+    ],
+    "box": [
+     543,
+     638,
+     938,
+     892
+    ],
+    "hit": true,
+    "vlm_iou": 0.886,
+    "final_iou": 0.945,
+    "refined": true,
+    "sam_vs_vlm": 0.864,
+    "seconds": 12.1,
+    "vlm_seconds": 11.79,
+    "sam_seconds": 0.31,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g69",
+    "sam": "point",
+    "phrase": "der Spiegel",
+    "status": "ok",
+    "point": [
+     576.0,
+     276.0
+    ],
+    "box": [
+     138,
+     495,
+     415,
+     658
+    ],
+    "hit": true,
+    "vlm_iou": 0.888,
+    "final_iou": 0.909,
+    "refined": true,
+    "sam_vs_vlm": 0.897,
+    "seconds": 11.55,
+    "vlm_seconds": 11.26,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g72",
+    "sam": "point",
+    "phrase": "der Sessel",
+    "status": "ok",
+    "point": [
+     155.0,
+     650.0
+    ],
+    "box": [
+     503,
+     22,
+     815,
+     292
+    ],
+    "hit": true,
+    "vlm_iou": 0.932,
+    "final_iou": 0.906,
+    "refined": true,
+    "sam_vs_vlm": 0.935,
+    "seconds": 12.01,
+    "vlm_seconds": 11.72,
+    "sam_seconds": 0.3,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g73",
+    "sam": "point",
+    "phrase": "die Umzugskartons",
+    "status": "ok",
+    "point": [
+     540.0,
+     560.0
+    ],
+    "box": [
+     478,
+     448,
+     640,
+     635
+    ],
+    "hit": true,
+    "vlm_iou": 0.885,
+    "final_iou": 0.885,
+    "refined": false,
+    "sam_vs_vlm": 0.134,
+    "seconds": 13.81,
+    "vlm_seconds": 13.52,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g74",
+    "sam": "point",
+    "phrase": "die Tür",
+    "status": "ok",
+    "point": [
+     375.0,
+     450.0
+    ],
+    "box": [
+     237,
+     318,
+     655,
+     433
+    ],
+    "hit": true,
+    "vlm_iou": 0.793,
+    "final_iou": 0.828,
+    "refined": true,
+    "sam_vs_vlm": 0.714,
+    "seconds": 15.38,
+    "vlm_seconds": 15.07,
+    "sam_seconds": 0.3,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g75",
+    "sam": "point",
+    "phrase": "der Heizkörper",
+    "status": "ok",
+    "point": [
+     758.0,
+     578.0
+    ],
+    "box": [
+     511,
+     676,
+     645,
+     840
+    ],
+    "hit": true,
+    "vlm_iou": 0.872,
+    "final_iou": 0.852,
+    "refined": true,
+    "sam_vs_vlm": 0.888,
+    "seconds": 12.41,
+    "vlm_seconds": 12.12,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g80",
+    "sam": "point",
+    "phrase": "das Bett",
+    "status": "ok",
+    "point": [
+     540.0,
+     580.0
+    ],
+    "box": [
+     447,
+     372,
+     708,
+     715
+    ],
+    "hit": true,
+    "vlm_iou": 0.92,
+    "final_iou": 0.544,
+    "refined": true,
+    "sam_vs_vlm": 0.496,
+    "seconds": 12.01,
+    "vlm_seconds": 11.73,
+    "sam_seconds": 0.28,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g81",
+    "sam": "point",
+    "phrase": "der Schreibtisch",
+    "status": "ok",
+    "point": [
+     850.0,
+     620.0
+    ],
+    "box": [
+     488,
+     735,
+     798,
+     938
+    ],
+    "hit": true,
+    "vlm_iou": 0.796,
+    "final_iou": 0.883,
+    "refined": true,
+    "sam_vs_vlm": 0.775,
+    "seconds": 9.51,
+    "vlm_seconds": 9.22,
+    "sam_seconds": 0.29,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g82",
+    "sam": "point",
+    "phrase": "der blaue Stuhl",
+    "status": "ok",
+    "point": [
+     795.0,
+     640.0
+    ],
+    "box": [
+     520,
+     735,
+     765,
+     850
+    ],
+    "hit": true,
+    "vlm_iou": 0.787,
+    "final_iou": 0.635,
+    "refined": true,
+    "sam_vs_vlm": 0.622,
+    "seconds": 10.85,
+    "vlm_seconds": 10.55,
+    "sam_seconds": 0.3,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g01",
+    "sam": "none",
+    "phrase": "der alte Fernsehschrank",
+    "status": "ok",
+    "point": [
+     466.0,
+     565.0
+    ],
+    "box": [
+     503,
+     395,
+     628,
+     538
+    ],
+    "hit": true,
+    "vlm_iou": 0.878,
+    "final_iou": 0.878,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 11.59,
+    "vlm_seconds": 11.59,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g02",
+    "sam": "none",
+    "phrase": "das graue Sofa",
+    "status": "ok",
+    "point": [
+     820.0,
+     720.0
+    ],
+    "box": [
+     494,
+     735,
+     961,
+     905
+    ],
+    "hit": true,
+    "vlm_iou": 0.871,
+    "final_iou": 0.871,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 17.39,
+    "vlm_seconds": 17.39,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g03",
+    "sam": "none",
+    "phrase": "die Pflanze in der Ecke",
+    "status": "ok",
+    "point": [
+     367.0,
+     500.0
+    ],
+    "box": [
+     398,
+     325,
+     604,
+     410
+    ],
+    "hit": true,
+    "vlm_iou": 0.712,
+    "final_iou": 0.712,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 19.98,
+    "vlm_seconds": 19.98,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g04",
+    "sam": "none",
+    "phrase": "der Heizkörper unter dem Fenster",
+    "status": "ok",
+    "point": [
+     205.0,
+     565.0
+    ],
+    "box": [
+     473,
+     134,
+     662,
+     276
+    ],
+    "hit": true,
+    "vlm_iou": 0.841,
+    "final_iou": 0.841,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 17.87,
+    "vlm_seconds": 17.87,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g09",
+    "sam": "none",
+    "phrase": "der runde Tisch",
+    "status": "ok",
+    "point": [
+     465.0,
+     600.0
+    ],
+    "box": [
+     572,
+     378,
+     874,
+     555
+    ],
+    "hit": true,
+    "vlm_iou": 0.897,
+    "final_iou": 0.897,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 13.41,
+    "vlm_seconds": 13.41,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g10",
+    "sam": "none",
+    "phrase": "der linke Stuhl",
+    "status": "ok",
+    "point": [
+     375.0,
+     710.0
+    ],
+    "box": [
+     570,
+     309,
+     858,
+     445
+    ],
+    "hit": true,
+    "vlm_iou": 0.825,
+    "final_iou": 0.825,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 18.06,
+    "vlm_seconds": 18.06,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g11",
+    "sam": "none",
+    "phrase": "die Steckdosen an der linken Wand",
+    "status": "ok",
+    "point": [
+     140.0,
+     672.0
+    ],
+    "box": [
+     656,
+     115,
+     688,
+     165
+    ],
+    "hit": true,
+    "vlm_iou": 0.566,
+    "final_iou": 0.566,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 12.25,
+    "vlm_seconds": 12.25,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g15",
+    "sam": "none",
+    "phrase": "die alte Kommode",
+    "status": "ok",
+    "point": [
+     589.0,
+     587.0
+    ],
+    "box": [
+     492,
+     478,
+     682,
+     700
+    ],
+    "hit": true,
+    "vlm_iou": 0.887,
+    "final_iou": 0.887,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 11.29,
+    "vlm_seconds": 11.29,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g16",
+    "sam": "none",
+    "phrase": "die Zimmerpflanze",
+    "status": "ok",
+    "point": [
+     438.0,
+     450.0
+    ],
+    "box": [
+     338,
+     385,
+     615,
+     496
+    ],
+    "hit": true,
+    "vlm_iou": 0.748,
+    "final_iou": 0.748,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 13.48,
+    "vlm_seconds": 13.48,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g17",
+    "sam": "none",
+    "phrase": "das Sofa",
+    "status": "ok",
+    "point": [
+     770.0,
+     780.0
+    ],
+    "box": [
+     528,
+     670,
+     995,
+     872
+    ],
+    "hit": true,
+    "vlm_iou": 0.82,
+    "final_iou": 0.82,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 13.82,
+    "vlm_seconds": 13.82,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g21",
+    "sam": "none",
+    "phrase": "der Tisch",
+    "status": "ok",
+    "point": [
+     448.0,
+     610.0
+    ],
+    "box": [
+     580,
+     343,
+     917,
+     552
+    ],
+    "hit": true,
+    "vlm_iou": 0.892,
+    "final_iou": 0.892,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 14.06,
+    "vlm_seconds": 14.06,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g22",
+    "sam": "none",
+    "phrase": "der rechte Stuhl",
+    "status": "ok",
+    "point": [
+     552.0,
+     720.0
+    ],
+    "box": [
+     576,
+     503,
+     879,
+     594
+    ],
+    "hit": true,
+    "vlm_iou": 0.802,
+    "final_iou": 0.802,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 9.41,
+    "vlm_seconds": 9.41,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g23",
+    "sam": "none",
+    "phrase": "der Heizkörper",
+    "status": "ok",
+    "point": [
+     890.0,
+     713.0
+    ],
+    "box": [
+     596,
+     807,
+     831,
+     975
+    ],
+    "hit": true,
+    "vlm_iou": 0.919,
+    "final_iou": 0.919,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 11.66,
+    "vlm_seconds": 11.66,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g27",
+    "sam": "none",
+    "phrase": "der Schrank an der Rückwand",
+    "status": "ok",
+    "point": [
+     543.0,
+     590.0
+    ],
+    "box": [
+     515,
+     432,
+     678,
+     656
+    ],
+    "hit": true,
+    "vlm_iou": 0.764,
+    "final_iou": 0.764,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 14.55,
+    "vlm_seconds": 14.55,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g28",
+    "sam": "none",
+    "phrase": "die Pflanzen auf der Fensterbank",
+    "status": "ok",
+    "point": [
+     272.0,
+     465.0
+    ],
+    "box": [
+     408,
+     238,
+     528,
+     306
+    ],
+    "hit": true,
+    "vlm_iou": 0.628,
+    "final_iou": 0.628,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 16.14,
+    "vlm_seconds": 16.14,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g29",
+    "sam": "none",
+    "phrase": "die große Pflanze im Topf",
+    "status": "ok",
+    "point": [
+     400.0,
+     520.0
+    ],
+    "box": [
+     388,
+     362,
+     658,
+     440
+    ],
+    "hit": true,
+    "vlm_iou": 0.685,
+    "final_iou": 0.685,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 10.45,
+    "vlm_seconds": 10.45,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g32",
+    "sam": "none",
+    "phrase": "die Sitzgruppe",
+    "status": "ok",
+    "point": [
+     491.0,
+     750.0
+    ],
+    "box": [
+     562,
+     352,
+     992,
+     612
+    ],
+    "hit": true,
+    "vlm_iou": 0.904,
+    "final_iou": 0.904,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 11.81,
+    "vlm_seconds": 11.81,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g33",
+    "sam": "none",
+    "phrase": "der Heizkörper unter dem rechten Fenster",
+    "status": "ok",
+    "point": [
+     860.0,
+     700.0
+    ],
+    "box": [
+     605,
+     762,
+     798,
+     958
+    ],
+    "hit": true,
+    "vlm_iou": 0.877,
+    "final_iou": 0.877,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 13.7,
+    "vlm_seconds": 13.7,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g37",
+    "sam": "none",
+    "phrase": "der Fernseher",
+    "status": "ok",
+    "point": [
+     544.0,
+     456.0
+    ],
+    "box": [
+     406,
+     511,
+     506,
+     578
+    ],
+    "hit": true,
+    "vlm_iou": 0.717,
+    "final_iou": 0.717,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 15.58,
+    "vlm_seconds": 15.58,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g38",
+    "sam": "none",
+    "phrase": "das Sofa rechts",
+    "status": "ok",
+    "point": [
+     880.0,
+     750.0
+    ],
+    "box": [
+     482,
+     758,
+     998,
+     999
+    ],
+    "hit": true,
+    "vlm_iou": 0.903,
+    "final_iou": 0.903,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 11.39,
+    "vlm_seconds": 11.39,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g42",
+    "sam": "none",
+    "phrase": "der Tisch",
+    "status": "ok",
+    "point": [
+     525.0,
+     540.0
+    ],
+    "box": [
+     513,
+     428,
+     832,
+     620
+    ],
+    "hit": true,
+    "vlm_iou": 0.897,
+    "final_iou": 0.897,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 16.02,
+    "vlm_seconds": 16.02,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g43",
+    "sam": "none",
+    "phrase": "der linke Stuhl",
+    "status": "ok",
+    "point": [
+     440.0,
+     680.0
+    ],
+    "box": [
+     515,
+     377,
+     832,
+     518
+    ],
+    "hit": true,
+    "vlm_iou": 0.831,
+    "final_iou": 0.831,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 10.21,
+    "vlm_seconds": 10.21,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g44",
+    "sam": "none",
+    "phrase": "die Steckdose an der Rückwand",
+    "status": "ok",
+    "point": [
+     286.0,
+     571.0
+    ],
+    "box": [
+     560,
+     277,
+     583,
+     296
+    ],
+    "hit": false,
+    "vlm_iou": 0.112,
+    "final_iou": 0.112,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 13.68,
+    "vlm_seconds": 13.68,
+    "sam_seconds": 0.0,
+    "vlm_iou50": false,
+    "final_iou50": false
+   },
+   {
+    "id": "g48",
+    "sam": "none",
+    "phrase": "der Kühlschrank",
+    "status": "ok",
+    "point": [
+     355.0,
+     550.0
+    ],
+    "box": [
+     292,
+     300,
+     815,
+     412
+    ],
+    "hit": true,
+    "vlm_iou": 0.717,
+    "final_iou": 0.717,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 11.56,
+    "vlm_seconds": 11.56,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g49",
+    "sam": "none",
+    "phrase": "der runde Tisch",
+    "status": "ok",
+    "point": [
+     635.0,
+     595.0
+    ],
+    "box": [
+     570,
+     555,
+     845,
+     715
+    ],
+    "hit": true,
+    "vlm_iou": 0.922,
+    "final_iou": 0.922,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 10.39,
+    "vlm_seconds": 10.39,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g50",
+    "sam": "none",
+    "phrase": "der Heizkörper",
+    "status": "ok",
+    "point": [
+     865.0,
+     750.0
+    ],
+    "box": [
+     602,
+     821,
+     912,
+     910
+    ],
+    "hit": true,
+    "vlm_iou": 0.779,
+    "final_iou": 0.779,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 11.34,
+    "vlm_seconds": 11.34,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g54",
+    "sam": "none",
+    "phrase": "das Bett",
+    "status": "ok",
+    "point": [
+     280.0,
+     680.0
+    ],
+    "box": [
+     492,
+     0,
+     875,
+     565
+    ],
+    "hit": true,
+    "vlm_iou": 0.958,
+    "final_iou": 0.958,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 12.96,
+    "vlm_seconds": 12.96,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g55",
+    "sam": "none",
+    "phrase": "die alte Kommode unter der Schräge",
+    "status": "ok",
+    "point": [
+     732.0,
+     600.0
+    ],
+    "box": [
+     475,
+     605,
+     725,
+     860
+    ],
+    "hit": true,
+    "vlm_iou": 0.893,
+    "final_iou": 0.893,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 13.99,
+    "vlm_seconds": 13.99,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g56",
+    "sam": "none",
+    "phrase": "das Dachfenster",
+    "status": "ok",
+    "point": [
+     880.0,
+     240.0
+    ],
+    "box": [
+     47,
+     708,
+     442,
+     999
+    ],
+    "hit": true,
+    "vlm_iou": 0.849,
+    "final_iou": 0.849,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 13.08,
+    "vlm_seconds": 13.08,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g60",
+    "sam": "none",
+    "phrase": "das Schuhregal",
+    "status": "ok",
+    "point": [
+     423.0,
+     740.0
+    ],
+    "box": [
+     671,
+     385,
+     810,
+     462
+    ],
+    "hit": true,
+    "vlm_iou": 0.669,
+    "final_iou": 0.669,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 11.35,
+    "vlm_seconds": 11.35,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g61",
+    "sam": "none",
+    "phrase": "die Tür am Ende des Flurs",
+    "status": "ok",
+    "point": [
+     520.0,
+     470.0
+    ],
+    "box": [
+     281,
+     475,
+     663,
+     565
+    ],
+    "hit": true,
+    "vlm_iou": 0.748,
+    "final_iou": 0.748,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 12.38,
+    "vlm_seconds": 12.38,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g62",
+    "sam": "none",
+    "phrase": "die Garderobe",
+    "status": "ok",
+    "point": [
+     448.0,
+     345.0
+    ],
+    "box": [
+     326,
+     428,
+     368,
+     468
+    ],
+    "hit": true,
+    "vlm_iou": 0.435,
+    "final_iou": 0.435,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 13.71,
+    "vlm_seconds": 13.71,
+    "sam_seconds": 0.0,
+    "vlm_iou50": false,
+    "final_iou50": false
+   },
+   {
+    "id": "g66",
+    "sam": "none",
+    "phrase": "die Badewanne",
+    "status": "ok",
+    "point": [
+     270.0,
+     750.0
+    ],
+    "box": [
+     568,
+     68,
+     995,
+     481
+    ],
+    "hit": true,
+    "vlm_iou": 0.907,
+    "final_iou": 0.907,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 13.13,
+    "vlm_seconds": 13.13,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g67",
+    "sam": "none",
+    "phrase": "das Waschbecken",
+    "status": "ok",
+    "point": [
+     562.0,
+     535.0
+    ],
+    "box": [
+     503,
+     477,
+     570,
+     648
+    ],
+    "hit": true,
+    "vlm_iou": 0.387,
+    "final_iou": 0.387,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 13.2,
+    "vlm_seconds": 13.2,
+    "sam_seconds": 0.0,
+    "vlm_iou50": false,
+    "final_iou50": false
+   },
+   {
+    "id": "g68",
+    "sam": "none",
+    "phrase": "die Toilette",
+    "status": "ok",
+    "point": [
+     760.0,
+     750.0
+    ],
+    "box": [
+     542,
+     638,
+     938,
+     891
+    ],
+    "hit": true,
+    "vlm_iou": 0.88,
+    "final_iou": 0.88,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 11.35,
+    "vlm_seconds": 11.35,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g69",
+    "sam": "none",
+    "phrase": "der Spiegel",
+    "status": "ok",
+    "point": [
+     576.0,
+     276.0
+    ],
+    "box": [
+     138,
+     495,
+     415,
+     658
+    ],
+    "hit": true,
+    "vlm_iou": 0.888,
+    "final_iou": 0.888,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 11.79,
+    "vlm_seconds": 11.79,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g72",
+    "sam": "none",
+    "phrase": "der Sessel",
+    "status": "ok",
+    "point": [
+     155.0,
+     650.0
+    ],
+    "box": [
+     503,
+     22,
+     815,
+     291
+    ],
+    "hit": true,
+    "vlm_iou": 0.935,
+    "final_iou": 0.935,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 18.29,
+    "vlm_seconds": 18.29,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g73",
+    "sam": "none",
+    "phrase": "die Umzugskartons",
+    "status": "ok",
+    "point": [
+     540.0,
+     560.0
+    ],
+    "box": [
+     478,
+     448,
+     640,
+     635
+    ],
+    "hit": true,
+    "vlm_iou": 0.885,
+    "final_iou": 0.885,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 15.08,
+    "vlm_seconds": 15.08,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g74",
+    "sam": "none",
+    "phrase": "die Tür",
+    "status": "ok",
+    "point": [
+     375.0,
+     450.0
+    ],
+    "box": [
+     237,
+     318,
+     655,
+     432
+    ],
+    "hit": true,
+    "vlm_iou": 0.8,
+    "final_iou": 0.8,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 15.85,
+    "vlm_seconds": 15.85,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g75",
+    "sam": "none",
+    "phrase": "der Heizkörper",
+    "status": "ok",
+    "point": [
+     758.0,
+     578.0
+    ],
+    "box": [
+     512,
+     676,
+     645,
+     840
+    ],
+    "hit": true,
+    "vlm_iou": 0.866,
+    "final_iou": 0.866,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 13.87,
+    "vlm_seconds": 13.87,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g80",
+    "sam": "none",
+    "phrase": "das Bett",
+    "status": "ok",
+    "point": [
+     540.0,
+     580.0
+    ],
+    "box": [
+     448,
+     372,
+     708,
+     714
+    ],
+    "hit": true,
+    "vlm_iou": 0.92,
+    "final_iou": 0.92,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 14.81,
+    "vlm_seconds": 14.81,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g81",
+    "sam": "none",
+    "phrase": "der Schreibtisch",
+    "status": "ok",
+    "point": [
+     840.0,
+     620.0
+    ],
+    "box": [
+     488,
+     735,
+     798,
+     930
+    ],
+    "hit": true,
+    "vlm_iou": 0.759,
+    "final_iou": 0.759,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 9.24,
+    "vlm_seconds": 9.24,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   },
+   {
+    "id": "g82",
+    "sam": "none",
+    "phrase": "der blaue Stuhl",
+    "status": "ok",
+    "point": [
+     795.0,
+     640.0
+    ],
+    "box": [
+     520,
+     735,
+     765,
+     850
+    ],
+    "hit": true,
+    "vlm_iou": 0.787,
+    "final_iou": 0.787,
+    "refined": false,
+    "sam_vs_vlm": null,
+    "seconds": 12.17,
+    "vlm_seconds": 12.17,
+    "sam_seconds": 0.0,
+    "vlm_iou50": true,
+    "final_iou50": true
+   }
+  ]
+ },
+ "run2": {
+  "place": {
+   "native_short": {
+    "hit": [
+     35,
+     42
+    ],
+    "near": [
+     40,
+     42
+    ],
+    "surface_agree": [
+     24,
+     35
+    ],
+    "latency": "mean 6.10 s, p50 6.22 s, max 10.07 s"
+   },
+   "native": {
+    "hit": [
+     38,
+     42
+    ],
+    "near": [
+     40,
+     42
+    ],
+    "surface_agree": [
+     28,
+     35
+    ],
+    "latency": "mean 10.24 s, p50 10.48 s, max 14.04 s"
+   }
+  },
+  "object": {
+   "none": {
+    "point_hit": [
+     0,
+     0
+    ],
+    "vlm_box_iou50": [
+     0,
+     0
+    ],
+    "final_iou50": [
+     0,
+     0
+    ],
+    "mean_vlm_iou": null,
+    "mean_final_iou": null,
+    "refined": [
+     0,
+     0
+    ],
+    "latency": "-",
+    "latency_vlm": "-",
+    "latency_sam": "-"
+   }
+  },
+  "cases": [
+   {
+    "id": "g05",
+    "method": "native_short",
+    "phrase": "rechts neben dem Fernsehschrank an der Rückwand",
+    "status": "ok",
+    "point": [
+     605.0,
+     625.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.8,
+    "why": "rechts neben dem Fernsehschrank an der Rückwand (Wand hinten)",
+    "seconds": 8.84,
+    "surface_ok": false
+   },
+   {
+    "id": "g06",
+    "method": "native_short",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     168.0,
+     468.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.8,
+    "why": "unter dem Fenster (Wand links)",
+    "seconds": 6.38,
+    "surface_ok": true
+   },
+   {
+    "id": "g07",
+    "method": "native_short",
+    "phrase": "Mitte des Raums",
+    "status": "ok",
+    "point": [
+     480.0,
+     800.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "floor",
+    "wall": null,
+    "confidence": 0.8,
+    "why": "Mitte des Raums",
+    "seconds": 6.2,
+    "surface_ok": true
+   },
+   {
+    "id": "g08",
+    "method": "native_short",
+    "phrase": "in der hinteren rechten Ecke",
+    "status": "ok",
+    "point": [
+     875.0,
+     625.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": null,
+    "wall": "w0",
+    "confidence": 0.7,
+    "why": "in der hinteren rechten Ecke (Wand hinten)",
+    "seconds": 4.03,
+    "surface_ok": null
+   },
+   {
+    "id": "g12",
+    "method": "native_short",
+    "phrase": "zwischen den beiden Fenstern",
+    "status": "ok",
+    "point": [
+     798.0,
+     580.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.8,
+    "why": "zwischen den beiden Fenstern (Wand rechts)",
+    "seconds": 4.09,
+    "surface_ok": true
+   },
+   {
+    "id": "g13",
+    "method": "native_short",
+    "phrase": "an der Rückwand links",
+    "status": "ok",
+    "point": [
+     275.0,
+     417.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.8,
+    "why": "an der Rückwand links (Wand hinten)",
+    "seconds": 4.27,
+    "surface_ok": true
+   },
+   {
+    "id": "g14",
+    "method": "native_short",
+    "phrase": "unter dem rechten Fenster",
+    "status": "ok",
+    "point": [
+     933.0,
+     648.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.8,
+    "why": "unter dem rechten Fenster (Wand rechts)",
+    "seconds": 4.26,
+    "surface_ok": true
+   },
+   {
+    "id": "g18",
+    "method": "native_short",
+    "phrase": "wo die alte Kommode steht",
+    "status": "ok",
+    "point": [
+     590.0,
+     580.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": null,
+    "wall": "w0",
+    "confidence": 0.7,
+    "why": "wo die alte Kommode steht (Wand hinten)",
+    "seconds": 6.17,
+    "surface_ok": null
+   },
+   {
+    "id": "g19",
+    "method": "native_short",
+    "phrase": "rechts neben der Kommode an der Wand",
+    "status": "ok",
+    "point": [
+     745.0,
+     580.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.8,
+    "why": "rechts neben der Kommode an der Wand (Wand hinten)",
+    "seconds": 6.34,
+    "surface_ok": true
+   },
+   {
+    "id": "g20",
+    "method": "native_short",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     218.0,
+     588.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.8,
+    "why": "unter dem Fenster (Wand links)",
+    "seconds": 4.8,
+    "surface_ok": true
+   },
+   {
+    "id": "g24",
+    "method": "native_short",
+    "phrase": "zwischen den Fenstern",
+    "status": "ok",
+    "point": [
+     750.0,
+     500.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.8,
+    "why": "zwischen den Fenstern (Wand rechts)",
+    "seconds": 4.23,
+    "surface_ok": true
+   },
+   {
+    "id": "g25",
+    "method": "native_short",
+    "phrase": "an der Rückwand links vom Tisch",
+    "status": "ok",
+    "point": [
+     250.0,
+     781.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": null,
+    "confidence": 0.8,
+    "why": "an der Rückwand links vom Tisch",
+    "seconds": 6.3,
+    "surface_ok": false
+   },
+   {
+    "id": "g26",
+    "method": "native_short",
+    "phrase": "in der hinteren Ecke",
+    "status": "ok",
+    "point": [
+     552.0,
+     688.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": null,
+    "wall": "w0",
+    "confidence": 0.8,
+    "why": "in der hinteren Ecke (Wand hinten)",
+    "seconds": 6.13,
+    "surface_ok": null
+   },
+   {
+    "id": "g30",
+    "method": "native_short",
+    "phrase": "rechts neben dem Sideboard",
+    "status": "ok",
+    "point": [
+     690.0,
+     680.0
+    ],
+    "hit": false,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.8,
+    "why": "rechts neben dem Sideboard (Wand hinten)",
+    "seconds": 6.24,
+    "surface_ok": false
+   },
+   {
+    "id": "g31",
+    "method": "native_short",
+    "phrase": "Mitte des Raums",
+    "status": "ok",
+    "point": [
+     480.0,
+     820.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "floor",
+    "wall": null,
+    "confidence": 0.8,
+    "why": "Mitte des Raums",
+    "seconds": 10.07,
+    "surface_ok": true
+   },
+   {
+    "id": "g34",
+    "method": "native_short",
+    "phrase": "zwischen den beiden Fenstern",
+    "status": "ok",
+    "point": [
+     725.0,
+     480.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": null,
+    "confidence": 0.5,
+    "why": "zwischen den beiden Fenstern – von der Decke auf die Wand darunter verschoben",
+    "seconds": 4.45,
+    "surface_ok": false
+   },
+   {
+    "id": "g35",
+    "method": "native_short",
+    "phrase": "an der Rückwand neben dem Lichtschalter",
+    "status": "ok",
+    "point": [
+     250.0,
+     475.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.8,
+    "why": "an der Rückwand neben dem Lichtschalter (Wand hinten)",
+    "seconds": 6.19,
+    "surface_ok": true
+   },
+   {
+    "id": "g36",
+    "method": "native_short",
+    "phrase": "unter dem linken Fenster",
+    "status": "ok",
+    "point": [
+     625.0,
+     600.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": null,
+    "confidence": 0.7,
+    "why": "unter dem linken Fenster",
+    "seconds": 4.38,
+    "surface_ok": false
+   },
+   {
+    "id": "g39",
+    "method": "native_short",
+    "phrase": "rechts neben dem Fernseher an der Wand",
+    "status": "ok",
+    "point": [
+     650.0,
+     488.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.8,
+    "why": "rechts neben dem Fernseher an der Wand (Wand hinten)",
+    "seconds": 6.43,
+    "surface_ok": true
+   },
+   {
+    "id": "g40",
+    "method": "native_short",
+    "phrase": "wo der alte Fernsehschrank steht",
+    "status": "ok",
+    "point": [
+     545.0,
+     560.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": null,
+    "wall": "w0",
+    "confidence": 0.7,
+    "why": "wo der alte Fernsehschrank steht (Wand hinten)",
+    "seconds": 8.35,
+    "surface_ok": null
+   },
+   {
+    "id": "g41",
+    "method": "native_short",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     275.0,
+     555.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.8,
+    "why": "unter dem Fenster (Wand links)",
+    "seconds": 8.35,
+    "surface_ok": true
+   },
+   {
+    "id": "g45",
+    "method": "native_short",
+    "phrase": "zwischen den Fenstern",
+    "status": "ok",
+    "point": [
+     755.0,
+     300.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.8,
+    "why": "zwischen den Fenstern (Wand rechts)",
+    "seconds": 4.75,
+    "surface_ok": true
+   },
+   {
+    "id": "g46",
+    "method": "native_short",
+    "phrase": "an der Rückwand links",
+    "status": "ok",
+    "point": [
+     219.0,
+     688.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.8,
+    "why": "an der Rückwand links (Wand hinten)",
+    "seconds": 4.17,
+    "surface_ok": false
+   },
+   {
+    "id": "g47",
+    "method": "native_short",
+    "phrase": "in der linken hinteren Ecke",
+    "status": "ok",
+    "point": [
+     100.0,
+     680.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": null,
+    "wall": "w2",
+    "confidence": 0.7,
+    "why": "in der linken hinteren Ecke (Wand links)",
+    "seconds": 4.89,
+    "surface_ok": null
+   },
+   {
+    "id": "g51",
+    "method": "native_short",
+    "phrase": "an der freien Rückwand",
+    "status": "ok",
+    "point": [
+     580.0,
+     750.0
+    ],
+    "hit": false,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.8,
+    "why": "an der freien Rückwand (Wand hinten)",
+    "seconds": 4.24,
+    "surface_ok": false
+   },
+   {
+    "id": "g52",
+    "method": "native_short",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     888.0,
+     714.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.8,
+    "why": "unter dem Fenster (Wand rechts)",
+    "seconds": 6.3,
+    "surface_ok": true
+   },
+   {
+    "id": "g53",
+    "method": "native_short",
+    "phrase": "rechts neben dem Kühlschrank",
+    "status": "ok",
+    "point": [
+     446.0,
+     781.0
+    ],
+    "hit": false,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.8,
+    "why": "rechts neben dem Kühlschrank (Wand hinten)",
+    "seconds": 4.37,
+    "surface_ok": false
+   },
+   {
+    "id": "g57",
+    "method": "native_short",
+    "phrase": "unter der Dachschräge",
+    "status": "ok",
+    "point": [
+     700.0,
+     650.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": null,
+    "wall": "w2",
+    "confidence": 0.8,
+    "why": "unter der Dachschräge (Wand rechts)",
+    "seconds": 6.37,
+    "surface_ok": null
+   },
+   {
+    "id": "g58",
+    "method": "native_short",
+    "phrase": "an der Rückwand",
+    "status": "ok",
+    "point": [
+     375.0,
+     375.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.8,
+    "why": "an der Rückwand (Wand hinten)",
+    "seconds": 7.34,
+    "surface_ok": true
+   },
+   {
+    "id": "g59",
+    "method": "native_short",
+    "phrase": "in der Mitte des Zimmers",
+    "status": "ok",
+    "point": [
+     500.0,
+     850.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "floor",
+    "wall": null,
+    "confidence": 0.8,
+    "why": "in der Mitte des Zimmers",
+    "seconds": 6.94,
+    "surface_ok": true
+   },
+   {
+    "id": "g63",
+    "method": "native_short",
+    "phrase": "an der linken Wand",
+    "status": "ok",
+    "point": [
+     270.0,
+     450.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.8,
+    "why": "an der linken Wand (Wand links)",
+    "seconds": 8.43,
+    "surface_ok": true
+   },
+   {
+    "id": "g64",
+    "method": "native_short",
+    "phrase": "an der rechten Wand vor der Tür",
+    "status": "ok",
+    "point": [
+     620.0,
+     700.0
+    ],
+    "hit": false,
+    "near": false,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.8,
+    "why": "an der rechten Wand vor der Tür (Wand rechts)",
+    "seconds": 6.32,
+    "surface_ok": true
+   },
+   {
+    "id": "g65",
+    "method": "native_short",
+    "phrase": "am Ende des Flurs",
+    "status": "ok",
+    "point": [
+     520.0,
+     680.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": null,
+    "wall": "w2",
+    "confidence": 0.8,
+    "why": "am Ende des Flurs (Wand hinten)",
+    "seconds": 8.14,
+    "surface_ok": null
+   },
+   {
+    "id": "g70",
+    "method": "native_short",
+    "phrase": "über dem Waschbecken",
+    "status": "ok",
+    "point": [
+     565.0,
+     450.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.8,
+    "why": "über dem Waschbecken (Wand hinten)",
+    "seconds": 4.22,
+    "surface_ok": true
+   },
+   {
+    "id": "g71",
+    "method": "native_short",
+    "phrase": "zwischen Waschbecken und Toilette",
+    "status": "ok",
+    "point": [
+     588.0,
+     833.0
+    ],
+    "hit": false,
+    "near": false,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.8,
+    "why": "zwischen Waschbecken und Toilette (Wand hinten)",
+    "seconds": 4.9,
+    "surface_ok": false
+   },
+   {
+    "id": "g76",
+    "method": "native_short",
+    "phrase": "zwischen Tür und Fenster",
+    "status": "ok",
+    "point": [
+     500.0,
+     650.0
+    ],
+    "hit": false,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": null,
+    "confidence": 0.8,
+    "why": "zwischen Tür und Fenster",
+    "seconds": 6.37,
+    "surface_ok": false
+   },
+   {
+    "id": "g77",
+    "method": "native_short",
+    "phrase": "links neben der Tür",
+    "status": "ok",
+    "point": [
+     285.0,
+     680.0
+    ],
+    "hit": false,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.8,
+    "why": "links neben der Tür (Wand hinten)",
+    "seconds": 8.35,
+    "surface_ok": false
+   },
+   {
+    "id": "g78",
+    "method": "native_short",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     755.0,
+     580.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.8,
+    "why": "unter dem Fenster (Wand rechts)",
+    "seconds": 8.36,
+    "surface_ok": true
+   },
+   {
+    "id": "g79",
+    "method": "native_short",
+    "phrase": "Mitte des Raums",
+    "status": "ok",
+    "point": [
+     500.0,
+     812.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "floor",
+    "wall": null,
+    "confidence": 0.8,
+    "why": "Mitte des Raums",
+    "seconds": 8.13,
+    "surface_ok": true
+   },
+   {
+    "id": "g83",
+    "method": "native_short",
+    "phrase": "an der linken Wand",
+    "status": "ok",
+    "point": [
+     194.0,
+     488.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.8,
+    "why": "an der linken Wand (Wand links)",
+    "seconds": 4.95,
+    "surface_ok": true
+   },
+   {
+    "id": "g84",
+    "method": "native_short",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     608.0,
+     452.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.8,
+    "why": "unter dem Fenster (Wand hinten)",
+    "seconds": 6.28,
+    "surface_ok": true
+   },
+   {
+    "id": "g85",
+    "method": "native_short",
+    "phrase": "an der grünen Wand",
+    "status": "ok",
+    "point": [
+     640.0,
+     250.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.8,
+    "why": "an der grünen Wand (Wand hinten)",
+    "seconds": 6.07,
+    "surface_ok": true
+   },
+   {
+    "id": "g05",
+    "method": "native",
+    "phrase": "rechts neben dem Fernsehschrank an der Rückwand",
+    "status": "ok",
+    "point": [
+     588.0,
+     625.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "rechts neben dem Fernsehschrank, Rückwand (Wand hinten)",
+    "seconds": 10.73,
+    "surface_ok": false
+   },
+   {
+    "id": "g06",
+    "method": "native",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     160.0,
+     450.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.85,
+    "why": "Rückwand unter dem Fenster (Wand links)",
+    "seconds": 7.84,
+    "surface_ok": true
+   },
+   {
+    "id": "g07",
+    "method": "native",
+    "phrase": "Mitte des Raums",
+    "status": "ok",
+    "point": [
+     450.0,
+     800.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "floor",
+    "wall": null,
+    "confidence": 0.85,
+    "why": "Mitte des sichtbaren Bodens",
+    "seconds": 9.88,
+    "surface_ok": true
+   },
+   {
+    "id": "g08",
+    "method": "native",
+    "phrase": "in der hinteren rechten Ecke",
+    "status": "ok",
+    "point": [
+     880.0,
+     620.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": null,
+    "wall": "w2",
+    "confidence": 0.85,
+    "why": "hintere rechte Ecke, Wand (Wand rechts)",
+    "seconds": 10.03,
+    "surface_ok": null
+   },
+   {
+    "id": "g12",
+    "method": "native",
+    "phrase": "zwischen den beiden Fenstern",
+    "status": "ok",
+    "point": [
+     800.0,
+     350.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.85,
+    "why": "Rückwand, Wandfläche zwischen den beiden Fenstern (Wand rechts)",
+    "seconds": 8.44,
+    "surface_ok": true
+   },
+   {
+    "id": "g13",
+    "method": "native",
+    "phrase": "an der Rückwand links",
+    "status": "ok",
+    "point": [
+     250.0,
+     400.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "Rückwand, linke Seite (Wand hinten)",
+    "seconds": 8.87,
+    "surface_ok": true
+   },
+   {
+    "id": "g14",
+    "method": "native",
+    "phrase": "unter dem rechten Fenster",
+    "status": "ok",
+    "point": [
+     930.0,
+     650.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.85,
+    "why": "unter dem rechten Fenster, Wand (Wand rechts)",
+    "seconds": 12.15,
+    "surface_ok": true
+   },
+   {
+    "id": "g18",
+    "method": "native",
+    "phrase": "wo die alte Kommode steht",
+    "status": "ok",
+    "point": [
+     590.0,
+     620.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": null,
+    "wall": "w0",
+    "confidence": 0.75,
+    "why": "Rückwand, neben dem Sofa (Wand hinten)",
+    "seconds": 12.1,
+    "surface_ok": null
+   },
+   {
+    "id": "g19",
+    "method": "native",
+    "phrase": "rechts neben der Kommode an der Wand",
+    "status": "ok",
+    "point": [
+     740.0,
+     580.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "rechts neben der Kommode, Rückwand (Wand hinten)",
+    "seconds": 12.99,
+    "surface_ok": true
+   },
+   {
+    "id": "g20",
+    "method": "native",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     218.0,
+     588.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.85,
+    "why": "Rückwand unter dem Fenster (Wand links)",
+    "seconds": 12.17,
+    "surface_ok": true
+   },
+   {
+    "id": "g24",
+    "method": "native",
+    "phrase": "zwischen den Fenstern",
+    "status": "ok",
+    "point": [
+     775.0,
+     350.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.85,
+    "why": "Rückwand, Wandfläche zwischen den beiden Fenstern (Wand rechts)",
+    "seconds": 10.66,
+    "surface_ok": true
+   },
+   {
+    "id": "g25",
+    "method": "native",
+    "phrase": "an der Rückwand links vom Tisch",
+    "status": "ok",
+    "point": [
+     250.0,
+     680.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "Rückwand, links vom Tisch (Wand hinten)",
+    "seconds": 10.88,
+    "surface_ok": true
+   },
+   {
+    "id": "g26",
+    "method": "native",
+    "phrase": "in der hinteren Ecke",
+    "status": "ok",
+    "point": [
+     560.0,
+     700.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": null,
+    "wall": null,
+    "confidence": 0.85,
+    "why": "hintere Ecke, wo die Wände aufeinandertreffen",
+    "seconds": 14.04,
+    "surface_ok": null
+   },
+   {
+    "id": "g30",
+    "method": "native",
+    "phrase": "rechts neben dem Sideboard",
+    "status": "ok",
+    "point": [
+     685.0,
+     660.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "rechts neben dem Sideboard, Rückwand (Wand hinten)",
+    "seconds": 10.45,
+    "surface_ok": false
+   },
+   {
+    "id": "g31",
+    "method": "native",
+    "phrase": "Mitte des Raums",
+    "status": "ok",
+    "point": [
+     480.0,
+     820.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "floor",
+    "wall": null,
+    "confidence": 0.85,
+    "why": "Mitte des sichtbaren Bodens",
+    "seconds": 12.19,
+    "surface_ok": true
+   },
+   {
+    "id": "g34",
+    "method": "native",
+    "phrase": "zwischen den beiden Fenstern",
+    "status": "ok",
+    "point": [
+     725.0,
+     480.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": null,
+    "confidence": 0.55,
+    "why": "Rückwand, Wandfläche zwischen den beiden Fenstern – von der Decke auf die Wand darunter verschoben",
+    "seconds": 7.05,
+    "surface_ok": false
+   },
+   {
+    "id": "g35",
+    "method": "native",
+    "phrase": "an der Rückwand neben dem Lichtschalter",
+    "status": "ok",
+    "point": [
+     275.0,
+     475.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "Rückwand, neben dem Lichtschalter (Wand hinten)",
+    "seconds": 6.84,
+    "surface_ok": true
+   },
+   {
+    "id": "g36",
+    "method": "native",
+    "phrase": "unter dem linken Fenster",
+    "status": "ok",
+    "point": [
+     628.0,
+     600.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": null,
+    "confidence": 0.75,
+    "why": "unter dem linken Fenster, Rückwand",
+    "seconds": 7.97,
+    "surface_ok": false
+   },
+   {
+    "id": "g39",
+    "method": "native",
+    "phrase": "rechts neben dem Fernseher an der Wand",
+    "status": "ok",
+    "point": [
+     650.0,
+     450.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "rechts neben dem Fernseher, Rückwand (Wand hinten)",
+    "seconds": 10.75,
+    "surface_ok": true
+   },
+   {
+    "id": "g40",
+    "method": "native",
+    "phrase": "wo der alte Fernsehschrank steht",
+    "status": "ok",
+    "point": [
+     545.0,
+     580.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": null,
+    "wall": "w0",
+    "confidence": 0.75,
+    "why": "Standort des alten Fernsehschranks, Rückwand (Wand hinten)",
+    "seconds": 12.75,
+    "surface_ok": null
+   },
+   {
+    "id": "g41",
+    "method": "native",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     272.0,
+     555.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.85,
+    "why": "Rückwand unter dem Fenster (Wand links)",
+    "seconds": 8.74,
+    "surface_ok": true
+   },
+   {
+    "id": "g45",
+    "method": "native",
+    "phrase": "zwischen den Fenstern",
+    "status": "ok",
+    "point": [
+     755.0,
+     300.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.85,
+    "why": "Rückwand, Wandfläche zwischen den beiden Fenstern (Wand rechts)",
+    "seconds": 9.59,
+    "surface_ok": true
+   },
+   {
+    "id": "g46",
+    "method": "native",
+    "phrase": "an der Rückwand links",
+    "status": "ok",
+    "point": [
+     250.0,
+     350.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "Rückwand, linke Seite (Wand hinten)",
+    "seconds": 10.78,
+    "surface_ok": true
+   },
+   {
+    "id": "g47",
+    "method": "native",
+    "phrase": "in der linken hinteren Ecke",
+    "status": "ok",
+    "point": [
+     100.0,
+     650.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": null,
+    "wall": "w2",
+    "confidence": 0.85,
+    "why": "linke hintere Ecke, Wand (Wand links)",
+    "seconds": 10.1,
+    "surface_ok": null
+   },
+   {
+    "id": "g51",
+    "method": "native",
+    "phrase": "an der freien Rückwand",
+    "status": "ok",
+    "point": [
+     550.0,
+     450.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "freie Rückwand, Mitte (Wand hinten)",
+    "seconds": 7.81,
+    "surface_ok": true
+   },
+   {
+    "id": "g52",
+    "method": "native",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     893.0,
+     600.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.85,
+    "why": "unter dem Fenster, rechte Wand (Wand rechts)",
+    "seconds": 7.97,
+    "surface_ok": true
+   },
+   {
+    "id": "g53",
+    "method": "native",
+    "phrase": "rechts neben dem Kühlschrank",
+    "status": "ok",
+    "point": [
+     446.0,
+     781.0
+    ],
+    "hit": false,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "rechts neben dem Kühlschrank, Rückwand (Wand hinten)",
+    "seconds": 6.58,
+    "surface_ok": false
+   },
+   {
+    "id": "g57",
+    "method": "native",
+    "phrase": "unter der Dachschräge",
+    "status": "ok",
+    "point": [
+     560.0,
+     680.0
+    ],
+    "hit": false,
+    "near": false,
+    "surface": "floor",
+    "want_surface": null,
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "unter der Dachschräge, links vom Schrank (Wand hinten)",
+    "seconds": 10.61,
+    "surface_ok": null
+   },
+   {
+    "id": "g58",
+    "method": "native",
+    "phrase": "an der Rückwand",
+    "status": "ok",
+    "point": [
+     350.0,
+     300.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "Rückwand, Wand hinter dem Bett (Wand hinten)",
+    "seconds": 10.39,
+    "surface_ok": true
+   },
+   {
+    "id": "g59",
+    "method": "native",
+    "phrase": "in der Mitte des Zimmers",
+    "status": "ok",
+    "point": [
+     500.0,
+     850.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "floor",
+    "wall": null,
+    "confidence": 0.85,
+    "why": "Mitte des sichtbaren Bodens",
+    "seconds": 11.96,
+    "surface_ok": true
+   },
+   {
+    "id": "g63",
+    "method": "native",
+    "phrase": "an der linken Wand",
+    "status": "ok",
+    "point": [
+     270.0,
+     450.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.85,
+    "why": "linke Wand, Flur (Wand links)",
+    "seconds": 8.81,
+    "surface_ok": true
+   },
+   {
+    "id": "g64",
+    "method": "native",
+    "phrase": "an der rechten Wand vor der Tür",
+    "status": "ok",
+    "point": [
+     680.0,
+     550.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "an der rechten Wand, vor der offenen Tür (Wand rechts)",
+    "seconds": 10.52,
+    "surface_ok": true
+   },
+   {
+    "id": "g65",
+    "method": "native",
+    "phrase": "am Ende des Flurs",
+    "status": "ok",
+    "point": [
+     520.0,
+     680.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": null,
+    "wall": "w2",
+    "confidence": 0.85,
+    "why": "am Ende des Flurs, vor der Tür (Wand hinten)",
+    "seconds": 10.52,
+    "surface_ok": null
+   },
+   {
+    "id": "g70",
+    "method": "native",
+    "phrase": "über dem Waschbecken",
+    "status": "ok",
+    "point": [
+     565.0,
+     420.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "Rückwand, Wandfläche über dem Waschbecken (Wand hinten)",
+    "seconds": 11.36,
+    "surface_ok": true
+   },
+   {
+    "id": "g71",
+    "method": "native",
+    "phrase": "zwischen Waschbecken und Toilette",
+    "status": "ok",
+    "point": [
+     620.0,
+     850.0
+    ],
+    "hit": false,
+    "near": false,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "Boden zwischen Waschbecken und Toilette (Wand hinten)",
+    "seconds": 9.62,
+    "surface_ok": false
+   },
+   {
+    "id": "g76",
+    "method": "native",
+    "phrase": "zwischen Tür und Fenster",
+    "status": "ok",
+    "point": [
+     515.0,
+     450.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "Rückwand, zwischen Tür und Fenster (Wand hinten)",
+    "seconds": 10.98,
+    "surface_ok": true
+   },
+   {
+    "id": "g77",
+    "method": "native",
+    "phrase": "links neben der Tür",
+    "status": "ok",
+    "point": [
+     295.0,
+     680.0
+    ],
+    "hit": false,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "links neben der Tür, Rückwand (Wand hinten)",
+    "seconds": 10.26,
+    "surface_ok": false
+   },
+   {
+    "id": "g78",
+    "method": "native",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     775.0,
+     580.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.85,
+    "why": "unter dem Fenster, Rückwand (Wand rechts)",
+    "seconds": 12.03,
+    "surface_ok": true
+   },
+   {
+    "id": "g79",
+    "method": "native",
+    "phrase": "Mitte des Raums",
+    "status": "ok",
+    "point": [
+     500.0,
+     800.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "floor",
+    "want_surface": "floor",
+    "wall": null,
+    "confidence": 0.85,
+    "why": "Mitte des sichtbaren Bodens",
+    "seconds": 10.26,
+    "surface_ok": true
+   },
+   {
+    "id": "g83",
+    "method": "native",
+    "phrase": "an der linken Wand",
+    "status": "ok",
+    "point": [
+     200.0,
+     450.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w0",
+    "confidence": 0.85,
+    "why": "linke Wand (Wand links)",
+    "seconds": 11.72,
+    "surface_ok": true
+   },
+   {
+    "id": "g84",
+    "method": "native",
+    "phrase": "unter dem Fenster",
+    "status": "ok",
+    "point": [
+     608.0,
+     462.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.85,
+    "why": "unter dem Fenster, Rückwand (Wand hinten)",
+    "seconds": 10.67,
+    "surface_ok": true
+   },
+   {
+    "id": "g85",
+    "method": "native",
+    "phrase": "an der grünen Wand",
+    "status": "ok",
+    "point": [
+     640.0,
+     250.0
+    ],
+    "hit": true,
+    "near": true,
+    "surface": "wall",
+    "want_surface": "wall",
+    "wall": "w1",
+    "confidence": 0.85,
+    "why": "grüne Wand, Rückwand (Wand hinten)",
+    "seconds": 10.13,
+    "surface_ok": true
+   }
+  ]
+ }
+}

@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="data:,">
+<title>Ihre Entwürfe</title>
+<!-- Customer page behind /k/<token> (spec §4.6, §9.4, §14). Standalone: inline CSS + JS, loads nothing but its own
+     /k/<token>/… URLs (CSP default-src 'none'), every customer/company string goes in via textContent. -->
+<style>
+:root{--bg:#f6f4f0;--panel:#fff;--panel2:#efebe4;--line:#d9d2c7;--text:#1d1b18;--muted:#5c564d;--accent:#2f6b4f;
+ --accent-ink:#fff;--danger:#b42318;--ok:#1f7a4d;--focus:#1d6fd6;--r:12px;color-scheme:light;
+ font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text)}
+body{padding:0 16px calc(24px + env(safe-area-inset-bottom));overflow-x:hidden}
+main{max-width:880px;margin:0 auto}
+h1,h2,h3{line-height:1.2;margin:0}
+h1{font-size:26px}
+h2{font-size:21px}
+h3{font-size:18px}
+p{margin:0}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+header.co{display:flex;align-items:center;gap:14px;padding:18px 0 14px;border-bottom:3px solid var(--accent);margin-bottom:20px}
+header.co img{max-height:56px;max-width:140px;object-fit:contain}
+header.co .name{font-weight:700;font-size:19px}
+.intro{display:grid;gap:6px;margin-bottom:18px}
+.note{white-space:pre-line;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;margin:0 0 20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px;margin:0 0 20px;display:grid;gap:12px}
+.card.chosen{border:2px solid var(--ok)}
+.ba{position:relative;width:100%;border-radius:10px;overflow:hidden;background:#1b1c1f;touch-action:pan-y;user-select:none;
+ -webkit-user-select:none;cursor:ew-resize}
+.ba img{display:block;width:100%;height:auto;max-height:75vh;object-fit:contain;pointer-events:none;-webkit-user-drag:none}
+.ba .before{position:absolute;inset:0;clip-path:inset(0 50% 0 0)}
+.ba .before img{width:100%;height:100%;max-height:none;object-fit:contain}
+.ba .lbl{position:absolute;top:8px;padding:3px 9px;border-radius:7px;background:rgba(0,0,0,.62);color:#fff;font-size:14px;font-weight:600}
+.ba .lbl.l{left:8px}.ba .lbl.r{right:8px}
+.ba .ai{position:absolute;left:8px;bottom:8px;padding:3px 9px;border-radius:7px;background:rgba(0,0,0,.62);color:#fff;font-size:13px}
+.ba .line{position:absolute;top:0;bottom:0;left:50%;width:3px;margin-left:-1.5px;background:#fff;box-shadow:0 0 4px rgba(0,0,0,.5)}
+.ba .knob{position:absolute;top:50%;left:50%;width:48px;height:48px;margin:-24px 0 0 -24px;border-radius:50%;background:#fff;
+ color:#1d1b18;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;box-shadow:0 1px 6px rgba(0,0,0,.45)}
+.ba .knob:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.hint{font-size:14px;color:var(--muted)}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:14px;font-weight:600;background:#e3efe8;color:var(--ok)}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:14px}
+@media (max-width:560px){
+ table,tbody,tr,td{display:block}thead{display:none}
+ tr{padding:8px 0;border-bottom:1px solid var(--line)}td{border:0;padding:2px 0}
+ td::before{content:attr(data-k) ": ";color:var(--muted);font-size:14px}
+ td:first-child{font-weight:600}td:first-child::before{content:""}
+}
+.respond{background:var(--panel);border:2px solid var(--accent);border-radius:var(--r);padding:16px;margin:0 0 20px;display:grid;gap:14px}
+.choices{display:grid;gap:10px}
+.choice{position:relative;display:flex;align-items:center;gap:12px;min-height:52px;padding:10px 14px;border:1px solid var(--line);border-radius:10px;
+ background:var(--bg);cursor:pointer;font-size:17px}
+.choice input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.choice .dot{flex:none;width:24px;height:24px;border-radius:50%;border:2px solid var(--muted);background:#fff}
+.choice.on{border:2px solid var(--accent);background:#fff}
+.choice.on .dot{border-color:var(--accent);box-shadow:inset 0 0 0 5px #fff;background:var(--accent)}
+.choice:focus-within{outline:3px solid var(--focus);outline-offset:1px}
+label.f{display:grid;gap:6px;font-weight:600}
+input[type=text],input.pin,textarea{font:inherit;font-size:17px;width:100%;min-height:48px;padding:10px 12px;border:1px solid var(--line);
+ border-radius:10px;background:#fff;color:var(--text)}
+textarea{min-height:96px;resize:vertical}
+input:focus-visible,textarea:focus-visible,.btn:focus-visible{outline:3px solid var(--focus);outline-offset:1px}
+.btns{display:grid;gap:10px}
+@media (min-width:600px){.btns{grid-template-columns:1fr 1fr}}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:10px 18px;border-radius:10px;
+ border:1px solid var(--line);background:var(--panel2);color:var(--text);font:inherit;font-weight:600;font-size:17px;
+ text-decoration:none;cursor:pointer;text-align:center}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn:disabled{opacity:.55;cursor:default}
+.err{color:var(--danger);font-weight:600}
+.done{background:#e3efe8;border:1px solid #b9d8c6;border-radius:var(--r);padding:16px;margin:0 0 20px;font-size:17px;font-weight:600;color:#14532d}
+footer{border-top:1px solid var(--line);padding-top:16px;display:grid;gap:12px;margin-top:8px}
+footer .btns{margin-top:4px}
+.center{text-align:center;padding:40px 0}
+.pinbox{max-width:360px;margin:40px auto;display:grid;gap:14px;text-align:center}
+input.pin{text-align:center;font-size:28px;letter-spacing:.35em;font-variant-numeric:tabular-nums}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:no-preference){.btn,.choice{transition:background .15s,border-color .15s}}
+</style>
+</head>
+<body>
+<main id="app">
+  <noscript><p class="center">Bitte JavaScript aktivieren oder das beiliegende PDF öffnen.</p></noscript>
+  <p class="center muted" id="loading">Wird geladen …</p>
+</main>
+<script>
+"use strict";
+(() => {
+const BASE = location.pathname.replace(/\/$/, "") + "/";
+const app = document.getElementById("app");
+let DATA = null, STATE = {pick: null, action: null, name: "", comment: "", step: "form", error: "", busy: false, thanks: "", pos: {}};
+
+function h(tag, attrs, ...kids) {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (v == null || v === false) continue;
+    if (k === "class") el.className = v;
+    else if (k === "text") el.textContent = v;
+    else if (k.startsWith("on")) el.addEventListener(k.slice(2), v);
+    else el.setAttribute(k, v === true ? "" : v);
+  }
+  for (const c of kids.flat()) if (c != null && c !== false) el.append(c instanceof Node ? c : document.createTextNode(String(c)));
+  return el;
+}
+const url = rel => BASE + String(rel || "").replace(/^\/+/, "");
+const dateDe = iso => { const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || ""); return m ? `${m[3]}.${m[2]}.${m[1]}` : ""; };
+const firma = () => (DATA && DATA.company && DATA.company.name) || "Ihre Schreinerei";
+const tel = n => "tel:" + String(n || "").replace(/[^\d+]/g, "");
+/** Phone and e-mail of the sender as links (business contact only). */
+function contactLinks(c) {
+  const out = [];
+  if (c && c.tel) out.push(h("a", {class: "btn", href: tel(c.tel), text: "Anrufen: " + c.tel}));
+  if (c && c.mail) out.push(h("a", {class: "btn", href: "mailto:" + c.mail, text: "E-Mail: " + c.mail}));
+  return out.length ? h("div", {class: "btns"}, out) : null;
+}
+// the slider starts just left of the furniture, so all of it is on the „Nachher“ side; unknown: 10 %
+const startPos = v => Array.isArray(v.focus) ? Math.max(0, Math.min(85, Math.round(v.focus[0] * 100 - 3))) : 10;
+const calm = () => window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function slider(v) {
+  const box = h("div", {class: "ba"});
+  const after = h("img", {src: url(v.after), alt: v.after_label || "Nachher", loading: "lazy", decoding: "async"});
+  const beforeWrap = h("div", {class: "before"}, h("img", {src: url(v.before), alt: v.before_label || "Vorher", loading: "lazy", decoding: "async"}));
+  const line = h("div", {class: "line"});
+  const knob = h("div", {class: "knob", role: "slider", tabindex: "0", "aria-label": "Vorher / Nachher", "aria-valuemin": "0",
+    "aria-valuemax": "100", "aria-valuenow": "50", text: "⇔"});
+  box.append(after, beforeWrap, line, knob,
+    h("span", {class: "lbl l", text: v.before_label || "Vorher"}), h("span", {class: "lbl r", text: v.after_label || "Nachher"}),
+    h("span", {class: "ai", text: (DATA.texts && DATA.texts.ai) || "KI-Visualisierung – unverbindlich"}));
+  const first = STATE.pos[v.id] == null;
+  let pos = STATE.pos[v.id] ?? startPos(v), drag = null;   // kept across re-renders
+  const set = p => {
+    pos = STATE.pos[v.id] = Math.max(0, Math.min(100, p));
+    beforeWrap.style.clipPath = `inset(0 ${100 - pos}% 0 0)`;
+    line.style.left = knob.style.left = pos + "%";
+    knob.setAttribute("aria-valuenow", String(Math.round(pos)));
+  };
+  set(pos);
+  if (first && !calm()) {   // first look: wipe from „Vorher“ to the start position – the furniture appears
+    const target = pos;
+    set(100);
+    after.addEventListener("load", () => {
+      const t0 = performance.now() + 400;
+      const step = t => {
+        if (drag) return;
+        const k = Math.max(0, Math.min(1, (t - t0) / 1100)), e = 1 - Math.pow(1 - k, 3);
+        set(100 + (target - 100) * e);
+        if (k < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }, {once: true});
+    if (after.complete && after.naturalWidth) after.dispatchEvent(new Event("load"));
+  }
+  const at = e => { const r = box.getBoundingClientRect(); return (e.clientX - r.left) / r.width * 100; };
+  // touch waits for a horizontal move: a vertical scroll that starts on the image must not jump the slider
+  box.addEventListener("pointerdown", e => {
+    if (e.button > 0) return;
+    drag = {id: e.pointerId, x: e.clientX, y: e.clientY, touch: e.pointerType === "touch", moved: false};
+    if (!drag.touch) { box.setPointerCapture?.(e.pointerId); set(at(e)); }
+  });
+  box.addEventListener("pointermove", e => {
+    if (!drag) return;
+    if (drag.touch && !drag.moved) {
+      if (Math.abs(e.clientX - drag.x) <= 3 || Math.abs(e.clientX - drag.x) < Math.abs(e.clientY - drag.y)) return;
+      drag.moved = true; box.setPointerCapture?.(e.pointerId);
+    }
+    set(at(e));
+  });
+  box.addEventListener("pointerup", e => {
+    if (drag && drag.touch && !drag.moved && Math.hypot(e.clientX - drag.x, e.clientY - drag.y) < 8) set(at(e));  // a tap
+    drag = null;
+  });
+  box.addEventListener("pointercancel", () => { drag = null; });
+  box.addEventListener("lostpointercapture", e => { if (e.target === box) drag = null; });  // not a child's implicit touch capture
+  box.addEventListener("dblclick", () => set(pos > 50 ? 0 : 100));
+  knob.addEventListener("keydown", e => {
+    const d = {ArrowLeft: -5, ArrowRight: 5, Home: -100, End: 100}[e.key];
+    if (d != null) { e.preventDefault(); set(pos + d); }
+  });
+  return box;
+}
+
+function table(rows) {
+  const cols = [["piece", "Möbel"], ["material", "Holz / Oberfläche"], ["handles", "Griffe"], ["dims", "Maße (B × H × T)"]];
+  return h("table", {},
+    h("thead", {}, h("tr", {}, cols.map(([, t]) => h("th", {text: t})))),
+    h("tbody", {}, (rows || []).map(r => h("tr", {}, cols.map(([k, t]) => h("td", {"data-k": t, text: r[k] || "–"}))))));
+}
+
+function variantNo(id) { const v = (DATA.variants || []).find(x => x.id === id); return v ? v.n : null; }
+
+function answered() {
+  const r = DATA.response;
+  const id = DATA.approved_variant || (r && r.action === "freigeben" ? r.variant_id : null);
+  if (id) {
+    const at = dateDe(r && r.action === "freigeben" ? r.at : "");   // approvals captured by phone/paper carry no date here
+    return `Entwurf ${variantNo(id) || 1} wurde ${at ? `am ${at} ` : ""}freigegeben.`;
+  }
+  if (r && r.action === "aenderung") return "Vielen Dank! Wir melden uns mit einem überarbeiteten Entwurf.";
+  return "";
+}
+
+function respondBlock() {
+  const vs = DATA.variants || [];
+  if (STATE.thanks) return h("div", {class: "done", role: "status", text: STATE.thanks});
+  if (!DATA.respond || !vs.length) {   // the server decides whether an answer is (still) possible
+    const done = answered();
+    return done ? h("div", {class: "done", role: "status", text: done}) : null;
+  }
+  if (!STATE.pick) STATE.pick = vs[0].id;
+  const box = h("section", {class: "respond", "aria-labelledby": "rh"}, h("h2", {id: "rh", text: "Ihre Rückmeldung"}));
+  const add = (...kids) => box.append(...kids.flat().filter(k => k != null && k !== false));
+  if (STATE.step === "confirm") {
+    const n = variantNo(STATE.pick);
+    add(
+      h("p", {text: STATE.action === "freigeben"
+        ? `Entwurf ${n} freigeben? Das ist noch keine Bestellung – wir melden uns mit dem Angebot.`
+        : "Änderungswunsch senden?"}),
+      STATE.comment ? h("p", {class: "muted small", text: `„${STATE.comment}“`}) : null,
+      STATE.error ? h("p", {class: "err", role: "alert", text: STATE.error}) : null,
+      h("div", {class: "btns"},
+        h("button", {class: "btn primary", type: "button", disabled: STATE.busy, onclick: send,
+          text: STATE.busy ? "Wird gesendet …" : STATE.action === "freigeben" ? `Ja, Entwurf ${n} freigeben` : "Ja, senden"}),
+        h("button", {class: "btn", type: "button", disabled: STATE.busy, onclick: () => { STATE.step = "form"; STATE.error = ""; render(); }, text: "Zurück"})));
+    return box;
+  }
+  if (vs.length > 1) {
+    add(h("div", {class: "choices", role: "radiogroup", "aria-label": "Welcher Entwurf gefällt Ihnen?"},
+      h("p", {text: "Welcher Entwurf gefällt Ihnen?", style: "font-weight:600"}),
+      vs.map(v => {
+        const inp = h("input", {type: "radio", name: "pick", value: v.id, id: `pick-${v.id}`, checked: STATE.pick === v.id,
+          onchange: () => {   // in place: a re-render would drop the focus (arrow keys) and the slider positions
+            STATE.pick = v.id;
+            document.querySelectorAll(".choice").forEach(l => l.classList.toggle("on", l.contains(inp)));
+          }});
+        return h("label", {class: "choice" + (STATE.pick === v.id ? " on" : "")}, inp, h("span", {class: "dot", "aria-hidden": "true"}),
+          h("span", {text: v.label || `Entwurf ${v.n}`}));
+      })));
+  }
+  const name = h("input", {type: "text", id: "kname", autocomplete: "name", maxlength: "80", value: STATE.name,
+    oninput: e => { STATE.name = e.target.value; }});
+  const msg = h("textarea", {id: "kmsg", maxlength: "1000", oninput: e => { STATE.comment = e.target.value; }});
+  msg.value = STATE.comment;
+  const go = action => () => {
+    STATE.name = name.value.trim(); STATE.comment = msg.value.trim();
+    if (!STATE.name) { STATE.error = "Bitte Ihren Namen angeben."; render(); document.getElementById("kname")?.focus(); return; }
+    STATE.action = action; STATE.step = "confirm"; STATE.error = ""; render();
+  };
+  add(
+    h("label", {class: "f", for: "kname"}, "Ihr Name", name),
+    h("label", {class: "f", for: "kmsg"}, "Nachricht (optional)", msg),
+    STATE.error ? h("p", {class: "err", role: "alert", text: STATE.error}) : null,
+    h("div", {class: "btns"},
+      h("button", {class: "btn primary", type: "button", onclick: go("freigeben"), text: "Entwurf freigeben"}),
+      h("button", {class: "btn", type: "button", onclick: go("aenderung"), text: "Änderung wünschen"})));
+  return box;
+}
+
+async function send() {
+  STATE.busy = true; STATE.error = ""; render();
+  try {
+    const r = await fetch(url("respond"), {method: "POST", headers: {"Content-Type": "application/json"}, credentials: "same-origin",
+      body: JSON.stringify({variant_id: STATE.pick, action: STATE.action, name: STATE.name, comment: STATE.comment, confirm: true})});
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(typeof j.detail === "string" ? j.detail : (j.detail && j.detail.message) || "Senden hat nicht geklappt – bitte später erneut versuchen.");
+    STATE.thanks = STATE.action === "freigeben" ? `Vielen Dank! Ihre Freigabe von Entwurf ${variantNo(STATE.pick) || 1} ist bei ${firma() === "Ihre Schreinerei" ? "uns" : firma()} angekommen. Wir melden uns mit dem Angebot.`
+      : "Vielen Dank! Wir melden uns mit einem überarbeiteten Entwurf.";
+    if (STATE.action === "freigeben") DATA.approved_variant = STATE.pick;
+    DATA.respond = false;
+  } catch (e) {
+    STATE.error = e.message || "Senden hat nicht geklappt – bitte später erneut versuchen.";
+  }
+  STATE.busy = false; render();
+  document.querySelector(".respond, .done")?.scrollIntoView({block: "center", behavior: "smooth"});
+}
+
+function header() {
+  const c = DATA.company || {};
+  return h("header", {class: "co"},
+    c.logo ? h("img", {src: url(c.logo), alt: c.name || "Logo"}) : null,
+    h("div", {}, h("div", {class: "name", text: c.name || ""}), c.contact ? h("div", {class: "muted small", text: c.contact}) : null,
+      c.tel || c.mail ? h("div", {class: "small"}, c.tel ? h("a", {href: tel(c.tel), text: c.tel}) : null, c.tel && c.mail ? " · " : null,
+        c.mail ? h("a", {href: "mailto:" + c.mail, text: c.mail}) : null) : null));
+}
+
+function render() {
+  const d = DATA, active = document.activeElement && document.activeElement.id;
+  if (/^#[0-9a-f]{6}$/i.test((d.company || {}).color || "")) document.documentElement.style.setProperty("--accent", d.company.color);
+  document.title = "Ihre Entwürfe" + (d.company && d.company.name ? " – " + d.company.name : "");
+  const vs = d.variants || [];
+  app.replaceChildren(...[
+    header(),
+    h("section", {class: "intro"},
+      h("h1", {text: "Ihre Entwürfe"}),
+      d.customer ? h("p", {text: `für ${d.customer}`}) : null,
+      h("p", {class: "muted", text: [d.title, `Version ${d.version} vom ${dateDe(d.date)}`].filter(Boolean).join(" · ")})),
+    d.note ? h("p", {class: "note", text: d.note}) : null,
+    vs.map(v => h("article", {class: "card" + (d.approved_variant === v.id ? " chosen" : "")},
+      h("div", {style: "display:flex;gap:10px;align-items:center;flex-wrap:wrap"}, h("h2", {text: v.label || `Entwurf ${v.n}`}),
+        d.approved_variant === v.id ? h("span", {class: "badge", text: "Ihre Auswahl ✓"}) : null),
+      slider(v),
+      h("p", {class: "hint", text: "Schieber ziehen: vorher / nachher"}),
+      v.rows && v.rows.length ? table(v.rows) : null)),
+    respondBlock(),
+    h("footer", {},
+      (d.company || {}).name ? h("p", {class: "small", text: `Fragen zu Ihren Entwürfen? ${d.company.name} hilft gern weiter.`}) : null,
+      contactLinks(d.company),
+      d.texts && d.texts.measures ? h("p", {class: "small", text: d.texts.measures}) : null,
+      d.texts && d.texts.privacy ? h("p", {class: "small muted", text: d.texts.privacy}) : null,
+      h("div", {class: "btns"},
+        d.pdf ? h("a", {class: "btn", href: url(d.pdf), download: "", text: "Kundenblatt als PDF"}) : null,
+        d.zip ? h("a", {class: "btn", href: url(d.zip), download: "", text: "Alle Bilder (ZIP)"}) : null))].flat().filter(Boolean));
+  if (active) document.getElementById(active)?.focus();
+}
+
+function fail(status, j) {
+  const gone = status === 404 || status === 410, c = j || {};
+  app.replaceChildren(h("div", {class: "center"},
+    h("h1", {text: gone ? "Link nicht mehr gültig" : "Seite nicht erreichbar"}),
+    h("p", {style: "margin-top:12px", text: gone ? `Dieser Link ist nicht mehr gültig. Bitte wenden Sie sich an ${c.company || "Ihre Schreinerei"}.`
+      : "Bitte versuchen Sie es später noch einmal."}),
+    c.contact ? h("p", {class: "muted", style: "margin-top:8px", text: c.contact}) : null,
+    h("div", {style: "margin-top:16px"}, contactLinks({tel: c.tel, mail: c.mail}))));
+}
+
+/** The link is protected: ask for the PIN the shop gave separately, then load. */
+function pinForm(info, msg) {
+  const inp = h("input", {class: "pin", id: "kpin", type: "text", inputmode: "numeric", autocomplete: "one-time-code", maxlength: "8",
+    "aria-label": "PIN", pattern: "[0-9 ]*"});
+  const err = h("p", {class: "err", role: "alert", text: msg || ""});
+  const btn = h("button", {class: "btn primary", type: "submit", text: "Entwürfe öffnen"});
+  const form = h("form", {class: "pinbox"},
+    info.company ? h("p", {class: "muted", text: info.company}) : null,
+    h("h1", {text: "Ihre Entwürfe"}),
+    h("p", {text: info.message || "Bitte geben Sie Ihre PIN ein."}), inp, err, btn,
+    contactLinks({tel: info.tel, mail: info.mail}));
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    btn.disabled = true; err.textContent = "";
+    try {
+      const r = await fetch(url("pin"), {method: "POST", headers: {"Content-Type": "application/json"}, credentials: "same-origin",
+        body: JSON.stringify({pin: inp.value})});
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(typeof j.detail === "string" ? j.detail : "Das hat nicht geklappt – bitte erneut versuchen.");
+      load();
+    } catch (x) { err.textContent = x.message; btn.disabled = false; inp.select(); }
+  });
+  app.replaceChildren(form);
+  inp.focus();
+}
+
+function load() {
+  fetch(url("data"), {credentials: "same-origin", cache: "no-store"}).then(async r => {
+    const j = await r.json().catch(() => null);
+    if (r.status === 401 && j && j.detail && j.detail.pin) return pinForm(j.detail);
+    if (!r.ok || !j) return fail(r.status, j);
+    DATA = j; render();
+  }).catch(() => fail(0));
+}
+load();
+})();
+</script>
+</body>
+</html>

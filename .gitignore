@@ -1,0 +1,10 @@
+outputs/
+.venv/
+server.log
+.server.pid
+# Laufzeitdaten, nicht ins Repo: Projekte, Freigaben, Schlüssel (.secret), Statistik.
+# Gesichert wird das vom täglichen Backup (backup.py → bfl-backups).
+projects/
+jobs/
+*.log
+__pycache__/

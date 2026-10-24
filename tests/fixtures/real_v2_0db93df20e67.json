@@ -1,0 +1,343 @@
+{
+ "title": "Beispielraum",
+ "customer": "Familie Beispiel",
+ "room": "uploads/20261017-dd42cd740c.png",
+ "room_size": [
+  1920,
+  2560
+ ],
+ "sample": null,
+ "setting": "",
+ "tidy": true,
+ "protect": true,
+ "room_changes": "",
+ "count": 2,
+ "res": 1536,
+ "removes": [],
+ "variants": [
+  {
+   "id": "oty2dff1",
+   "image": "20261016-201402-1738609104.png",
+   "size": [
+    1776,
+    1328
+   ],
+   "fav": false,
+   "piece": "Küche",
+   "material": "Eiche natur geölt",
+   "handles": "grifflos (Push)",
+   "note": "",
+   "keep": [
+    [
+     150,
+     245,
+     780,
+     545
+    ],
+    [
+     800,
+     600,
+     920,
+     800
+    ]
+   ],
+   "kind": "room",
+   "piece_ids": [
+    "91c8e3"
+   ],
+   "judge": null,
+   "pieces": [
+    {
+     "id": "91c8e3",
+     "label": "Küche",
+     "material_label": "Eiche natur geölt",
+     "handles_label": "grifflos (Push)",
+     "w": 180,
+     "h": 250,
+     "d": 60
+    }
+   ],
+   "boxes": {
+    "91c8e3": [
+     150,
+     245,
+     780,
+     545
+    ]
+   }
+  },
+  {
+   "id": "ozi0el4p",
+   "image": "20261016-201302-1738609103.png",
+   "size": [
+    1776,
+    1328
+   ],
+   "fav": false,
+   "piece": "Küche",
+   "material": "Eiche natur geölt",
+   "handles": "grifflos (Push)",
+   "note": "",
+   "keep": [
+    [
+     150,
+     245,
+     780,
+     545
+    ],
+    [
+     800,
+     600,
+     920,
+     800
+    ]
+   ],
+   "kind": "room",
+   "piece_ids": [
+    "91c8e3"
+   ],
+   "judge": null,
+   "pieces": [
+    {
+     "id": "91c8e3",
+     "label": "Küche",
+     "material_label": "Eiche natur geölt",
+     "handles_label": "grifflos (Push)",
+     "w": 180,
+     "h": 250,
+     "d": 60
+    }
+   ],
+   "boxes": {
+    "91c8e3": [
+     150,
+     245,
+     780,
+     545
+    ]
+   }
+  },
+  {
+   "id": "b37hndih",
+   "image": "20261016-193655-800047864.png",
+   "size": [
+    1776,
+    1328
+   ],
+   "fav": false,
+   "piece": "Küche",
+   "material": "Eiche natur geölt",
+   "handles": "grifflos (Push)",
+   "note": "",
+   "kind": "room",
+   "piece_ids": [
+    "91c8e3"
+   ],
+   "judge": null,
+   "pieces": [
+    {
+     "id": "91c8e3",
+     "label": "Küche",
+     "material_label": "Eiche natur geölt",
+     "handles_label": "grifflos (Push)",
+     "w": 180,
+     "h": 250,
+     "d": 60
+    }
+   ],
+   "boxes": {
+    "91c8e3": [
+     150,
+     245,
+     780,
+     545
+    ]
+   }
+  },
+  {
+   "id": "21i5lmhj",
+   "image": "20261016-193555-800047863.png",
+   "size": [
+    1776,
+    1328
+   ],
+   "fav": false,
+   "piece": "Küche",
+   "material": "Eiche natur geölt",
+   "handles": "grifflos (Push)",
+   "note": "",
+   "kind": "room",
+   "piece_ids": [
+    "91c8e3"
+   ],
+   "judge": null,
+   "pieces": [
+    {
+     "id": "91c8e3",
+     "label": "Küche",
+     "material_label": "Eiche natur geölt",
+     "handles_label": "grifflos (Push)",
+     "w": 180,
+     "h": 250,
+     "d": 60
+    }
+   ],
+   "boxes": {
+    "91c8e3": [
+     150,
+     245,
+     780,
+     545
+    ]
+   }
+  },
+  {
+   "id": "cw5ky2zx",
+   "image": "20261016-183109-2032343468.png",
+   "size": [
+    1776,
+    1328
+   ],
+   "fav": true,
+   "piece": "Einbauschrank",
+   "material": "Nussbaum",
+   "handles": "grifflos (Push)",
+   "note": "",
+   "from": "3ohkz48m",
+   "kind": "material",
+   "piece_ids": [
+    "91c8e3"
+   ],
+   "judge": null,
+   "pieces": [
+    {
+     "id": "91c8e3",
+     "label": "Einbauschrank",
+     "material_label": "Nussbaum",
+     "handles_label": "grifflos (Push)",
+     "w": 180,
+     "h": 250,
+     "d": 60
+    }
+   ],
+   "boxes": {}
+  },
+  {
+   "id": "3ohkz48m",
+   "image": "20261016-182745-1353941386.png",
+   "size": [
+    1776,
+    1328
+   ],
+   "fav": false,
+   "piece": "Einbauschrank",
+   "material": "Eiche natur geölt",
+   "handles": "grifflos (Push)",
+   "note": "",
+   "kind": "room",
+   "piece_ids": [
+    "91c8e3"
+   ],
+   "judge": null,
+   "pieces": [
+    {
+     "id": "91c8e3",
+     "label": "Einbauschrank",
+     "material_label": "Eiche natur geölt",
+     "handles_label": "grifflos (Push)",
+     "w": 180,
+     "h": 250,
+     "d": 60
+    }
+   ],
+   "boxes": {
+    "91c8e3": [
+     150,
+     245,
+     780,
+     545
+    ]
+   }
+  },
+  {
+   "id": "ydb5jx77",
+   "image": "20261016-182647-1353941385.png",
+   "size": [
+    1776,
+    1328
+   ],
+   "fav": false,
+   "piece": "Einbauschrank",
+   "material": "Eiche natur geölt",
+   "handles": "grifflos (Push)",
+   "note": "",
+   "kind": "room",
+   "piece_ids": [
+    "91c8e3"
+   ],
+   "judge": null,
+   "pieces": [
+    {
+     "id": "91c8e3",
+     "label": "Einbauschrank",
+     "material_label": "Eiche natur geölt",
+     "handles_label": "grifflos (Push)",
+     "w": 180,
+     "h": 250,
+     "d": 60
+    }
+   ],
+   "boxes": {
+    "91c8e3": [
+     150,
+     245,
+     780,
+     545
+    ]
+   }
+  }
+ ],
+ "selected": "oty2dff1",
+ "id": "0db93df20e67",
+ "created": "2026-10-16T18:23:37",
+ "updated": "2026-10-17T15:00:47",
+ "thumb": "20261016-183109-2032343468.png",
+ "company": {},
+ "version": 2,
+ "pieces": [
+  {
+   "id": "91c8e3",
+   "type": "kueche",
+   "text": "Besonderheiten (anonymisiert)",
+   "material": "eiche",
+   "material_custom": "",
+   "handles": "push",
+   "label": "Küche",
+   "material_label": "Eiche natur geölt",
+   "handles_label": "grifflos (Push)",
+   "w": 180,
+   "h": 250,
+   "d": 60,
+   "sketch": null,
+   "render": null,
+   "sample": null,
+   "use_render": false,
+   "where": "",
+   "placement": {
+    "mode": "none",
+    "pose": null,
+    "box": null
+   }
+  }
+ ],
+ "active_piece": "91c8e3",
+ "guide": false,
+ "judge": {
+  "enabled": true,
+  "auto_retry": true
+ },
+ "geometry": null,
+ "calibration": null,
+ "deleted_variants": [],
+ "pending_jobs": []
+}

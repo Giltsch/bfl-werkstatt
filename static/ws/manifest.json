@@ -1,0 +1,5 @@
+{"name": "Werkstatt", "short_name": "Werkstatt", "description": "Visualisierung und Aufträge der Schreinerei",
+ "lang": "de", "start_url": "/werkstatt", "scope": "/", "display": "standalone", "orientation": "any",
+ "background_color": "#f6f4f0", "theme_color": "#2f6b4f",
+ "icons": [{"src": "/static/ws/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"},
+           {"src": "/static/ws/icon-180.png", "sizes": "180x180", "type": "image/png"}]}

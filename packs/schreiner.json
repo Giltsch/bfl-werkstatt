@@ -1,0 +1,59 @@
+{
+ "id": "schreiner",
+ "label": "Schreinerei / Innenausbau",
+ "description": "Einbauschränke, Regale, Sideboards, Garderoben, Badmöbel und Wandverkleidungen nach Maß.",
+ "types": ["schrank", "regal", "sideboard", "garderobe", "wandregal", "haengeschrank", "sitzbank", "bad", "wand", "tisch", "bett", "kueche", "treppe", "tuer"],
+ "templates": [
+  {"id": "dachschraege", "label": "Schrank unter der Dachschräge", "type": "schrank", "text": "Einbauschrank unter der Dachschräge, Oberkante folgt der Schräge, Türen und Schubkästen", "d": 60},
+  {"id": "nischenschrank", "label": "Nischenschrank", "type": "schrank", "text": "Einbauschrank passgenau in der Nische, wand- und deckenbündig, Blenden ringsum", "full_height": true},
+  {"id": "lowboard", "label": "Lowboard (TV)", "type": "sideboard", "text": "niedriges TV-Lowboard mit Klappen und Kabeldurchlass", "w": 200, "h": 45, "d": 40}
+ ],
+ "company": {"material": "eiche", "handles": "push", "plinth": 8, "board": 19},
+ "type_defaults": {
+  "schrank": {"d": 60, "full_height": true, "doors": {"per": 50}},
+  "garderobe": {"d": 40, "doors": {"per": 50}},
+  "sideboard": {"d": 45, "h": 75, "doors": {"per": 45}},
+  "haengeschrank": {"d": 35, "elev": 140, "doors": {"per": 45}},
+  "regal": {"d": 35},
+  "wandregal": {"d": 25, "elev": 150},
+  "bad": {"d": 48, "h": 55},
+  "sitzbank": {"d": 50, "h": 45},
+  "tuer": {"handles": "messing"}
+ },
+ "aliases": {
+  "type": {
+   "Einbauschrank": "schrank", "Kleiderschrank": "schrank", "Wandschrank": "schrank", "Schrank": "schrank", "Einbau": "schrank",
+   "Dachschrägenschrank": "dachschraege", "Schrank unter der Schräge": "dachschraege", "Nischenschrank": "nischenschrank",
+   "Regal": "regal", "Regalwand": "regal", "Bücherregal": "regal", "Bücherwand": "regal",
+   "Sideboard": "sideboard", "Anrichte": "sideboard", "Kommode": "sideboard", "Lowboard": "lowboard", "TV-Möbel": "lowboard",
+   "Wandregal": "wandregal", "Wandboard": "wandregal", "Schweberegal": "wandregal",
+   "Hängeschrank": "haengeschrank", "Oberschrank": "haengeschrank",
+   "Garderobe": "garderobe", "Flurgarderobe": "garderobe", "Sitzbank": "sitzbank", "Fensterbank zum Sitzen": "sitzbank",
+   "Waschtisch": "bad", "Waschtischunterschrank": "bad", "Badmöbel": "bad", "Wandverkleidung": "wand", "Paneele": "wand",
+   "Wandvertäfelung": "wand", "Esstisch": "tisch", "Tisch": "tisch", "Bett": "bett", "Bettgestell": "bett",
+   "Treppe": "treppe", "Innentür": "tuer", "Zimmertür": "tuer", "Küche": "kueche"
+  },
+  "material": {
+   "Weißlack": "weiss", "weiß lackiert": "weiss", "Lack weiß": "weiss", "weiß matt": "weiss", "weißer Lack": "weiss",
+   "Anthrazit": "anthrazit", "anthrazit lackiert": "anthrazit", "grau lackiert": "anthrazit",
+   "Eiche": "eiche", "Eiche natur": "eiche", "Eiche geölt": "eiche", "Eiche massiv": "eiche",
+   "Räuchereiche": "eicheraeuchert", "Eiche geräuchert": "eicheraeuchert", "dunkle Eiche": "eicheraeuchert",
+   "Eiche weiß": "eicheweiss", "Eiche weiß geölt": "eicheweiss", "weiß geölt": "eicheweiss",
+   "Nussbaum": "nuss", "Nuss": "nuss", "Walnuss": "nuss", "Esche": "esche", "Kirschbaum": "kirsch", "Kirsche": "kirsch",
+   "Fichte": "fichte", "Multiplex": "multiplex", "Birke Multiplex": "multiplex", "Birkensperrholz": "multiplex",
+   "Altholz": "altholz", "Buche": "custom:Buche massiv geölt"
+  },
+  "handles": {
+   "grifflos": "push", "Push-to-open": "push", "Push to open": "push", "Tip-On": "push", "ohne Griffe": "push",
+   "Griffleiste": "leiste", "Griffmulde": "leiste", "Gola": "leiste",
+   "Messinggriff": "messing", "Messing": "messing", "schwarze Griffe": "schwarz", "Griffe schwarz": "schwarz",
+   "Lederlasche": "leder", "Lederschlaufe": "leder", "Holzknopf": "knopf", "Knöpfe": "knopf", "Knopf": "knopf"
+  }
+ },
+ "wording": {
+  "notes_de": "Schreinerei: Möbel nach Maß, passgenau eingebaut, Blenden zu Wand und Decke, Sockel zurückgesetzt.",
+  "prompt_en": "Bespoke joinery fitted precisely into the room, with scribed filler panels to walls and ceiling and a recessed plinth.",
+  "judge_en": "Built-in pieces must meet walls and ceiling without gaps; door fronts aligned with even reveals."
+ },
+ "quality": "entwurf"
+}

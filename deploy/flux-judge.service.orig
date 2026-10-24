@@ -1,0 +1,19 @@
+[Unit]
+Description=FLUX studio judge (Qwen3.8-27B-FP8 via vLLM, :8002)
+# unified memory: never alongside the LawAI vLLM servers (Conflicts). The judge survives studio restarts (a reload costs
+# ~5-10 min without verdicts); free it explicitly: systemctl --user stop flux-studio flux-judge
+Conflicts=lawai-judge.service lawai-ocr.service
+After=lawai-judge.service lawai-ocr.service flux-studio.service
+StartLimitIntervalSec=900
+StartLimitBurst=3
+
+[Service]
+Type=simple
+WorkingDirectory=%h/Dokumente/Projekte/bfl
+Environment=PATH=/usr/local/cuda/bin:/usr/local/bin:/usr/bin:/bin
+ExecStartPre=%h/Dokumente/Projekte/bfl/serve_judge.sh --wait-studio
+ExecStart=%h/Dokumente/Projekte/bfl/serve_judge.sh
+TimeoutStartSec=700
+Restart=on-failure
+RestartSec=60
+TimeoutStopSec=30

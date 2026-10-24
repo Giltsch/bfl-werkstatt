@@ -1,0 +1,10 @@
+{"version": 1, "ok": true, "error": null, "room": "uploads/test.png", "size": [1344, 1008],
+ "intrinsics": {"fx": 1000.0, "fy": 1000.0, "cx": 672.0, "cy": 504.0},
+ "floor": {"normal": [0.0, -0.984808, -0.173648], "d": 150.0, "inliers": 0.4},
+ "frame": {"origin": [0.0, 147.7212, 26.0472], "right": [1.0, 0.0, 0.0], "up": [0.0, -0.984808, -0.173648], "forward": [0.0, -0.173648, 0.984808]},
+ "walls": [{"id": "w0", "label": "hinten", "normal": [0.0, -1.0], "offset": 400.0, "from": [-200.0, 400.0], "to": [250.0, 400.0]},
+           {"id": "w1", "label": "links", "normal": [1.0, 0.0], "offset": 200.0, "from": [-200.0, 400.0], "to": [-200.0, 100.0]},
+           {"id": "w2", "label": "rechts", "normal": [-1.0, 0.0], "offset": 250.0, "from": [250.0, 400.0], "to": [250.0, 100.0]}],
+ "ceiling": {"height": 260.0}, "horizon": [[0.0, 327.67], [1344.0, 327.67]],
+ "vps": {"vertical": null, "h1": null, "h2": null}, "scale": 1.0, "depth_range": [150.0, 600.0],
+ "depth_preview": null, "confidence": "high", "seconds": 0.0}

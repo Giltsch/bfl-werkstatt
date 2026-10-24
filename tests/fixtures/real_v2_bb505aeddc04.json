@@ -1,0 +1,633 @@
+{
+ "version": 2,
+ "title": "Beispielraum",
+ "id": "bb505aeddc04",
+ "created": "2026-10-17T15:00:54",
+ "customer": "Familie Beispiel",
+ "setting": "",
+ "room_changes": "",
+ "room": "uploads/20261017-461a705a03.png",
+ "sample": null,
+ "thumb": "20261017-151848-523853684.png",
+ "room_size": [
+  1920,
+  2560
+ ],
+ "tidy": true,
+ "protect": true,
+ "guide": false,
+ "count": 3,
+ "res": 1536,
+ "removes": [],
+ "judge": {
+  "enabled": true,
+  "auto_retry": true
+ },
+ "geometry": {
+  "version": 1,
+  "ok": true,
+  "error": null,
+  "room": "uploads/20261017-461a705a03.png",
+  "size": [
+   1920,
+   2560
+  ],
+  "intrinsics": {
+   "fx": 1871.6666666666667,
+   "fy": 1871.6666666666667,
+   "cx": 960,
+   "cy": 1280
+  },
+  "floor": {
+   "normal": [
+    0.022056,
+    -0.98179,
+    -0.188685
+   ],
+   "d": 156.25,
+   "inliers": 0.316
+  },
+  "frame": {
+   "origin": [
+    -3.446249826893152,
+    153.4046797944064,
+    29.482029769102937
+   ],
+   "right": [
+    0.9997477553550679,
+    0.02245942257724297,
+    8.673617379884035e-19
+   ],
+   "up": [
+    0.022055998892116173,
+    -0.981789950684201,
+    -0.1886849905222588
+   ],
+   "forward": [
+    0.004237755936122495,
+    -0.1886373957438205,
+    0.9820376644261741
+   ]
+  },
+  "walls": [
+   {
+    "id": "w0",
+    "label": "hinten",
+    "normal": [
+     0.148712,
+     -0.988881
+    ],
+    "offset": 543.3,
+    "from": [
+     -208,
+     518.1
+    ],
+    "to": [
+     96.5,
+     563.9
+    ]
+   },
+   {
+    "id": "w1",
+    "label": "rechts",
+    "normal": [
+     -0.988881,
+     -0.148712
+    ],
+    "offset": 186.61,
+    "from": [
+     102.9,
+     570.4
+    ],
+    "to": [
+     144.6,
+     293.5
+    ]
+   },
+   {
+    "id": "w2",
+    "label": "links",
+    "normal": [
+     0.988881,
+     0.148712
+    ],
+    "offset": 128.19,
+    "from": [
+     -182.6,
+     352.3
+    ],
+    "to": [
+     -207.5,
+     517.5
+    ]
+   }
+  ],
+  "ceiling": {
+   "height": 275.3
+  },
+  "horizon": [
+   [
+    0,
+    898.73
+   ],
+   [
+    1920,
+    941.86
+   ]
+  ],
+  "vps": {
+   "vertical": [
+    779,
+    11028.4
+   ],
+   "h1": [
+    700.3,
+    887.6
+   ],
+   "h2": [
+    -1693,
+    824.1
+   ]
+  },
+  "scale": 1,
+  "depth_range": [
+   196.9,
+   539.1
+  ],
+  "depth_preview": "geometry/20261017-461a705a03-depth.jpg",
+  "confidence": "high",
+  "seconds": 0.73
+ },
+ "calibration": null,
+ "company": {},
+ "pieces": [
+  {
+   "id": "b5d1a3",
+   "type": "tisch",
+   "text": "",
+   "material": "eiche",
+   "material_custom": "",
+   "handles": "push",
+   "label": "Esstisch",
+   "material_label": "Eiche natur geölt",
+   "handles_label": "grifflos (Push)",
+   "w": 200,
+   "h": 80,
+   "d": 100,
+   "sketch": null,
+   "render": null,
+   "sample": null,
+   "use_render": false,
+   "where": "",
+   "placement": {
+    "mode": "3d",
+    "pose": {
+     "x": 5.590915113762719,
+     "z": 437.54578909509377,
+     "yaw": 8.552288615688848,
+     "wall": null
+    },
+    "box": [
+     474,
+     280,
+     650,
+     767
+    ]
+   }
+  }
+ ],
+ "active_piece": "b5d1a3",
+ "deleted_variants": [],
+ "pending_jobs": [],
+ "variants": [
+  {
+   "fav": false,
+   "kind": "edit",
+   "piece_ids": [
+    "b5d1a3"
+   ],
+   "piece": "Esstisch",
+   "material": "Eiche natur geölt",
+   "handles": "grifflos (Push)",
+   "note": "Interne Änderungsnotiz 1 (anonymisiert)",
+   "keep": null,
+   "from": "dx6zhbtr",
+   "sketch": null,
+   "upscaled": false,
+   "retry_of": null,
+   "pieces": [
+    {
+     "id": "b5d1a3",
+     "label": "Esstisch",
+     "material_label": "Eiche natur geölt",
+     "handles_label": "grifflos (Push)",
+     "w": 200,
+     "h": 80,
+     "d": 100
+    }
+   ],
+   "boxes": {},
+   "id": "02m62tp8",
+   "image": "20261017-151848-523853684.png",
+   "size": [
+    1328,
+    1776
+   ],
+   "seed": 523853684,
+   "job": "138552edeb",
+   "judge": {
+    "status": "ok",
+    "model": "Qwen/Qwen3.8-27B-FP8",
+    "scores": {
+     "room_preserved": 9,
+     "matches_request": 2,
+     "proportions": 9,
+     "realism": 9,
+     "artifacts": 9
+    },
+    "overall": 7.2,
+    "pass": false,
+    "comment": "Prüftext (anonymisiert)",
+    "fix_hint": "Revert the chairs to their original reddish-brown color while keeping the dining table dark grey to match the corner sofa.",
+    "seconds": 19.0,
+    "graded": "2026-10-17T15:19:08"
+   }
+  },
+  {
+   "fav": false,
+   "kind": "edit",
+   "piece_ids": [
+    "b5d1a3"
+   ],
+   "piece": "Esstisch",
+   "material": "Eiche natur geölt",
+   "handles": "grifflos (Push)",
+   "note": "Interne Änderungsnotiz 2 (anonymisiert)",
+   "keep": null,
+   "from": "yyidr738",
+   "sketch": null,
+   "upscaled": false,
+   "retry_of": null,
+   "pieces": [
+    {
+     "id": "b5d1a3",
+     "label": "Esstisch",
+     "material_label": "Eiche natur geölt",
+     "handles_label": "grifflos (Push)",
+     "w": 200,
+     "h": 80,
+     "d": 100
+    }
+   ],
+   "boxes": {},
+   "id": "dx6zhbtr",
+   "image": "20261017-151638-58500944.png",
+   "size": [
+    1328,
+    1776
+   ],
+   "seed": 58500944,
+   "job": "217805a4aa",
+   "judge": {
+    "status": "ok",
+    "model": "Qwen/Qwen3.8-27B-FP8",
+    "scores": {
+     "room_preserved": 10,
+     "matches_request": 6,
+     "proportions": 9,
+     "realism": 9,
+     "artifacts": 9
+    },
+    "overall": 8.5,
+    "pass": true,
+    "comment": "Prüftext (anonymisiert)",
+    "fix_hint": "Replace the wheeled swivel chairs with stylish, swivel dining chairs that have legs instead of casters.",
+    "seconds": 21.3,
+    "graded": "2026-10-17T15:17:01"
+   }
+  },
+  {
+   "fav": false,
+   "kind": "edit",
+   "piece_ids": [
+    "b5d1a3"
+   ],
+   "piece": "Esstisch",
+   "material": "Eiche natur geölt",
+   "handles": "grifflos (Push)",
+   "note": "Interne Änderungsnotiz 3 (anonymisiert)",
+   "keep": null,
+   "from": "yyidr738",
+   "sketch": null,
+   "upscaled": false,
+   "retry_of": null,
+   "pieces": [
+    {
+     "id": "b5d1a3",
+     "label": "Esstisch",
+     "material_label": "Eiche natur geölt",
+     "handles_label": "grifflos (Push)",
+     "w": 200,
+     "h": 80,
+     "d": 100
+    }
+   ],
+   "boxes": {},
+   "id": "l8i6kad3",
+   "image": "20261017-151419-790590770.png",
+   "size": [
+    1328,
+    1776
+   ],
+   "seed": 790590770,
+   "job": "294068e1ae",
+   "judge": {
+    "status": "ok",
+    "model": "Qwen/Qwen3.8-27B-FP8",
+    "scores": {
+     "room_preserved": 10,
+     "matches_request": 9,
+     "proportions": 9,
+     "realism": 9,
+     "artifacts": 9
+    },
+    "overall": 9.2,
+    "pass": true,
+    "comment": "Prüftext (anonymisiert)",
+    "fix_hint": "",
+    "seconds": 16.8,
+    "graded": "2026-10-17T15:14:36"
+   }
+  },
+  {
+   "fav": false,
+   "kind": "edit",
+   "piece_ids": [
+    "b5d1a3"
+   ],
+   "piece": "Esstisch",
+   "material": "Eiche natur geölt",
+   "handles": "grifflos (Push)",
+   "note": "Interne Änderungsnotiz 4 (anonymisiert)",
+   "keep": null,
+   "from": "x6h19wzq",
+   "sketch": null,
+   "upscaled": false,
+   "retry_of": null,
+   "pieces": [
+    {
+     "id": "b5d1a3",
+     "label": "Esstisch",
+     "material_label": "Eiche natur geölt",
+     "handles_label": "grifflos (Push)",
+     "w": 200,
+     "h": 80,
+     "d": 100
+    }
+   ],
+   "boxes": {},
+   "id": "yyidr738",
+   "image": "20261017-151221-1913648351.png",
+   "size": [
+    1328,
+    1776
+   ],
+   "seed": 1913648351,
+   "job": "2a70cd28af",
+   "judge": {
+    "status": "ok",
+    "model": "Qwen/Qwen3.8-27B-FP8",
+    "scores": {
+     "room_preserved": 10,
+     "matches_request": 9,
+     "proportions": 9,
+     "realism": 9,
+     "artifacts": 9
+    },
+    "overall": 9.2,
+    "pass": true,
+    "comment": "Prüftext (anonymisiert)",
+    "fix_hint": "",
+    "seconds": 18.7,
+    "graded": "2026-10-17T15:12:40"
+   }
+  },
+  {
+   "fav": false,
+   "kind": "edit",
+   "piece_ids": [
+    "b5d1a3"
+   ],
+   "piece": "Esstisch",
+   "material": "Eiche natur geölt",
+   "handles": "grifflos (Push)",
+   "note": "Interne Änderungsnotiz 5 (anonymisiert)",
+   "keep": null,
+   "from": "x9cu8x26",
+   "sketch": null,
+   "upscaled": false,
+   "retry_of": null,
+   "pieces": [
+    {
+     "id": "b5d1a3",
+     "label": "Esstisch",
+     "material_label": "Eiche natur geölt",
+     "handles_label": "grifflos (Push)",
+     "w": 200,
+     "h": 80,
+     "d": 100
+    }
+   ],
+   "boxes": {},
+   "id": "x6h19wzq",
+   "image": "20261017-150933-835204347.png",
+   "size": [
+    1328,
+    1776
+   ],
+   "seed": 835204347,
+   "job": "18d2cb5589",
+   "judge": {
+    "status": "ok",
+    "model": "Qwen/Qwen3.8-27B-FP8",
+    "scores": {
+     "room_preserved": 10,
+     "matches_request": 9,
+     "proportions": 9,
+     "realism": 9,
+     "artifacts": 9
+    },
+    "overall": 9.2,
+    "pass": true,
+    "comment": "Prüftext (anonymisiert)",
+    "fix_hint": "",
+    "seconds": 17.2,
+    "graded": "2026-10-17T15:09:51"
+   }
+  },
+  {
+   "fav": false,
+   "kind": "room",
+   "piece_ids": [
+    "b5d1a3"
+   ],
+   "piece": "Esstisch",
+   "material": "Eiche natur geölt",
+   "handles": "grifflos (Push)",
+   "note": "",
+   "keep": null,
+   "from": null,
+   "sketch": null,
+   "upscaled": false,
+   "retry_of": null,
+   "room": "uploads/20261017-461a705a03.png",
+   "pieces": [
+    {
+     "id": "b5d1a3",
+     "label": "Esstisch",
+     "material_label": "Eiche natur geölt",
+     "handles_label": "grifflos (Push)",
+     "w": 200,
+     "h": 80,
+     "d": 100
+    }
+   ],
+   "boxes": {},
+   "id": "n1ydwjhn",
+   "image": "20261017-150557-1051960463.png",
+   "size": [
+    1328,
+    1776
+   ],
+   "seed": 1051960463,
+   "job": "c1458f1d42",
+   "judge": {
+    "status": "ok",
+    "model": "Qwen/Qwen3.8-27B-FP8",
+    "scores": {
+     "room_preserved": 10,
+     "matches_request": 4,
+     "proportions": 6,
+     "realism": 9,
+     "artifacts": 9
+    },
+    "overall": 7.4,
+    "pass": false,
+    "comment": "Prüftext (anonymisiert)",
+    "fix_hint": "Add the matching oak dining chairs around the table and increase the table height to a standard 75 cm.",
+    "seconds": 22.2,
+    "graded": "2026-10-17T15:06:20"
+   }
+  },
+  {
+   "fav": false,
+   "kind": "room",
+   "piece_ids": [
+    "b5d1a3"
+   ],
+   "piece": "Esstisch",
+   "material": "Eiche natur geölt",
+   "handles": "grifflos (Push)",
+   "note": "",
+   "keep": null,
+   "from": null,
+   "sketch": null,
+   "upscaled": false,
+   "retry_of": null,
+   "room": "uploads/20261017-461a705a03.png",
+   "pieces": [
+    {
+     "id": "b5d1a3",
+     "label": "Esstisch",
+     "material_label": "Eiche natur geölt",
+     "handles_label": "grifflos (Push)",
+     "w": 200,
+     "h": 80,
+     "d": 100
+    }
+   ],
+   "boxes": {},
+   "id": "03z5g4rz",
+   "image": "20261017-150504-1051960462.png",
+   "size": [
+    1328,
+    1776
+   ],
+   "seed": 1051960462,
+   "job": "c1458f1d42",
+   "judge": {
+    "status": "ok",
+    "model": "Qwen/Qwen3.8-27B-FP8",
+    "scores": {
+     "room_preserved": 9,
+     "matches_request": 6,
+     "proportions": 6,
+     "realism": 6,
+     "artifacts": 5
+    },
+    "overall": 6.6,
+    "pass": false,
+    "comment": "Prüftext (anonymisiert)",
+    "fix_hint": "Widen the oak table top to fill the marked box and render the chairs as distinct, non-overlapping objects.",
+    "seconds": 22.2,
+    "graded": "2026-10-17T15:06:20"
+   }
+  },
+  {
+   "fav": false,
+   "kind": "room",
+   "piece_ids": [
+    "b5d1a3"
+   ],
+   "piece": "Esstisch",
+   "material": "Eiche natur geölt",
+   "handles": "grifflos (Push)",
+   "note": "",
+   "keep": null,
+   "from": null,
+   "sketch": null,
+   "upscaled": false,
+   "retry_of": null,
+   "room": "uploads/20261017-461a705a03.png",
+   "pieces": [
+    {
+     "id": "b5d1a3",
+     "label": "Esstisch",
+     "material_label": "Eiche natur geölt",
+     "handles_label": "grifflos (Push)",
+     "w": 200,
+     "h": 80,
+     "d": 100
+    }
+   ],
+   "boxes": {},
+   "id": "x9cu8x26",
+   "image": "20261017-150410-1051960461.png",
+   "size": [
+    1328,
+    1776
+   ],
+   "seed": 1051960461,
+   "job": "c1458f1d42",
+   "judge": {
+    "status": "ok",
+    "model": "Qwen/Qwen3.8-27B-FP8",
+    "scores": {
+     "room_preserved": 10,
+     "matches_request": 6,
+     "proportions": 9,
+     "realism": 9,
+     "artifacts": 9
+    },
+    "overall": 8.5,
+    "pass": true,
+    "comment": "Prüftext (anonymisiert)",
+    "fix_hint": "Add a visible straight oak grain texture to the table top and legs to match the clear oiled matte finish.",
+    "seconds": 25.0,
+    "graded": "2026-10-17T15:06:23"
+   }
+  }
+ ],
+ "selected": "02m62tp8",
+ "updated": "2026-10-17T15:19:09"
+}

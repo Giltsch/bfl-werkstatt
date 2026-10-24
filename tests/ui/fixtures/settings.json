@@ -1,0 +1,39 @@
+{
+ "company": {
+  "name": "Schreinerei Muster",
+  "contact": "",
+  "street": "Hauptstr. 1",
+  "zip": "91522",
+  "city": "Ansbach",
+  "phone": "0981 123456",
+  "email": "info@example.org",
+  "web": "",
+  "color": "#2f6b4f",
+  "logo": null
+ },
+ "team": [
+  {
+   "id": "peter",
+   "name": "Peter",
+   "color": "#59a7ff"
+  },
+  {
+   "id": "ben",
+   "name": "Ben",
+   "color": "#7cc4a0"
+  }
+ ],
+ "access": {
+  "password_set": false
+ },
+ "retention": {
+  "abgesagt_months": 6,
+  "fertig_months": 12
+ },
+ "public_base_url": "",
+ "trusted_proxy": false,
+ "backup": {
+  "target": "/home/werkstatt/bfl-backups",
+  "keep": 14
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "id": "terrassendach",
+ "label": "Terrassendach / Holzbau außen",
+ "description": "Terrassenüberdachungen, Pergolen und Carports aus Holz. Die Typen fehlen im Möbelkatalog; sie laufen als Vorlagen mit Beschreibung.",
+ "types": ["wand", "sitzbank", "tisch"],
+ "templates": [
+  {"id": "terrassendach", "label": "Terrassendach", "type": null, "text": "Terrassenüberdachung aus Holz an der Hauswand: Pfosten, Pfette und Sparren, Dach aus Verbundsicherheitsglas mit leichtem Gefälle", "w": 500, "h": 270, "d": 350, "material": "custom:Douglasie natur"},
+  {"id": "pergola", "label": "Pergola", "type": null, "text": "freistehende Holzpergola mit vier Pfosten und offenem Lattendach", "w": 400, "h": 250, "d": 300, "material": "custom:Lärche natur"},
+  {"id": "carport", "label": "Carport", "type": null, "text": "Holz-Carport mit Flachdach, sechs Pfosten, seitlich offen", "w": 300, "h": 250, "d": 550, "material": "custom:Fichte lasiert"},
+  {"id": "sichtschutz", "label": "Sichtschutzwand", "type": "wand", "text": "Sichtschutzwand aus waagerechten Holzlatten mit Luftspalt", "w": 180, "h": 180, "d": 5, "material": "custom:Lärche natur"}
+ ],
+ "company": {"material": "custom:Douglasie natur", "handles": "keine", "plinth": 0, "board": 120},
+ "type_defaults": {"wand": {"d": 5}},
+ "aliases": {
+  "type": {
+   "Terrassendach": "terrassendach", "Terrassenüberdachung": "terrassendach", "Überdachung": "terrassendach",
+   "Vordach": "terrassendach", "Pergola": "pergola", "Carport": "carport", "Unterstand": "carport",
+   "Sichtschutz": "sichtschutz", "Sichtschutzwand": "sichtschutz", "Gartenbank": "sitzbank", "Gartentisch": "tisch"
+  },
+  "material": {
+   "Douglasie": "custom:Douglasie natur", "Lärche": "custom:Lärche natur", "Fichte": "custom:Fichte lasiert",
+   "Leimholz": "custom:Brettschichtholz Fichte", "BSH": "custom:Brettschichtholz Fichte",
+   "anthrazit": "custom:Holz anthrazit lasiert", "weiß lasiert": "custom:Holz weiß lasiert", "Eiche": "eiche"
+  },
+  "handles": {}
+ },
+ "wording": {
+  "notes_de": "Holzbau außen: Glasdach mit Gefälle zur Rinne, Pfostenträger auf Fundament, Holz unbehandelt oder lasiert.",
+  "prompt_en": "Outdoor timber construction on the terrace, posts on metal post bases, a slightly sloped glass roof with a gutter; the house facade stays unchanged.",
+  "judge_en": "Posts stand vertically on the ground; the roof attaches to the house wall above windows and doors and slopes away from the house."
+ },
+ "quality": "fein"
+}

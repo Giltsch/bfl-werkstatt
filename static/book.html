@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book Studio</title>
+<link rel="stylesheet" href="/static/common.css">
+<style>
+.layout { display: grid; grid-template-columns: 370px 1fr; min-height: calc(100vh - 48px); }
+aside.side { border-right: 1px solid var(--line); background: var(--bg); padding: 14px; display: flex; flex-direction: column; gap: 12px; overflow-y: auto; height: calc(100vh - 48px); position: sticky; top: 48px; }
+main { padding: 16px 20px 80px; min-width: 0; }
+.bar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 14px; }
+.bar h2 { margin: 0; font-size: 18px; font-weight: 600; margin-right: auto; }
+.bar .sub { color: var(--muted); font-size: 12px; }
+.pages { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 14px; }
+.page { border: 1px solid var(--line); border-radius: var(--r); background: var(--panel); overflow: hidden; display: flex; flex-direction: column; }
+.page.cover { border-color: #3d5a4a; }
+.pic { position: relative; background: #1a1c1f; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 12px; cursor: zoom-in; overflow: hidden; }
+.pic img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pic .band { position: absolute; left: 7%; right: 7%; bottom: 6%; background: rgba(255,252,247,.86); color: #2b2622; border-radius: 6px; padding: 5px 8px; font: 11px/1.35 Georgia, serif; text-align: center; max-height: 34%; overflow: hidden; pointer-events: none; }
+.pic .band.top { bottom: auto; top: 6%; }
+.pic .num { position: absolute; left: 6px; top: 6px; background: rgba(0,0,0,.65); font-size: 11px; padding: 2px 6px; border-radius: 4px; color: #ddd; }
+.pic .res { position: absolute; right: 6px; top: 6px; background: rgba(0,0,0,.65); font-size: 10.5px; padding: 2px 6px; border-radius: 4px; color: #ddd; }
+.pic .res.low { color: var(--warn); }
+.cands { display: flex; gap: 4px; padding: 6px 8px 0; overflow-x: auto; }
+.cands button { flex: none; width: 46px; height: 46px; padding: 0; border-radius: 5px; overflow: hidden; border: 1px solid var(--line); background: var(--bg); position: relative; }
+.cands button.sel { outline: 2px solid var(--accent); outline-offset: 1px; }
+.cands img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cands .x { position: absolute; right: 0; top: 0; width: 14px; height: 14px; line-height: 12px; font-size: 11px; background: rgba(0,0,0,.75); color: #ccc; display: none; }
+.cands button:hover .x { display: block; }
+.pbody { padding: 8px 10px 10px; display: flex; flex-direction: column; gap: 7px; }
+.phead { display: flex; gap: 4px; align-items: center; }
+.phead b { font-size: 13px; margin-right: auto; }
+.pbody textarea { font-size: 13px; padding: 6px 8px; }
+.pbody textarea.text { min-height: 56px; font-family: Georgia, serif; }
+.pbody textarea.scene { min-height: 56px; color: #c9cbd1; }
+.acts { display: flex; gap: 5px; align-items: center; flex-wrap: wrap; }
+.acts select { width: auto; padding: 4px 6px; font-size: 12px; }
+.chars { display: flex; flex-direction: column; gap: 10px; }
+.char { display: grid; grid-template-columns: 82px 1fr; gap: 8px; border: 1px solid var(--line); border-radius: 8px; padding: 8px; background: var(--bg); }
+.char .anchor { width: 82px; height: 82px; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); background: #1a1c1f; display: flex; align-items: center; justify-content: center; font-size: 10.5px; color: var(--muted); text-align: center; cursor: pointer; }
+.char .anchor img { width: 100%; height: 100%; object-fit: cover; }
+.char .f { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.char input, .char textarea { font-size: 12.5px; padding: 5px 7px; }
+.char textarea { min-height: 50px; }
+.char .cands { grid-column: 1 / -1; padding: 0; }
+.char .acts { grid-column: 1 / -1; }
+.empty { color: var(--muted); text-align: center; padding: 60px 20px; line-height: 1.7; }
+.empty b { color: var(--text); }
+.report { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 8px; }
+.report div { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font-size: 12px; color: var(--muted); }
+.report b { display: block; color: var(--text); font-size: 14px; margin-top: 2px; }
+.warn { color: var(--warn); font-size: 13px; margin: 0; padding-left: 18px; }
+.previews { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 6px; }
+.previews img { width: 100%; border: 1px solid var(--line); border-radius: 3px; display: block; cursor: zoom-in; }
+.checklist { margin: 0; padding-left: 18px; color: #c9cbd1; line-height: 1.6; font-size: 13px; }
+details.more summary { cursor: pointer; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .5px; font-weight: 500; }
+details.more > div { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  aside.side { height: auto; position: static; border-right: 0; border-bottom: 1px solid var(--line); }
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>FLUX 3 <span>Klein</span></h1>
+  <nav class="pages"><a href="/studio">Studio</a><a href="/book" class="active">Book</a><a href="/werkstatt">Werkstatt</a></nav>
+  <div class="status" id="status"></div>
+</header>
+
+<div class="layout">
+  <aside class="side">
+    <section class="box">
+      <h3><span class="grow">Book</span><button class="btn small" id="newBook">＋ New</button><button class="btn small danger" id="delBook" title="Delete this book">Delete</button></h3>
+      <select id="bookSel"></select>
+    </section>
+
+    <div id="sideBody" hidden>
+      <section class="box">
+        <h3>1 · Story idea</h3>
+        <textarea id="premise" data-k="premise" rows="4" placeholder="e.g. A lighthouse robot collects lost things that wash ashore, and one day finds a message in a bottle from a lonely whale."></textarea>
+        <div class="row">
+          <div><label class="lbl">Language</label><input type="text" data-k="language" placeholder="English"></div>
+          <div><label class="lbl">Pages</label><input type="number" data-k="page_count" data-num min="4" max="40"></div>
+        </div>
+        <div class="row">
+          <div><label class="lbl">Audience</label><input type="text" data-k="audience" placeholder="children 4–8"></div>
+          <div><label class="lbl">Text per page</label><select data-k="text_length"><option value="short">Short</option><option value="medium">Medium</option><option value="long">Long</option></select></div>
+        </div>
+        <label class="lbl">Wishes for the AI writer (optional)</label>
+        <textarea data-k="story_notes" rows="2" placeholder="e.g. funnier, more dialogue, rhyming text, ending at sunrise, the whale should be grumpy at first"></textarea>
+        <div class="row">
+          <div><label class="lbl">Writer</label><select data-k="story_model"><option value="gemma4:31b-it-q4_K_M">Best (≈4–6 min)</option><option value="gemma4:26b-a4b-it-q4_K_M">Fast (≈2 min)</option></select></div>
+        </div>
+        <button class="btn" id="draftBtn">✨ Write story with AI</button>
+        <button class="btn" id="reviseBtn" title="Line-edit the current page texts (yours or the AI's), following the wishes above. Pictures and scenes stay.">✎ Revise text</button>
+        <div class="hint">A local language model plans the plot (hero, obstacles, twist), writes the pages, then edits its own text. Everything stays editable.</div>
+        <details class="more" id="outlineBox" hidden><summary>Story plan &amp; editor notes</summary><div id="outline"></div></details>
+      </section>
+
+      <section class="box">
+        <h3>2 · Art style</h3>
+        <textarea data-k="style" rows="3" placeholder="soft watercolor and colored pencil, warm palette, textured paper"></textarea>
+        <div class="chips" id="stylePresets"></div>
+      </section>
+
+      <section class="box">
+        <h3><span class="grow">3 · Characters</span><button class="btn small" id="addChar">＋ Add</button></h3>
+        <div class="hint">Each character gets one reference picture. It is sent along with every page that mentions the character's name, which keeps them looking the same.</div>
+        <div class="chars" id="chars"></div>
+      </section>
+
+      <section class="box">
+        <h3>4 · Print format</h3>
+        <div class="row">
+          <div><label class="lbl">Trim size</label><select data-k="trim" id="trimSel"></select></div>
+          <div><label class="lbl">Paper</label><select data-k="paper" id="paperSel"></select></div>
+        </div>
+        <div><label class="lbl">Page layout</label><select data-k="layout" id="layoutSel"></select></div>
+        <div class="row">
+          <div><label class="lbl">Typeface</label><select data-k="font"><option value="classic">Classic (Garamond)</option><option value="friendly">Friendly (Nunito)</option></select></div>
+          <div><label class="lbl">Draft quality</label><select data-k="res" data-num><option value="1024">1K · fast</option><option value="1536">1.5K</option></select></div>
+        </div>
+        <details class="more"><summary>Title page &amp; imprint</summary><div>
+          <div class="row"><div><label class="lbl">Title</label><input type="text" data-k="title"></div><div><label class="lbl">Author / pen name</label><input type="text" data-k="author"></div></div>
+          <div><label class="lbl">Subtitle</label><input type="text" data-k="subtitle"></div>
+          <div><label class="lbl">Dedication (page 3)</label><input type="text" data-k="dedication" placeholder="optional"></div>
+          <div><label class="lbl">Imprint page</label><textarea data-k="imprint" rows="3" placeholder="Leave empty for: © year author · All rights reserved · AI illustration note"></textarea></div>
+          <div><label class="lbl">Last page</label><input type="text" data-k="end_text" placeholder="The End"></div>
+        </div></details>
+      </section>
+    </div>
+  </aside>
+
+  <main>
+    <div id="noBook" class="empty"><p><b>Make a picture book or photo book for print-on-demand.</b></p>
+      <p>Write a story idea, let the AI draft pages and characters, create a reference picture for each character,<br>render the pages, then export print-ready PDFs (interior + wrap-around cover) for Amazon KDP.</p>
+      <p><button class="btn primary" id="newBook2">Start a new book</button></p></div>
+    <div id="bookMain" hidden>
+      <div class="bar">
+        <h2 id="bookTitle"></h2>
+        <span class="sub" id="bookSub"></span>
+        <button class="btn" id="addPage">＋ Page</button>
+        <button class="btn" id="genMissing" title="Render every page that has no picture yet, in order">Render missing pages</button>
+        <button class="btn" id="upAll" title="Re-render chosen pictures at about 2.2× resolution for sharp print">Upscale all for print</button>
+        <button class="btn primary" id="exportBtn">Export print PDFs</button>
+      </div>
+      <div class="pages" id="pages"></div>
+    </div>
+  </main>
+</div>
+
+<div class="modal" id="exportModal"><div class="card">
+  <h3>Print files</h3>
+  <div id="exportBody"></div>
+  <div class="row" style="justify-content:flex-end"><button class="btn" style="flex:none" onclick="$('#exportModal').classList.remove('open')">Close</button></div>
+</div></div>
+<div class="toast" id="toast"></div>
+
+<script src="/static/common.js"></script>
+<script>
+const STYLES = {
+  "Watercolor": "soft watercolor and colored pencil illustration, warm gentle palette, visible paper texture, children's picture book",
+  "Gouache": "matte gouache painting, bold simple shapes, rich saturated colors, mid-century picture book style",
+  "Paper cut": "layered cut-paper diorama, handmade paper textures, soft shadows between layers, miniature set photographed with shallow depth of field",
+  "3D clay": "stop-motion claymation look, handmade clay figures with fingerprints, soft studio light, miniature sets",
+  "Ink & wash": "fine ink line drawing with loose watercolor wash, airy white space, elegant European picture book",
+  "Photo": "cinematic photograph, natural light, 35mm film look, shallow depth of field",
+};
+const DEFAULT_BOOK = {
+  title: "", subtitle: "", author: "", language: "English", audience: "children 4–8", premise: "",
+  style: STYLES.Watercolor, trim: "8.5x8.5", layout: "band", font: "classic", paper: "premium-color", res: 1024,
+  text_length: "medium", page_count: 16, story_notes: "", story_model: "gemma4:31b-it-q4_K_M", outline: null, critique: [], dedication: "", imprint: "", end_text: "",
+  characters: [], pages: [], cover: { scene: "", image: null, candidates: [], blurb: "", title_in_art: false },
+};
+let OPT = null, B = null, LIST = [];
+const busy = new Map();  // key → label while a job for it runs
+const uid = () => Math.random().toString(36).slice(2, 10);
+
+/* ---------- persistence ---------- */
+const save = debounce(async () => {
+  if (!B) return;
+  B.thumb = B.cover.image || B.pages.find(p => p.image)?.image || null;
+  try { await api("PUT", `/api/projects/book/${B.id}`, B); } catch (e) { toast("Saving failed: " + e.message, true); }
+}, 700);
+const changed = () => { save(); };
+
+async function loadList(select) {
+  LIST = await api("GET", "/api/projects/book");
+  $("#bookSel").innerHTML = LIST.length ? LIST.map(b => `<option value="${b.id}">${esc(b.title)}</option>`).join("") : `<option value="">No books yet</option>`;
+  if (select) $("#bookSel").value = select;
+}
+async function openBook(id) {
+  if (!id) { B = null; render(); return; }
+  B = { ...structuredClone(DEFAULT_BOOK), ...(await api("GET", `/api/projects/book/${id}`)) };
+  B.cover = { ...DEFAULT_BOOK.cover, ...B.cover };
+  try { localStorage.setItem("book.last", id); } catch {}
+  render();
+}
+async function newBook() {
+  const doc = await api("POST", "/api/projects/book", { ...structuredClone(DEFAULT_BOOK), title: "Untitled book" });
+  await loadList(doc.id); await openBook(doc.id);
+  $("#premise").focus();
+}
+$("#newBook").onclick = newBook; $("#newBook2").onclick = newBook;
+$("#bookSel").onchange = e => openBook(e.target.value);
+$("#delBook").onclick = async () => {
+  if (!B || !confirm(`Delete “${B.title || "Untitled"}”? The pictures stay in the studio gallery.`)) return;
+  await api("DELETE", `/api/projects/book/${B.id}`);
+  await loadList(); await openBook(LIST[0]?.id);
+};
+
+/* ---------- geometry ---------- */
+function trim() { const t = OPT.trims[B.trim] || OPT.trims["8.5x8.5"]; return [t.w, t.h]; }
+function pageAspect() {
+  const [w, h] = trim(), b = OPT.bleed;
+  return B.layout === "below" ? (w + b) / (h * OPT.below_share + b) : (w + b) / (h + 2 * b);
+}
+const coverAspect = () => { const [w, h] = trim(); return (w + OPT.bleed) / (h + 2 * OPT.bleed); };
+
+/* ---------- render ---------- */
+function render() {
+  $("#noBook").hidden = !!B; $("#bookMain").hidden = !B; $("#sideBody").hidden = !B; $("#delBook").disabled = !B;
+  if (!B) return;
+  $("#bookSel").value = B.id;
+  $$("[data-k]").forEach(el => { const v = B[el.dataset.k]; el.value = v ?? ""; });
+  renderHead(); renderChars(); renderPages(); renderOutline();
+}
+function renderHead() {
+  $("#bookTitle").textContent = B.title || "Untitled book";
+  const [w, h] = trim();
+  const done = B.pages.filter(p => p.image).length;
+  $("#bookSub").textContent = `${w}×${h} in · ${OPT.layouts[B.layout]} · ${done}/${B.pages.length} pictures`;
+  const opt = $(`#bookSel option[value="${B.id}"]`); if (opt) opt.textContent = B.title || "Untitled book";
+}
+$$("[data-k]").forEach(el => el.addEventListener(el.tagName === "SELECT" ? "change" : "input", () => {
+  if (!B) return;
+  B[el.dataset.k] = el.hasAttribute("data-num") ? +el.value : el.value;
+  if (["trim", "layout"].includes(el.dataset.k)) renderPages();
+  renderHead(); changed();
+}));
+$("#stylePresets").innerHTML = Object.keys(STYLES).map(k => `<button class="chip" data-s="${k}">${k}</button>`).join("");
+$$("#stylePresets .chip").forEach(c => c.onclick = () => { B.style = STYLES[c.dataset.s]; $('[data-k="style"]').value = B.style; changed(); });
+
+function candStrip(item, key) {
+  const c = item.candidates || [];
+  if (c.length < 2) return "";
+  return `<div class="cands">${c.map(p => `<button class="${p === item.image ? "sel" : ""}" data-pick="${key}" data-p="${p}" title="Use this picture"><img src="${img(p)}" loading="lazy" alt=""><span class="x" data-drop="${key}" data-p="${p}" title="Remove from list">×</span></button>`).join("")}</div>`;
+}
+function wireCands(root, items) {
+  $$("[data-pick]", root).forEach(b => b.onclick = e => {
+    const it = items(b.dataset.pick); if (!it) return;
+    if (e.target.dataset.drop) { it.candidates = it.candidates.filter(p => p !== b.dataset.p); if (it.image === b.dataset.p) it.image = it.candidates[0] || null; }
+    else it.image = b.dataset.p;
+    changed(); renderChars(); renderPages();
+  });
+}
+
+function renderChars() {
+  $("#chars").innerHTML = B.characters.length ? B.characters.map(c => `<div class="char ${busy.has(c.id) ? "busy" : ""}" data-busy="${esc(busy.get(c.id) || "")}" data-id="${c.id}">
+      <div class="anchor" data-act="zoom">${c.anchor ? `<img src="${img(c.anchor)}" alt="">` : "No reference yet"}</div>
+      <div class="f"><input type="text" data-f="name" value="${esc(c.name)}" placeholder="Name (use it in scenes)">
+        <textarea data-f="look" placeholder="Exact look: species/material, colors, clothing, features">${esc(c.look)}</textarea></div>
+      ${candStrip({ image: c.anchor, candidates: c.candidates }, c.id)}
+      <div class="acts"><button class="btn small" data-act="gen">${c.anchor ? "New reference" : "Create reference"}</button><button class="btn small" data-act="up">Upload</button><span style="flex:1"></span><button class="btn small danger" data-act="del">×</button></div>
+    </div>`).join("") : `<div class="hint">No characters. A photo book can do without; a story usually has 1–3.</div>`;
+  $$("#chars .char").forEach(el => {
+    const c = B.characters.find(x => x.id === el.dataset.id);
+    $('[data-f="name"]', el).oninput = e => { c.name = e.target.value; changed(); renderPagesDebounced(); };
+    $('[data-f="look"]', el).oninput = e => { c.look = e.target.value; changed(); };
+    $('[data-act="gen"]', el).onclick = () => genChar(c);
+    $('[data-act="up"]', el).onclick = () => { const i = document.createElement("input"); i.type = "file"; i.accept = "image/*"; i.onchange = async () => { const r = await uploadFile(i.files[0]); c.candidates = [...(c.candidates || []), r.path]; c.anchor = r.path; changed(); renderChars(); }; i.click(); };
+    $('[data-act="del"]', el).onclick = () => { if (confirm(`Remove ${c.name || "this character"}?`)) { B.characters = B.characters.filter(x => x !== c); changed(); renderChars(); renderPages(); } };
+    $('[data-act="zoom"]', el).onclick = () => c.anchor && lightbox(img(c.anchor));
+  });
+  wireCands($("#chars"), key => { const c = B.characters.find(x => x.id === key); return c && { get image() { return c.anchor; }, set image(v) { c.anchor = v; }, get candidates() { return c.candidates; }, set candidates(v) { c.candidates = v; } }; });
+}
+$("#addChar").onclick = () => { B.characters.push({ id: uid(), name: "", look: "", anchor: null, candidates: [] }); changed(); renderChars(); $("#chars .char:last-child input").focus(); };
+
+/* Matches the full name, or its last word alone ("Captain Barnaby" is often just "Barnaby" in the text). */
+const nameRe = name => {
+  const q = t => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const last = name.split(/\s+/).pop();
+  const alt = last !== name && last.length > 2 ? `${q(name)}|${q(last)}` : q(name);
+  return new RegExp(`(^|[^\\p{L}\\p{N}])(${alt})(?=$|[^\\p{L}\\p{N}])`, "iu");
+};
+const autoCast = text => B.characters.filter(c => c.name.trim() && nameRe(c.name.trim()).test(text || ""));
+const castOf = pg => pg.cast ? B.characters.filter(c => pg.cast.includes(c.id)) : autoCast(pg.scene || pg.text);
+
+function pageCard(pg, i) {
+  const key = pg.id;
+  const a = pageAspect();
+  const cast = castOf(pg);
+  const band = ["band", "image"].includes(B.layout) && pg.text ? `<div class="band ${pg.text_pos === "top" ? "top" : ""}">${esc(pg.text)}</div>` : "";
+  return `<article class="page" data-id="${key}">
+    <div class="pic ${busy.has(key) ? "busy" : ""}" data-busy="${esc(busy.get(key) || "")}" style="aspect-ratio:${a}">
+      ${pg.image ? `<img src="${img(pg.image)}" alt="" loading="lazy">` : "No picture yet"}${band}
+      <span class="num">${i + 1}</span>${pg.image ? `<span class="res" data-res="${pg.image}"></span>` : ""}</div>
+    ${candStrip(pg, key)}
+    <div class="pbody">
+      <div class="phead"><b>Page ${i + 1}</b>
+        <button class="btn small ghost" data-act="up" title="Move earlier" ${i ? "" : "disabled"}>↑</button>
+        <button class="btn small ghost" data-act="down" title="Move later" ${i < B.pages.length - 1 ? "" : "disabled"}>↓</button>
+        <button class="btn small ghost" data-act="ins" title="Insert a page after this one">＋</button>
+        <button class="btn small ghost danger" data-act="del" title="Delete page">×</button></div>
+      <textarea class="text" data-f="text" placeholder="Words printed on this page">${esc(pg.text)}</textarea>
+      <textarea class="scene" data-f="scene" placeholder="What the picture shows. Mention characters by name.">${esc(pg.scene)}</textarea>
+      ${B.characters.length ? `<div class="chips">${B.characters.map(c => `<button class="chip ${cast.includes(c) ? "active" : ""}" data-cast="${c.id}" title="Send this character's reference with the page">${esc(c.name || "?")}${c.anchor ? "" : " (no ref)"}</button>`).join("")}</div>` : ""}
+      <div class="acts">
+        <button class="btn small primary" data-act="gen">${pg.image ? "Re-render" : "Render"}</button>
+        <select data-act="count" title="Variants per run"><option value="1">×1</option><option value="2">×2</option><option value="3">×3</option></select>
+        ${pg.image ? `<button class="btn small" data-act="upscale" title="Re-render this picture at about 2.2× resolution">Upscale</button>` : ""}
+        <label class="toggle" title="On: continue the previous page's setting. Off: new place, same art style." style="font-size:12px;margin-left:auto"><input type="checkbox" data-act="chain" ${pg.chain !== false ? "checked" : ""}><span class="sw"></span>continue</label>
+        ${B.layout === "band" ? `<button class="btn small ghost" data-act="pos" title="Text band at top or bottom">${pg.text_pos === "top" ? "text ▲" : "text ▼"}</button>` : ""}
+      </div>
+    </div></article>`;
+}
+function coverCard() {
+  const c = B.cover, key = "cover";
+  return `<article class="page cover" data-id="cover">
+    <div class="pic ${busy.has(key) ? "busy" : ""}" data-busy="${esc(busy.get(key) || "")}" style="aspect-ratio:${coverAspect()}">
+      ${c.image ? `<img src="${img(c.image)}" alt="">` : "No cover yet"}
+      ${!c.title_in_art && B.title ? `<div class="band top" style="background:none;color:#fffaf0;font:600 17px/1.15 Georgia,serif;text-shadow:0 1px 3px #000">${esc(B.title)}</div>` : ""}
+      <span class="num">Cover</span></div>
+    ${candStrip(c, key)}
+    <div class="pbody">
+      <div class="phead"><b>Front cover</b></div>
+      <textarea class="scene" data-f="scene" placeholder="Cover picture: the main character in a striking moment, calm sky in the upper third for the title">${esc(c.scene)}</textarea>
+      <textarea class="text" data-f="blurb" placeholder="Back cover text (blurb)">${esc(c.blurb)}</textarea>
+      <div class="acts">
+        <button class="btn small primary" data-act="gen">${c.image ? "Re-render" : "Render"}</button>
+        <select data-act="count"><option value="1">×1</option><option value="2" selected>×2</option><option value="3">×3</option></select>
+        ${c.image ? `<button class="btn small" data-act="upscale">Upscale</button>` : ""}
+        <label class="toggle" style="font-size:12px;margin-left:auto" title="Let the model paint the title lettering into the picture (otherwise it is typeset)"><input type="checkbox" data-act="titleart" ${c.title_in_art ? "checked" : ""}><span class="sw"></span>paint title</label>
+      </div>
+    </div></article>`;
+}
+function renderPages() {
+  if (!B) return;
+  // keep the caret where it was when a finished job redraws the cards
+  const a = document.activeElement, card = a?.closest?.(".page");
+  const focus = card && a.dataset.f ? { id: card.dataset.id, f: a.dataset.f, s: a.selectionStart, e: a.selectionEnd } : null;
+  renderPagesNow();
+  if (focus) { const t = $(`.page[data-id="${focus.id}"] [data-f="${focus.f}"]`); if (t) { t.focus(); t.setSelectionRange(focus.s, focus.e); } }
+}
+function renderPagesNow() {
+  $("#pages").innerHTML = coverCard() + B.pages.map(pageCard).join("")
+    + `<button class="drop" id="addPage2" style="min-height:160px;background:none">＋ Add page</button>`;
+  $("#addPage2").onclick = () => addPage();
+  $$("#pages .page").forEach(el => {
+    const isCover = el.dataset.id === "cover";
+    const pg = isCover ? B.cover : B.pages.find(p => p.id === el.dataset.id);
+    $$("[data-f]", el).forEach(t => t.oninput = () => { pg[t.dataset.f] = t.value; changed(); if (t.dataset.f !== "blurb") refreshCast(el, pg); });
+    $(".pic", el).onclick = () => pg.image && lightbox(img(pg.image));
+    $('[data-act="gen"]', el).onclick = () => isCover ? genCover(+$('[data-act="count"]', el).value) : genPage(pg, +$('[data-act="count"]', el).value);
+    $('[data-act="upscale"]', el)?.addEventListener("click", () => upscale(pg, isCover ? "cover" : pg.id, isCover ? coverAspect() : pageAspect()));
+    if (isCover) { $('[data-act="titleart"]', el).onchange = e => { pg.title_in_art = e.target.checked; changed(); renderPages(); }; return; }
+    const i = B.pages.indexOf(pg);
+    $('[data-act="chain"]', el).onchange = e => { pg.chain = e.target.checked; changed(); };
+    $('[data-act="pos"]', el)?.addEventListener("click", () => { pg.text_pos = pg.text_pos === "top" ? "bottom" : "top"; changed(); renderPages(); });
+    $('[data-act="up"]', el).onclick = () => { B.pages.splice(i - 1, 0, ...B.pages.splice(i, 1)); changed(); renderPages(); };
+    $('[data-act="down"]', el).onclick = () => { B.pages.splice(i + 1, 0, ...B.pages.splice(i, 1)); changed(); renderPages(); };
+    $('[data-act="ins"]', el).onclick = () => addPage(i + 1);
+    $('[data-act="del"]', el).onclick = () => { if ((pg.text || pg.image) && !confirm(`Delete page ${i + 1}?`)) return; B.pages.splice(i, 1); changed(); renderPages(); renderHead(); };
+    $$("[data-cast]", el).forEach(ch => ch.onclick = () => {
+      const ids = castOf(pg).map(c => c.id), id = ch.dataset.cast;
+      pg.cast = ids.includes(id) ? ids.filter(x => x !== id) : [...ids, id];
+      changed(); refreshCast(el, pg);
+    });
+  });
+  wireCands($("#pages"), key => key === "cover" ? B.cover : B.pages.find(p => p.id === key));
+  showResolutions();
+}
+const renderPagesDebounced = debounce(renderPages, 400);
+function refreshCast(el, pg) { const cast = castOf(pg); $$("[data-cast]", el).forEach(ch => ch.classList.toggle("active", cast.some(c => c.id === ch.dataset.cast))); }
+async function showResolutions() {
+  for (const s of $$("[data-res]")) {
+    try {
+      const [w, h] = await imageSize(img(s.dataset.res));
+      const isCover = s.closest(".page").dataset.id === "cover";
+      const [tw] = trim(); const dpi = Math.round(w / (tw + OPT.bleed));
+      s.textContent = `${w}×${h} · ${dpi} dpi`; s.classList.toggle("low", dpi < 200);
+      s.title = dpi < 200 ? "Below 200 dpi at print size: use Upscale before printing" : "Good for print";
+    } catch {}
+  }
+}
+function addPage(at = B.pages.length) { B.pages.splice(at, 0, { id: uid(), text: "", scene: "", chain: true, image: null, candidates: [] }); changed(); renderPages(); renderHead(); }
+$("#addPage").onclick = () => addPage();
+
+/* ---------- prompts ---------- */
+function describe(text, cast, slot) {
+  // name the reference image (or the written look) right where the character is mentioned
+  for (const c of cast) {
+    const who = slot[c.id] ? `${c.name} (the character from ${slot[c.id]}${c.look ? `: ${c.look}` : ""})` : `${c.name} (${c.look})`;
+    const re = nameRe(c.name.trim());
+    text = re.test(text) ? text.replace(re, (m, pre) => pre + who) : `${text}\n${who} is in this picture.`;
+  }
+  return text;
+}
+function pagePrompt(pg) {
+  const i = B.pages.indexOf(pg);
+  const prev = B.pages.slice(0, i).reverse().find(p => p.image);
+  const refs = [], slot = {};
+  if (prev) refs.push(prev.image);
+  const cast = castOf(pg);
+  for (const c of cast) if (c.anchor && refs.length < 10) { refs.push(c.anchor); slot[c.id] = ORD[refs.length - 1]; }
+  const lines = [];
+  if (B.style) lines.push(`Art style: ${B.style}.`);
+  lines.push(describe(pg.scene || pg.text || "", cast, slot));
+  if (prev) lines.push(pg.chain !== false
+    ? `Continue the story from ${ORD[0]}: same art style, color palette and lighting, and the same setting where the scene allows.`
+    : `Match only the art style, rendering technique and color palette of ${ORD[0]}; the setting is new.`);
+  if (Object.keys(slot).length) lines.push("Every character looks exactly like their reference image: same shapes, colors, clothing, markings and proportions.");
+  lines.push("No text, letters, captions or signatures in the picture.");
+  if (B.layout === "band" && pg.text) lines.push(`Keep the ${pg.text_pos === "top" ? "top" : "bottom"} fifth of the picture calm and simple, because text will be printed there.`);
+  return { prompt: lines.join("\n"), refs };
+}
+function coverPrompt() {
+  const c = B.cover;
+  const scene = c.scene || B.premise || B.title;
+  const cast = autoCast(scene);
+  const refs = [], slot = {};
+  const style = B.pages.find(p => p.image)?.image;
+  if (style) refs.push(style);
+  for (const ch of cast) if (ch.anchor && refs.length < 10) { refs.push(ch.anchor); slot[ch.id] = ORD[refs.length - 1]; }
+  const lines = [];
+  if (B.style) lines.push(`Art style: ${B.style}.`);
+  lines.push(`Front cover illustration of a picture book. ${describe(scene, cast, slot)}`);
+  if (style) lines.push(`Match the art style and color palette of ${ORD[0]}.`);
+  if (Object.keys(slot).length) lines.push("Every character looks exactly like their reference image.");
+  lines.push(c.title_in_art
+    ? `The title "${B.title}" is lettered beautifully and legibly in the upper third${B.author ? `, and the name "${B.author}" small near the bottom` : ""}. No other text.`
+    : "Keep the upper third calm and uncluttered (sky or simple background) so a title can be printed over it. No text or letters.");
+  return { prompt: lines.join("\n"), refs };
+}
+
+/* ---------- generation ---------- */
+function params(prompt, refs, aspect, count, side) {
+  const [w, h] = dims(aspect, side || B.res || 1024);
+  return { task: refs.length ? "edit" : "create", prompt, upsample: true, mode: "distilled", width: w, height: h, seed: -1, count, source: `book:${B.id}` };
+}
+async function withBusy(key, label, fn) {
+  busy.set(key, label); renderPages(); renderChars();
+  try { return await fn(); }
+  catch (e) { toast(e.message, true); }
+  finally { busy.delete(key); renderPages(); renderChars(); renderHead(); }
+}
+function addResults(item, paths) {
+  item.candidates = [...(item.candidates || []), ...paths];
+  item.image = paths[0];
+  changed();
+}
+async function genChar(c) {
+  if (!c.name.trim() || !c.look.trim()) return toast("Give the character a name and a look first.", true);
+  await withBusy(c.id, "Creating reference…", async () => {
+    const prompt = `${B.style ? `Art style: ${B.style}.\n` : ""}Character reference picture of ${c.name}: ${c.look}. One full-body view in a neutral three-quarter pose, the whole figure visible and centered, on a plain light background with soft even light. No text.`;
+    const j = await runJob(params(prompt, [], 1, 2, 1024), [], `${c.name}`);
+    c.candidates = [...(c.candidates || []), ...resultPaths(j)];
+    c.anchor = resultPaths(j)[0];
+    changed();
+  });
+}
+async function genPage(pg, count = 1) {
+  const i = B.pages.indexOf(pg);
+  if (!(pg.scene || pg.text).trim()) return toast(`Page ${i + 1} needs a picture description first.`, true);
+  const { prompt, refs } = pagePrompt(pg);
+  await withBusy(pg.id, `Rendering page ${i + 1}…`, async () => {
+    const j = await runJob(params(prompt, refs, pageAspect(), count), refs, `Page ${i + 1}`);
+    addResults(pg, resultPaths(j));
+  });
+}
+async function genCover(count = 2) {
+  if (!(B.cover.scene || B.premise || B.title).trim()) return toast("Describe the cover picture first.", true);
+  const { prompt, refs } = coverPrompt();
+  await withBusy("cover", "Rendering cover…", async () => {
+    const j = await runJob(params(prompt, refs, coverAspect(), count), refs, "Cover");
+    addResults(B.cover, resultPaths(j));
+  });
+}
+async function upscale(item, key, aspect) {
+  const [w, h] = await imageSize(img(item.image));
+  const side = Math.min(2304, Math.round(Math.sqrt(w * h) * 2.2));
+  if (Math.sqrt(w * h) >= 2000) return toast("This picture is already large enough.");
+  await withBusy(key, "Upscaling for print (2–3 min)…", async () => {
+    const p = { ...params(UPSCALE_PROMPT, [item.image], aspect, 1, side), upsample: false, seed: 7 };
+    const j = await runJob(p, [item.image], "Upscale");
+    addResults(item, resultPaths(j));
+  });
+}
+$("#genMissing").onclick = async () => {
+  const todo = B.pages.filter(p => !p.image && (p.scene || p.text).trim());
+  if (!todo.length) return toast("Every page with a description already has a picture.");
+  if (!confirm(`Render ${todo.length} page(s) one after another? About ${Math.ceil(todo.length * 0.8)} min.`)) return;
+  $("#genMissing").disabled = true;
+  try { for (const pg of todo) if (B.pages.includes(pg) && !pg.image) await genPage(pg, 1); }
+  finally { $("#genMissing").disabled = false; }
+  if (!B.cover.image) toast("Pages done. Now render the cover (first card).");
+};
+$("#upAll").onclick = async () => {
+  const items = [["cover", B.cover, coverAspect()], ...B.pages.map(p => [p.id, p, pageAspect()])].filter(([, it]) => it.image);
+  const small = [];
+  for (const x of items) { const [w, h] = await imageSize(img(x[1].image)); if (Math.sqrt(w * h) < 2000) small.push(x); }
+  if (!small.length) return toast("All pictures are already print size.");
+  if (!confirm(`Upscale ${small.length} picture(s)? About ${Math.ceil(small.length * 2.2)} min. The originals stay in each page's variant list.`)) return;
+  $("#upAll").disabled = true;
+  try { for (const [key, it, a] of small) await upscale(it, key, a); } finally { $("#upAll").disabled = false; }
+};
+
+/* ---------- story draft ---------- */
+/* Drafting runs on the server in three passes (plan, write, edit) and takes minutes; the buttons show the stage. */
+async function storyTask(body, btn) {
+  const label = btn.textContent;
+  $("#draftBtn").disabled = $("#reviseBtn").disabled = true;
+  try {
+    const { task } = await api("POST", `/api/books/${B.id}/draft`, { ...body, model: B.story_model, language: B.language, audience: B.audience,
+      text_length: B.text_length, notes: B.story_notes, premise: B.premise });
+    while (true) {
+      await new Promise(r => setTimeout(r, 2000));
+      const t = await api("GET", `/api/books/draft/${task}`);
+      if (t.done) { if (t.error) throw new Error(t.error); return t.result; }
+      btn.textContent = `${t.stage} ${t.seconds}s`;
+    }
+  } finally { $("#draftBtn").disabled = $("#reviseBtn").disabled = false; btn.textContent = label; }
+}
+function renderOutline() {
+  const o = B.outline, c = B.critique || [];
+  $("#outlineBox").hidden = !o && !c.length;
+  if (!o && !c.length) return;
+  const row = (k, v) => v ? `<p><b>${k}:</b> ${esc(v)}</p>` : "";
+  $("#outline").innerHTML = (o ? row("Logline", o.logline) + row("Heart", o.heart)
+      + (o.hero ? row("Hero", `${o.hero.name}: wants ${o.hero.want}; flaw: ${o.hero.flaw}; quirk: ${o.hero.quirk}`) : "")
+      + row("Refrain", o.refrain)
+      + (o.beats?.length ? `<p><b>Beats:</b></p><ol>${o.beats.map(b => `<li>${esc(b.event)}${b.turn ? ` <i>→ ${esc(b.turn)}</i>` : ""}</li>`).join("")}</ol>` : "") : "")
+    + (c.length ? `<p><b>Editor fixed:</b></p><ul>${c.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : "");
+}
+$("#draftBtn").onclick = async () => {
+  if (!B.premise.trim()) return toast("Write a story idea first.", true);
+  const hasContent = B.pages.some(p => p.text || p.scene || p.image);
+  if (hasContent && !confirm("Replace the current page texts and descriptions with a new draft? Pictures already rendered are kept on their pages.")) return;
+  try {
+    const d = await storyTask({ mode: "draft", pages: B.page_count, style: B.style,
+      characters: B.characters.filter(c => c.name).map(c => ({ name: c.name, look: c.look })) }, $("#draftBtn"));
+    if (d.title && (!B.title || B.title === "Untitled book" || confirm(`Use the suggested title “${d.title}”?`))) { B.title = d.title; B.subtitle = d.subtitle || B.subtitle; }
+    for (const c of d.characters) {
+      const old = B.characters.find(x => x.name.trim().toLowerCase() === c.name.trim().toLowerCase());
+      if (old) old.look = old.look || c.look; else B.characters.push({ id: uid(), name: c.name, look: c.look, anchor: null, candidates: [] });
+    }
+    d.pages.forEach((p, i) => {
+      const pg = B.pages[i];
+      if (pg) { pg.text = p.text; pg.scene = p.scene; pg.cast = null; }
+      else B.pages.push({ id: uid(), text: p.text, scene: p.scene, chain: true, image: null, candidates: [] });
+    });
+    if (B.pages.length > d.pages.length && confirm(`The draft has ${d.pages.length} pages; remove the ${B.pages.length - d.pages.length} extra page(s) at the end?`)) B.pages.length = d.pages.length;
+    B.cover.scene = d.cover_scene || B.cover.scene; B.cover.blurb = d.blurb || B.cover.blurb;
+    B.outline = d.outline; B.critique = d.critique;
+    changed(); render(); renderOutline(); $("#outlineBox").open = true;
+    toast(`Story ready in ${Math.round(d.seconds / 60)} min. Read it through, then create a reference picture for each character.`);
+  } catch (e) { toast(e.message, true); }
+};
+$("#reviseBtn").onclick = async () => {
+  const texts = B.pages.map(p => p.text || "");
+  if (!texts.some(t => t.trim())) return toast("There is no page text to revise yet.", true);
+  if (!confirm("Line-edit all page texts? The current texts are replaced (pictures and scenes stay).")) return;
+  try {
+    const d = await storyTask({ mode: "revise", texts, outline: B.outline }, $("#reviseBtn"));
+    d.pages.forEach((p, i) => { if (B.pages[i]) B.pages[i].text = p.text; });
+    B.critique = d.critique;
+    changed(); render(); renderOutline(); $("#outlineBox").open = true;
+    toast(`Text revised in ${d.seconds}s.`);
+  } catch (e) { toast(e.message, true); }
+};
+
+/* ---------- export ---------- */
+$("#exportBtn").onclick = async () => {
+  const btn = $("#exportBtn"); btn.disabled = true; btn.textContent = "Building PDFs…";
+  try {
+    await api("PUT", `/api/projects/book/${B.id}`, B);
+    const r = await api("POST", `/api/books/${B.id}/export`);
+    const [w, h] = trim();
+    $("#exportBody").innerHTML = `
+      <div class="report">
+        <div>Pages<b>${r.pages}</b></div><div>Trim<b>${r.trim}</b></div><div>Interior page incl. bleed<b>${r.interior_size}</b></div>
+        <div>Spine<b>${r.spine_in} in</b></div><div>Cover incl. bleed<b>${r.cover_size}</b></div><div>Spine text<b>${r.spine_text ? "yes" : "no (under 79 pages)"}</b></div>
+      </div>
+      ${r.warnings.length ? `<ul class="warn">${r.warnings.map(w => `<li>${esc(w)}</li>`).join("")}</ul>` : `<p class="hint" style="color:var(--accent)">No problems found.</p>`}
+      <div class="row" style="justify-content:flex-start;flex-wrap:wrap"><a class="btn primary" style="flex:none" href="${r.files.interior}" target="_blank" download="interior.pdf">Interior PDF</a>
+        <a class="btn primary" style="flex:none" href="${r.files.cover}" target="_blank" download="cover.pdf">Cover PDF</a></div>
+      ${r.files.cover_preview ? `<img src="${r.files.cover_preview}" style="width:100%;border-radius:4px;border:1px solid var(--line);cursor:zoom-in" onclick="lightbox(this.src)" alt="">` : ""}
+      <div class="previews">${r.previews.map(p => `<img src="${p}" loading="lazy" onclick="lightbox(this.src)" alt="">`).join("")}</div>
+      <details class="more"><summary>Uploading to Amazon KDP</summary><div><ol class="checklist">
+        <li>KDP → Create → <b>Paperback</b>. Enter title, author and description (the blurb works).</li>
+        <li>Print options: <b>${esc(OPT.paper[B.paper])}</b> ink and paper, trim size <b>${w} × ${h} in</b>, bleed: <b>Bleed (PDF only)</b>, cover finish matte or glossy.</li>
+        <li>Upload <b>interior.pdf</b> as the manuscript and <b>cover.pdf</b> under “Upload a cover you already have”.</li>
+        <li>KDP asks whether the book contains AI-generated content: answer <b>yes, images</b> (and text, if the AI draft text stayed).</li>
+        <li>Check every page in the KDP Print Previewer, then order a proof copy before publishing.</li>
+        <li>Licence: selling these pictures needs you (with affiliates) under US$5M yearly revenue under the FLUX Kommunity License, plus a human check of every picture before publishing.</li>
+      </ol></div></details>`;
+    $("#exportModal").classList.add("open");
+  } catch (e) { toast(e.message, true); }
+  finally { btn.disabled = false; btn.textContent = "Export print PDFs"; }
+};
+
+/* ---------- init ---------- */
+(async () => {
+  OPT = await api("GET", "/api/books/options");
+  $("#trimSel").innerHTML = Object.entries(OPT.trims).map(([k, t]) => `<option value="${k}">${t.w} × ${t.h} in</option>`).join("");
+  $("#paperSel").innerHTML = Object.entries(OPT.paper).map(([k, v]) => `<option value="${k}">${v}</option>`).join("");
+  $("#layoutSel").innerHTML = Object.entries(OPT.layouts).map(([k, v]) => `<option value="${k}">${v}</option>`).join("");
+  await loadList();
+  let last = null; try { last = localStorage.getItem("book.last"); } catch {}
+  await openBook(LIST.find(b => b.id === last)?.id || LIST[0]?.id);
+  pollStatus();
+})();
+</script>
+</body>
+</html>

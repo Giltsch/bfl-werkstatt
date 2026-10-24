@@ -1,0 +1,24 @@
+{
+ "user": {
+  "id": "peter",
+  "name": "Peter",
+  "color": "#59a7ff"
+ },
+ "device": "8f3a1c2e4b5d6f70",
+ "auth": {
+  "required": false,
+  "ok": true
+ },
+ "team": [
+  {
+   "id": "peter",
+   "name": "Peter",
+   "color": "#59a7ff"
+  },
+  {
+   "id": "ben",
+   "name": "Ben",
+   "color": "#7cc4a0"
+  }
+ ]
+}

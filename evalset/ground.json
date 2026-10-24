@@ -1,0 +1,1231 @@
+{
+ "version": 1,
+ "about": "Grounding cases for ground.py on FLUX-generated rooms (no customer photos). expect = region where a correct point lies, grid 0-1000 [top, left, bottom, right]; for objects it is the object's tight frame. surface = what the place phrase refers to (informational). Written by hand from the images, 2026-10-18.",
+ "rooms": {
+  "20261018-193206-1992693316": {
+   "image": "evalset/rooms/20261018-193206-1992693316.png",
+   "geometry": "evalset/rooms/20261018-193206-1992693316.geometry.json",
+   "type": "Wohnzimmer",
+   "size": [
+    1536,
+    1024
+   ],
+   "seed": 1992693316,
+   "generated_for": "demo (FLUX, 2026-10-18)",
+   "prompt": "Amateur smartphone photo of a real German living room in an older apartment, shot standing at eye level from the doorway, slightly wide angle. Bright white walls, light oak herringbone parquet floor, a large window with white frame on the left with a white radiator below it, sheer curtain. Against the back wall stands a worn low beige 1990s TV cabinet, a potted plant in the corner, a grey fabric sofa partly visible on the right edge. Plenty of empty wall space on the back wall. Natural overcast daylight, realistic, slightly imperfect, no people, no text."
+  },
+  "20261018-193256-1992693317": {
+   "image": "evalset/rooms/20261018-193256-1992693317.png",
+   "geometry": "evalset/rooms/20261018-193256-1992693317.geometry.json",
+   "type": "Wohnzimmer",
+   "size": [
+    1536,
+    1024
+   ],
+   "seed": 1992693317,
+   "generated_for": "demo (FLUX, 2026-10-18)",
+   "prompt": "Amateur smartphone photo of a real German living room in an older apartment, shot standing at eye level from the doorway, slightly wide angle. Bright white walls, light oak herringbone parquet floor, a large window with white frame on the left with a white radiator below it, sheer curtain. Against the back wall stands a worn low beige 1990s TV cabinet, a potted plant in the corner, a grey fabric sofa partly visible on the right edge. Plenty of empty wall space on the back wall. Natural overcast daylight, realistic, slightly imperfect, no people, no text."
+  },
+  "20261018-193346-1992693318": {
+   "image": "evalset/rooms/20261018-193346-1992693318.png",
+   "geometry": "evalset/rooms/20261018-193346-1992693318.geometry.json",
+   "type": "Wohnzimmer",
+   "size": [
+    1536,
+    1024
+   ],
+   "seed": 1992693318,
+   "generated_for": "demo (FLUX, 2026-10-18)",
+   "prompt": "Amateur smartphone photo of a real German living room in an older apartment, shot standing at eye level from the doorway, slightly wide angle. Bright white walls, light oak herringbone parquet floor, a large window with white frame on the left with a white radiator below it, sheer curtain. Against the back wall stands a worn low beige 1990s TV cabinet, a potted plant in the corner, a grey fabric sofa partly visible on the right edge. Plenty of empty wall space on the back wall. Natural overcast daylight, realistic, slightly imperfect, no people, no text."
+  },
+  "20261018-193435-1992693319": {
+   "image": "evalset/rooms/20261018-193435-1992693319.png",
+   "geometry": "evalset/rooms/20261018-193435-1992693319.geometry.json",
+   "type": "Wohnzimmer",
+   "size": [
+    1536,
+    1024
+   ],
+   "seed": 1992693319,
+   "generated_for": "demo (FLUX, 2026-10-18)",
+   "prompt": "Amateur smartphone photo of a real German living room in an older apartment, shot standing at eye level from the doorway, slightly wide angle. Bright white walls, light oak herringbone parquet floor, a large window with white frame on the left with a white radiator below it, sheer curtain. Against the back wall stands a worn low beige 1990s TV cabinet, a potted plant in the corner, a grey fabric sofa partly visible on the right edge. Plenty of empty wall space on the back wall. Natural overcast daylight, realistic, slightly imperfect, no people, no text."
+  },
+  "20261018-193230-516092525": {
+   "image": "evalset/rooms/20261018-193230-516092525.png",
+   "geometry": "evalset/rooms/20261018-193230-516092525.geometry.json",
+   "type": "Essbereich Altbau",
+   "size": [
+    1536,
+    1024
+   ],
+   "seed": 516092525,
+   "generated_for": "demo (FLUX, 2026-10-18)",
+   "prompt": "Amateur smartphone photo of an empty-ish dining area in a renovated German old-building flat, eye level, slight wide angle. High white walls with stucco ceiling edge, wide pine floorboards, two tall windows on the right, a white radiator under the window. In the centre an old small round pine table with two mismatched chairs. Back wall mostly empty, a light switch and a socket visible. Soft daylight, realistic, slightly imperfect, no people, no text."
+  },
+  "20261018-193321-516092526": {
+   "image": "evalset/rooms/20261018-193321-516092526.png",
+   "geometry": "evalset/rooms/20261018-193321-516092526.geometry.json",
+   "type": "Essbereich Altbau",
+   "size": [
+    1536,
+    1024
+   ],
+   "seed": 516092526,
+   "generated_for": "demo (FLUX, 2026-10-18)",
+   "prompt": "Amateur smartphone photo of an empty-ish dining area in a renovated German old-building flat, eye level, slight wide angle. High white walls with stucco ceiling edge, wide pine floorboards, two tall windows on the right, a white radiator under the window. In the centre an old small round pine table with two mismatched chairs. Back wall mostly empty, a light switch and a socket visible. Soft daylight, realistic, slightly imperfect, no people, no text."
+  },
+  "20261018-193410-516092527": {
+   "image": "evalset/rooms/20261018-193410-516092527.png",
+   "geometry": "evalset/rooms/20261018-193410-516092527.geometry.json",
+   "type": "Essbereich Altbau",
+   "size": [
+    1536,
+    1024
+   ],
+   "seed": 516092527,
+   "generated_for": "demo (FLUX, 2026-10-18)",
+   "prompt": "Amateur smartphone photo of an empty-ish dining area in a renovated German old-building flat, eye level, slight wide angle. High white walls with stucco ceiling edge, wide pine floorboards, two tall windows on the right, a white radiator under the window. In the centre an old small round pine table with two mismatched chairs. Back wall mostly empty, a light switch and a socket visible. Soft daylight, realistic, slightly imperfect, no people, no text."
+  },
+  "20261018-193500-516092528": {
+   "image": "evalset/rooms/20261018-193500-516092528.png",
+   "geometry": "evalset/rooms/20261018-193500-516092528.geometry.json",
+   "type": "Essbereich Altbau",
+   "size": [
+    1536,
+    1024
+   ],
+   "seed": 516092528,
+   "generated_for": "demo (FLUX, 2026-10-18)",
+   "prompt": "Amateur smartphone photo of an empty-ish dining area in a renovated German old-building flat, eye level, slight wide angle. High white walls with stucco ceiling edge, wide pine floorboards, two tall windows on the right, a white radiator under the window. In the centre an old small round pine table with two mismatched chairs. Back wall mostly empty, a light switch and a socket visible. Soft daylight, realistic, slightly imperfect, no people, no text."
+  },
+  "20261018-211134-2056750832": {
+   "image": "evalset/rooms/20261018-211134-2056750832.png",
+   "geometry": "evalset/rooms/20261018-211134-2056750832.geometry.json",
+   "type": "Küche",
+   "size": [
+    1536,
+    1024
+   ],
+   "seed": 2056750832,
+   "generated_for": "evalset (FLUX, 2026-10-18)",
+   "prompt": "Amateur smartphone photo of a real German kitchen in a 1980s apartment, eye level, slightly wide angle. Old white kitchen cabinets with a worktop along the left wall, a fridge at the end, a bare light grey back wall with a window on the right side, grey tile floor, a small round table with two chairs in the middle. Overcast daylight, realistic, slightly imperfect, no people, no text."
+  },
+  "20261018-211158-435550560": {
+   "image": "evalset/rooms/20261018-211158-435550560.png",
+   "geometry": "evalset/rooms/20261018-211158-435550560.geometry.json",
+   "type": "Schlafzimmer mit Dachschräge",
+   "size": [
+    1536,
+    1024
+   ],
+   "seed": 435550560,
+   "generated_for": "evalset (FLUX, 2026-10-18)",
+   "prompt": "Amateur smartphone photo of a real German attic bedroom (Dachgeschoss) with a sloped ceiling (Dachschraege) on the right side coming down to a low knee wall, a roof window in the slope, white walls, light laminate floor, a double bed against the left wall, an old chest of drawers under the slope. Eye level, slight wide angle, daylight, realistic, no people, no text."
+  },
+  "20261018-211222-135330405": {
+   "image": "evalset/rooms/20261018-211222-135330405.png",
+   "geometry": "evalset/rooms/20261018-211222-135330405.geometry.json",
+   "type": "Flur",
+   "size": [
+    1536,
+    1024
+   ],
+   "seed": 135330405,
+   "generated_for": "evalset (FLUX, 2026-10-18)",
+   "prompt": "Amateur smartphone photo of a narrow German apartment hallway (Flur), eye level from the entrance door, white walls, a dark wood laminate floor, a white interior door at the far end and another door on the right wall, a small shoe rack and a coat hook on the left wall, empty wall space on the left. Ceiling lamp light, realistic, slightly imperfect, no people, no text."
+  },
+  "20261018-211254-1354562784": {
+   "image": "evalset/rooms/20261018-211254-1354562784.png",
+   "geometry": "evalset/rooms/20261018-211254-1354562784.geometry.json",
+   "type": "Bad",
+   "size": [
+    1536,
+    1024
+   ],
+   "seed": 1354562784,
+   "generated_for": "evalset (FLUX, 2026-10-18)",
+   "prompt": "Amateur smartphone photo of a real German bathroom, eye level, slight wide angle, white tiles halfway up the wall and painted wall above, grey floor tiles, a white washbasin with a mirror on the back wall, a toilet in the right corner, a bathtub along the left wall, a small window high on the back wall. Realistic, slightly imperfect, no people, no text."
+  },
+  "20261018-211325-958375101": {
+   "image": "evalset/rooms/20261018-211325-958375101.png",
+   "geometry": "evalset/rooms/20261018-211325-958375101.geometry.json",
+   "type": "Wohnzimmer (fast leer)",
+   "size": [
+    1536,
+    1024
+   ],
+   "seed": 958375101,
+   "generated_for": "evalset (FLUX, 2026-10-18)",
+   "prompt": "Amateur smartphone photo of an almost empty German living room after moving in, eye level, slight wide angle, white walls, warm oak floorboards, a large window on the right wall with a radiator below, a door in the left wall near the corner, a single armchair in the left corner, moving boxes stacked on the floor near the back wall. Daylight, realistic, no people, no text."
+  },
+  "20261018-211422-149525771": {
+   "image": "evalset/rooms/20261018-211422-149525771.png",
+   "geometry": "evalset/rooms/20261018-211422-149525771.geometry.json",
+   "type": "Kinderzimmer",
+   "size": [
+    1536,
+    1024
+   ],
+   "seed": 149525771,
+   "generated_for": "evalset (FLUX, 2026-10-18)",
+   "prompt": "Amateur smartphone photo of a German child's bedroom, eye level, slight wide angle, light green back wall, white side walls, beige carpet floor, a single bed under a window on the back wall, a small desk with a chair in the right corner, toys on the floor, empty wall space on the left. Daylight, realistic, slightly imperfect, no people, no text."
+  }
+ },
+ "cases": [
+  {
+   "id": "g01",
+   "room": "20261018-193206-1992693316",
+   "kind": "object",
+   "phrase": "der alte Fernsehschrank",
+   "expect": [
+    503,
+    381,
+    630,
+    535
+   ]
+  },
+  {
+   "id": "g02",
+   "room": "20261018-193206-1992693316",
+   "kind": "object",
+   "phrase": "das graue Sofa",
+   "expect": [
+    495,
+    744,
+    957,
+    918
+   ]
+  },
+  {
+   "id": "g03",
+   "room": "20261018-193206-1992693316",
+   "kind": "object",
+   "phrase": "die Pflanze in der Ecke",
+   "expect": [
+    402,
+    312,
+    604,
+    396
+   ]
+  },
+  {
+   "id": "g04",
+   "room": "20261018-193206-1992693316",
+   "kind": "object",
+   "phrase": "der Heizkörper unter dem Fenster",
+   "expect": [
+    474,
+    126,
+    664,
+    262
+   ]
+  },
+  {
+   "id": "g05",
+   "room": "20261018-193206-1992693316",
+   "kind": "place",
+   "phrase": "rechts neben dem Fernsehschrank an der Rückwand",
+   "expect": [
+    195,
+    539,
+    684,
+    742
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g06",
+   "room": "20261018-193206-1992693316",
+   "kind": "place",
+   "phrase": "unter dem Fenster",
+   "expect": [
+    430,
+    65,
+    742,
+    306
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g07",
+   "room": "20261018-193206-1992693316",
+   "kind": "place",
+   "phrase": "Mitte des Raums",
+   "expect": [
+    664,
+    293,
+    898,
+    716
+   ],
+   "surface": "floor"
+  },
+  {
+   "id": "g08",
+   "room": "20261018-193206-1992693316",
+   "kind": "place",
+   "phrase": "in der hinteren rechten Ecke",
+   "expect": [
+    371,
+    781,
+    684,
+    924
+   ]
+  },
+  {
+   "id": "g09",
+   "room": "20261018-193230-516092525",
+   "kind": "object",
+   "phrase": "der runde Tisch",
+   "expect": [
+    571,
+    365,
+    876,
+    550
+   ]
+  },
+  {
+   "id": "g10",
+   "room": "20261018-193230-516092525",
+   "kind": "object",
+   "phrase": "der linke Stuhl",
+   "expect": [
+    571,
+    298,
+    859,
+    431
+   ]
+  },
+  {
+   "id": "g11",
+   "room": "20261018-193230-516092525",
+   "kind": "object",
+   "phrase": "die Steckdosen an der linken Wand",
+   "expect": [
+    649,
+    104,
+    688,
+    156
+   ]
+  },
+  {
+   "id": "g12",
+   "room": "20261018-193230-516092525",
+   "kind": "place",
+   "phrase": "zwischen den beiden Fenstern",
+   "expect": [
+    117,
+    758,
+    742,
+    882
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g13",
+   "room": "20261018-193230-516092525",
+   "kind": "place",
+   "phrase": "an der Rückwand links",
+   "expect": [
+    146,
+    26,
+    762,
+    293
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g14",
+   "room": "20261018-193230-516092525",
+   "kind": "place",
+   "phrase": "unter dem rechten Fenster",
+   "expect": [
+    547,
+    853,
+    771,
+    1000
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g15",
+   "room": "20261018-193256-1992693317",
+   "kind": "object",
+   "phrase": "die alte Kommode",
+   "expect": [
+    493,
+    464,
+    686,
+    708
+   ]
+  },
+  {
+   "id": "g16",
+   "room": "20261018-193256-1992693317",
+   "kind": "object",
+   "phrase": "die Zimmerpflanze",
+   "expect": [
+    340,
+    368,
+    617,
+    482
+   ]
+  },
+  {
+   "id": "g17",
+   "room": "20261018-193256-1992693317",
+   "kind": "object",
+   "phrase": "das Sofa",
+   "expect": [
+    527,
+    687,
+    977,
+    887
+   ]
+  },
+  {
+   "id": "g18",
+   "room": "20261018-193256-1992693317",
+   "kind": "place",
+   "phrase": "wo die alte Kommode steht",
+   "expect": [
+    469,
+    456,
+    703,
+    716
+   ]
+  },
+  {
+   "id": "g19",
+   "room": "20261018-193256-1992693317",
+   "kind": "place",
+   "phrase": "rechts neben der Kommode an der Wand",
+   "expect": [
+    146,
+    710,
+    674,
+    885
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g20",
+   "room": "20261018-193256-1992693317",
+   "kind": "place",
+   "phrase": "unter dem Fenster",
+   "expect": [
+    469,
+    111,
+    732,
+    319
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g21",
+   "room": "20261018-193321-516092526",
+   "kind": "object",
+   "phrase": "der Tisch",
+   "expect": [
+    581,
+    329,
+    923,
+    546
+   ]
+  },
+  {
+   "id": "g22",
+   "room": "20261018-193321-516092526",
+   "kind": "object",
+   "phrase": "der rechte Stuhl",
+   "expect": [
+    574,
+    493,
+    881,
+    605
+   ]
+  },
+  {
+   "id": "g23",
+   "room": "20261018-193321-516092526",
+   "kind": "object",
+   "phrase": "der Heizkörper",
+   "expect": [
+    594,
+    814,
+    832,
+    980
+   ]
+  },
+  {
+   "id": "g24",
+   "room": "20261018-193321-516092526",
+   "kind": "place",
+   "phrase": "zwischen den Fenstern",
+   "expect": [
+    117,
+    716,
+    830,
+    824
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g25",
+   "room": "20261018-193321-516092526",
+   "kind": "place",
+   "phrase": "an der Rückwand links vom Tisch",
+   "expect": [
+    98,
+    0,
+    791,
+    293
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g26",
+   "room": "20261018-193321-516092526",
+   "kind": "place",
+   "phrase": "in der hinteren Ecke",
+   "expect": [
+    98,
+    508,
+    703,
+    618
+   ]
+  },
+  {
+   "id": "g27",
+   "room": "20261018-193346-1992693318",
+   "kind": "object",
+   "phrase": "der Schrank an der Rückwand",
+   "expect": [
+    488,
+    422,
+    672,
+    665
+   ]
+  },
+  {
+   "id": "g28",
+   "room": "20261018-193346-1992693318",
+   "kind": "object",
+   "phrase": "die Pflanzen auf der Fensterbank",
+   "expect": [
+    415,
+    228,
+    518,
+    294
+   ]
+  },
+  {
+   "id": "g29",
+   "room": "20261018-193346-1992693318",
+   "kind": "object",
+   "phrase": "die große Pflanze im Topf",
+   "expect": [
+    391,
+    348,
+    660,
+    426
+   ]
+  },
+  {
+   "id": "g30",
+   "room": "20261018-193346-1992693318",
+   "kind": "place",
+   "phrase": "rechts neben dem Sideboard",
+   "expect": [
+    137,
+    667,
+    674,
+    807
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g31",
+   "room": "20261018-193346-1992693318",
+   "kind": "place",
+   "phrase": "Mitte des Raums",
+   "expect": [
+    703,
+    293,
+    928,
+    684
+   ],
+   "surface": "floor"
+  },
+  {
+   "id": "g32",
+   "room": "20261018-193410-516092527",
+   "kind": "object",
+   "phrase": "die Sitzgruppe",
+   "expect": [
+    562,
+    335,
+    991,
+    622
+   ]
+  },
+  {
+   "id": "g33",
+   "room": "20261018-193410-516092527",
+   "kind": "object",
+   "phrase": "der Heizkörper unter dem rechten Fenster",
+   "expect": [
+    601,
+    771,
+    799,
+    970
+   ]
+  },
+  {
+   "id": "g34",
+   "room": "20261018-193410-516092527",
+   "kind": "place",
+   "phrase": "zwischen den beiden Fenstern",
+   "expect": [
+    146,
+    680,
+    840,
+    791
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g35",
+   "room": "20261018-193410-516092527",
+   "kind": "place",
+   "phrase": "an der Rückwand neben dem Lichtschalter",
+   "expect": [
+    342,
+    163,
+    762,
+    326
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g36",
+   "room": "20261018-193410-516092527",
+   "kind": "place",
+   "phrase": "unter dem linken Fenster",
+   "expect": [
+    547,
+    576,
+    781,
+    690
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g37",
+   "room": "20261018-193435-1992693319",
+   "kind": "object",
+   "phrase": "der Fernseher",
+   "expect": [
+    405,
+    500,
+    510,
+    589
+   ]
+  },
+  {
+   "id": "g38",
+   "room": "20261018-193435-1992693319",
+   "kind": "object",
+   "phrase": "das Sofa rechts",
+   "expect": [
+    479,
+    770,
+    977,
+    1000
+   ]
+  },
+  {
+   "id": "g39",
+   "room": "20261018-193435-1992693319",
+   "kind": "place",
+   "phrase": "rechts neben dem Fernseher an der Wand",
+   "expect": [
+    117,
+    622,
+    625,
+    840
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g40",
+   "room": "20261018-193435-1992693319",
+   "kind": "place",
+   "phrase": "wo der alte Fernsehschrank steht",
+   "expect": [
+    469,
+    456,
+    645,
+    625
+   ]
+  },
+  {
+   "id": "g41",
+   "room": "20261018-193435-1992693319",
+   "kind": "place",
+   "phrase": "unter dem Fenster",
+   "expect": [
+    469,
+    130,
+    703,
+    391
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g42",
+   "room": "20261018-193500-516092528",
+   "kind": "object",
+   "phrase": "der Tisch",
+   "expect": [
+    513,
+    413,
+    835,
+    625
+   ]
+  },
+  {
+   "id": "g43",
+   "room": "20261018-193500-516092528",
+   "kind": "object",
+   "phrase": "der linke Stuhl",
+   "expect": [
+    516,
+    361,
+    840,
+    511
+   ]
+  },
+  {
+   "id": "g44",
+   "room": "20261018-193500-516092528",
+   "kind": "object",
+   "phrase": "die Steckdose an der Rückwand",
+   "expect": [
+    559,
+    262,
+    584,
+    281
+   ]
+  },
+  {
+   "id": "g45",
+   "room": "20261018-193500-516092528",
+   "kind": "place",
+   "phrase": "zwischen den Fenstern",
+   "expect": [
+    98,
+    723,
+    684,
+    837
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g46",
+   "room": "20261018-193500-516092528",
+   "kind": "place",
+   "phrase": "an der Rückwand links",
+   "expect": [
+    59,
+    65,
+    703,
+    352
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g47",
+   "room": "20261018-193500-516092528",
+   "kind": "place",
+   "phrase": "in der linken hinteren Ecke",
+   "expect": [
+    39,
+    33,
+    713,
+    130
+   ]
+  },
+  {
+   "id": "g48",
+   "room": "20261018-211134-2056750832",
+   "kind": "object",
+   "phrase": "der Kühlschrank",
+   "expect": [
+    291,
+    286,
+    812,
+    391
+   ]
+  },
+  {
+   "id": "g49",
+   "room": "20261018-211134-2056750832",
+   "kind": "object",
+   "phrase": "der runde Tisch",
+   "expect": [
+    574,
+    557,
+    845,
+    724
+   ]
+  },
+  {
+   "id": "g50",
+   "room": "20261018-211134-2056750832",
+   "kind": "object",
+   "phrase": "der Heizkörper",
+   "expect": [
+    604,
+    833,
+    913,
+    919
+   ]
+  },
+  {
+   "id": "g51",
+   "room": "20261018-211134-2056750832",
+   "kind": "place",
+   "phrase": "an der freien Rückwand",
+   "expect": [
+    142,
+    391,
+    732,
+    775
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g52",
+   "room": "20261018-211134-2056750832",
+   "kind": "place",
+   "phrase": "unter dem Fenster",
+   "expect": [
+    566,
+    814,
+    928,
+    964
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g53",
+   "room": "20261018-211134-2056750832",
+   "kind": "place",
+   "phrase": "rechts neben dem Kühlschrank",
+   "expect": [
+    146,
+    391,
+    762,
+    501
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g54",
+   "room": "20261018-211158-435550560",
+   "kind": "object",
+   "phrase": "das Bett",
+   "expect": [
+    488,
+    0,
+    871,
+    578
+   ]
+  },
+  {
+   "id": "g55",
+   "room": "20261018-211158-435550560",
+   "kind": "object",
+   "phrase": "die alte Kommode unter der Schräge",
+   "expect": [
+    477,
+    618,
+    728,
+    871
+   ]
+  },
+  {
+   "id": "g56",
+   "room": "20261018-211158-435550560",
+   "kind": "object",
+   "phrase": "das Dachfenster",
+   "expect": [
+    54,
+    716,
+    400,
+    1000
+   ]
+  },
+  {
+   "id": "g57",
+   "room": "20261018-211158-435550560",
+   "kind": "place",
+   "phrase": "unter der Dachschräge",
+   "expect": [
+    410,
+    586,
+    762,
+    1000
+   ]
+  },
+  {
+   "id": "g58",
+   "room": "20261018-211158-435550560",
+   "kind": "place",
+   "phrase": "an der Rückwand",
+   "expect": [
+    49,
+    46,
+    645,
+    684
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g59",
+   "room": "20261018-211158-435550560",
+   "kind": "place",
+   "phrase": "in der Mitte des Zimmers",
+   "expect": [
+    732,
+    326,
+    977,
+    846
+   ],
+   "surface": "floor"
+  },
+  {
+   "id": "g60",
+   "room": "20261018-211222-135330405",
+   "kind": "object",
+   "phrase": "das Schuhregal",
+   "expect": [
+    672,
+    369,
+    809,
+    448
+   ]
+  },
+  {
+   "id": "g61",
+   "room": "20261018-211222-135330405",
+   "kind": "object",
+   "phrase": "die Tür am Ende des Flurs",
+   "expect": [
+    271,
+    458,
+    667,
+    574
+   ]
+  },
+  {
+   "id": "g62",
+   "room": "20261018-211222-135330405",
+   "kind": "object",
+   "phrase": "die Garderobe",
+   "expect": [
+    327,
+    413,
+    376,
+    456
+   ]
+  },
+  {
+   "id": "g63",
+   "room": "20261018-211222-135330405",
+   "kind": "place",
+   "phrase": "an der linken Wand",
+   "expect": [
+    49,
+    130,
+    977,
+    417
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g64",
+   "room": "20261018-211222-135330405",
+   "kind": "place",
+   "phrase": "an der rechten Wand vor der Tür",
+   "expect": [
+    49,
+    651,
+    977,
+    846
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g65",
+   "room": "20261018-211222-135330405",
+   "kind": "place",
+   "phrase": "am Ende des Flurs",
+   "expect": [
+    176,
+    417,
+    684,
+    586
+   ]
+  },
+  {
+   "id": "g66",
+   "room": "20261018-211254-1354562784",
+   "kind": "object",
+   "phrase": "die Badewanne",
+   "expect": [
+    559,
+    65,
+    977,
+    470
+   ]
+  },
+  {
+   "id": "g67",
+   "room": "20261018-211254-1354562784",
+   "kind": "object",
+   "phrase": "das Waschbecken",
+   "expect": [
+    498,
+    467,
+    649,
+    663
+   ]
+  },
+  {
+   "id": "g68",
+   "room": "20261018-211254-1354562784",
+   "kind": "object",
+   "phrase": "die Toilette",
+   "expect": [
+    545,
+    654,
+    933,
+    902
+   ]
+  },
+  {
+   "id": "g69",
+   "room": "20261018-211254-1354562784",
+   "kind": "object",
+   "phrase": "der Spiegel",
+   "expect": [
+    139,
+    488,
+    415,
+    671
+   ]
+  },
+  {
+   "id": "g70",
+   "room": "20261018-211254-1354562784",
+   "kind": "place",
+   "phrase": "über dem Waschbecken",
+   "expect": [
+    98,
+    469,
+    508,
+    671
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g71",
+   "room": "20261018-211254-1354562784",
+   "kind": "place",
+   "phrase": "zwischen Waschbecken und Toilette",
+   "expect": [
+    293,
+    651,
+    811,
+    820
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g72",
+   "room": "20261018-211325-958375101",
+   "kind": "object",
+   "phrase": "der Sessel",
+   "expect": [
+    505,
+    20,
+    815,
+    277
+   ]
+  },
+  {
+   "id": "g73",
+   "room": "20261018-211325-958375101",
+   "kind": "object",
+   "phrase": "die Umzugskartons",
+   "expect": [
+    480,
+    436,
+    643,
+    641
+   ]
+  },
+  {
+   "id": "g74",
+   "room": "20261018-211325-958375101",
+   "kind": "object",
+   "phrase": "die Tür",
+   "expect": [
+    236,
+    305,
+    656,
+    420
+   ]
+  },
+  {
+   "id": "g75",
+   "room": "20261018-211325-958375101",
+   "kind": "object",
+   "phrase": "der Heizkörper",
+   "expect": [
+    511,
+    689,
+    646,
+    848
+   ]
+  },
+  {
+   "id": "g76",
+   "room": "20261018-211325-958375101",
+   "kind": "place",
+   "phrase": "zwischen Tür und Fenster",
+   "expect": [
+    146,
+    420,
+    645,
+    684
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g77",
+   "room": "20261018-211325-958375101",
+   "kind": "place",
+   "phrase": "links neben der Tür",
+   "expect": [
+    146,
+    26,
+    664,
+    305
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g78",
+   "room": "20261018-211325-958375101",
+   "kind": "place",
+   "phrase": "unter dem Fenster",
+   "expect": [
+    488,
+    671,
+    684,
+    911
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g79",
+   "room": "20261018-211325-958375101",
+   "kind": "place",
+   "phrase": "Mitte des Raums",
+   "expect": [
+    684,
+    293,
+    928,
+    749
+   ],
+   "surface": "floor"
+  },
+  {
+   "id": "g80",
+   "room": "20261018-211422-149525771",
+   "kind": "object",
+   "phrase": "das Bett",
+   "expect": [
+    449,
+    360,
+    711,
+    726
+   ]
+  },
+  {
+   "id": "g81",
+   "room": "20261018-211422-149525771",
+   "kind": "object",
+   "phrase": "der Schreibtisch",
+   "expect": [
+    483,
+    768,
+    801,
+    944
+   ]
+  },
+  {
+   "id": "g82",
+   "room": "20261018-211422-149525771",
+   "kind": "object",
+   "phrase": "der blaue Stuhl",
+   "expect": [
+    522,
+    745,
+    762,
+    866
+   ]
+  },
+  {
+   "id": "g83",
+   "room": "20261018-211422-149525771",
+   "kind": "place",
+   "phrase": "an der linken Wand",
+   "expect": [
+    49,
+    33,
+    879,
+    391
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g84",
+   "room": "20261018-211422-149525771",
+   "kind": "place",
+   "phrase": "unter dem Fenster",
+   "expect": [
+    430,
+    508,
+    635,
+    716
+   ],
+   "surface": "wall"
+  },
+  {
+   "id": "g85",
+   "room": "20261018-211422-149525771",
+   "kind": "place",
+   "phrase": "an der grünen Wand",
+   "expect": [
+    49,
+    420,
+    635,
+    853
+   ],
+   "surface": "wall"
+  }
+ ]
+}

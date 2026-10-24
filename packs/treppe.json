@@ -1,0 +1,38 @@
+{
+ "id": "treppe",
+ "label": "Treppenbau",
+ "description": "Holztreppen (Wangen-, Faltwerk-, Podesttreppen) mit Geländer, dazu Innentüren und Verkleidungen.",
+ "types": ["treppe", "tuer", "wand", "regal"],
+ "templates": [
+  {"id": "wangentreppe", "label": "Wangentreppe", "type": "treppe", "text": "gerade Wangentreppe, Stufen zwischen zwei Holzwangen, Geländer mit Handlauf"},
+  {"id": "faltwerktreppe", "label": "Faltwerktreppe", "type": "treppe", "text": "Faltwerktreppe, Tritt- und Setzstufen durchgehend gefaltet, Glasgeländer"},
+  {"id": "podesttreppe", "label": "Podesttreppe (L-Form)", "type": "treppe", "text": "viertelgewendelte Treppe mit Podest, L-Form, Geländer mit Holzhandlauf", "w": 100, "h": 280, "d": 350},
+  {"id": "aufgesattelt", "label": "Aufgesattelte Treppe", "type": "treppe", "text": "aufgesattelte Treppe, Stufen liegen auf einem Stahlholm, offen ohne Setzstufen"},
+  {"id": "treppenregal", "label": "Regal unter der Treppe", "type": "regal", "text": "Einbauregal und Schubkästen im Dreieck unter der Treppe", "d": 60}
+ ],
+ "company": {"material": "eiche", "handles": "keine", "plinth": 0, "board": 40},
+ "type_defaults": {
+  "treppe": {"w": 100, "h": 280, "d": 300},
+  "tuer": {"handles": "schwarz"}
+ },
+ "aliases": {
+  "type": {
+   "Treppe": "treppe", "Holztreppe": "treppe", "Stiege": "treppe", "Wangentreppe": "wangentreppe",
+   "Faltwerktreppe": "faltwerktreppe", "Faltwerk": "faltwerktreppe", "Podesttreppe": "podesttreppe",
+   "gewendelte Treppe": "podesttreppe", "L-Treppe": "podesttreppe", "aufgesattelte Treppe": "aufgesattelt",
+   "Innentür": "tuer", "Wandverkleidung": "wand", "Regal unter der Treppe": "treppenregal"
+  },
+  "material": {
+   "Eiche": "eiche", "Eiche natur": "eiche", "Räuchereiche": "eicheraeuchert", "Eiche weiß": "eicheweiss",
+   "Buche": "custom:Buche massiv lackiert", "Esche": "esche", "Nussbaum": "nuss", "Weißlack": "weiss",
+   "weiß lackiert": "weiss", "Ahorn": "custom:Ahorn massiv"
+  },
+  "handles": {"ohne Griff": "keine", "schwarze Drücker": "schwarz", "Messing": "messing"}
+ },
+ "wording": {
+  "notes_de": "Treppenbau: Steigungsverhältnis nach DIN 18065 (2 Steigungen + 1 Auftritt ≈ 63 cm), Geländer ab 90 cm.",
+  "prompt_en": "A carpenter-built wooden staircase with even risers and treads, a continuous handrail and a safe balustrade.",
+  "judge_en": "All steps must have equal height and depth; the staircase connects floor to the upper level; railing continuous."
+ },
+ "quality": "fein"
+}

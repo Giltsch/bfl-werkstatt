@@ -1,0 +1,87 @@
+{
+ "id": "0e1e2e3e4e5e",
+ "version": 3,
+ "rev": 1,
+ "frev_floor": 0,
+ "frev": {},
+ "created": "2026-10-17T16:00:00",
+ "created_by": "peter",
+ "updated": "2026-10-17T16:00:00",
+ "updated_by": "peter",
+ "title": "",
+ "customer": "Familie Neu",
+ "test": false,
+ "status": "anfrage",
+ "ref": "2026-004",
+ "ext_ref": "",
+ "contact": {
+  "phone": "0981 7654",
+  "email": "",
+  "street": "",
+  "zip": "",
+  "city": "Feuchtwangen"
+ },
+ "appointment": null,
+ "internal_notes": "",
+ "archived_at": null,
+ "quality": "entwurf",
+ "res": 1536,
+ "count": 2,
+ "judge": {
+  "enabled": true,
+  "auto_retry": false
+ },
+ "versions": [],
+ "approved": null,
+ "trash": [],
+ "activity": [
+  {
+   "at": "2026-10-15T09:12:00",
+   "by": "peter",
+   "what": "created",
+   "text": "Auftrag angelegt"
+  }
+ ],
+ "thumb": null,
+ "company": {},
+ "setting": "",
+ "room_changes": "",
+ "room": null,
+ "sample": null,
+ "room_size": null,
+ "tidy": true,
+ "protect": true,
+ "guide": false,
+ "removes": [],
+ "geometry": null,
+ "calibration": null,
+ "pieces": [
+  {
+   "id": "n1cccc",
+   "type": null,
+   "text": "",
+   "material": "eiche",
+   "material_custom": "",
+   "handles": "push",
+   "label": "",
+   "material_label": "Eiche natur geölt",
+   "handles_label": "grifflos (Push)",
+   "w": null,
+   "h": null,
+   "d": null,
+   "sketch": null,
+   "render": null,
+   "sample": null,
+   "use_render": false,
+   "where": "",
+   "placement": {
+    "mode": "none",
+    "pose": null,
+    "box": null
+   }
+  }
+ ],
+ "deleted_variants": [],
+ "pending_jobs": [],
+ "variants": []
+}

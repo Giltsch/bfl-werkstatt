@@ -1,0 +1,590 @@
+{
+ "id": "a1b2c3d4e5f6",
+ "version": 3,
+ "rev": 12,
+ "frev_floor": 0,
+ "frev": {},
+ "created": "2026-10-15T09:12:00",
+ "created_by": "peter",
+ "updated": "2026-10-17T16:40:00",
+ "updated_by": "ben",
+ "title": "Esszimmer Sideboard",
+ "customer": "Familie Beispiel",
+ "test": false,
+ "status": "kunde",
+ "ref": "2026-002",
+ "ext_ref": "A-1043",
+ "contact": {
+  "phone": "0981 123456",
+  "email": "beispiel@example.org",
+  "street": "Musterweg 3",
+  "zip": "91522",
+  "city": "Ansbach"
+ },
+ "appointment": {
+  "at": "2026-10-20T09:00",
+  "what": "Präsentation"
+ },
+ "internal_notes": "Kunde möchte eher dunkles Holz. Parkplatz im Hof.",
+ "archived_at": null,
+ "quality": "fein",
+ "res": 1536,
+ "count": 2,
+ "judge": {
+  "enabled": true,
+  "auto_retry": true
+ },
+ "versions": [
+  {
+   "n": 1,
+   "created": "2026-10-16T10:12:00",
+   "by": "peter",
+   "variant_ids": [
+    "va111111",
+    "vb222222"
+   ],
+   "customer_note": "Guten Tag Familie Beispiel,\nanbei unsere Entwürfe.",
+   "status": "aenderung",
+   "token": "tokFixture0000000000000000000001",
+   "expires": "2027-01-14",
+   "viewed_at": "2026-10-16T19:40:11",
+   "response": {
+    "variant_id": "va111111",
+    "action": "aenderung",
+    "name": "<b>Herr X</b>",
+    "comment": "<img src=x onerror=alert(1)>",
+    "at": "2026-10-16T19:44:00",
+    "via": "link"
+   },
+   "dir": "exports/workshop-a1b2c3d4e5f6/v1",
+   "files": {
+    "pdf": "Visualisierung_2026-002_Beispiel_V1.pdf",
+    "zip": "Visualisierung_2026-002_Beispiel_V1.zip",
+    "logo": null,
+    "images": [
+     "01_Vorher.jpg",
+     "02_Entwurf-1_Eiche.jpg",
+     "03_Entwurf-2_Nussbaum.jpg"
+    ]
+   },
+   "snapshot": {
+    "title": "Esszimmer Sideboard",
+    "customer": "Familie Beispiel",
+    "ref": "2026-002",
+    "ext_ref": "A-1043",
+    "date": "2026-10-16",
+    "company": {
+     "name": "Schreinerei Muster",
+     "contact": "",
+     "color": "#2f6b4f"
+    },
+    "variants": [
+     {
+      "n": 1,
+      "id": "va111111",
+      "before": "01_Vorher.jpg",
+      "after": "02_Entwurf-1_Eiche.jpg",
+      "before_label": "Vorher",
+      "after_label": "Nachher",
+      "rows": [
+       {
+        "piece": "Sideboard",
+        "material": "Eiche natur geölt",
+        "handles": "grifflos (Push)",
+        "dims": "180 × 75 × 45 cm"
+       },
+       {
+        "piece": "Regalwand",
+        "material": "Nussbaum",
+        "handles": "Griffleiste",
+        "dims": "120 × 220 × 35 cm"
+       }
+      ]
+     },
+     {
+      "n": 2,
+      "id": "vb222222",
+      "before": "01_Vorher.jpg",
+      "after": "03_Entwurf-2_Nussbaum.jpg",
+      "before_label": "Vorher",
+      "after_label": "Nachher",
+      "rows": [
+       {
+        "piece": "Sideboard",
+        "material": "Eiche natur geölt",
+        "handles": "grifflos (Push)",
+        "dims": "180 × 75 × 45 cm"
+       },
+       {
+        "piece": "Regalwand",
+        "material": "Nussbaum",
+        "handles": "Griffleiste",
+        "dims": "120 × 220 × 35 cm"
+       }
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "approved": null,
+ "trash": [],
+ "activity": [
+  {
+   "at": "2026-10-15T09:12:00",
+   "by": "peter",
+   "what": "created",
+   "text": "Auftrag angelegt"
+  },
+  {
+   "at": "2026-10-15T09:30:00",
+   "by": "peter",
+   "what": "photo",
+   "text": "Raumfoto hinzugefügt"
+  },
+  {
+   "at": "2026-10-15T09:31:00",
+   "by": "system",
+   "what": "status",
+   "text": "Status: Anfrage → Vor-Ort-Termin"
+  },
+  {
+   "at": "2026-10-15T10:02:00",
+   "by": "peter",
+   "what": "generated",
+   "text": "3 Vorschläge berechnet"
+  },
+  {
+   "at": "2026-10-16T10:12:00",
+   "by": "peter",
+   "what": "version_sent",
+   "text": "Version 1 an den Kunden gegeben (2 Entwürfe)"
+  },
+  {
+   "at": "2026-10-16T19:40:11",
+   "by": "kunde",
+   "what": "viewed",
+   "text": "Kunde hat Version 1 angesehen"
+  },
+  {
+   "at": "2026-10-16T19:44:00",
+   "by": "kunde",
+   "what": "change_request",
+   "text": "Änderungswunsch zu Version 1 (<b>Herr X</b>): „<img src=x onerror=alert(1)>“"
+  }
+ ],
+ "thumb": "variant-1.jpg",
+ "company": {},
+ "setting": "",
+ "room_changes": "",
+ "room": "uploads/room.png",
+ "sample": null,
+ "room_size": [
+  1344,
+  1008
+ ],
+ "tidy": true,
+ "protect": true,
+ "guide": false,
+ "removes": [],
+ "geometry": {
+  "version": 1,
+  "ok": true,
+  "error": null,
+  "room": "uploads/room.png",
+  "size": [
+   1344,
+   1008
+  ],
+  "intrinsics": {
+   "fx": 1000.0,
+   "fy": 1000.0,
+   "cx": 672.0,
+   "cy": 504.0
+  },
+  "floor": {
+   "normal": [
+    0.0,
+    -0.984808,
+    -0.173648
+   ],
+   "d": 150.0,
+   "inliers": 0.4
+  },
+  "frame": {
+   "origin": [
+    0.0,
+    147.7212,
+    26.0472
+   ],
+   "right": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "up": [
+    0.0,
+    -0.984808,
+    -0.173648
+   ],
+   "forward": [
+    0.0,
+    -0.173648,
+    0.984808
+   ]
+  },
+  "walls": [
+   {
+    "id": "w0",
+    "label": "hinten",
+    "normal": [
+     0.0,
+     -1.0
+    ],
+    "offset": 400.0,
+    "from": [
+     -200.0,
+     400.0
+    ],
+    "to": [
+     250.0,
+     400.0
+    ]
+   },
+   {
+    "id": "w1",
+    "label": "links",
+    "normal": [
+     1.0,
+     0.0
+    ],
+    "offset": 200.0,
+    "from": [
+     -200.0,
+     400.0
+    ],
+    "to": [
+     -200.0,
+     100.0
+    ]
+   },
+   {
+    "id": "w2",
+    "label": "rechts",
+    "normal": [
+     -1.0,
+     0.0
+    ],
+    "offset": 250.0,
+    "from": [
+     250.0,
+     400.0
+    ],
+    "to": [
+     250.0,
+     100.0
+    ]
+   }
+  ],
+  "ceiling": {
+   "height": 260.0
+  },
+  "horizon": [
+   [
+    0.0,
+    327.67
+   ],
+   [
+    1344.0,
+    327.67
+   ]
+  ],
+  "vps": {
+   "vertical": null,
+   "h1": null,
+   "h2": null
+  },
+  "scale": 1.0,
+  "depth_range": [
+   150.0,
+   600.0
+  ],
+  "depth_preview": null,
+  "confidence": "high",
+  "seconds": 0.0
+ },
+ "calibration": null,
+ "pieces": [
+  {
+   "id": "p1aaaa",
+   "type": "sideboard",
+   "text": "",
+   "material": "eiche",
+   "material_custom": "",
+   "handles": "push",
+   "label": "Sideboard",
+   "material_label": "Eiche natur geölt",
+   "handles_label": "grifflos (Push)",
+   "w": 180,
+   "h": 75,
+   "d": 45,
+   "sketch": null,
+   "render": null,
+   "sample": null,
+   "use_render": false,
+   "where": "",
+   "placement": {
+    "mode": "3d",
+    "pose": {
+     "x": 30.0,
+     "z": 377.5,
+     "yaw": 0.0,
+     "wall": "w0"
+    },
+    "box": [
+     511,
+     377,
+     727,
+     746
+    ]
+   }
+  },
+  {
+   "id": "p2bbbb",
+   "type": "regal",
+   "text": "",
+   "material": "nuss",
+   "material_custom": "",
+   "handles": "leiste",
+   "label": "Regalwand",
+   "material_label": "Nussbaum",
+   "handles_label": "Griffleiste",
+   "w": 120,
+   "h": 220,
+   "d": 35,
+   "sketch": null,
+   "render": null,
+   "sample": null,
+   "use_render": false,
+   "where": "",
+   "placement": {
+    "mode": "2d",
+    "pose": null,
+    "box": [
+     150,
+     40,
+     820,
+     230
+    ]
+   }
+  }
+ ],
+ "deleted_variants": [],
+ "pending_jobs": [],
+ "variants": [
+  {
+   "id": "va111111",
+   "kind": "room",
+   "image": "variant-1.jpg",
+   "room": "uploads/room.png",
+   "size": [
+    1344,
+    1008
+   ],
+   "seed": 111,
+   "job": "f00dfeed01",
+   "fav": true,
+   "note": "",
+   "from": null,
+   "sketch": null,
+   "upscaled": false,
+   "retry_of": null,
+   "piece_ids": [
+    "p1aaaa",
+    "p2bbbb"
+   ],
+   "piece": "Sideboard + Regalwand",
+   "material": "Eiche natur geölt",
+   "handles": "grifflos (Push)",
+   "pieces": [
+    {
+     "id": "p1aaaa",
+     "label": "Sideboard",
+     "material_label": "Eiche natur geölt",
+     "handles_label": "grifflos (Push)",
+     "w": 180,
+     "h": 75,
+     "d": 45
+    },
+    {
+     "id": "p2bbbb",
+     "label": "Regalwand",
+     "material_label": "Nussbaum",
+     "handles_label": "Griffleiste",
+     "w": 120,
+     "h": 220,
+     "d": 35
+    }
+   ],
+   "boxes": {},
+   "judge": {
+    "status": "ok",
+    "model": "fake-judge",
+    "scores": {
+     "room_preserved": 9,
+     "matches_request": 8,
+     "proportions": 9,
+     "realism": 8,
+     "artifacts": 9
+    },
+    "overall": 8.5,
+    "pass": true,
+    "comment": "Synthetischer Prüftext.",
+    "fix_hint": "",
+    "seconds": 18.0,
+    "graded": "2026-10-17T15:19:08"
+   },
+   "by": "peter",
+   "caption_backend": "vllm",
+   "steps": 16,
+   "active_piece": "p1aaaa",
+   "locked": true
+  },
+  {
+   "id": "vb222222",
+   "kind": "room",
+   "image": "variant-2.jpg",
+   "room": "uploads/room.png",
+   "size": [
+    1344,
+    1008
+   ],
+   "seed": 222,
+   "job": "f00dfeed01",
+   "fav": false,
+   "note": "",
+   "from": null,
+   "sketch": null,
+   "upscaled": false,
+   "retry_of": null,
+   "piece_ids": [
+    "p1aaaa",
+    "p2bbbb"
+   ],
+   "piece": "Sideboard + Regalwand",
+   "material": "Eiche natur geölt",
+   "handles": "grifflos (Push)",
+   "pieces": [
+    {
+     "id": "p1aaaa",
+     "label": "Sideboard",
+     "material_label": "Eiche natur geölt",
+     "handles_label": "grifflos (Push)",
+     "w": 180,
+     "h": 75,
+     "d": 45
+    },
+    {
+     "id": "p2bbbb",
+     "label": "Regalwand",
+     "material_label": "Nussbaum",
+     "handles_label": "Griffleiste",
+     "w": 120,
+     "h": 220,
+     "d": 35
+    }
+   ],
+   "boxes": {},
+   "judge": {
+    "status": "ok",
+    "model": "fake-judge",
+    "scores": {
+     "room_preserved": 8,
+     "matches_request": 5,
+     "proportions": 6,
+     "realism": 6,
+     "artifacts": 5
+    },
+    "overall": 5.7,
+    "pass": false,
+    "comment": "Synthetischer Prüftext.",
+    "fix_hint": "",
+    "seconds": 18.0,
+    "graded": "2026-10-17T15:19:08"
+   },
+   "by": "peter",
+   "caption_backend": "template",
+   "steps": 16,
+   "active_piece": "p1aaaa",
+   "locked": true
+  },
+  {
+   "id": "vc333333",
+   "kind": "room",
+   "image": "variant-3.jpg",
+   "room": "uploads/room.png",
+   "size": [
+    1344,
+    1008
+   ],
+   "seed": 333,
+   "job": "f00dfeed01",
+   "fav": false,
+   "note": "",
+   "from": null,
+   "sketch": null,
+   "upscaled": false,
+   "retry_of": null,
+   "piece_ids": [
+    "p1aaaa",
+    "p2bbbb"
+   ],
+   "piece": "Sideboard + Regalwand",
+   "material": "Eiche natur geölt",
+   "handles": "grifflos (Push)",
+   "pieces": [
+    {
+     "id": "p1aaaa",
+     "label": "Sideboard",
+     "material_label": "Eiche natur geölt",
+     "handles_label": "grifflos (Push)",
+     "w": 180,
+     "h": 75,
+     "d": 45
+    },
+    {
+     "id": "p2bbbb",
+     "label": "Regalwand",
+     "material_label": "Nussbaum",
+     "handles_label": "Griffleiste",
+     "w": 120,
+     "h": 220,
+     "d": 35
+    }
+   ],
+   "boxes": {},
+   "judge": {
+    "status": "ok",
+    "model": "fake-judge",
+    "scores": {
+     "room_preserved": 4,
+     "matches_request": 3,
+     "proportions": 3,
+     "realism": 4,
+     "artifacts": 2
+    },
+    "overall": 3.2,
+    "pass": false,
+    "comment": "Synthetischer Prüftext.",
+    "fix_hint": "",
+    "seconds": 18.0,
+    "graded": "2026-10-17T15:19:08"
+   },
+   "by": "peter",
+   "caption_backend": "vllm",
+   "steps": 8,
+   "active_piece": "p1aaaa",
+   "locked": false
+  }
+ ]
+}

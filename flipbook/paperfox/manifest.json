@@ -1,0 +1,489 @@
+{
+ "anchor_fox": {
+  "prompt": "Studio product photograph of a small origami fox folded from one sheet of vermilion red washi paper with faint gold flecks, crisp sharp creases, a pointed snout, two triangular ears and a long folded tail; the reverse side of the paper is cream white and shows inside the ears and at the tip of the tail, standing in three-quarter view on a plain warm grey paper backdrop, soft even light, the whole fox sharp and fully visible.",
+  "caption": "Studio product photograph on a wide, plain warm grey paper backdrop, lit by soft, even diffused light with a restrained shadow directly beneath the subject. Centered in the frame, a small origami fox folded from one sheet of vermilion red washi paper stands fully visible in three-quarter view, its body facing left and its head turned toward the viewer. The fox has a compact angular body, a pointed snout, two upright triangular ears, and a long folded tail curving behind it toward the right. Its exterior is covered in vermilion red paper scattered with faint metallic gold flecks. Crisp, sharp creases define the face, chest, legs, and layered folds, with the pointed nose projecting forward and the narrow legs planted on the paper surface. The reverse side of the washi is cream white and shows inside both triangular ears and at the folded tip of the long tail, forming clean contrasting inner planes. The fox’s entire silhouette remains sharp from ear tips to paws and tail, with generous empty space on both sides. A pale contact shadow anchors the folded fox against the seamless warm grey paper surface, while the backdrop remains untextured and free of additional objects or text.",
+  "seed": 500,
+  "gallery_id": "20261016-143452-500"
+ },
+ "anchor_crane": {
+  "prompt": "Studio product photograph of an origami crane folded from deep indigo paper printed with tiny white stars, wings spread, standing on a plain warm grey paper backdrop, soft even light, the whole crane sharp and fully visible.",
+  "caption": "Studio product photograph, shot straight-on with soft, even diffused lighting and a deep depth of field, keeping the entire origami crane sharp and fully visible. Centered against a plain warm grey paper backdrop, a folded origami crane stands upright with both wings spread wide in a broad symmetrical silhouette. The crane is folded from deep indigo paper printed with tiny white five-pointed stars distributed across every visible fold. Its long angular neck rises from the body and bends toward the left, ending in a small pointed head with a narrow triangular beak. The body forms a compact faceted base in the lower center, supported by two thin folded legs. The left and right wings extend laterally across most of the wide composition, each built from crisp geometric planes with sharply defined creases and pointed outer tips. The indigo paper catches restrained highlights along the raised folds while the white stars remain small and evenly legible. A pale contact shadow rests directly beneath the crane on the warm grey surface, with generous empty space surrounding the wings and no additional objects or text.",
+  "seed": 501,
+  "gallery_id": "20261016-143530-501"
+ },
+ "anchor_girl": {
+  "prompt": "Full-body studio photograph of a girl of about eight with a short black bob, round tortoiseshell glasses, a bright yellow raincoat and yellow rubber boots, standing and smiling shyly, holding a clear umbrella, plain warm grey backdrop, soft even light.",
+  "caption": "Studio photograph, full-body eye-level portrait against a plain warm grey seamless backdrop, lit with soft, even light that casts a pale shadow beneath the subject’s boots. Centered in the wide composition stands an East Asian girl of about eight with fair skin, a short black bob, and round tortoiseshell glasses. She wears a bright yellow hooded raincoat with a front zipper and two small flap pockets, along with matching yellow rubber boots. Her entire body is visible from the top of her hair to the soles of her boots. She holds a clear transparent umbrella above and behind her with both hands, its curved handle resting near her waist and the umbrella canopy spreading across the upper half of the frame. The clear vinyl canopy has a thin transparent rim and catches broad rectangular reflections from the studio lights. She faces the camera with her shoulders drawn inward, her chin lowered, and a small closed-mouth smile, with her eyes meeting the lens through the round glasses. Her feet turn inward and one boot rests half a step behind the other. The umbrella is held upright in front of her without obscuring her face, leaving her yellow raincoat and bob unobstructed. The warm grey floor and backdrop merge without a visible horizon line, with generous empty space on both sides of the girl and umbrella.",
+  "seed": 502,
+  "gallery_id": "20261016-143614-502"
+ },
+ "001_s01_1": {
+  "scene": "Closing time",
+  "prompt": "Cinematic film still of a handcrafted miniature set, photographed with a macro lens, shallow depth of field, moody teal-and-amber color grade, soft film grain. Night exterior of a tiny old paper shop on a narrow rainy street, warm light glowing in its small shop window, a hand-painted wooden sign reading \"KAMI\" above the door, neon reflections rippling in puddles on the cobblestones.",
+  "refs": [],
+  "caption": "Full-color cinematic film still of a handcrafted miniature set, photographed at night with a macro lens and shallow depth of field, with soft film grain and a moody teal-and-amber color grade. A tiny old paper shop stands in the center of a narrow rain-soaked street, its handmade façade built from uneven brown paper, miniature timber boards, and visible brushwork. Above the small recessed door, a hand-painted wooden sign bears the word \"KAMI\" in cream block letters, with chipped edges and dark red brush marks. The shop window glows amber behind thin rain-streaked glass, revealing miniature shelves packed with folded paper, envelopes, and small stacks of books. A crooked paper awning hangs over the window, and a narrow teal neon tube beside the doorway casts a cool reflection across the wet wall. Rain falls through the scene as fine diagonal streaks, beading on the sign and dripping from the awning. In the foreground, irregular cobblestones form a miniature street, their dark surfaces broken by shallow puddles reflecting the amber window, cyan neon, and the sign reading \"KAMI\". Ripples spread through the puddles, stretching the reflections into wavering bands of gold and teal. A tiny wooden door with a brass-colored knob sits below the window, reached by two worn stone steps. On the left, a crooked neighboring wall and a miniature drainpipe recede into blur; on the right, the street narrows into dark teal shapes with two distant amber window lights. The nearest cobbles and shopfront remain crisp while the foreground puddle edges and distant alley dissolve into soft focus.",
+  "seed": 1001,
+  "gallery_id": "20261016-143704-1001"
+ },
+ "002_s01_2": {
+  "scene": "Closing time",
+  "prompt": "Keep the first image as the canvas. Push the camera closer to the shop window; the warm light inside switches off, so the window is lit only by cold blue moonlight and the rain.",
+  "refs": [
+   "001_s01_1.png"
+  ],
+  "caption": "Create a photograph using the first image as the canvas, with the camera pushed closer to the shop window so the weathered wooden display window fills most of the composition while retaining the same miniature rainy alley, crumpled brown-paper facade, scalloped awning, wooden frame, and surrounding masonry. Switch off the warm amber interior light completely: the books, shelves, and interior are now visible only in cold blue moonlight, with no glow, amber reflections, or warm illumination inside the window. Rain falls through the blue light, streaking across the glass and collecting in droplets along the awning edge, sill, and wooden frame. Preserve the sign above the window with the exact text \"KAMI\", now rendered in cold blue-gray tones, and keep the adjacent wooden door and cyan vertical tube as subdued, dim background elements. Replace the former interior glow with deep blue reflections from the moonlit rain on the wet glass and the slick window ledge. The foreground becomes the rain-soaked cobblestones directly below the window, covered by shallow puddles reflecting only cold blue moonlight and scattered raindrop ripples; remove all traces of the former orange shop light while preserving the original miniature scale, materials, rain, and street setting.",
+  "seed": 1002,
+  "gallery_id": "20261016-143803-1002"
+ },
+ "003_s01_3": {
+  "scene": "Closing time",
+  "prompt": "Cinematic film still of a handcrafted miniature set, photographed with a macro lens, shallow depth of field, moody teal-and-amber color grade, soft film grain. Inside the dark paper shop at night: a wooden counter where one flat, unfolded square sheet of vermilion red washi paper with gold flecks (the same paper as the fox in the first image, but completely flat) lies beside a cutting mat, moonlight through a rain-streaked window, paper cranes hanging on threads in the dim background.",
+  "refs": [
+   "fox.png"
+  ],
+  "caption": "Create a photograph of a handcrafted miniature paper shop at night, composed as a cinematic film still with a moody teal-and-amber color grade. Inside the dark paper shop, a small wooden counter stands beneath a rain-streaked window, with cool blue moonlight entering through the glass and casting narrow reflections across the counter. On the counter lies one completely flat, unfolded square sheet of vermilion-red washi paper, preserving the first image’s paper color, fine gold flecks, and handmade texture, but with no fox form or folds whatsoever. Place the square beside a worn cutting mat with a small metal ruler, craft knife, and a few paper offcuts. Use the flat sheet as the central subject, its edges resting naturally against the counter with a soft contact shadow. Suspend a small amber task lamp above it, illuminating the paper and cutting mat while the surrounding shop remains teal and dark. Beyond the counter, include a rain-streaked window showing a deep blue night sky, and several paper cranes hanging at different heights from thin threads in the dim background. Keep the shop walls, shelves, and counter visibly constructed from layered handmade paper, with folded-paper edges, tiny pegs, and restrained miniature-scale details.",
+  "seed": 1003,
+  "gallery_id": "20261016-143900-1003"
+ },
+ "004_s01_4": {
+  "scene": "Closing time",
+  "prompt": "Keep the first image exactly. One corner of the red sheet lifts by itself, and a faint golden glow runs along its edge.",
+  "refs": [
+   "003_s01_3.png"
+  ],
+  "caption": "Keep the first image exactly as photographed: preserve the same fixed camera position, composition, perspective, and warm workshop lighting, including the worn wooden workbench, dark green gridded cutting mat, large red sheet, hanging brass lamp, rain-streaked blue windows, suspended paper cranes, shelves of folded paper, upright paper sculptures, small wooden forms, ruler, knife, cutting tool, and layered brown paper at frame-right. Change only the near frame-right corner of the red sheet so that it lifts by itself into a gentle upward curl, forming a small natural triangular fold with the same red fibrous texture and scattered pale flecks. Add a faint golden glow tracing the raised edge of that lifted corner, following the paper’s contour and casting a restrained amber light onto the cutting mat directly beneath it. Preserve every other element unchanged: the sheet remains flat across the rest of the work surface, the lamp retains its warm pool of light, the cranes remain suspended, the tools stay in their original positions, and the cool rainy window light remains unchanged.",
+  "seed": 1004,
+  "gallery_id": "20261016-143953-1004"
+ },
+ "005_s02_1": {
+  "scene": "The fold",
+  "prompt": "Keep the first image as the canvas. The red sheet folds itself in half along the diagonal, hovering a finger's width above the counter; thin golden light shines from the fresh creases.",
+  "refs": [
+   "004_s01_4.png"
+  ],
+  "caption": "Create a photograph using the first image as the unchanged canvas: preserve the same elevated, slightly oblique camera position, the worn wooden craft counter, the green cutting mat, the rain-streaked blue windows, the hanging copper pendant lamp, the suspended paper cranes, the shelves of folded paper, the small wooden tools, the ruler, knife, scattered brown paper, and every other workshop detail exactly as photographed. Transform only the large red sheet so it folds itself precisely in half along its diagonal, forming a clean triangular fold that hovers a finger’s width above the counter. The folded half rises naturally while the remaining half lifts behind it, with the entire sheet suspended just above the surface and its edges casting a soft contact shadow. Thin golden light shines from the fresh crease line and along the newly formed fold, tracing the diagonal edge with a narrow luminous gold seam. Preserve the sheet’s mottled red texture and fine gold flecks across both folded surfaces, with the warm light from the crease mixing naturally into the existing amber lamp light. Keep the counter, tools, windows, cranes, and surrounding shadows otherwise unchanged.",
+  "seed": 1005,
+  "gallery_id": "20261016-144049-1005"
+ },
+ "006_s02_2": {
+  "scene": "The fold",
+  "prompt": "Keep the first image as the canvas. The hovering red paper folds further on its own into an abstract, half-finished shape of stacked triangular flaps, not yet an animal; two small points start to lift where ears will be, gold light in every crease. No hands or people anywhere.",
+  "refs": [
+   "005_s02_1.png"
+  ],
+  "caption": "Create a photograph using the first image as the unchanged canvas: preserve the same rustic paper-craft workshop, fixed frontal camera position, weathered wooden workbench, green cutting mat, copper pendant lamp, rain-streaked teal windows, hanging paper cranes, shelves of folded paper, upright paper tools, scattered scraps, ruler, knife, and layered brown paper at frame-right. Transform only the large hovering red paper into a further folded state: it now forms an abstract, half-finished structure of stacked triangular flaps, with no recognizable animal body, head, wings, or tail. The broad red sheet rises into an irregular cluster of overlapping triangular planes, with two small pointed tips beginning to lift where future ears would be. Keep the form suspended above the same central work area, with its lower edges still hovering over the cutting mat. Preserve the red paper’s mottled texture and fine speckling, but fill every fold and crease with glowing gold light. The gold illumination traces through every ridge and recessed fold, intensifying along the new triangular facets. No hands or people appear anywhere. Keep the workshop’s original warm lamp light, teal window light, shadows, perspective, and all surrounding objects exactly in place.",
+  "seed": 1006,
+  "gallery_id": "20261016-153429-1006"
+ },
+ "007_s02_3": {
+  "scene": "The fold",
+  "prompt": "Keep the first image as the canvas. The self-folding paper is now roughly fox-shaped: a blocky body, a pointed snout and two ears, but the tail is still a long flat unfolded strip of paper curling in the air, the golden glow at its brightest. Nothing touches it; no hands or people anywhere.",
+  "refs": [
+   "006_s02_2.png"
+  ],
+  "caption": "Create a photograph using the first image as the unchanged canvas, preserving the same workshop, camera position, perspective, framing, and warm copper pendant lamp above the workbench. Keep the rain-streaked teal windows, wooden window frames, hanging paper cranes, shelves of folded paper, worn workbench edges, green cutting mat, scattered paper scraps, ruler, knife, and wooden-handled tool exactly where they are. Replace only the central self-folding red paper sculpture with a roughly fox-shaped self-folding paper form: a broad blocky body, a pointed snout, two angular ears, and the same reddish speckled paper texture with fine golden edging. Its tail remains a long, flat, unfolded strip of the same red paper, curling freely through the air behind the fox body in a broad suspended arc. Make the golden glow along the fox’s folds and especially along the airborne tail strip at its brightest, forming an intense luminous gold line. Nothing touches the fox or tail; no hands, people, supports, or strings are present. Preserve the original workshop lighting, shadows, colors, and surrounding objects while leaving the fox completely isolated above the cutting mat.",
+  "seed": 1007,
+  "gallery_id": "20261016-153526-1007"
+ },
+ "008_s02_4": {
+  "scene": "The fold",
+  "prompt": "Keep the first image as the canvas. The fold is complete: the origami fox from the second image stands on the counter, the golden glow fading into the paper.",
+  "refs": [
+   "007_s02_3.png",
+   "fox.png"
+  ],
+  "caption": "Create a photograph using the first image as the unchanged canvas, preserving the same rustic paper-craft workshop, fixed camera position, weathered wooden workbench, green cutting mat, rain-streaked blue windows, hanging paper cranes, shelves of folded paper, copper pendant lamp, tools, rulers, knife, scraps, and surrounding handmade objects. Remove the hand and its tail completely because the fold is now finished. Replace the red fox being held at center with the complete origami fox from the second image, standing independently on the same green cutting mat in the same central position and at the same scale. Preserve its angular red body, four planted legs, pointed ears with cream interiors, faceted head, black nose, long red tail, and cream-white tail tip, including the fine gold flecks across the red paper. The copper lamp’s golden glow has faded into the paper: the fox casts a soft, natural contact shadow directly beneath its feet, with no amber light or hand-shaped glow remaining on its body. Keep the workshop’s existing warm practical illumination, blue window light, perspective, surface wear, and all surrounding objects exactly as photographed in the first image.",
+  "seed": 1008,
+  "gallery_id": "20261016-144442-1008"
+ },
+ "009_s02_5": {
+  "scene": "The fold",
+  "prompt": "Close-up of the origami fox from the second image in the setting of the first image: it tilts its head curiously, moonlight catching the crisp crease along its snout.",
+  "refs": [
+   "008_s02_4.png",
+   "fox.png"
+  ],
+  "caption": "Create a close-up photograph of the origami fox from the second image placed in the workshop setting from the first image, preserving its exact red speckled paper body, angular folded construction, cream inner ears, cream tail tip, black nose, and four slender legs. Make the fox dominate the composition, standing on the worn green cutting mat while tilting its head curiously upward and toward frame-left, with the snout raised and the head visibly tilted. Cool blue moonlight enters through the rain-streaked workshop windows and catches the crisp crease running along the fox’s snout, tracing a narrow silver-blue highlight across the folded paper planes. Retain the first image’s aged wooden workbench, weathered window frames, copper pendant lamp, hanging paper cranes, shelves of folded paper scraps, and deep teal night atmosphere as the surrounding setting. Keep the fox’s red surface and fine gold flecks intact, with the moonlit edge contrasting against the warm copper lamp glow. Include the ruler and small craft knife resting farther behind it on the mat, while the fox’s face, pointed ears, angular muzzle, and raised snout remain fully visible and unobstructed.",
+  "seed": 1009,
+  "gallery_id": "20261016-144557-1009"
+ },
+ "010_s03_1": {
+  "scene": "Into the shop",
+  "prompt": "In the dark paper shop of the first image, the origami fox from the second image leaps off the counter, caught mid-air above a row of glass ink bottles.",
+  "refs": [
+   "009_s02_5.png",
+   "fox.png"
+  ],
+  "caption": "Create a photograph preserving the dark paper shop from the first image as the setting, including the teal rain-streaked windows, hanging paper cranes, copper pendant lamp, wooden shelves, and the same frontal camera position, while replacing the central work surface with the requested action. Keep the red-speckled origami fox from the second image as the exact subject, preserving its angular folded-paper construction, red body, cream inner ears and tail tip, black nose, and fine gold flecks. Show it leaping high above the counter in mid-air, fully airborne with all four legs bent in a dynamic running leap, body angled toward frame-left, ears raised, and long tail extended behind. Place it above a neat row of small clear glass ink bottles filled with black, red, blue, and ochre ink, each bottle catching the copper lamp’s light. Remove the original counter beneath the fox and replace it with the shop’s worn wooden counter holding the new row of bottles, with the original green cutting mat pushed back and partly visible. The fox has just launched from the counter, leaving a small folded-paper shadow beneath it. Retain the workshop’s dim amber illumination, teal window light, wooden window frames, scattered paper scraps, and the surrounding handmade paper atmosphere, with the airborne fox clearly separated from the bottles.",
+  "seed": 1010,
+  "gallery_id": "20261016-144713-1010"
+ },
+ "011_s03_2": {
+  "scene": "Into the shop",
+  "prompt": "The origami fox from the second image lands on the shop floor among rolls of paper and looks up at the paper cranes hanging on threads above it, the dark shop of the first image around it.",
+  "refs": [
+   "010_s03_1.png",
+   "fox.png"
+  ],
+  "caption": "Create a photograph of the red origami fox from the second image landing on the shop floor of the dark paper workshop from the first image, preserving its angular folded-paper construction, red speckled paper, cream inner ears, cream-tipped tail, pointed muzzle, and black nose. Show the fox at the instant its hind legs touch the worn wooden floor while its front paws descend toward the floor, body settling into a low landing pose, with its head tilted upward and its eyes directed toward the paper cranes hanging above. Surround it with several upright rolls of cream, red, blue, and ochre paper, some loose sheets curling across the floor, and the fox’s long tail extending behind it. Recreate the first image’s dark workshop around the floor: weathered wooden walls, teal rain-streaked windows, the copper pendant lamp, shelves of folded paper, and numerous angular paper cranes suspended on thin threads at different heights. Keep the row of small ink bottles from the first image on the workbench behind the fox, with the bench receding into the shop interior. Use the same warm copper light from the pendant lamp against the deep teal shadows, with the fox casting a compact contact shadow beneath its landing paws.",
+  "seed": 1011,
+  "gallery_id": "20261016-144826-1011"
+ },
+ "012_s03_3": {
+  "scene": "Into the shop",
+  "prompt": "Low angle in the shop of the first image: an origami crane folded from deep indigo paper printed with tiny white stars hangs on a thread among the cranes; it unfurls its wings on its own and the thread snaps loose. The crane looks exactly like the second image.",
+  "refs": [
+   "011_s03_2.png",
+   "crane.png"
+  ],
+  "caption": "Create a low-angle photograph inside the paper-folding shop from the first image, preserving its worn wooden workbench, teal-blue windows, copper pendant lamp, scattered paper rolls, ink bottles, folded scraps, and surrounding handmade cranes. Above the workbench, show the deep indigo origami crane from the second image suspended among the hanging cranes, retaining its exact angular folded construction, long pointed beak, upright neck, and dense pattern of tiny white stars. Its wings have just unfurled fully on their own into the broad, level span seen in the second image, with the indigo body hovering freely in midair. The thread that once held it has snapped at the neck, leaving two short frayed ends dangling above it as the crane rises and spreads outward. Keep several smaller gold and cream paper cranes hanging at different heights around it, with the newly released star crane centered prominently against the teal window light. Use a dramatic viewpoint close to the tabletop so the crane appears large against the shop interior, while the workbench, red paper roll, beige paper roll, blue roll, and scattered paper scraps rise steeply through the lower foreground. Preserve the workshop’s warm practical illumination, with the crane casting a soft shadow across the tabletop below.",
+  "seed": 1012,
+  "gallery_id": "20261016-144941-1012"
+ },
+ "013_s03_4": {
+  "scene": "Into the shop",
+  "prompt": "The crane from the third image lands on the floor face to face with the origami fox from the second image, both lit by moonlight in the shop of the first image.",
+  "refs": [
+   "012_s03_3.png",
+   "fox.png",
+   "crane.png"
+  ],
+  "caption": "Create a photograph of the origami crane from the third image landing on the wooden workbench floor of the paper shop from the first image, now facing face to face with the origami fox from the second image. Preserve the shop’s worn dark timber worktable, teal window panes, wooden window frames, shelves of folded paper, hanging paper cranes, and copper pendant lamp, but replace the pendant lamp’s warm light with cool blue moonlight entering through the windows and casting long moonlit shadows across the tabletop. Place the blue crane at frame-left, retaining its deep indigo paper, dense white star pattern, long angular neck, pointed beak, and broad folded wings, now lowered until its feet touch the floor and its body faces inward. Place the red fox at frame-right, retaining its angular red paper body, cream inner ears and tail tip, pointed muzzle, four straight legs, and bushy folded tail, also facing inward. Their beaks and pointed muzzles are separated by only a small gap, with both animals fully visible in profile and looking directly at one another. Keep the crane’s feet just settling onto the floor as it lands, with slight paper creases and contact shadows beneath both figures. Add a plain moonlit patch across the teal windows and leave the red and blue paper rolls pushed toward the outer edges.",
+  "seed": 1013,
+  "gallery_id": "20261016-145118-1013"
+ },
+ "014_s04_1": {
+  "scene": "The window",
+  "prompt": "The origami fox from the second image and the crane from the third image stand on the shop's windowsill behind rain-streaked glass, the blurred lights of the city beyond; the window is open a small gap. Same dark moonlit mood as the first image.",
+  "refs": [
+   "013_s03_4.png",
+   "fox.png",
+   "crane.png"
+  ],
+  "caption": "Create a photograph of the origami fox from the second image and the origami crane from the third image standing together on the shop’s deep wooden windowsill behind rain-streaked glass, preserving the dark moonlit mood and blue-black palette of the first image. Place the red fox slightly frame-right, retaining its angular folded-paper body, pointed ears, long legs, red paper with fine gold flecks, cream inner ears, and broad cream-tipped tail. Place the blue crane slightly frame-left, retaining its long outstretched wings, upright folded neck, pointed beak, deep blue paper, and dense pattern of small white stars. Both figures stand fully visible on the sill at the same scale as the window display, separated by a small natural gap. Cover the window with irregular beads and narrow trails of rain, with the city beyond reduced to soft blue, amber, and white lights. Leave the window open by a narrow gap at frame-right, revealing a thin dark wooden edge and a small strip of cool night air. Keep the copper pendant lamp outside the composition, with dim blue moonlight entering through the opening and subdued reflections across the glass. Add the first image’s worn timber, aged workshop character, and deep shadows around the sill, while omitting the foreground paper rolls and tabletop craft materials.",
+  "seed": 1014,
+  "gallery_id": "20261016-145253-1014"
+ },
+ "015_s04_2": {
+  "scene": "The window",
+  "prompt": "Keep the setting of the first image. The fox from the second image squeezes through the gap onto the outside ledge, raindrops as big as its head falling around it.",
+  "refs": [
+   "014_s04_1.png",
+   "fox.png"
+  ],
+  "caption": "Create a photograph preserving the first image’s exact setting: the dark wooden window frame, rain-streaked blue night glass, distant amber city lights, weathered sill, and hanging copper pendant lamp at the upper right. Replace the blue origami bird and original fox with the red origami fox from the second image, now shown outside the window, squeezing through the narrow gap between the glass and the exterior wooden ledge. Its angular red body is wedged sideways through the opening, with its pointed head and front legs already on the outside ledge while its hindquarters and folded legs remain compressed against the window edge. Preserve the fox’s faceted construction, red paper with fine gold flecks, cream inner ears, and cream-tipped tail. Make the raindrops around it as large as its head, falling past its ears and body, with several droplets striking the ledge and splashing outward. The fox braces its front paws on the wet exterior ledge, head held in the same left-facing profile as the second image, while its body strains through the gap. Keep the blue bird absent so the fox is the sole subject, and retain the same cool blue nighttime illumination, warm copper lamp glow, wet reflections, and deep brown window wood.",
+  "seed": 1015,
+  "gallery_id": "20261016-145406-1015"
+ },
+ "016_s04_3": {
+  "scene": "The window",
+  "prompt": "Close-up on the outside ledge from the first image: a fat raindrop lands on the ear of the fox from the second image and darkens a spot of the red paper; the fox flinches.",
+  "refs": [
+   "015_s04_2.png",
+   "fox.png"
+  ],
+  "caption": "Create a close-up photograph of the red origami fox from the second image positioned on the dark, weathered wooden exterior ledge from the first image during steady rain. Preserve the fox’s angular folded-paper construction, red speckled paper, cream inner ears, cream-tipped tail, pointed muzzle, and left-facing profile, but make its body noticeably fatter and more compact as it recoils from the impact. Its head jerks backward, its ears angle slightly away, its front legs lift and splay, and its torso twists in a startled flinch while remaining recognizable as the same fox. A single large, fat raindrop strikes the upper tip of the fox’s frame-left ear at the exact instant of impact, compressing against the paper and forming a small crown-shaped splash. The impact darkens an irregular wet spot across the red ear paper, turning it deep burgundy-black while the surrounding red remains visible. Use the rain-streaked window from the first image as the background, with the copper pendant lamp and distant night lights beyond the glass. Add beads of water running down the window and a few tiny splashes on the ledge, with the fox’s ear and impact point dominating the composition.",
+  "seed": 1016,
+  "gallery_id": "20261016-145520-1016"
+ },
+ "017_s05_1": {
+  "scene": "Rooftops",
+  "prompt": "Low-angle shot: the origami fox from the second image runs across wet clay roof tiles at night, neon signs glowing pink and teal below, light rain. Same look as the first image.",
+  "refs": [
+   "016_s04_3.png",
+   "fox.png"
+  ],
+  "caption": "Create a low-angle photograph of the origami fox from the second image running across wet clay roof tiles at night, using the first image as the composition and atmosphere reference. Preserve the fox’s exact angular folded-paper construction, red speckled paper body, cream inner ears, cream-tipped tail, pointed muzzle, and small black nose, but show it in a dynamic running stride with its front legs extended forward, hind legs pushing off, body leaning into the motion, and tail trailing behind. Place the viewpoint just above the tile surface so the nearest clay tiles loom large in the foreground, their dark reddish-brown ridges covered in rainwater, beads, shallow puddles, and scattered splashes beneath the fox’s feet. Use a deep blue-black night sky and neon signs glowing pink and teal below the roofline, their colored light reflecting across the wet tiles and the fox’s paper facets. Fine diagonal rain streaks cross the scene, with droplets striking the roof and tiny splashes rising around the paws. Echo the first image’s rain-soaked nocturnal mood, dark window-like reflections, subdued background, and suspended water droplets, while replacing its window setting with the sloping clay roof and the neon-lit street far below.",
+  "seed": 1017,
+  "gallery_id": "20261016-145633-1017"
+ },
+ "018_s05_2": {
+  "scene": "Rooftops",
+  "prompt": "Keep the rooftops of the first image. The fox from the second image leaps across a narrow gap between two roofs, a deep alley far below.",
+  "refs": [
+   "017_s05_1.png",
+   "fox.png"
+  ],
+  "caption": "Create a photograph preserving the first image’s rain-soaked nighttime rooftop setting, with the same low viewpoint, dark blue-black sky, diagonal rainfall, wet brown ceramic roof tiles, and pink, cyan, and white neon signs, but replace the original roof surface with two separate rooftops divided by a narrow, deep gap. Keep the original rooftops on frame-left and frame-right as the two adjoining roof sections, now separated by a steep chasm far below. The red origami fox from the second image is airborne above the gap, leaping from the frame-left roof toward the frame-right roof. Preserve its exact angular construction, red speckled paper, cream inner ears and cream tail tip, pointed muzzle, black nose, folded planes, and four slender legs, but pose it in a committed leap with its body stretched forward, forelegs reaching toward the landing roof, hind legs trailing behind, and tail extended horizontally for balance. Use the first image as the action and atmosphere reference: rain strikes the fox and roofs, water sprays from the takeoff and landing tiles, and neon reflections glint across the wet surfaces. Far beneath the gap, reveal a deep shadowed alley with dark building walls, scattered neon signs, and tiny distant lights, emphasizing the dangerous vertical distance.",
+  "seed": 1018,
+  "gallery_id": "20261016-145749-1018"
+ },
+ "019_s05_3": {
+  "scene": "Rooftops",
+  "prompt": "Keep the rooftops of the first image. The fox from the second image lands but slips on a wet tile and slides toward the roof edge, paws scrabbling.",
+  "refs": [
+   "018_s05_2.png",
+   "fox.png"
+  ],
+  "caption": "Create a photograph preserving the first image as the canvas: retain the same elevated viewpoint between the two rain-soaked traditional tiled rooftops, the deep narrow alley below, the dark night sky, diagonal rainfall, wet brown roof tiles, distant buildings, and the same cyan, magenta, and red neon signs. Keep the fox from the second image as the subject, replacing the airborne fox from the first image with that exact red origami fox, preserving its angular folded-paper construction, speckled red paper, cream inner ears, cream tail tip, pointed muzzle, and black nose. Show it landing on the frame-right rooftop but slipping on a slick tile, its body sliding toward the roof edge at frame-right. Its hind paws have just left the landing area while all four paws scrabble across the wet surface, with the front paws reaching forward and the hind legs kicking backward. Its torso pitches low, its long tail lifts for balance, and its head remains near the same left-facing profile as the second image. Add small splashes and curved skid marks beneath its paws, with droplets spraying from the tile as it slides toward the precipice. Preserve the original rain, neon reflections, roof perspective, and nighttime illumination.",
+  "seed": 1019,
+  "gallery_id": "20261016-145903-1019"
+ },
+ "020_s05_4": {
+  "scene": "Rooftops",
+  "prompt": "Keep the rooftops of the first image. The crane from the third image swoops in low with wings spread and the fox from the second image leaps onto its back.",
+  "refs": [
+   "019_s05_3.png",
+   "fox.png",
+   "crane.png"
+  ],
+  "caption": "Create a photograph preserving the first image as the canvas: retain the same rain-soaked night city, the same low viewpoint between the two dark red tiled rooftops, the deep alley below, the distant buildings and neon signs, the diagonal rainfall, the wet reflective roof tiles, and the cyan, magenta, and red city lights. Replace the original airborne fox with the blue origami crane from the third image swooping low across the gap, its long wings spread fully from side to side as it banks above the right rooftop. Preserve the crane’s deep blue paper, dense white star pattern, folded body, long pointed neck, and angular construction. The red origami fox from the second image is now leaping onto the crane’s back, captured in mid-leap with its angular body just settling across the crane’s upper back, forelegs reaching forward and hind legs trailing behind. Preserve the fox’s red speckled paper, cream inner ears, cream-tipped tail, pointed muzzle, and faceted anatomy. Keep the fox’s head near its original left-facing profile and fully visible. Add small rain droplets and contact shadows where the fox lands on the crane, with the crane’s wings flexing around it and the original rooftop perspective, rain, and neon-lit atmosphere unchanged.",
+  "seed": 1020,
+  "gallery_id": "20261016-150039-1020"
+ },
+ "021_s05_5": {
+  "scene": "Rooftops",
+  "prompt": "The crane from the third image carries the fox from the second image on its back off the roof edge of the first image, the alley and its neon far below.",
+  "refs": [
+   "020_s05_4.png",
+   "fox.png",
+   "crane.png"
+  ],
+  "caption": "Create a photograph preserving the first image as the canvas: retain the same rainy nighttime alley, the same low viewpoint from the wet tiled roof edge, the dark blue sky, diagonal rain streaks, distant buildings, and the same neon signs far below, including the red \"PAPAC\" sign and pink and cyan signage. Replace the original crane-and-fox arrangement with the blue origami crane from the third image, preserving its deep indigo paper, white star pattern, long angular wings, folded body, and raised neck. Position it airborne just beyond the roof edge, flying toward frame-right as it carries the red origami fox from the second image securely across its back. Preserve the fox’s angular red paper body, cream inner ears, cream-tipped tail, pointed muzzle, and four-legged stance, with its feet resting naturally against the crane’s upper folds. The crane’s wings extend broadly across the scene as it drops away from the roof, leaving the wet reddish-brown tiles and the narrow alley directly beneath it. Far below, retain the deep vertical alley with dark walls, scattered windows, and vertical neon signs glowing through the rain. Add natural contact shadows where the fox presses into the crane’s back and subtle rain droplets across both paper surfaces.",
+  "seed": 1021,
+  "gallery_id": "20261016-150211-1021"
+ },
+ "022_s06_1": {
+  "scene": "Flight",
+  "prompt": "Cinematic film still of a handcrafted miniature set, photographed with a macro lens, shallow depth of field, moody teal-and-amber color grade, soft film grain. Wide aerial shot: tiny an origami crane folded from deep indigo paper printed with tiny white stars with a small origami fox folded from one sheet of vermilion red washi paper with faint gold flecks, crisp sharp creases, a pointed snout, two triangular ears and a long folded tail; the reverse side of the paper is cream white and shows inside the ears and at the tip of the tail riding on its back flies over a miniature night city of tiled roofs and hundreds of glowing paper lanterns, the rain has stopped and clouds are parting. They match the first image and the second image.",
+  "refs": [
+   "fox.png",
+   "crane.png"
+  ],
+  "caption": "Create a cinematic film still of a handcrafted miniature night city viewed in a wide aerial composition, with the tiny origami figures flying above tiled rooftops. Preserve the origami crane from the second image as a miniature folded from deep indigo paper printed with tiny white stars, retaining its long angular neck, pointed beak, broad outstretched wings, and precise folded construction; place it riding on the back of the origami fox from the first image, preserving the fox’s angular body, pointed snout, two tall triangular ears, four slender legs, and long folded tail. Recolor the fox as one-sheet vermilion red washi paper with faint gold flecks, cream-white paper visible inside both ears and at the tail tip. Show the fox airborne with its legs tucked beneath its body and its wings replaced by the crane’s starry wings, the crane carrying the fox securely across its back. Below them, build a dense miniature city of dark blue-gray tiled roofs, narrow alleys, and hundreds of glowing amber paper lanterns. Rain has stopped, with scattered droplets on the roofs and parting clouds revealing a teal night sky. Use a moody teal-and-amber color grade, with amber lantern light reflecting across the miniature streets and cool teal shadows beneath the flying paper figures.",
+  "seed": 1022,
+  "gallery_id": "20261016-150326-1022"
+ },
+ "023_s06_2": {
+  "scene": "Flight",
+  "prompt": "Tracking close-up of the scene in the first image: the fox from the second image rides on the back of the crane from the third image, its ears pressed back by the wind, lanterns blurred below.",
+  "refs": [
+   "022_s06_1.png",
+   "fox.png",
+   "crane.png"
+  ],
+  "caption": "Create a photograph of a tracking close-up of the origami fox from the second image riding astride the origami crane from the third image, preserving the first image’s nighttime aerial composition and dramatic sense of forward flight. The red fox fills the foreground, retaining its angular folded-paper construction, red paper with fine gold flecks, cream inner ears and cream-tipped tail, but its tall pointed ears are pressed firmly back against its head by the wind. Its body leans slightly forward over the crane’s back, with all four legs tucked beneath it in a riding posture and its head held in the same left-facing profile as the second image. The blue crane rises beneath the fox, retaining its deep indigo paper, dense white star pattern, long angular neck, pointed beak, and broad outstretched wings. Its wings sweep laterally across the frame as if banking through the air, with the crane’s body and the rider dominating the composition. Below them, the lantern-lit town from the first image becomes a soft field of small amber circles and dark roof shapes, receding far beneath the flying pair. Use cool teal night light, scattered cloud forms overhead, and directional wind streaks around the wings and ears to reinforce rapid forward motion.",
+  "seed": 1023,
+  "gallery_id": "20261016-150459-1023"
+ },
+ "024_s06_3": {
+  "scene": "Flight",
+  "prompt": "The crane from the third image with the fox from the second image on its back flies past a giant illuminated clock tower face, its golden hands at midnight; same city and look as the first image.",
+  "refs": [
+   "023_s06_2.png",
+   "fox.png",
+   "crane.png"
+  ],
+  "caption": "Create a stylized 3D paper-craft illustration using the first image as the preserved canvas: retain the same elevated viewpoint, deep teal night sky, layered blue-gray clouds, sweeping motion streaks, and the dense city of dark rooftops filled with hundreds of warm amber windows. Replace the original crane-and-fox arrangement with the blue origami crane from the third image flying across the foreground, preserving its angular folded-paper construction, long outstretched wings, pointed neck, and dark indigo paper patterned with tiny white stars. Place the red origami fox from the second image securely on its back, preserving the fox’s angular body, four slender legs, pointed ears, long tail, red speckled paper, cream inner ears, and cream tail tip. The crane flies past a giant illuminated clock tower face rising behind it, with the clock dominating the skyline: a monumental circular dial with a dark face, a thick golden rim, and large golden hour and minute hands meeting at twelve to indicate midnight. Surround the dial with radiating golden light and small clock markers. Keep the city below and around the tower, with the crane and fox centered against the clock face, their scale and perspective matching the first image’s airborne composition.",
+  "seed": 1024,
+  "gallery_id": "20261016-150633-1024"
+ },
+ "025_s06_4": {
+  "scene": "Flight",
+  "prompt": "Above the clouds: the crane from the third image glides with the fox from the second image on its back toward a huge full moon, the fox gazing at it; same look as the first image.",
+  "refs": [
+   "024_s06_3.png",
+   "fox.png",
+   "crane.png"
+  ],
+  "caption": "Create a stylized 3D origami illustration above the clouds, using the first image as the composition and visual-style reference: a vast nocturnal sky, layered banks of dark teal clouds below, and the same handcrafted paper textures, angular geometry, and warm amber accents. Replace the city and clock with a huge luminous full moon centered high in the distance, its pale ivory disk filling much of the upper background and casting a cool halo through the clouds. The blue origami crane from the third image glides across the moonlit sky with its long wings fully spread, preserving its deep indigo paper, tiny white star pattern, folded body, pointed beak, and long angular neck. Place the red origami fox from the second image securely on the crane’s back, preserving its faceted body, pointed ears, red paper with fine gold flecks, cream inner ears, and cream-tipped tail. Turn the fox’s body and head upward so it gazes directly at the full moon, with its face unobstructed in three-quarter profile. The crane flies toward the moon with its wings sweeping diagonally across the scene, while the fox remains upright and clearly supported by the crane’s folded back. Add restrained golden rim light along the paper edges and soft cloud shadows beneath the airborne pair.",
+  "seed": 1025,
+  "gallery_id": "20261016-150807-1025"
+ },
+ "026_s06_5": {
+  "scene": "Flight",
+  "prompt": "Keep the first image. Below them, through gaps in the clouds, hundreds of sky lanterns rise from the city and float up around the crane and the fox.",
+  "refs": [
+   "025_s06_4.png",
+   "fox.png",
+   "crane.png"
+  ],
+  "caption": "Create a fantasy illustration preserving the first image exactly as the canvas: retain the wide, centered composition, the large luminous full moon behind the subjects, the deep teal night sky, the layered banks of blue-gray clouds, and the same frontal viewpoint. Keep the red origami fox from the second image unchanged in its exact angular form, red speckled paper, pointed ears, white inner ears, white-tipped tail, and standing pose atop the crane. Keep the blue origami crane from the third image unchanged in its exact folded-paper form, long outstretched wings, white star pattern, pointed beak, and central placement. Preserve the crane and fox at the same scale and position against the moon. Add hundreds of small sky lanterns below them, emerging through openings and gaps in the lower clouds and rising in dense streams around the crane and fox. The lanterns are warm orange and golden paper globes with tiny glowing cores, clustered near the lower center as a distant city and becoming more widely scattered as they ascend. Their paths curl around the crane’s lower body, pass between its wings, and surround the fox without covering either subject. Let the lanterns diminish toward the upper clouds, with warm reflections subtly touching nearby cloud undersides while the original moonlight, colors, and all existing elements remain unchanged.",
+  "seed": 1026,
+  "gallery_id": "20261016-150943-1026"
+ },
+ "027_s07_1": {
+  "scene": "Storm",
+  "prompt": "The sky turns: dark storm clouds lit from inside by lightning surround the crane from the third image and the fox from the second image; the crane's wings bend in the gusts. Continue from the first image.",
+  "refs": [
+   "026_s06_5.png",
+   "fox.png",
+   "crane.png"
+  ],
+  "caption": "Create a surreal origami illustration continuing from the first image, preserving the same centered composition, low viewpoint, and placement of the two paper figures while replacing the moonlit cloud sky with a dark storm. Surround the crane from the third image and the fox from the second image with dense charcoal-black storm clouds split by branching white lightning that shines from within the cloud interiors. Keep the red origami fox from the second image standing on the crane, preserving its angular folded-paper body, pointed ears, long legs, red speckled paper, cream inner ears, and cream-tipped tail, but tilt its body slightly in the wind. Replace the blue crane from the first image with the blue origami crane from the third image, retaining its white star pattern and folded-paper construction, but bend both wings sharply downward and backward in the gusts, with the neck and body leaning into the storm. Add rain streaks and airborne paper scraps around the crane. Remove the full moon and all floating lanterns, leaving only a few dim lanterns caught in the lower distance. The lightning reveals the crane and fox against the turbulent sky, with no calm clouds remaining.",
+  "seed": 1027,
+  "gallery_id": "20261016-151113-1027"
+ },
+ "028_s07_2": {
+  "scene": "Storm",
+  "prompt": "Keep the first image. Heavy rain hits; the crane's paper wings darken, soak and sag, the fox from the second image clings on.",
+  "refs": [
+   "027_s07_1.png",
+   "fox.png",
+   "crane.png"
+  ],
+  "caption": "Create a surreal paper-craft illustration preserving the first image’s storm-filled composition, frontal viewpoint, dark thunderclouds, branching white lightning, scattered paper scraps, and floating amber lanterns, while changing the central origami figures under heavy rain. Keep the same vast storm background and the crane’s position in the center, but make its blue paper wings soaked, darkened to deep navy-black, and visibly sagging under the water’s weight. The wings collapse inward at their tips, their angular planes droop and buckle, and the white star pattern remains visible beneath wet sheen and uneven folds. Dense rain strikes the crane directly, with large droplets splashing from its body and running down the paper surfaces. Replace the original fox with the red origami fox from the second image, preserving its angular red body, cream inner ears and tail tip, black nose, and speckled paper texture. Show it clinging tightly to the crane’s upper body, forelegs gripping the folds, body leaning forward against the downpour, with its face fully visible. The crane’s neck and body are also saturated and bowed, while the fox remains the only stable figure above the collapsing wings. Retain the lanterns below, but let rain streak through them and darken the crane’s silhouette against the storm.",
+  "seed": 1028,
+  "gallery_id": "20261016-151246-1028"
+ },
+ "029_s07_3": {
+  "scene": "Storm",
+  "prompt": "Keep the storm of the first image. The crane from the third image and the fox from the second image tumble downward through the rain toward the street lights below.",
+  "refs": [
+   "028_s07_2.png",
+   "fox.png",
+   "crane.png"
+  ],
+  "caption": "Create a surreal digital artwork preserving the first image’s immense storm as the full-frame setting: dense charcoal storm clouds, branching white lightning across the upper sky, diagonal sheets of rain, scattered paper fragments, and the same distant cluster of small amber street lights below. Replace the central airborne figures with the blue origami crane from the third image and the red origami fox from the second image, now tumbling downward together through the rain toward the lights. Keep the crane’s deep indigo paper, white star pattern, long angular wings, folded body, and pointed neck, but tilt its body steeply nose-down with wings spread unevenly and trailing toward the lower frame. Keep the fox’s angular red paper body, cream inner ears and tail tip, pointed muzzle, and four folded legs, but rotate it diagonally beneath the crane as it falls head-first, its body separated from the original standing pose. Show both figures descending through the storm at a dramatic angle, with rain streaks crossing their surfaces and loose paper scraps whipping around them. Below, the amber street lights become a descending path of glowing lantern-like points, their warm light illuminating the lower cloud edges while the falling crane and fox cast no ground shadows because they remain airborne.",
+  "seed": 1029,
+  "gallery_id": "20261016-151418-1029"
+ },
+ "030_s07_4": {
+  "scene": "Storm",
+  "prompt": "Street level at night, rain: the fox from the second image and the crane from the third image hit a puddle on the cobblestones with a big crown-shaped splash; same storm as the first image.",
+  "refs": [
+   "029_s07_3.png",
+   "fox.png",
+   "crane.png"
+  ],
+  "caption": "Create a photograph of the red origami fox from the second image and the blue origami crane from the third image striking a broad puddle on wet cobblestones at street level at night, preserving the same storm from the first image: dense black storm clouds, branching white lightning, diagonal sheets of rain, and scattered amber paper lanterns glowing among the darkness. Keep the fox’s angular folded-paper construction, red speckled paper, pointed ears with cream interiors, narrow muzzle, four angular legs, and long red tail with its cream tip. Keep the crane’s angular folded-paper construction, deep blue paper covered in small white stars, long outstretched wings, folded body, and long pointed neck. Show both airborne at the instant of impact, the fox landing frame-right and the crane landing frame-left, their feet and lower bodies meeting the puddle together as one enormous crown-shaped splash erupts around them, with tall branching sheets of water, suspended droplets, and a wide central crest. Their faces remain fully visible and unobstructed above the splash. Rainwater runs between uneven dark cobblestones, reflecting the lightning, lanterns, and the bright splash. Add small ripples spreading outward, scattered paper scraps caught in the rain, and dark building silhouettes along the distant street.",
+  "seed": 1030,
+  "gallery_id": "20261016-151553-1030"
+ },
+ "031_s07_5": {
+  "scene": "Storm",
+  "prompt": "Close-up after the first image: the fox from the second image lies half-soaked in the puddle, its creases gone soft and limp, a red traffic light reflected in the water; the crumpled crane from the third image lies beside it.",
+  "refs": [
+   "030_s07_4.png",
+   "fox.png",
+   "crane.png"
+  ],
+  "caption": "Create a close-up photograph of the aftermath in the same rain-soaked street setting from the first image, viewed at water level with the composition tightly centered on the puddle. Replace the airborne origami figures with the red fox from the second image lying half-submerged and limp in the shallow water, preserving its angular red paper body, pointed ears, cream inner ears, cream-tipped tail, and tiny dark nose, but now its folded creases have gone soft and collapsed into broad wet folds. Its body rests low against the puddle, with water covering its lower legs and torso and droplets clinging to the red paper. Beside it lies the crumpled blue crane from the third image, preserving its deep blue paper and white star pattern but now crushed into an irregular, waterlogged heap with bent wings and a flattened neck. Surround both figures with ripples, scattered paper scraps, and small splashes settling into the water. Above them, include the red traffic light from the street as a clear red signal reflected prominently across the puddle, its red glow stretching over the fox and crane. Retain the storm-dark street only as a dim background, with the traffic light’s red reflection dominating the water and the original lightning, lanterns, and buildings receding into darkness.",
+  "seed": 1031,
+  "gallery_id": "20261016-151726-1031"
+ },
+ "032_s08_1": {
+  "scene": "Found",
+  "prompt": "Very low angle at the puddle of the first image: a small yellow rubber boot of the girl from the second image steps up and stops right at the puddle's edge, rain bouncing off it.",
+  "refs": [
+   "031_s07_5.png",
+   "girl.png"
+  ],
+  "caption": "Create a photograph from an extremely low viewpoint at puddle level, preserving the first image as the canvas: keep the rain-soaked city street, dark wet buildings, amber hanging lanterns, red traffic lights, falling rain, rippling reflections, scattered paper scraps, and the red and blue origami figures lying across the foreground puddle exactly unchanged. Add only the small yellow rubber boot of the girl from the second image, stepping up and stopping directly on the puddle’s near edge. Show the boot at the same tiny scale as the origami, with its rounded toe hovering just above the waterline and its lower edge touching the puddle rim. Preserve the girl’s yellow rubber boot design, including its smooth molded surface, bright yellow color, and snug shape, but show only this single boot from the same low viewpoint; the girl’s yellow raincoat, legs, transparent umbrella, face, and body remain outside the composition because the viewpoint is embedded in the water. Rain strikes the boot and splashes outward in small droplets, while larger raindrops bounce from the puddle around it. Keep the puddle edge physically continuous with the street, with the boot planted at the boundary between dry pavement and water, casting a compact contact shadow and a bright red-and-amber reflection across its wet surface.",
+  "seed": 1032,
+  "gallery_id": "20261016-151840-1032"
+ },
+ "033_s08_2": {
+  "scene": "Found",
+  "prompt": "On the rainy night street of the first image: the girl from the second image crouches under her clear umbrella and looks down at the soaked fox and crane in the puddle, curious.",
+  "refs": [
+   "032_s08_1.png",
+   "girl.png"
+  ],
+  "caption": "Create a photograph using the first image as the unchanged canvas: preserve the rainy night street, low ground-level viewpoint, wet reflective asphalt, scattered paper scraps, falling rain, splashing puddles, amber shop windows, red traffic lights, and the red reflections across the road. Keep the soaked red origami fox and blue origami crane lying together in the foreground puddle exactly where they are, including their folded-paper forms, water droplets, and the yellow rain boot above them. Add the girl from the second image crouching directly behind the puddle, retaining her fair skin, straight black bob with bangs, round dark-framed glasses, yellow hooded raincoat, and yellow rubber boots. She holds the same large transparent umbrella overhead with both hands, its clear canopy fully open and rain beading across it, while crouching low beneath it and looking down with a curious expression at the soaked fox and crane. Her face remains fully visible in a downward three-quarter angle, with her eyes directed toward the origami. Match her crouched body, umbrella, clothing, and boots to the street’s perspective, with natural contact shadows beneath her knees and boots, warm amber light reflecting through the umbrella, and rain splashing around her.",
+  "seed": 1033,
+  "gallery_id": "20261016-151954-1033"
+ },
+ "034_s08_3": {
+  "scene": "Found",
+  "prompt": "Close-up: the small hands of the girl from the second image gently scoop the soggy fox from the third image and the crumpled crane out of the puddle; same rainy night as the first image.",
+  "refs": [
+   "033_s08_2.png",
+   "girl.png",
+   "fox.png"
+  ],
+  "caption": "Create a close-up photograph of the small hands of the girl from the second image gently scooping the soggy origami fox from the third image and the crumpled blue crane from the first image out of the puddle, preserving the rainy night setting from the first image. Keep her fair skin, straight black bob with bangs, round black glasses, and bright yellow raincoat, with only her small hands and lower sleeves visible around the action. Her fingers form a careful cup beneath both wet paper objects, lifting them together just above the water without crushing them. Preserve the fox’s angular red folded-paper body, pointed ears, long tail, cream inner ears and tail tip, now darkened by rain and clinging droplets. Preserve the blue crane’s folded-paper form, now collapsed into a soft crumpled shape with its pale blue dotted pattern and soaked creases. Surround the hands with the same rain-soaked street from the first image: black asphalt, rippling puddles, scattered paper scraps, falling rain, amber shop-window lights, red reflections, and the transparent umbrella canopy overhead. Add small splashes around the lifted objects, with the girl’s yellow raincoat cuffs entering from the upper edges and the puddle filling the lower background.",
+  "seed": 1034,
+  "gallery_id": "20261016-152129-1034"
+ },
+ "035_s08_4": {
+  "scene": "Found",
+  "prompt": "Cinematic film still of a handcrafted miniature set, photographed with a macro lens, shallow depth of field, moody teal-and-amber color grade, soft film grain. A child's cozy bedroom at night: on a desk under a warm lamp, the soggy red origami fox and the soaked indigo star crane lie drying on a folded tissue, a cup of cocoa and colored pencils nearby. They match the first image and the second image.",
+  "refs": [
+   "fox.png",
+   "crane.png"
+  ],
+  "caption": "Create a photograph of a handcrafted miniature child’s bedroom at night, composed as a cinematic film still with a moody teal-and-amber color grade. On a small wooden desk beneath a warm amber lamp, place a folded white tissue holding the two soaked origami figures from the references as they dry. Preserve the first image’s red fox exactly as the soggy red origami fox, including its angular folded-paper construction, pointed ears, long tail, cream inner ears and tail tip, and fine gold flecks; its paper is darkened by moisture, with damp creases and small droplets clinging to its surface. Beside it, preserve the second image’s indigo crane exactly as the soaked indigo star crane, including its long angular neck, pointed beak, broad outstretched wings, folded body, and scattered white stars; its paper is saturated and slightly wrinkled. The fox lies at frame-left and the crane at frame-right on the tissue, both visibly flattened by water. Add a ceramic cup of cocoa with a marshmallow and a faint curl of steam nearby, along with several colored pencils in a plain cup. Surround the desk with miniature shelves, a rumpled blanket, and a small window showing a deep teal night sky, while the lamp casts amber light across the drying figures and leaves the room’s corners in cool teal shadow.",
+  "seed": 1035,
+  "gallery_id": "20261016-152248-1035"
+ },
+ "036_s08_5": {
+  "scene": "Found",
+  "prompt": "Keep the desk of the first image. The girl from the second image, now in pajamas, has fallen asleep at the desk with her head on her arms, next to the drying fox and crane.",
+  "refs": [
+   "035_s08_4.png",
+   "girl.png"
+  ],
+  "caption": "Create a photograph preserving the first image as the canvas: keep the same wooden desk, close camera position, warm lamp at frame-left, teal window at frame-right, wooden shelves with books and framed picture, wicker basket, ceramic lamp base, steaming mug of tea with marshmallow, cup of colored pencils, folded gray blanket, and the crumpled pale paper sheet exactly unchanged. Retain the red origami fox and blue star-patterned origami crane in their original positions as drying, now add the girl from the second image asleep at the desk. Replace her yellow raincoat, umbrella, glasses, and boots with soft blue-and-white striped pajamas. She lies across the desk with her head resting on both folded arms beside the fox and crane, her face fully visible in a relaxed three-quarter angle, eyes closed, dark bob and straight bangs preserved. Her transparent umbrella is absent because she is asleep. Match her scale and perspective to the desk, with her body settled naturally among the blankets and her forearms resting beside the paper without covering either origami figure. Integrate her into the existing amber lamplight, with soft contact shadows beneath her arms and pajamas, while the fox and crane remain undisturbed in front of her.",
+  "seed": 1036,
+  "gallery_id": "20261016-152404-1036"
+ },
+ "037_s09_1": {
+  "scene": "Dawn",
+  "prompt": "Keep the first image. Soft golden sunrise light now falls through the window onto the desk; the fox from the second image is dry again, its creases crisp, and it stands up with a faint golden glow.",
+  "refs": [
+   "036_s08_5.png",
+   "fox.png"
+  ],
+  "caption": "Create a photograph preserving the first image as the canvas: keep the same cozy bedroom workspace, the sleeping young girl exactly in place with her straight dark-brown bob, bangs, closed eyes, striped pajamas, folded arms, and gray blanket, along with the wooden desk, ceramic mug of hot drink, wicker basket, shelves, framed picture, pencil cup, teal window, and folded textiles. Replace the original dim illumination with soft golden sunrise light entering through the window and falling naturally across the desk, casting long gentle shadows while retaining the room’s perspective and object placement. Keep the sleeping girl and the blue origami crane in their original positions, but make the red fox from the second image the prominent subject on the desk: it stands upright in the same place as the original fox, fully dry, with its angular creases crisp and its red paper surface clean, preserving the pointed ears, white inner ears, white-tipped tail, and small black nose. Give it a faint golden glow along its edges and facets. Preserve its exact faceted fox design while replacing the original clustered fox arrangement with this single fox, standing firmly on the parchment with a subtle contact shadow. The sunrise catches the paper texture and creates a restrained golden radiance around the fox without changing any other element of the original scene.",
+  "seed": 1037,
+  "gallery_id": "20261016-152520-1037"
+ },
+ "038_s09_2": {
+  "scene": "Dawn",
+  "prompt": "Keep the first image. The crane from the second image beside the fox spreads its dried, restored wings in the morning light.",
+  "refs": [
+   "037_s09_1.png",
+   "crane.png"
+  ],
+  "caption": "Create a photograph preserving the first image exactly as the canvas: retain the same cozy wooden bedroom workspace, the sleeping young girl with fair skin, straight dark-brown bob and bangs, striped pajamas, closed eyes, and cheek resting on her folded arms; keep the wooden table, rumpled gray blanket, parchment paper, red origami fox, ceramic mug with marshmallow, shaded lamp, pencil cup, shelves, basket, books, window, and all surrounding objects in their original positions. Preserve the same warm morning sunlight entering through the frame-right window. Modify only the blue origami crane beside the fox, using the crane from the second image as the exact form reference: restore and spread its long, dried wings fully outward in a broad horizontal span, with the pointed wing tips reaching toward both sides of the table. Keep its deep navy paper, white star pattern, folded body, long raised neck, and angular beak, but make the wings look dry, thin, and slightly weathered while retaining their paper construction. Integrate the expanded crane naturally into the existing morning light, with the fox remaining unchanged in front of it and the crane’s wings catching the same amber highlights and casting corresponding soft shadows across the parchment.",
+  "seed": 1038,
+  "gallery_id": "20261016-152633-1038"
+ },
+ "039_s09_3": {
+  "scene": "Dawn",
+  "prompt": "Keep the first image. The fox from the second image gently nudges the sleeping girl's hand with its paper snout.",
+  "refs": [
+   "038_s09_2.png",
+   "fox.png"
+  ],
+  "caption": "Create a photograph preserving the first image exactly as the canvas: retain the same cozy bedroom study, warm amber light from the desk lamp and window, the same eye-level three-quarter camera position, the sleeping girl lying across the wooden desk in her striped pajamas and gray blanket, her face, straight dark bob, closed eyes, and relaxed expression unchanged. Keep the ceramic mug with its white marshmallow, the shaded lamp, shelves, basket, framed picture, pencil cup, window, folded textiles, tabletop paper, and the large blue origami bird in their original positions. Move only the red origami fox from the second image slightly closer to the girl’s resting hand so it gently nudges the back of her hand with its angular paper snout, its nose touching the knuckles without covering her face. Preserve the fox’s red speckled paper, cream inner ears, pointed ears, folded body, legs, and long cream-tipped tail, matching its original construction. Integrate it naturally into the existing fox position with its body turned toward her hand, casting a small contact shadow where its snout meets her fingers. Keep the girl’s hand resting in the same place, now lightly displaced by the fox’s touch, while all other objects, colors, lighting, and background details remain unchanged.",
+  "seed": 1039,
+  "gallery_id": "20261016-152747-1039"
+ },
+ "040_s09_4": {
+  "scene": "Dawn",
+  "prompt": "Eye-level close-up at the desk of the first image: the girl (her face, bob and glasses as in the second image, but wearing the striped pajamas from the first image, no raincoat) lifts her head, wakes and smiles at the fox from the third image standing right in front of her face.",
+  "refs": [
+   "039_s09_3.png",
+   "girl.png",
+   "fox.png"
+  ],
+  "caption": "Create a photograph of an eye-level close-up at the desk from the first image, preserving its cozy wooden study, tabletop, warm lamp, pencil cup, window, blankets, and amber sunlight, while replacing the sleeping girl with the girl from the second image. Keep her fair skin, straight chin-length black bob with bangs, and round dark-framed glasses, but lift her head from the desk so she is fully awake, smiling directly at the fox. Dress her in the same cream-and-gray striped pajamas from the first image, with no yellow raincoat, umbrella, or boots. Her face remains near-frontal and unobstructed as she turns her eyes toward the fox at frame-left, her head angled slightly toward it. Place the red origami fox from the third image standing immediately in front of her face on the desk, preserving its angular folded-paper construction, red speckled paper, pointed ears, cream inner ears, and cream-tipped tail. The fox occupies the foreground at frame-left, close to her face without covering her glasses. Retain the blue-gray origami bird from the first image farther back on the desk. Her raised hands rest naturally near the tabletop as she wakes, with the warm lamp and window light illuminating her face, pajamas, and the fox.",
+  "seed": 1040,
+  "gallery_id": "20261016-153703-1040"
+ },
+ "041_s09_5": {
+  "scene": "Dawn",
+  "prompt": "Wide shot from inside the room of the first image: at the windowsill at sunrise, the girl (face, bob and glasses as in the second image, still in the striped pajamas from the first image, no raincoat), the fox from the third image and the crane from the fourth image look out over the rooftops of the city; next to the fox sits a second, slightly clumsy little origami fox the girl folded herself from a paper flyer.",
+  "refs": [
+   "040_s09_4.png",
+   "girl.png",
+   "fox.png",
+   "crane.png"
+  ],
+  "caption": "Create a wide photograph from inside the cozy room of the first image, looking toward the sunrise windowsill and the city beyond. Preserve the first image’s warm wooden interior, shelves, pencils, and window architecture, but replace the foreground workspace with a broad windowsill at sunrise. The girl from the second image stands beside the sill, keeping her exact youthful face, straight chin-length black bob with bangs, and round tortoiseshell glasses, while wearing the same cream-and-gray striped pajamas from the first image with no yellow raincoat or umbrella. She leans forward with both hands resting on the sill, looking out over the rooftops. Place the red origami fox from the third image on the sill at frame-left, preserving its angular red paper body, cream inner ears, and cream-tipped tail. Beside it sits a second, slightly clumsy little origami fox folded from a plain paper flyer, with uneven triangular limbs, a crooked head, and visible fold marks. Place the blue origami crane from the fourth image at frame-right, retaining its long wings, upright neck, and white star pattern. The girl’s handmade red fox stands next to the crane. Beyond them, the girl and both origami figures look outward over layered city rooftops beneath a pale orange sunrise, with warm sunlight entering through the windows and soft room shadows remaining behind them.",
+  "seed": 1041,
+  "gallery_id": "20261016-153906-1041"
+ },
+ "042_s10_1": {
+  "scene": "Title",
+  "prompt": "Cinematic film still of a handcrafted miniature set, photographed with a macro lens, shallow depth of field, moody teal-and-amber color grade, soft film grain. Title card: the word \"PAPERFOX\" folded from vermilion red washi paper letters with crisp creases, standing on a warm grey paper backdrop, the origami fox from the first image sitting beside the last letter, soft morning light.",
+  "refs": [
+   "fox.png"
+  ],
+  "caption": "Create a cinematic film still of a handcrafted miniature paper set, presented as the full-frame artwork. Use the warm grey paper backdrop from the first image as the base, preserving its fine fibrous texture while shifting the overall palette into a moody teal-and-amber color grade. Across the upper center, place the title \"PAPERFOX\" in large folded letters made from vermilion red washi paper, each letter visibly constructed from crisp angular creases and standing upright like a tiny freestanding word. Soft morning light enters from frame-left, giving the letters warm amber highlights and restrained teal shadows. Beside the final letter “X,” place the origami fox from the first image, now seated in a compact pose while retaining its exact angular construction, pointed ears, narrow muzzle, four folded legs, long raised tail, red speckled washi surface, cream inner ears, and cream tail tip. Keep the fox’s head in the same left-facing profile as the reference, with its body resting naturally beside the title. Add subtle contact shadows beneath every letter and the fox. Keep the surrounding miniature set sparse, with only a few tiny paper fibers and gentle tonal falloffs, preserving the quiet handcrafted atmosphere.",
+  "seed": 1042,
+  "gallery_id": "20261016-153220-1042"
+ }
+}

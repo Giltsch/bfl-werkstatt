@@ -1,0 +1,1355 @@
+{
+ "version": 1,
+ "note": "Evaluation of intent.understand (tools/eval_understand.py). doc.pieces are the order's existing pieces (empty = a fresh order with its default empty piece), doc.room_h a measured ceiling (null = not measured, raumhoch then means 250). expect lists only the fields that are checked; values are the final result after defaults (built-in defaults, no company profile). questions = the fields the system must ask for (exact set); questions_any = at least one question.",
+ "cases": [
+  {
+   "id": "einbau-spec",
+   "text": "links neben dem Fenster ein Einbauschrank, zwei-zwanzig breit, raumhoch, Weißlack, drei Türen grifflos, der alte Schrank kommt weg",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "schrank",
+      "w": 220,
+      "h": 255,
+      "d": 60,
+      "material": "weiss",
+      "handles": "push",
+      "full_height": true
+     }
+    ],
+    "removes": 1,
+    "drops": [],
+    "questions": []
+   }
+  },
+  {
+   "id": "einbau-bairisch",
+   "text": "Do kimmt a Einbauschrank hi, zwoa zwanzg broad, bis unter d'Decke, Eiche geölt",
+   "doc": {
+    "room_h": null,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "schrank",
+      "w": 220,
+      "h": 250,
+      "d": 60,
+      "material": "eiche",
+      "full_height": true
+     }
+    ],
+    "removes": 0,
+    "questions": []
+   }
+  },
+  {
+   "id": "einbau-nische",
+   "text": "In die Nische kommt ein Schrank, einsfünfundachtzig breit und zwei vierzig hoch, sechzig tief, Nussbaum mit Messinggriffen",
+   "doc": {
+    "room_h": 260,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "schrank",
+      "w": 185,
+      "h": 240,
+      "d": 60,
+      "material": "nuss",
+      "handles": "messing"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "einbau-ohne-breite",
+   "text": "Wir brauchen einen Einbauschrank im Flur, Eiche weiß geölt",
+   "doc": {
+    "room_h": 248,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "schrank",
+      "w": null,
+      "h": 248,
+      "d": 60,
+      "material": "eicheweiss"
+     }
+    ],
+    "questions": [
+     "w"
+    ]
+   }
+  },
+  {
+   "id": "einbau-flach",
+   "text": "Kleiderschrank zwei Meter breit, nur fünfzig tief wegen der Tür, Lack anthrazit, Griffleiste",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "schrank",
+      "w": 200,
+      "d": 50,
+      "material": "anthrazit",
+      "handles": "leiste"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "dach-1",
+   "text": "Unter der Dachschräge ein Schrank, drei Meter breit, vorne einen Meter hoch, hinten zwei zwanzig, Multiplex",
+   "doc": {
+    "room_h": null,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "schrank",
+      "w": 300,
+      "h": 220,
+      "material": "multiplex"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "dach-2",
+   "text": "Dachschrägenschrank mit vier Schubladen, Kniestock neunzig, höchste Stelle zwei Meter, Breite eins sechzig, weiß lackiert",
+   "doc": {
+    "room_h": null,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "schrank",
+      "w": 160,
+      "h": 200,
+      "material": "weiss"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "dach-vage",
+   "text": "Und in die Schräge bitte auch noch was, irgendwas Helles",
+   "doc": {
+    "room_h": null,
+    "pieces": []
+   },
+   "expect": {
+    "questions_any": true
+   }
+  },
+  {
+   "id": "side-1",
+   "text": "Ein Sideboard unterm Fenster, eins achtzig lang, fünfundvierzig tief, Eiche geräuchert, Push to open",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "sideboard",
+      "w": 180,
+      "h": 75,
+      "d": 45,
+      "material": "eicheraeuchert",
+      "handles": "push"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "side-lowboard",
+   "text": "Lowboard für den Fernseher, zwei Meter vierzig, vierzig hoch, schwarze Griffe, Nuss",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "sideboard",
+      "w": 240,
+      "h": 40,
+      "material": "nuss",
+      "handles": "schwarz"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "side-ohne-breite",
+   "text": "Rechts an die Wand eine Kommode mit drei Schubladen in Kirschbaum",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "sideboard",
+      "w": null,
+      "d": 45,
+      "material": "kirsch"
+     }
+    ],
+    "questions": [
+     "w"
+    ]
+   }
+  },
+  {
+   "id": "kueche-wand",
+   "text": "Eine Küchenzeile über die ganze Wand, Unterschränke und Oberschränke, Lack weiß matt, Griffleiste, Arbeitsplatte Eiche",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "kueche",
+      "material": "weiss",
+      "handles": "leiste"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "kueche-2",
+   "text": "Küche drei sechzig lang, sechzig tief, Fronten anthrazit, grifflos, Hochschrank links",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "kueche",
+      "w": 360,
+      "d": 60,
+      "material": "anthrazit",
+      "handles": "push"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "kueche-fraenkisch",
+   "text": "A Küchn, vier Meter zwanzich lang, in Eiche mit Holzknöpf",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "kueche",
+      "w": 420,
+      "material": "eiche",
+      "handles": "knopf"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "regal-wand",
+   "text": "Bücherregal raumhoch von Wand zu Wand, fünfunddreißig tief, Esche",
+   "doc": {
+    "room_h": 262,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "regal",
+      "h": 262,
+      "d": 35,
+      "material": "esche",
+      "full_height": true
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "wandregal-1",
+   "text": "Wandregal über dem Sofa, eins zwanzig breit, fünfundzwanzig tief, Unterkante eins fünfzig, Eiche",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "wandregal",
+      "w": 120,
+      "d": 25,
+      "elev": 150,
+      "material": "eiche"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "wandregal-bretter",
+   "text": "Schwebende Bretter neben dem Fenster, achtzig breit, Altholz",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "wandregal",
+      "w": 80,
+      "material": "altholz"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "haenge-oberkante",
+   "text": "Hängeschrank über dem Schreibtisch, ein Meter breit, sechzig hoch, Oberkante zwei Meter, weiß",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "haengeschrank",
+      "w": 100,
+      "h": 60,
+      "elev": 140,
+      "material": "weiss"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "haenge-bairisch",
+   "text": "Oberschrank zwoa Meter broad, Unterkante oans fuchzg, Eiche",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "haengeschrank",
+      "w": 200,
+      "elev": 150,
+      "material": "eiche"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "garderobe-1",
+   "text": "Im Flur eine Garderobe mit Sitzbank und Haken, einsfünfzig breit, Eiche weiß geölt, Lederlaschen",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "garderobe",
+      "w": 150,
+      "material": "eicheweiss",
+      "handles": "leder"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "garderobe-raumhoch",
+   "text": "Garderobenschrank, zweizwanzig breit, vierzig tief, deckenhoch",
+   "doc": {
+    "room_h": null,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "garderobe",
+      "w": 220,
+      "h": 250,
+      "d": 40,
+      "full_height": true
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "bad-1",
+   "text": "Waschtischunterschrank, hundertzwanzig breit, achtundvierzig tief, zwei Schubladen, grifflos, Eiche",
+   "doc": {
+    "room_h": 240,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "bad",
+      "w": 120,
+      "d": 48,
+      "material": "eiche",
+      "handles": "push"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "bad-2",
+   "text": "Fürs Bad einen Unterschrank unters Waschbecken in Weißlack, sechzig Zentimeter breit",
+   "doc": {
+    "room_h": 240,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "bad",
+      "w": 60,
+      "material": "weiss"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "tisch",
+   "text": "Esstisch zwei Meter lang, einen Meter breit, Nussbaum massiv",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "tisch",
+      "w": 200,
+      "d": 100,
+      "material": "nuss"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "bett",
+   "text": "Ein Bett aus Eiche, eins sechzig breit, zwei Meter lang",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "bett",
+      "w": 160,
+      "d": 200,
+      "material": "eiche"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "sitzbank",
+   "text": "Sitzbank am Fenster mit Schubladen, zwo-vierzig lang, fünfzig tief, Eiche",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "sitzbank",
+      "w": 240,
+      "d": 50,
+      "material": "eiche"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "treppe",
+   "text": "Eine neue Treppe aus Eiche mit Geländer",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "treppe",
+      "material": "eiche"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "wand-akustik",
+   "text": "Hinter dem Sofa eine Wandverkleidung mit Akustikpaneelen, drei achtzig breit, Eiche",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "wand",
+      "w": 380,
+      "material": "eiche"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "tuer",
+   "text": "Zimmertür in Weißlack, neunzig breit, zwei Meter zehn hoch",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "tuer",
+      "w": 90,
+      "h": 210,
+      "material": "weiss"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "custom-schwarz",
+   "text": "Sideboard in Lack schwarz, zwei Meter breit",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "sideboard",
+      "w": 200,
+      "material": "custom"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "custom-kiefer",
+   "text": "Einbauschrank aus Kiefer massiv, zwei Meter breit, raumhoch",
+   "doc": {
+    "room_h": 250,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "schrank",
+      "w": 200,
+      "h": 250,
+      "material": "custom",
+      "full_height": true
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "zwei-stueck",
+   "text": "Links ein Einbauschrank zwei Meter breit, rechts daneben ein Sideboard eins zwanzig, beides in Eiche",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "schrank",
+      "w": 200,
+      "material": "eiche"
+     },
+     {
+      "ref": null,
+      "type": "sideboard",
+      "w": 120,
+      "material": "eiche"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "zwei-kueche-regal",
+   "text": "Eine Küche drei Meter und gegenüber ein Wandregal achtzig breit, alles weiß",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "kueche",
+      "w": 300,
+      "material": "weiss"
+     },
+     {
+      "ref": null,
+      "type": "wandregal",
+      "w": 80,
+      "material": "weiss"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "dazu-haenge",
+   "text": "Zusätzlich noch ein Hängeschrank über der Tür, eins zwanzig breit",
+   "doc": {
+    "room_h": 255,
+    "pieces": [
+     {
+      "id": "p1schr",
+      "type": "schrank",
+      "w": 220,
+      "h": 255,
+      "d": 60,
+      "material": "weiss",
+      "handles": "push",
+      "text": "3 Türen"
+     }
+    ]
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "haengeschrank",
+      "w": 120
+     }
+    ],
+    "drops": [],
+    "questions": []
+   }
+  },
+  {
+   "id": "korr-tiefe",
+   "text": "nein, achtzig tief",
+   "doc": {
+    "room_h": 255,
+    "pieces": [
+     {
+      "id": "p1schr",
+      "type": "schrank",
+      "w": 220,
+      "h": 255,
+      "d": 60,
+      "material": "weiss",
+      "handles": "push"
+     }
+    ]
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": "p1schr",
+      "d": 80
+     }
+    ],
+    "drops": [],
+    "questions": []
+   }
+  },
+  {
+   "id": "korr-material",
+   "text": "doch lieber in Eiche",
+   "doc": {
+    "room_h": 255,
+    "pieces": [
+     {
+      "id": "p1schr",
+      "type": "schrank",
+      "w": 220,
+      "h": 255,
+      "d": 60,
+      "material": "weiss",
+      "handles": "push"
+     }
+    ]
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": "p1schr",
+      "material": "eiche"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "korr-breiter",
+   "text": "zwanzig Zentimeter breiter",
+   "doc": {
+    "room_h": 255,
+    "pieces": [
+     {
+      "id": "p1schr",
+      "type": "schrank",
+      "w": 220,
+      "h": 255,
+      "d": 60,
+      "material": "weiss",
+      "handles": "push"
+     }
+    ]
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": "p1schr",
+      "w": 240
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "korr-schmaler-benannt",
+   "text": "das Sideboard bitte zwanzig schmaler",
+   "doc": {
+    "room_h": 255,
+    "active": "p2side",
+    "pieces": [
+     {
+      "id": "p1schr",
+      "type": "schrank",
+      "w": 220,
+      "h": 255,
+      "d": 60,
+      "material": "eiche",
+      "handles": "messing"
+     },
+     {
+      "id": "p2side",
+      "type": "sideboard",
+      "w": 180,
+      "h": 75,
+      "d": 45,
+      "material": "eiche",
+      "handles": "push"
+     }
+    ]
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": "p2side",
+      "w": 160
+     }
+    ],
+    "drops": [],
+    "questions": []
+   }
+  },
+  {
+   "id": "korr-anderes-stueck",
+   "text": "Der Schrank soll doch grifflos sein, mit Push",
+   "doc": {
+    "room_h": 255,
+    "active": "p2side",
+    "pieces": [
+     {
+      "id": "p1schr",
+      "type": "schrank",
+      "w": 220,
+      "h": 255,
+      "d": 60,
+      "material": "eiche",
+      "handles": "messing"
+     },
+     {
+      "id": "p2side",
+      "type": "sideboard",
+      "w": 180,
+      "h": 75,
+      "d": 45,
+      "material": "eiche",
+      "handles": "push"
+     }
+    ]
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": "p1schr",
+      "handles": "push"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "korr-hoehe",
+   "text": "nee, zwei vierzig hoch",
+   "doc": {
+    "room_h": 255,
+    "pieces": [
+     {
+      "id": "p1schr",
+      "type": "schrank",
+      "w": 220,
+      "h": 255,
+      "d": 60,
+      "material": "weiss",
+      "handles": "push"
+     }
+    ]
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": "p1schr",
+      "h": 240
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "korr-typ",
+   "text": "Mach daraus lieber einen Hängeschrank",
+   "doc": {
+    "room_h": 255,
+    "pieces": [
+     {
+      "id": "p1side",
+      "type": "sideboard",
+      "w": 120,
+      "h": 75,
+      "d": 45,
+      "material": "eiche",
+      "handles": "push"
+     }
+    ]
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": "p1side",
+      "type": "haengeschrank"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "korr-bairisch",
+   "text": "Na, des muass sechzg tief sei",
+   "doc": {
+    "room_h": 255,
+    "pieces": [
+     {
+      "id": "p1schr",
+      "type": "schrank",
+      "w": 200,
+      "h": 255,
+      "d": 50,
+      "material": "eiche",
+      "handles": "push"
+     }
+    ]
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": "p1schr",
+      "d": 60
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "streichen",
+   "text": "Das Sideboard brauchen wir doch nicht",
+   "doc": {
+    "room_h": 255,
+    "pieces": [
+     {
+      "id": "p1schr",
+      "type": "schrank",
+      "w": 220,
+      "h": 255,
+      "d": 60,
+      "material": "eiche",
+      "handles": "push"
+     },
+     {
+      "id": "p2side",
+      "type": "sideboard",
+      "w": 180,
+      "h": 75,
+      "d": 45,
+      "material": "eiche",
+      "handles": "push"
+     }
+    ]
+   },
+   "expect": {
+    "pieces": [],
+    "drops": [
+     "p2side"
+    ],
+    "removes": 0,
+    "questions": []
+   }
+  },
+  {
+   "id": "foto-entfernen",
+   "text": "Die alte Kommode und das Regal links kommen raus, da hin kommt ein Sideboard eins sechzig",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "sideboard",
+      "w": 160
+     }
+    ],
+    "removes": 2,
+    "drops": [],
+    "questions": []
+   }
+  },
+  {
+   "id": "ersetzen",
+   "text": "Das Wandregal streichen, stattdessen ein Hängeschrank, ein Meter breit",
+   "doc": {
+    "room_h": 255,
+    "pieces": [
+     {
+      "id": "p1wreg",
+      "type": "wandregal",
+      "w": 120,
+      "h": 40,
+      "d": 25,
+      "elev": 150,
+      "material": "eiche",
+      "handles": null
+     }
+    ]
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "haengeschrank",
+      "w": 100
+     }
+    ],
+    "drops": [
+     "p1wreg"
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "vage-wohnzimmer",
+   "text": "Mach mal was Schönes ins Wohnzimmer",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [],
+    "questions_any": true
+   }
+  },
+  {
+   "id": "vage-hallo",
+   "text": "Hallo, können Sie mich hören?",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [],
+    "drops": [],
+    "removes": 0,
+    "questions_any": true
+   }
+  },
+  {
+   "id": "vage-eiche",
+   "text": "Der Kunde will was aus Eiche",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "questions_any": true
+   }
+  },
+  {
+   "id": "voll",
+   "text": "Und noch ein Wandregal, achtzig breit",
+   "doc": {
+    "room_h": 255,
+    "pieces": [
+     {
+      "id": "p1schr",
+      "type": "schrank",
+      "w": 220,
+      "material": "eiche"
+     },
+     {
+      "id": "p2side",
+      "type": "sideboard",
+      "w": 180,
+      "material": "eiche"
+     },
+     {
+      "id": "p3haen",
+      "type": "haengeschrank",
+      "w": 100,
+      "material": "eiche"
+     },
+     {
+      "id": "p4bank",
+      "type": "sitzbank",
+      "w": 160,
+      "material": "eiche"
+     }
+    ]
+   },
+   "expect": {
+    "pieces": [],
+    "drops": [],
+    "questions": [],
+    "warnings_any": true
+   }
+  },
+  {
+   "id": "halbe-hoehe",
+   "text": "Regal auf halbe Höhe, drei Meter breit, Eiche",
+   "doc": {
+    "room_h": 260,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "regal",
+      "w": 300,
+      "h": 130
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "masse-kette",
+   "text": "Sideboard 160 mal 80 mal 45, Nussbaum, Messing",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "sideboard",
+      "w": 160,
+      "h": 80,
+      "d": 45,
+      "material": "nuss",
+      "handles": "messing"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "mm-angaben",
+   "text": "Einbauschrank 2400 mm breit, 2500 mm hoch, 600 mm tief, Multiplex Birke",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "schrank",
+      "w": 240,
+      "h": 250,
+      "d": 60,
+      "material": "multiplex"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "ort-und-griffe",
+   "text": "Neben der Tür rechts eine Garderobe einsachtzig breit mit Messinggriffen, Nuss",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "garderobe",
+      "w": 180,
+      "material": "nuss",
+      "handles": "messing"
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "korr-plus-neu",
+   "text": "Den Schrank zehn Zentimeter schmaler und daneben noch ein Wandregal sechzig breit",
+   "doc": {
+    "room_h": 255,
+    "pieces": [
+     {
+      "id": "p1schr",
+      "type": "schrank",
+      "w": 220,
+      "h": 255,
+      "d": 60,
+      "material": "weiss",
+      "handles": "push"
+     }
+    ]
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": "p1schr",
+      "w": 210
+     },
+     {
+      "ref": null,
+      "type": "wandregal",
+      "w": 60
+     }
+    ],
+    "drops": [],
+    "questions": []
+   }
+  },
+  {
+   "id": "korr-doppelt",
+   "text": "doppelt so breit bitte",
+   "doc": {
+    "room_h": 255,
+    "pieces": [
+     {
+      "id": "p2side",
+      "type": "sideboard",
+      "w": 120,
+      "h": 75,
+      "d": 45,
+      "material": "eiche",
+      "handles": "push"
+     }
+    ]
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": "p2side",
+      "w": 240
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "haenge-bis-decke",
+   "text": "Hängeschrank bis unter die Decke, sechzig hoch, ein Meter zwanzig breit",
+   "doc": {
+    "room_h": 250,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "haengeschrank",
+      "w": 120,
+      "h": 60,
+      "elev": 190
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "drop-und-foto",
+   "text": "Das Sideboard fällt weg, und die alte Couch muss aus dem Bild raus",
+   "doc": {
+    "room_h": 255,
+    "pieces": [
+     {
+      "id": "p1schr",
+      "type": "schrank",
+      "w": 220,
+      "h": 255,
+      "d": 60,
+      "material": "weiss",
+      "handles": "push"
+     },
+     {
+      "id": "p2side",
+      "type": "sideboard",
+      "w": 120,
+      "h": 75,
+      "d": 45,
+      "material": "eiche",
+      "handles": "push"
+     }
+    ]
+   },
+   "expect": {
+    "pieces": [],
+    "drops": [
+     "p2side"
+    ],
+    "removes": 1,
+    "questions": []
+   }
+  },
+  {
+   "id": "whisper-fehler",
+   "text": "Ein Bau Schrank zwei Meter vierzig breit Raum hoch weiß Lack",
+   "doc": {
+    "room_h": 258,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "schrank",
+      "w": 240,
+      "h": 258,
+      "material": "weiss",
+      "full_height": true
+     }
+    ],
+    "questions": []
+   }
+  },
+  {
+   "id": "dialekt-franken",
+   "text": "Mir brauchn a Sideboard, zwa Meter breit, fuchzich tief, in Nuss",
+   "doc": {
+    "room_h": 255,
+    "pieces": []
+   },
+   "expect": {
+    "pieces": [
+     {
+      "ref": null,
+      "type": "sideboard",
+      "w": 200,
+      "d": 50,
+      "material": "nuss"
+     }
+    ],
+    "questions": []
+   }
+  }
+ ]
+}

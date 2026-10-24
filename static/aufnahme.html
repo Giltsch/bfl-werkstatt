@@ -1,0 +1,276 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2f6b4f"><link rel="icon" href="/static/ws/icon.svg">
+<title>Sprachproben</title>
+<style>
+:root{--bg:#f6f4f0;--panel:#fff;--panel2:#efebe4;--line:#d9d2c7;--text:#1d1b18;--muted:#5c564d;--accent:#2f6b4f;
+ --accent-ink:#fff;--accent-soft:#e3efe8;--danger:#b42318;--warn:#a15c07;--warn-soft:#fbefd9;--ok:#1f7a4d;--r:12px;
+ color-scheme:light;font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+@media (prefers-color-scheme:dark){:root{--bg:#121315;--panel:#1b1d20;--panel2:#24272b;--line:#33373d;--text:#ececef;
+ --muted:#a9adb5;--accent:#7cc4a0;--accent-ink:#0d1f16;--accent-soft:#1d3229;--danger:#ff8a7a;--warn:#f2b84b;
+ --warn-soft:#3a2e14;--ok:#7cc4a0;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);-webkit-tap-highlight-color:transparent}
+main{max-width:560px;margin:0 auto;padding:16px 16px calc(32px + env(safe-area-inset-bottom,0px))}
+h1{font-size:22px;margin:4px 0 6px}h2{font-size:17px;margin:0 0 8px}
+p{margin:0 0 10px}.muted{color:var(--muted)}.small{font-size:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:12px 0}
+.note{background:var(--warn-soft);border-color:transparent;font-size:14px}
+button,.btn{font:inherit;min-height:48px;display:inline-flex;align-items:center;justify-content:center;border-radius:10px;border:1px solid var(--line);background:var(--panel2);
+ color:var(--text);padding:0 16px;cursor:pointer}
+button:disabled{opacity:.5;cursor:default}
+.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.rec{width:100%;min-height:72px;font-size:19px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:12px}
+.rec .dot{width:18px;height:18px;border-radius:50%;background:var(--danger)}
+.rec.on{background:var(--danger);border-color:var(--danger);color:#fff}.rec.on .dot{background:#fff;animation:p 1s infinite}
+@keyframes p{50%{opacity:.3}}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.row>.grow{flex:1;min-width:0}
+textarea{width:100%;font:inherit;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:10px;
+ padding:10px;min-height:96px;resize:vertical}
+label.lbl{display:block;font-size:14px;color:var(--muted);margin:0 0 6px;font-weight:600}
+audio{width:100%;margin-top:10px}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:15px}
+.check input{width:22px;height:22px;flex:none;margin:2px 0 0}
+.thumb{max-width:96px;max-height:96px;border-radius:8px;border:1px solid var(--line)}
+.msg{min-height:24px;font-size:15px}.msg.err{color:var(--danger)}.msg.ok{color:var(--ok)}
+ul.list{list-style:none;padding:0;margin:0}ul.list li{padding:8px 0;border-top:1px solid var(--line);font-size:14px}
+.hint{font-size:14px;color:var(--muted);margin-top:8px}
+</style></head>
+<body><main>
+<h1>Sprachproben für die Spracherkennung</h1>
+<p class="muted">Sprechen Sie einen Auftrag so ein, wie Sie ihn einem Kollegen am Telefon beschreiben würden – z. B.
+„Links neben dem Fenster ein Einbauschrank, zwei-zwanzig breit, raumhoch, Weißlack, drei Türen grifflos.“</p>
+
+<div class="card note"><b>Nur für Testdaten.</b> Diese Seite sammelt Proben, mit denen wir die Spracherkennung der
+Werkstatt prüfen und verbessern. Die Aufnahmen bleiben auf dem Werkstatt-Rechner im Firmennetz (keine Cloud, nicht aus
+dem Internet erreichbar). Bitte keine Kundennamen, Adressen oder Telefonnummern einsprechen und keine Fotos mit Personen
+oder Kundendaten verwenden.</div>
+
+<div class="card">
+  <h2>1. Aufnehmen</h2>
+  <div id="live">
+    <button id="rec" class="rec" type="button"><span class="dot"></span><span id="recLabel">Aufnahme starten</span></button>
+    <p class="hint" id="timer">Bis zu 5 Minuten. Tippen zum Starten, nochmal tippen zum Beenden.</p>
+  </div>
+  <div id="fallback" hidden>
+    <p class="small">Direkt aufnehmen geht hier nicht (der Browser erlaubt das Mikrofon nur über eine sichere Verbindung).
+    Nehmen Sie stattdessen mit der Sprachmemo-App auf, oder tippen Sie auf den Knopf – viele Handys öffnen dann direkt den
+    Rekorder.</p>
+    <label class="btn primary row" style="justify-content:center">Sprachaufnahme wählen
+      <input id="audioFile" type="file" accept="audio/*" hidden></label>
+  </div>
+  <audio id="player" controls hidden></audio>
+</div>
+
+<div class="card">
+  <h2>2. Was wollten Sie sagen? <span class="muted small">(freiwillig)</span></h2>
+  <label class="lbl" for="text">Der gemeinte Text – so genau wie möglich, Zahlen gern als Ziffern</label>
+  <textarea id="text" maxlength="2000" placeholder="Links neben dem Fenster ein Einbauschrank, 220 breit, raumhoch, Weißlack, drei Türen grifflos."></textarea>
+  <label class="lbl" for="note" style="margin-top:12px">Notiz (z. B. „laute Werkstatt“, „Dialekt“)</label>
+  <textarea id="note" maxlength="500" style="min-height:48px"></textarea>
+</div>
+
+<div class="card">
+  <h2>3. Foto <span class="muted small">(freiwillig)</span></h2>
+  <p class="small muted">Ein Raumfoto, auf das sich die Beschreibung bezieht. Ortsdaten (GPS) werden beim Speichern entfernt.</p>
+  <div class="row"><label class="btn">Foto wählen<input id="photo" type="file" accept="image/*" hidden></label>
+    <img id="thumb" class="thumb" alt="" hidden><button id="photoClear" type="button" hidden>Entfernen</button></div>
+</div>
+
+<div class="card">
+  <label class="check"><input id="consent" type="checkbox">
+    <span>Ich bin einverstanden, dass diese Aufnahme (und das Foto) auf dem Werkstatt-Rechner gespeichert und zum Testen
+    und Verbessern der Spracherkennung verwendet wird. Ich kann sie jederzeit wieder löschen lassen.</span></label>
+  <div class="row" style="margin-top:14px">
+    <button id="save" class="primary grow" type="button" disabled>Probe speichern</button>
+    <button id="try" type="button" disabled title="Zeigt, was die Spracherkennung versteht">Erkennung testen</button>
+  </div>
+  <p id="msg" class="msg" role="status" aria-live="polite"></p>
+  <p id="heard" class="small" hidden></p>
+</div>
+
+<div class="card">
+  <h2>Gespeicherte Proben <span id="count" class="muted small"></span></h2>
+  <ul id="list" class="list"></ul>
+</div>
+</main>
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const MAX_SECONDS = 300;
+let blob = null, photo = null, recorder = null, chunks = [], started = 0, tick = null, stream = null, busy = false;
+const mine = new Set(JSON.parse(sessionStorageGet("voiceMine") || "[]"));
+
+function sessionStorageGet(k) { try { return sessionStorage.getItem(k); } catch { return null; } }
+function sessionStorageSet(k, v) { try { sessionStorage.setItem(k, v); } catch { /* private mode */ } }
+
+function say(text, kind = "") { const m = $("msg"); m.textContent = text; m.className = "msg " + kind; }
+function mmss(s) { s = Math.round(s); return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); }
+function refresh() {
+  const ok = !!blob && !busy;
+  $("save").disabled = !ok || !$("consent").checked;
+  $("try").disabled = !ok;
+}
+function setAudio(b) {
+  blob = b;
+  const p = $("player");
+  if (p.src) URL.revokeObjectURL(p.src);
+  p.hidden = !b;
+  if (b) p.src = URL.createObjectURL(b);
+  $("heard").hidden = true;
+  refresh();
+}
+
+async function api(path, opts = {}) {
+  const r = await fetch(path, {credentials: "same-origin", ...opts});
+  let body = null;
+  try { body = await r.json(); } catch { /* empty */ }
+  if (r.status === 401) throw new Error("Bitte zuerst in der Werkstatt anmelden (Seite /werkstatt öffnen), dann hier neu laden.");
+  if (!r.ok) {
+    const d = body && body.detail;
+    throw new Error(typeof d === "string" ? d : (d && d.message) || `Fehler ${r.status}`);
+  }
+  return body;
+}
+
+// ------------------------------------------------ recording
+const canRecord = window.isSecureContext && navigator.mediaDevices && navigator.mediaDevices.getUserMedia
+  && typeof MediaRecorder !== "undefined";
+if (!canRecord) { $("live").hidden = true; $("fallback").hidden = false; }
+
+function pickType() {
+  for (const t of ["audio/webm;codecs=opus", "audio/ogg;codecs=opus", "audio/mp4", "audio/webm"])
+    if (MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(t)) return t;
+  return "";
+}
+
+async function start() {
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({audio: {echoCancellation: true, noiseSuppression: true}});
+  } catch (e) {
+    say("Kein Zugriff aufs Mikrofon – bitte im Browser erlauben.", "err");
+    $("fallback").hidden = false;
+    return;
+  }
+  const type = pickType();
+  recorder = new MediaRecorder(stream, type ? {mimeType: type, audioBitsPerSecond: 48000} : undefined);
+  chunks = [];
+  recorder.ondataavailable = e => { if (e.data && e.data.size) chunks.push(e.data); };
+  recorder.onstop = () => {
+    stream.getTracks().forEach(t => t.stop());
+    setAudio(new Blob(chunks, {type: recorder.mimeType || type || "audio/webm"}));
+    say("Aufnahme fertig – anhören, Text ergänzen, speichern.");
+  };
+  recorder.start(1000);
+  started = Date.now();
+  $("rec").classList.add("on");
+  $("recLabel").textContent = "Aufnahme beenden";
+  setAudio(null);
+  say("");
+  tick = setInterval(() => {
+    const s = (Date.now() - started) / 1000;
+    $("timer").textContent = "Aufnahme läuft: " + mmss(s) + " / " + mmss(MAX_SECONDS);
+    if (s >= MAX_SECONDS) stop();
+  }, 250);
+}
+
+function stop() {
+  clearInterval(tick);
+  $("rec").classList.remove("on");
+  $("recLabel").textContent = "Neu aufnehmen";
+  $("timer").textContent = "Länge: " + mmss((Date.now() - started) / 1000);
+  if (recorder && recorder.state !== "inactive") recorder.stop();
+}
+
+$("rec").onclick = () => (recorder && recorder.state === "recording" ? stop() : start());
+$("audioFile").onchange = e => {
+  const f = e.target.files[0];
+  if (f) { setAudio(f); say("Aufnahme gewählt – anhören, Text ergänzen, speichern."); }
+};
+
+// ------------------------------------------------ photo, consent
+$("photo").onchange = e => {
+  photo = e.target.files[0] || null;
+  const t = $("thumb");
+  if (t.src) URL.revokeObjectURL(t.src);
+  t.hidden = $("photoClear").hidden = !photo;
+  if (photo) t.src = URL.createObjectURL(photo);
+};
+$("photoClear").onclick = () => { $("photo").value = ""; $("photo").onchange({target: {files: []}}); };
+$("consent").onchange = refresh;
+
+function audioName(b) {
+  const t = (b.type || "").toLowerCase();
+  return "aufnahme." + (t.includes("ogg") ? "ogg" : t.includes("mp4") || t.includes("m4a") || t.includes("aac") ? "m4a"
+    : t.includes("wav") ? "wav" : t.includes("mpeg") || t.includes("mp3") ? "mp3" : "webm");
+}
+
+// ------------------------------------------------ save / try / list
+$("save").onclick = async () => {
+  if (!blob || !$("consent").checked) return;
+  busy = true; refresh(); say("Wird gespeichert …");
+  const fd = new FormData();
+  fd.append("audio", blob, blob.name || audioName(blob));
+  fd.append("consent", "1");
+  fd.append("text", $("text").value.trim());
+  fd.append("note", $("note").value.trim());
+  fd.append("lang", "de");
+  if (photo) fd.append("photo", photo, photo.name || "foto.jpg");
+  try {
+    const meta = await api("/api/voice/sample", {method: "POST", body: fd});
+    mine.add(meta.id); sessionStorageSet("voiceMine", JSON.stringify([...mine]));
+    say(`Gespeichert (${mmss(meta.duration)}). Danke! Gern noch eine Probe.`, "ok");
+    setAudio(null); $("text").value = ""; $("note").value = ""; $("photoClear").onclick();
+    $("audioFile").value = ""; $("recLabel").textContent = "Aufnahme starten";
+    $("timer").textContent = "Bis zu 5 Minuten. Tippen zum Starten, nochmal tippen zum Beenden.";
+    load();
+  } catch (e) { say(e.message, "err"); }
+  busy = false; refresh();
+};
+
+$("try").onclick = async () => {
+  if (!blob) return;
+  busy = true; refresh(); say("Spracherkennung läuft … (beim ersten Mal bis zu einer halben Minute)");
+  const fd = new FormData();
+  fd.append("audio", blob, blob.name || audioName(blob));
+  fd.append("lang", "de");
+  try {
+    const r = await api("/api/voice/transcribe", {method: "POST", body: fd});
+    $("heard").hidden = false;
+    $("heard").textContent = "Verstanden: " + (r.text || "– nichts –");
+    say(`Erkannt in ${r.seconds.toFixed(1)} s.`);
+  } catch (e) { say(e.message, "err"); }
+  busy = false; refresh();
+};
+
+async function load() {
+  try {
+    const s = await api("/api/voice/samples");
+    $("count").textContent = `(${s.count}, zusammen ${s.minutes.toString().replace(".", ",")} min)`;
+    const ul = $("list");
+    ul.replaceChildren();
+    for (const it of s.recent) {
+      const li = document.createElement("li");
+      const row = document.createElement("div"); row.className = "row";
+      const txt = document.createElement("span"); txt.className = "grow";
+      txt.textContent = `${(it.at || "").replace("T", " ").slice(0, 16)} · ${mmss(it.duration || 0)}`
+        + (it.who ? " · " + it.who : "") + (it.photo ? " · Foto" : "") + (it.text ? " – " + it.text : "");
+      row.append(txt);
+      if (mine.has(it.id)) {
+        const del = document.createElement("button"); del.type = "button"; del.textContent = "Löschen";
+        del.onclick = async () => {
+          if (!confirm("Diese Probe endgültig löschen?")) return;
+          try { await api("/api/voice/sample/" + encodeURIComponent(it.id), {method: "DELETE"}); mine.delete(it.id);
+                sessionStorageSet("voiceMine", JSON.stringify([...mine])); load(); }
+          catch (e) { say(e.message, "err"); }
+        };
+        row.append(del);
+      }
+      li.append(row); ul.append(li);
+    }
+    if (!s.recent.length) { const li = document.createElement("li"); li.className = "muted"; li.textContent = "Noch keine Proben."; ul.append(li); }
+  } catch (e) { say(e.message, "err"); }
+}
+load();
+</script>
+</body></html>

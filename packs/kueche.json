@@ -1,0 +1,45 @@
+{
+ "id": "kueche",
+ "label": "Küchenbau",
+ "description": "Einbauküchen mit Unter-, Hoch- und Hängeschränken, Kochinseln und offenen Regalen.",
+ "types": ["kueche", "haengeschrank", "wandregal", "regal", "sideboard", "schrank", "tisch", "sitzbank"],
+ "templates": [
+  {"id": "kochinsel", "label": "Kochinsel", "type": "kueche", "text": "freistehende Kochinsel mit Arbeitsplatte, Auszüge auf der Arbeitsseite, Überstand zum Sitzen", "w": 200, "h": 92, "d": 100},
+  {"id": "kuechenzeile", "label": "Küchenzeile", "type": "kueche", "text": "gerade Küchenzeile an einer Wand mit Unter- und Hängeschränken", "h": 220},
+  {"id": "hochschrankwand", "label": "Hochschrankwand", "type": "schrank", "text": "Hochschrankwand mit Backofen und Kühlschrank in Greifhöhe", "d": 60, "full_height": true},
+  {"id": "unterschrank", "label": "Unterschrank-Zeile", "type": "kueche", "text": "nur Unterschränke mit Arbeitsplatte, keine Hängeschränke", "h": 92}
+ ],
+ "company": {"material": "weiss", "handles": "leiste", "plinth": 10, "board": 19},
+ "type_defaults": {
+  "kueche": {"d": 60, "h": 220, "doors": {"per": 60}},
+  "haengeschrank": {"d": 35, "h": 70, "elev": 145, "doors": {"per": 60}},
+  "wandregal": {"d": 25, "elev": 150},
+  "schrank": {"d": 60, "full_height": true, "doors": {"per": 60}}
+ },
+ "aliases": {
+  "type": {
+   "Küche": "kueche", "Einbauküche": "kueche", "Küchenzeile": "kuechenzeile", "Zeile": "kuechenzeile",
+   "Kochinsel": "kochinsel", "Insel": "kochinsel", "Kücheninsel": "kochinsel",
+   "Hochschrank": "hochschrankwand", "Hochschränke": "hochschrankwand", "Geräteschrank": "hochschrankwand",
+   "Unterschrank": "unterschrank", "Unterschränke": "unterschrank",
+   "Hängeschrank": "haengeschrank", "Oberschrank": "haengeschrank", "Oberschränke": "haengeschrank",
+   "Wandregal": "wandregal", "Gewürzregal": "wandregal", "Regal": "regal", "Esstisch": "tisch", "Eckbank": "sitzbank"
+  },
+  "material": {
+   "Weißlack": "weiss", "weiß lackiert": "weiss", "Lack weiß": "weiss", "weiß matt": "weiss", "Hochglanz weiß": "custom:Hochglanzlack weiß",
+   "Anthrazit": "anthrazit", "grau lackiert": "anthrazit", "Eiche": "eiche", "Eiche natur": "eiche", "Eiche weiß": "eicheweiss",
+   "Räuchereiche": "eicheraeuchert", "Nussbaum": "nuss", "Esche": "esche", "Multiplex": "multiplex",
+   "Salbeigrün": "custom:Lack salbeigrün matt", "Kaschmir": "custom:Lack kaschmir matt"
+  },
+  "handles": {
+   "grifflos": "push", "Push-to-open": "push", "Tip-On": "push", "Griffleiste": "leiste", "Griffmulde": "leiste",
+   "Gola": "leiste", "Messing": "messing", "Messinggriff": "messing", "schwarze Griffe": "schwarz", "Knopf": "knopf"
+  }
+ },
+ "wording": {
+  "notes_de": "Küche: Arbeitshöhe 92 cm, Sockel 10 cm, Unterschränke 60 tief, Hängeschränke 35 tief ab 145 cm.",
+  "prompt_en": "A fitted kitchen with a continuous worktop, a recessed plinth and aligned door fronts; appliances integrated flush.",
+  "judge_en": "Worktop must be continuous and level; wall cabinets aligned at one height; no cabinet blocks a window or door."
+ },
+ "quality": "entwurf"
+}

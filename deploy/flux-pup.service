@@ -1,0 +1,18 @@
+[Unit]
+Description=FLUX studio prompt upsampler (klein-pup FP8 via vLLM, :8003)
+# unified memory: never alongside the LawAI vLLM servers; pulled in by flux-studio (Wants=), loads after FLUX
+Conflicts=lawai-judge.service lawai-ocr.service
+After=lawai-judge.service lawai-ocr.service flux-studio.service
+StartLimitIntervalSec=900
+StartLimitBurst=3
+
+[Service]
+Type=simple
+WorkingDirectory=%h/Dokumente/Projekte/bfl
+Environment=PATH=/usr/local/cuda/bin:/usr/local/bin:/usr/bin:/bin
+ExecStartPre=%h/Dokumente/Projekte/bfl/serve_pup.sh --wait-studio
+ExecStart=%h/Dokumente/Projekte/bfl/serve_pup.sh
+TimeoutStartSec=700
+Restart=on-failure
+RestartSec=30
+TimeoutStopSec=30

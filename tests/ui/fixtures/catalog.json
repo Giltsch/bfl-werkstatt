@@ -1,0 +1,206 @@
+{
+ "pieces": {
+  "schrank": {
+   "de": "Einbauschrank",
+   "en": "fitted floor-to-ceiling built-in wardrobe with flush doors",
+   "dims": [
+    200,
+    240,
+    60
+   ]
+  },
+  "kueche": {
+   "de": "Küche",
+   "en": "fitted kitchen with base cabinets, wall cabinets and a worktop",
+   "dims": [
+    240,
+    220,
+    60
+   ]
+  },
+  "regal": {
+   "de": "Regalwand",
+   "en": "wall-to-wall built-in shelving unit",
+   "dims": [
+    240,
+    220,
+    35
+   ]
+  },
+  "sideboard": {
+   "de": "Sideboard",
+   "en": "low sideboard on a recessed plinth",
+   "dims": [
+    180,
+    75,
+    45
+   ]
+  },
+  "tisch": {
+   "de": "Esstisch",
+   "en": "solid wood dining table",
+   "dims": [
+    180,
+    76,
+    90
+   ]
+  },
+  "bett": {
+   "de": "Bett",
+   "en": "solid wood bed frame with headboard",
+   "dims": [
+    180,
+    95,
+    210
+   ]
+  },
+  "treppe": {
+   "de": "Treppe",
+   "en": "wooden staircase with matching handrail",
+   "dims": [
+    100,
+    280,
+    300
+   ]
+  },
+  "garderobe": {
+   "de": "Garderobe",
+   "en": "hallway wardrobe unit with a bench, coat hooks and shoe storage",
+   "dims": [
+    150,
+    200,
+    40
+   ]
+  },
+  "bad": {
+   "de": "Badmöbel",
+   "en": "vanity unit under the washbasin with drawers",
+   "dims": [
+    100,
+    55,
+    48
+   ]
+  },
+  "sitzbank": {
+   "de": "Sitzbank",
+   "en": "built-in window seat bench with storage drawers and a cushion",
+   "dims": [
+    160,
+    45,
+    50
+   ]
+  },
+  "wand": {
+   "de": "Wandverkleidung",
+   "en": "wooden wall panelling",
+   "dims": [
+    300,
+    250,
+    4
+   ]
+  },
+  "tuer": {
+   "de": "Tür",
+   "en": "solid wood interior door with frame",
+   "dims": [
+    90,
+    210,
+    10
+   ]
+  }
+ },
+ "materials": {
+  "eiche": {
+   "de": "Eiche natur geölt",
+   "en": "natural oak with a clear oiled matte finish and visible straight grain"
+  },
+  "eicheraeuchert": {
+   "de": "Eiche geräuchert",
+   "en": "smoked oak, dark warm brown, oiled matte"
+  },
+  "eicheweiss": {
+   "de": "Eiche weiß geölt",
+   "en": "white-oiled oak, pale Scandinavian look"
+  },
+  "nuss": {
+   "de": "Nussbaum",
+   "en": "American walnut, rich dark brown with lively grain"
+  },
+  "esche": {
+   "de": "Esche",
+   "en": "light ash with pronounced straight grain"
+  },
+  "kirsch": {
+   "de": "Kirschbaum",
+   "en": "cherry wood, warm reddish brown"
+  },
+  "fichte": {
+   "de": "Fichte massiv",
+   "en": "solid spruce, light with small knots"
+  },
+  "multiplex": {
+   "de": "Multiplex Birke",
+   "en": "birch plywood with visible layered edges"
+  },
+  "altholz": {
+   "de": "Altholz",
+   "en": "reclaimed weathered old timber with saw marks"
+  },
+  "weiss": {
+   "de": "Lack weiß matt",
+   "en": "smooth matte white lacquer"
+  },
+  "anthrazit": {
+   "de": "Lack anthrazit",
+   "en": "smooth matte anthracite grey lacquer"
+  },
+  "custom": {
+   "de": "Eigene Angabe…",
+   "en": ""
+  }
+ },
+ "handles": {
+  "push": {
+   "de": "grifflos (Push)",
+   "en": "handleless push-to-open fronts"
+  },
+  "leiste": {
+   "de": "Griffleiste",
+   "en": "integrated recessed grip rails"
+  },
+  "messing": {
+   "de": "Messing",
+   "en": "slim brushed brass bar handles"
+  },
+  "schwarz": {
+   "de": "Schwarz matt",
+   "en": "slim matte black bar handles"
+  },
+  "leder": {
+   "de": "Lederlaschen",
+   "en": "leather pull tabs"
+  },
+  "knopf": {
+   "de": "Holzknöpfe",
+   "en": "turned wooden knobs"
+  }
+ },
+ "max_pieces": 4,
+ "max_refs": 5,
+ "quality": {
+  "entwurf": {
+   "label": "Entwurf (schneller)",
+   "steps": 8
+  },
+  "fein": {
+   "label": "Fein (für den Kunden)",
+   "steps": 16
+  }
+ },
+ "common_materials": [
+  "eiche",
+  "eicheweiss",
+  "nuss",
+  "weiss"
+ ]
+}

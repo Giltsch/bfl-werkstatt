@@ -1,0 +1,17 @@
+[Unit]
+Description=FLUX 3 Klein Studio (image generation web UI, :7860)
+# unified memory: never run alongside the LawAI vLLM servers; starting this stops them (and vice versa)
+Conflicts=lawai-judge.service lawai-ocr.service
+After=lawai-judge.service lawai-ocr.service
+Wants=flux-judge.service
+
+[Service]
+Type=simple
+WorkingDirectory=%h/Dokumente/Projekte/bfl
+ExecStart=%h/Dokumente/Projekte/bfl/.venv/bin/python server.py --preload distilled,pup
+Restart=on-failure
+RestartSec=20
+TimeoutStopSec=30
+
+[Install]
+WantedBy=default.target

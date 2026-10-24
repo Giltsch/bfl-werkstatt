@@ -1,0 +1,1148 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Werkstatt Visualisierung</title>
+<link rel="stylesheet" href="/static/common.css">
+<style>
+.layout { display: grid; grid-template-columns: 380px 1fr; min-height: calc(100vh - 48px); }
+aside.side { border-right: 1px solid var(--line); background: var(--bg); padding: 14px; display: flex; flex-direction: column; gap: 12px; overflow-y: auto; height: calc(100vh - 48px); position: sticky; top: 48px; }
+main { min-width: 0; display: flex; flex-direction: column; height: calc(100vh - 48px); }
+.stagebar { display: flex; gap: 8px; align-items: center; padding: 10px 16px; border-bottom: 1px solid var(--line); background: var(--panel); flex-wrap: wrap; }
+.stagebar .seg button { padding: 7px 10px; white-space: nowrap; }
+.stagebar .hint { flex: 1 1 100%; order: 10; min-height: 1em; }
+.stagebar .toggle { font-size: 12.5px; }
+.stagebar .sp { flex: 1; }
+.stagewrap { flex: 1; min-height: 0; display: flex; flex-direction: column; position: relative; }
+.stage { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; padding: 16px; position: relative; }
+.canvas { position: relative; user-select: none; -webkit-user-select: none; touch-action: pan-y; box-shadow: 0 10px 40px rgba(0,0,0,.5); border-radius: 4px; overflow: hidden; background: #1a1c1f; outline: none; }
+.canvas.editing { touch-action: none; cursor: crosshair; }
+.canvas img { -webkit-touch-callout: none; -webkit-user-drag: none; }
+.canvas > img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
+.canvas > canvas.ov { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
+.bx { --c: var(--new); position: absolute; border: 2px solid var(--c); background: rgba(89,167,255,.12); background: color-mix(in srgb, var(--c) 14%, transparent); cursor: move; }
+.bx.act { border-width: 3px; }
+.bx.fixed { border-style: dashed; pointer-events: none; }
+.bx.rm { --c: var(--danger); background: repeating-linear-gradient(45deg, rgba(239,91,76,.22) 0 6px, transparent 6px 12px); }
+.bx span { position: absolute; left: -2px; top: -20px; font-size: 11px; color: #111; background: var(--c); padding: 1px 6px; border-radius: 3px 3px 0 0; white-space: nowrap; }
+.bx.rm span { color: #fff; }
+.bx button { position: absolute; right: -2px; top: -20px; border: 0; background: rgba(0,0,0,.75); color: #fff; font-size: 11px; width: 18px; height: 18px; line-height: 16px; padding: 0; border-radius: 3px 3px 0 0; }
+.bx i { position: absolute; right: -6px; bottom: -6px; width: 11px; height: 11px; background: #fff; border-radius: 2px; cursor: nwse-resize; }
+.cmp { cursor: ew-resize; }
+.cmp .after-clip { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.cmp .after-clip img { position: absolute; top: 0; left: 0; height: 100%; display: block; }
+.cmp.sk img.base { object-fit: contain; background: #f2f1ee; }
+.cmp .handle { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: #fff; pointer-events: none; box-shadow: 0 0 6px rgba(0,0,0,.6); }
+.cmp .handle::after { content: "⟷"; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); background: #fff; color: #111; border-radius: 99px; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-size: 15px; }
+.cmp .lab, .single .lab { position: absolute; top: 10px; font-size: 12px; background: rgba(0,0,0,.6); padding: 3px 8px; border-radius: 4px; pointer-events: none; }
+.cmp:focus-visible { box-shadow: 0 0 0 2px var(--accent), 0 10px 40px rgba(0,0,0,.5); }
+.empty { color: var(--muted); text-align: center; max-width: 520px; line-height: 1.7; }
+.empty b { color: var(--text); }
+.geostat { padding: 6px 16px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); background: var(--panel); display: flex; gap: 4px 12px; flex-wrap: wrap; }
+.geostat a { color: var(--accent); }
+.geostat .bad { color: var(--warn); }
+#presentExit { position: absolute; top: 12px; right: 12px; z-index: 5; display: none; }
+.stagewrap.presenting #presentExit { display: block; }
+.stagewrap.present { position: fixed; inset: 0; z-index: 45; background: #000; }
+.stagewrap:fullscreen { background: #000; }
+.stagewrap:-webkit-full-screen { background: #000; }
+.stagewrap.presenting .stage { flex: 1; height: auto; }
+.variants { border-top: 1px solid var(--line); background: var(--panel); padding: 10px 16px; display: flex; flex-direction: column; gap: 8px; }
+.vhead { display: flex; gap: 8px; align-items: center; }
+.vhead select { width: auto; padding: 4px 8px; font-size: 12.5px; margin-left: auto; }
+.vstrip { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 2px; }
+.vstrip button { flex: none; width: 112px; padding: 0; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--bg); position: relative; text-align: left; }
+.vstrip button.sel { outline: 2px solid var(--accent); outline-offset: 1px; }
+.vstrip img { width: 100%; height: 76px; object-fit: cover; display: block; }
+.vstrip small { display: block; padding: 3px 5px; font-size: 10.5px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.vstrip .star { position: absolute; right: 3px; top: 3px; font-size: 14px; color: var(--warn); text-shadow: 0 0 3px #000; }
+.badge { position: absolute; left: 3px; top: 3px; font-size: 11px; font-weight: 700; padding: 1px 6px; border-radius: 4px; color: #fff; background: #4a4d55; box-shadow: 0 0 3px rgba(0,0,0,.6); }
+.badge.pass { background: #2e8b57; } .badge.mid { background: #b07a12; } .badge.fail { background: #c0392b; }
+.badge.pend { background: rgba(0,0,0,.75); color: var(--accent); font-weight: 500; } .badge.na { color: #ccc; font-weight: 500; }
+.badge .s, .vstrip small .nat { display: none; }
+.vacts { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.vacts select { width: auto; padding: 5px 8px; font-size: 12.5px; max-width: 100%; }
+.vacts input[type=text] { width: auto; flex: 1; min-width: 180px; padding: 6px 8px; font-size: 13px; }
+.vjudge { font-size: 12.5px; color: var(--muted); display: flex; gap: 8px; align-items: flex-start; flex-wrap: wrap; }
+.vjudge .jt { flex: 1; min-width: 200px; line-height: 1.5; }
+.vjudge .jt b.ok { color: var(--accent); } .vjudge .jt b.no { color: var(--danger); }
+.vjudge details { margin-top: 4px; } .vjudge summary { cursor: pointer; color: var(--text); }
+.vjudge table { border-collapse: collapse; margin-top: 4px; } .vjudge td { padding: 1px 10px 1px 0; }
+.photo { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.photo .slot { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.photo .thumb, .photo .drop { aspect-ratio: 4/3; }
+.photo .drop { padding: 6px; }
+.thumb .x { position: absolute; right: 4px; top: 4px; border: 0; background: rgba(0,0,0,.7); color: #fff; border-radius: 4px; width: 22px; height: 22px; padding: 0; }
+.thumb .t { position: absolute; left: 4px; bottom: 4px; background: rgba(0,0,0,.7); font-size: 10.5px; padding: 1px 5px; border-radius: 3px; }
+.plist { display: flex; flex-direction: column; gap: 8px; }
+.pcard { border: 1px solid var(--line); border-radius: 8px; background: var(--bg); }
+.pcard.active { border-color: #3d6b55; }
+.phead { width: 100%; display: flex; align-items: center; gap: 8px; background: none; border: 0; padding: 9px 10px; text-align: left; }
+.phead .dot { width: 11px; height: 11px; border-radius: 50%; flex: none; }
+.phead b { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.phead .dimsum { color: var(--muted); font-size: 12px; white-space: nowrap; }
+.phead .pst { margin-left: auto; font-size: 11px; color: var(--muted); white-space: nowrap; }
+.pbody { display: flex; flex-direction: column; gap: 9px; padding: 0 10px 10px; }
+.pbody .lbl { margin: 2px 0 -3px; }
+.dims { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.dims label { display: flex; flex-direction: column; gap: 3px; font-size: 11px; color: var(--muted); min-width: 0; }
+.pwarn:empty { display: none; }
+.pwarn { color: var(--warn); font-size: 12px; display: flex; flex-direction: column; gap: 2px; }
+.plinks { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.sk { display: grid; grid-template-columns: 110px 1fr; gap: 8px; align-items: start; }
+.sk .thumb { aspect-ratio: 4/3; }
+.sk .acts { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; min-width: 0; }
+.sk .rthumb { width: 96px; aspect-ratio: 4/3; cursor: pointer; }
+.skdrop { min-height: 64px; }
+.go { position: sticky; bottom: -14px; background: var(--bg); padding: 10px 0 14px; margin-top: auto; display: flex; gap: 8px; }
+.go .btn.primary { flex: 1; padding: 11px; font-size: 14px; }
+.calrow { display: flex; gap: 8px; justify-content: flex-end; flex-wrap: wrap; }
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  aside.side { height: auto; position: static; border-right: 0; border-top: 1px solid var(--line); overflow: visible; }
+  main { order: -1; height: auto; }
+  .stage { flex: none; height: 70vh; height: min(70svh, 760px); padding: 8px; }
+  .go { bottom: 0; padding-bottom: 10px; }
+}
+@media (max-width: 600px) {
+  .stage { height: 60vh; height: 60svh; }
+  header.top { gap: 8px; padding: 0 10px; }
+  header.top h1 { display: none; }
+  .stagebar { padding: 8px; gap: 6px; }
+  .variants { padding: 8px; }
+  .badge .l { display: none; } .badge .s { display: inline; } .vstrip small .nat { display: inline; }
+}
+@media (pointer: coarse) {
+  .btn, .chip, .seg button { min-height: 40px; }
+  .chip { padding: 6px 11px; }
+  input, textarea, select { font-size: 16px; }
+  .bx i { width: 20px; height: 20px; right: -10px; bottom: -10px; }
+  .bx button { width: 28px; height: 28px; top: -28px; font-size: 14px; }
+  .bx span { top: -28px; line-height: 26px; }
+  .cmp .handle::after { width: 46px; height: 46px; font-size: 19px; }
+  .thumb .x { width: 30px; height: 30px; }
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>FLUX 3 <span>Klein</span></h1>
+  <nav class="pages"><a href="/studio">Studio</a><a href="/book">Book</a><a href="/werkstatt" class="active">Werkstatt</a></nav>
+  <div class="status" id="status"></div>
+  <button class="btn small" id="companyBtn" title="Firmenangaben für das Kundenblatt">Firma</button>
+</header>
+
+<div class="layout">
+  <aside class="side">
+    <section class="box">
+      <h3><span class="grow">Projekt</span><button class="btn small" id="newProj">＋ Neu</button><button class="btn small danger" id="delProj">Löschen</button></h3>
+      <select id="projSel"></select>
+      <div class="row" id="projMeta"><input type="text" data-k="title" placeholder="Projekt, z. B. Einbauschrank Flur"><input type="text" data-k="customer" placeholder="Kunde"></div>
+    </section>
+
+    <section class="box">
+      <h3>1 · Fotos</h3>
+      <div class="photo" id="photos"></div>
+      <div class="hint">Raumfoto vom Kunden (Handyfoto reicht), optional ein Foto vom Holzmuster. Skizzen gehören zum jeweiligen Möbel.</div>
+    </section>
+
+    <section class="box">
+      <h3><span class="grow">2 · Möbel</span><button class="btn small" id="addPiece">＋ Möbel hinzufügen</button></h3>
+      <div class="plist" id="pieces"></div>
+    </section>
+
+    <section class="box">
+      <h3>3 · Optionen</h3>
+      <label class="toggle" id="protectWrap"><input type="checkbox" data-k="protect" data-bool><span class="sw"></span><span>Raum schützen<small id="protectHint"></small></span></label>
+      <label class="toggle"><input type="checkbox" data-k="tidy" data-bool><span class="sw"></span><span>Raum aufräumen<small>Herumliegendes (Papiere, Kabel, Tassen) aus dem Bild nehmen</small></span></label>
+      <div id="roomChWrap"><input type="text" data-k="room_changes" placeholder="Änderungen am Raum selbst (optional), z. B. Wand dahinter dunkelgrün streichen"></div>
+      <div id="settingWrap" hidden><input type="text" data-k="setting" placeholder="Umgebung, z. B. heller Altbau-Flur mit Dielenboden"></div>
+      <label class="toggle" id="guideWrap"><input type="checkbox" data-k="guide" data-bool><span class="sw"></span><span>Umrisse als Vorlage mitgeben (experimentell)<small>+1 Bild, dauert länger</small></span></label>
+      <label class="toggle"><input type="checkbox" data-k="judge.enabled" data-bool><span class="sw"></span><span>Automatisch prüfen<small>Eine große KI bewertet jede Variante: Raum erhalten, Maße, Realismus.</small></span></label>
+      <label class="toggle" id="retryWrap"><input type="checkbox" data-k="judge.auto_retry" data-bool><span class="sw"></span><span>Bei Misserfolg neu versuchen<small>Fällt jede Variante durch, wird einmal mit Korrektur neu gerechnet.</small></span></label>
+      <div class="row">
+        <div><label class="lbl">Varianten</label><div class="seg" id="countSeg"><button data-c="1">1</button><button data-c="2">2</button><button data-c="3">3</button><button data-c="4">4</button></div></div>
+        <div><label class="lbl">Qualität</label><select data-k="res" data-num><option value="1024">Schnell</option><option value="1536">Hoch</option></select></div>
+      </div>
+    </section>
+
+    <div class="go"><button class="btn primary" id="goBtn">Visualisieren</button></div>
+  </aside>
+
+  <main>
+    <div class="stagebar">
+      <div class="seg" id="viewSeg"><button data-v="place">Platzierung</button><button data-v="result">Ergebnis</button></div>
+      <div class="seg" id="toolSeg"><button data-t="build">▭ Möbel</button><button data-t="remove">⌫ Entfernen</button><button data-t="measure" id="measureBtn">📏 Maßband</button></div>
+      <label class="toggle" id="showRoomWrap"><input type="checkbox" id="showRoom"><span class="sw"></span><span>Raumerkennung anzeigen</span></label>
+      <span class="sp"></span>
+      <button class="btn" id="remeasureBtn">Neu vermessen</button>
+      <button class="btn" id="sheetBtn">Kundenblatt PDF</button>
+      <button class="btn" id="presentBtn">Präsentieren</button>
+      <span class="hint" id="stageHint"></span>
+    </div>
+    <div class="stagewrap" id="stageWrap">
+      <div class="stage" id="stage"></div>
+      <button class="btn" id="presentExit">Vollbild beenden</button>
+    </div>
+    <div class="geostat" id="geoStat" hidden></div>
+    <div class="variants" id="variants" hidden>
+      <div class="vhead"><span class="lbl" style="margin:0">Varianten</span><select id="vSort"><option value="new">Neueste zuerst</option><option value="best">Beste zuerst</option></select></div>
+      <div class="vstrip" id="vstrip"></div>
+      <div class="vacts" id="vacts"></div>
+      <div class="vjudge" id="vjudge"></div>
+    </div>
+  </main>
+</div>
+
+<div class="modal" id="companyModal"><div class="card" style="width:min(520px,100%)">
+  <h3>Firmenangaben fürs Kundenblatt</h3>
+  <div><label class="lbl">Firmenname</label><input type="text" id="coName" placeholder="Schreinerei Muster"></div>
+  <div><label class="lbl">Kontaktzeile</label><input type="text" id="coContact" placeholder="Hauptstr. 1 · 91522 Ansbach · 0981 123456 · info@…"></div>
+  <div class="row"><div><label class="lbl">Akzentfarbe</label><input type="text" id="coColor" placeholder="#3d5a4a"></div><div><label class="lbl">Logo</label><button class="btn" id="coLogoBtn" style="width:100%">Logo hochladen</button></div></div>
+  <div id="coLogo"></div>
+  <div class="row" style="justify-content:flex-end"><button class="btn primary" style="flex:none" id="coSave">Speichern</button></div>
+</div></div>
+
+<div class="modal" id="calModal"><div class="card" style="width:min(460px,100%)">
+  <h3>Maßstab</h3>
+  <div id="calPts" style="display:flex;flex-direction:column;gap:10px">
+    <div class="hint" id="calMeasured"></div>
+    <div class="seg" id="calMode"><button data-m="floor">auf dem Boden</button><button data-m="vertical">senkrecht (Tür, Schrank)</button></div>
+    <div><label class="lbl">Tatsächliche Länge (cm)</label><input type="number" inputmode="numeric" min="1" id="calLen"></div>
+  </div>
+  <div><label class="lbl">Raumhöhe (cm)</label><input type="number" inputmode="numeric" min="100" max="500" id="calH" placeholder="z. B. 250"></div>
+  <div class="calrow"><button class="btn" id="calReset">Maßstab zurücksetzen</button><button class="btn" id="calCancel">Abbrechen</button><button class="btn primary" id="calOk">Übernehmen</button></div>
+</div></div>
+<div class="toast" id="toast"></div>
+
+<script src="/static/common.js"></script>
+<script src="/static/werkstatt3d.js"></script>
+<script>
+/* Werkstatt: the carpenter's page. Prompts, jobs and variants live on the server (workshop.py); this page edits the
+   project (pieces, placement, options), places pieces in 3D via W3D (werkstatt3d.js) when the room was measured,
+   and falls back to hand-drawn 2D boxes when W3D or the room analysis is missing. */
+const COLORS = (window.W3D && W3D.COLORS) || ["#59a7ff", "#7cc4a0", "#f2b84b", "#e879f9"];
+const COARSE = matchMedia("(pointer: coarse)").matches;
+const KIND_DE = { room: "Raum", free: "Frei", render: "Skizze", material: "Holz", edit: "Änderung", upscale: "Druck" };
+const SCORE_DE = { room_preserved: "Raum erhalten", matches_request: "Wie bestellt", proportions: "Proportionen", realism: "Realismus", artifacts: "Fehlerfrei" };
+const CONF_DE = { high: "hoch", medium: "mittel", low: "niedrig" };
+const NONE = () => ({ mode: "none", pose: null, box: null });
+let CAT = { pieces: {}, materials: {}, handles: {}, max_pieces: 4 };
+let D = null, LIST = [], VIEW = "place", TOOL = "build", SCENE = null, CTRL = null, MODE = "off";
+let SHOW_ROOM = false, JUDGE = null, SENDING = false, ANALYZING = false, CAL = null;
+const SL = { p: 50, full: false };            // slider position survives re-renders
+const TRACKING = new Map();                    // job id → project id
+let SORT = "new"; try { SORT = localStorage.getItem("werkstatt.sort") === "best" ? "best" : "new"; } catch {}
+const rid = n => Array.from({ length: n }, () => "abcdefghijklmnopqrstuvwxyz0123456789"[Math.floor(Math.random() * 36)]).join("");
+const company = () => { try { return JSON.parse(localStorage.getItem("werkstatt.company") || "{}"); } catch { return {}; } };
+const de1 = n => (Math.round(n * 10) / 10).toFixed(1).replace(".", ",");
+const de2 = n => (+n).toFixed(2).replace(".", ",");
+// rough job time as workshop.estimate_seconds: ~130 s prompt upsampler + ~55 s per image (30 s at 1024), + grading
+const estMin = n => Math.max(2, Math.round((150 + n * ((D?.res === 1024) ? 30 : 55)) / 60));
+const byId = id => D.pieces.find(p => p.id === id);
+const ap = () => byId(D.active_piece) || D.pieces[0];
+const catDims = t => CAT.pieces[t]?.dims || [100, 100, 60];
+const pieceLabel = (p, i = D.pieces.indexOf(p)) => p.label || CAT.pieces[p.type]?.de || (p.text || "").trim().slice(0, 30) || `Möbel ${i + 1}`;
+const dimsOf = p => { if (SCENE) return SCENE.dims(p); const c = catDims(p.type); return [p.w || c[0], p.h || c[1], p.d || c[2]]; };
+const placed = p => ["2d", "3d"].includes(p.placement?.mode) && !!p.placement.box;
+const getK = k => k.split(".").reduce((o, x) => o?.[x], D);
+const setK = (k, v) => { const ks = k.split("."), last = ks.pop(); ks.reduce((o, x) => o[x] ??= {}, D)[last] = v; };
+const newPiece = src => ({ id: rid(6), type: null, text: "", label: "", w: null, h: null, d: null,
+  material: src?.material || "eiche", material_custom: src?.material_custom || "", material_label: src?.material_label || CAT.materials.eiche?.de || "",
+  handles: src ? src.handles ?? null : "push", handles_label: src ? src.handles_label || "" : CAT.handles.push?.de || "",
+  sketch: null, render: null, use_render: false, sample: null, where: "", placement: NONE() });
+
+/* ---------- persistence: D is the server's doc; the server merges variants and returns them ---------- */
+let saveTimer = null, saveSeq = 0, savedSeq = 0, saveChain = Promise.resolve();
+function save() { saveSeq++; clearTimeout(saveTimer); saveTimer = setTimeout(() => flush().catch(() => {}), 600); }
+function flush() {
+  clearTimeout(saveTimer); saveTimer = null;
+  if (!D) return Promise.resolve();
+  const doc = D, seq = saveSeq;
+  const p = saveChain.then(async () => {
+    doc.thumb = doc.variants.find(v => v.fav)?.image || doc.variants[0]?.image || doc.room;
+    doc.company = company();
+    try {
+      const r = await api("PUT", `/api/projects/workshop/${doc.id}`, doc);
+      if (D === doc) savedSeq = Math.max(savedSeq, seq);
+      if (D === doc && seq === saveSeq && !saveTimer) adoptVariants(r.variants, true);
+    } catch (e) { toast("Speichern fehlgeschlagen: " + e.message, true); throw e; }
+  });
+  saveChain = p.catch(() => {});
+  return p;
+}
+const saveNow = () => saveSeq !== savedSeq ? flush() : saveChain;    // rejects when the PUT fails
+const settle = () => saveSeq !== savedSeq ? flush().catch(() => {}) : saveChain;
+function adoptVariants(list, render) {
+  if (!Array.isArray(list)) return;
+  const del = new Set(D.deleted_variants || []);
+  const next = list.filter(v => !del.has(v.id));
+  if (JSON.stringify(next) === JSON.stringify(D.variants)) return;
+  const before = stageKey();
+  D.variants = next;
+  if (render) { renderVariants(); if (stageKey() !== before) renderStage(); }
+}
+const stageKey = () => { const v = current(); return `${VIEW}|${v?.id}|${v?.image}`; };
+
+async function loadList(sel) {
+  LIST = await api("GET", "/api/projects/workshop");
+  $("#projSel").innerHTML = LIST.map(p => `<option value="${p.id}">${esc(p.title)}</option>`).join("");
+  if (sel) $("#projSel").value = sel;
+}
+function normalize(doc) {
+  if (!Array.isArray(doc.pieces) || !doc.pieces.length) doc.pieces = [newPiece()];
+  doc.pieces.forEach(p => { p.placement ||= NONE(); });
+  for (const k of ["variants", "removes", "deleted_variants", "pending_jobs"]) if (!Array.isArray(doc[k])) doc[k] = [];
+  doc.judge = { enabled: true, auto_retry: true, ...(doc.judge || {}) };
+  if (!doc.pieces.some(p => p.id === doc.active_piece)) doc.active_piece = doc.pieces[0].id;
+  return doc;
+}
+async function openProj(id) {
+  await settle();
+  if (!id) { const doc = await api("POST", "/api/projects/workshop", { version: 2, title: "Neues Projekt" }); await loadList(doc.id); id = doc.id; }
+  D = normalize(await api("GET", `/api/projects/workshop/${id}`));
+  saveSeq = savedSeq = 0;
+  try { localStorage.setItem("werkstatt.last", id); } catch {}
+  VIEW = D.variants.length ? "result" : "place";
+  initScene(); D.pieces.forEach(reproject);
+  render();
+  resume();
+}
+$("#projSel").onchange = e => openProj(e.target.value);
+$("#newProj").onclick = async () => {
+  const doc = await api("POST", "/api/projects/workshop", { version: 2, title: "Neues Projekt" });
+  await loadList(doc.id); await openProj(doc.id); $('[data-k="title"]').select();
+};
+$("#delProj").onclick = async () => {
+  if (!confirm(`Projekt „${D.title}“ löschen? Die Bilder bleiben in der Studio-Galerie.`)) return;
+  clearTimeout(saveTimer); saveTimer = null;
+  await api("DELETE", `/api/projects/workshop/${D.id}`); D = null; await loadList(); await openProj(LIST[0]?.id);
+};
+
+/* ---------- scene (3D placement) ---------- */
+function initScene() {
+  SCENE = null;
+  if (window.W3D && D?.room && D.geometry?.ok) try { SCENE = W3D.init(D.geometry, CAT); } catch (e) { console.error(e); }
+  if (!SCENE && TOOL === "measure") TOOL = "build";
+}
+/* Recomputes a 3d piece's grid box from its pose (null = not visible → counts as unplaced). */
+function reproject(p) {
+  const pl = p.placement;
+  if (!SCENE || pl?.mode !== "3d" || !pl.pose) return;
+  try { const pr = SCENE.projectBox(p); pl.box = pr.visible ? pr.box : null; } catch (e) { console.error(e); }
+}
+function fillDims(p) {
+  const [w, h, d] = dimsOf(p);
+  if (!p.w) p.w = Math.round(w); if (!p.h) p.h = Math.round(h); if (!p.d) p.d = Math.round(d);
+}
+function afterDims(p) {
+  const pl = p.placement;
+  if (SCENE && pl?.mode === "3d" && pl.pose) {
+    if (pl.pose.wall) try { const s = SCENE.snapToWall(pl.pose, p, pl.pose.wall); if (s) pl.pose = s; } catch (e) { console.error(e); }
+    reproject(p);
+    try { CTRL?.redraw(); } catch {}
+  }
+  updateLive(p);
+}
+function warnings(p) {
+  const out = [], pl = p.placement;
+  if (SCENE && pl?.mode === "3d" && pl.pose) {
+    let r = null; try { r = SCENE.relations(p); } catch (e) { console.error(e); }
+    if (r?.tooHigh) out.push(`Höher als die Decke (${Math.round(r.ceilingHeight)} cm)!`);
+    if (r?.tooWide) out.push(`Breiter als die Wand (${Math.round(r.wallLength)} cm)!`);
+    if (r?.outOfImage || !pl.box) out.push("Das Möbel ragt aus dem Bild.");
+  } else {
+    const ch = D.geometry?.ceiling?.height;
+    if (ch && p.h && p.h > ch) out.push(`Höher als die Decke (${Math.round(ch)} cm)!`);
+  }
+  return out;
+}
+
+/* ---------- side panel ---------- */
+$$("[data-k]").forEach(el => el.addEventListener(el.tagName === "SELECT" || el.type === "checkbox" ? "change" : "input", () => {
+  const k = el.dataset.k;
+  setK(k, el.hasAttribute("data-bool") ? el.checked : el.hasAttribute("data-num") ? +el.value : el.value);
+  if (k === "protect" || k === "room_changes") renderProtect();
+  if (k === "judge.enabled") $("#retryWrap").hidden = !D.judge.enabled;
+  if (k === "title") { const o = $(`#projSel option[value="${D.id}"]`); if (o) o.textContent = D.title || "Projekt"; }
+  save();
+}));
+$$("#countSeg button").forEach(b => b.onclick = () => { D.count = +b.dataset.c; save(); renderSide(); });
+
+function renderProtect() {
+  $("#protectWrap").hidden = !D.room;
+  const n = D.pieces.filter(placed).length;
+  $("#protectHint").textContent = !D.protect ? "Aus: das Modell darf den ganzen Raum neu zeichnen."
+    : (D.room_changes || "").trim() ? "Wirkt nicht, solange Änderungen am Raum eingetragen sind (die dürfen überall passieren)."
+    : n === D.pieces.length ? "Außerhalb der Markierungen bleibt das Foto pixelgenau erhalten. Aufräumen wirkt dann nur in markierten Bereichen."
+    : !n && !D.removes.length ? "Ohne Markierung nur per Anweisung. Für pixelgenauen Erhalt die Möbel mit „▭ Möbel“ platzieren."
+    : "Raum schützen wirkt erst, wenn alle Möbel platziert sind.";
+}
+function renderSide() {
+  $$("[data-k]").forEach(el => {
+    const v = getK(el.dataset.k);
+    if (el.type === "checkbox") el.checked = !!v; else if (el.value !== String(v ?? "")) el.value = v ?? "";
+  });
+  $$("#countSeg button").forEach(b => b.classList.toggle("active", +b.dataset.c === D.count));
+  $("#settingWrap").hidden = !!D.room; $("#roomChWrap").hidden = !D.room; $("#guideWrap").hidden = !D.room;
+  $("#retryWrap").hidden = !D.judge.enabled;
+  $("#addPiece").disabled = D.pieces.length >= (CAT.max_pieces || 4);
+  renderProtect(); renderPhotos(); renderPieces();
+}
+function pickFile(capture, onFile) {
+  const i = document.createElement("input"); i.type = "file"; i.accept = "image/*";
+  if (capture) i.setAttribute("capture", "environment");
+  i.onchange = () => i.files.length && onFile(i.files[0]); i.click();
+}
+const camBtn = key => COARSE ? `<button class="btn small" data-cam="${key}">📷 Foto aufnehmen</button>` : "";
+async function upload(file, maxSide, el) {
+  if (el) { el.classList.add("busy"); el.dataset.busy = "Lädt hoch…"; }
+  try { return await uploadFile(file, { maxSide }); }
+  catch (e) { toast(e.message, true); return null; }
+  finally { el?.classList.remove("busy"); }
+}
+function renderPhotos() {
+  const slot = (key, label, hint) => `<div class="slot">${D[key]
+    ? `<div class="thumb"><img src="${img(D[key])}" alt=""><span class="t">${label}</span><button class="x" data-rm="${key}" title="Entfernen">×</button></div>`
+    : `<div class="drop" data-up="${key}"><span>${hint}</span></div>${camBtn(key)}`}</div>`;
+  $("#photos").innerHTML = slot("room", "Raumfoto", "<b>Raumfoto</b><br>ablegen oder tippen") + slot("sample", "Holzmuster", "Holzmuster<br><small>optional</small>");
+  const got = async (key, file, el) => {
+    const r = await upload(file, key === "room" ? 2560 : 2048, el);
+    if (!r) return;
+    if (key === "room") setRoom(r); else { D[key] = r.path; save(); renderSide(); }
+  };
+  $$("#photos [data-up]").forEach(el => dropZone(el, files => got(el.dataset.up, files[0], el)));
+  $$("#photos [data-cam]").forEach(b => b.onclick = () => pickFile(true, f => got(b.dataset.cam, f, b.previousElementSibling)));
+  $$("#photos [data-rm]").forEach(b => b.onclick = () => { if (b.dataset.rm === "room") setRoom(null); else { D[b.dataset.rm] = null; save(); renderSide(); } });
+}
+/* A new room photo invalidates every placement, the removes and the room analysis. */
+function setRoom(r) {
+  D.room = r?.path || null; D.room_size = r ? [r.width, r.height] : null;
+  D.pieces.forEach(p => { p.placement = NONE(); });
+  D.removes = []; D.geometry = null; D.calibration = null; SCENE = null; VIEW = "place"; TOOL = "build";
+  save(); render();
+  if (D.room) analyze(false);
+}
+
+function placeState(p) {
+  const m = p.placement?.mode;
+  return m === "3d" ? (p.placement.box ? "3D" : "außerhalb") : m === "2d" ? "Rahmen" : D.room ? "nicht platziert" : "";
+}
+const dimSum = p => [p.w, p.h, p.d].some(Boolean) ? `${p.w || "–"} × ${p.h || "–"} × ${p.d || "–"} cm` : "";
+function chipsHtml(map, key, val) {
+  return Object.entries(map).map(([k, v]) => `<button class="chip ${val === k ? "active" : ""}" data-chip="${key}" data-v="${k}">${esc(v.de)}</button>`).join("");
+}
+function placeHtml(p) {
+  if (!D.room) return "";
+  const pl = p.placement, links = [];
+  if (SCENE) {
+    if (pl.mode === "3d" && pl.pose) {
+      if (D.geometry.walls?.length) links.push(`<button class="btn small" data-act="wall">An Wand ausrichten</button>`);
+      if (pl.pose.wall) links.push(`<button class="btn small" data-act="free">Frei stellen</button>`);
+    }
+    links.push(pl.mode === "2d" ? `<button class="btn small ghost" data-act="to3d">3D-Platzierung</button>` : `<button class="btn small ghost" data-act="to2d">2D-Rahmen statt 3D</button>`);
+  }
+  return links.length ? `<div class="plinks">${links.join("")}</div>` : "";
+}
+function sketchHtml(p) {
+  if (!p.sketch) return `<div class="drop skdrop" data-sk="up"><span>Skizze hochladen<br><small>Foto der Zeichnung oder CAD-Screenshot</small></span></div>${camBtn("sketch")}`;
+  return `<div class="sk"><div class="thumb"><img src="${img(p.sketch)}" alt=""><button class="x" data-act="skrm" title="Skizze entfernen">×</button></div>
+    <div class="acts"><button class="btn small" data-act="render">Skizze rendern</button>
+    ${p.render ? `<div class="thumb rthumb" data-act="showrender" title="Render ansehen"><img src="${img(p.render)}" alt=""></div>
+      <label class="toggle"><input type="checkbox" data-pk="use_render" ${p.use_render ? "checked" : ""}><span class="sw"></span><span>Render als Vorlage verwenden</span></label>` : ""}
+    ${JUDGE?.available ? `<button class="btn small ghost" data-act="readdims">Maße aus Skizze lesen</button>` : ""}</div></div>`;
+}
+function cardHead(p, i) {
+  return `<button class="phead" data-sel="${p.id}"><i class="dot" style="background:${COLORS[i % COLORS.length]}"></i><b>${esc(pieceLabel(p, i))}</b><span class="dimsum">${dimSum(p)}</span><span class="pst">${placeState(p)}</span></button>`;
+}
+function renderPieces() {
+  const a = ap();
+  $("#pieces").innerHTML = D.pieces.map((p, i) => {
+    if (p !== a) return `<div class="pcard" id="pc-${p.id}">${cardHead(p, i)}</div>`;
+    const c = catDims(p.type), num = (k, lab, ph) => `<label><span>${lab}</span><input type="number" inputmode="numeric" min="1" max="2000" data-pk="${k}" placeholder="${ph}" value="${p[k] ?? ""}"></label>`;
+    return `<div class="pcard active" id="pc-${p.id}">${cardHead(p, i)}<div class="pbody">
+      <div class="chips">${chipsHtml(CAT.pieces, "type", p.type)}</div>
+      <textarea data-pk="text" rows="2" placeholder="Details, gern auf Deutsch: z. B. 3 Türen, links offenes Fach mit 2 Böden, Sockel zurückgesetzt">${esc(p.text)}</textarea>
+      <div class="dims">${num("w", "Breite (cm)", c[0])}${num("h", "Höhe (cm)", c[1])}${num("d", "Tiefe (cm)", c[2])}</div>
+      <div class="pwarn" id="pwarn">${warnings(p).map(esc).map(w => `<span>${w}</span>`).join("")}</div>
+      <label class="lbl">Holz &amp; Oberfläche</label>
+      <div class="chips">${chipsHtml(CAT.materials, "material", p.material)}</div>
+      <input type="text" data-pk="material_custom" placeholder="Eigene Angabe, z. B. Lack in Salbeigrün RAL 6021" value="${esc(p.material_custom)}" ${p.material === "custom" ? "" : "hidden"}>
+      <label class="lbl">Griffe</label>
+      <div class="chips">${chipsHtml(CAT.handles, "handles", p.handles)}</div>
+      ${D.room && !placed(p) ? `<input type="text" data-pk="where" placeholder="Wo? z. B. in die Nische links neben dem Fenster" value="${esc(p.where)}">` : ""}
+      ${placeHtml(p)}
+      <label class="lbl">Skizze / CAD</label>
+      ${sketchHtml(p)}
+      ${D.pieces.length > 1 ? `<div><button class="btn small danger" data-act="rmpiece">Möbel entfernen</button></div>` : ""}
+    </div></div>`;
+  }).join("");
+  const el = $("#pieces");
+  $$("[data-sel]", el).forEach(b => b.onclick = () => select(b.dataset.sel));
+  $$("[data-chip]", el).forEach(b => b.onclick = () => setChip(a, b.dataset.chip, b.dataset.v));
+  $$("[data-pk]", el).forEach(i => i.addEventListener(i.type === "checkbox" ? "change" : "input", () => pieceInput(a, i)));
+  $$("[data-act]", el).forEach(b => b.onclick = e => { e.stopPropagation(); pieceAction(a, b.dataset.act, b); });
+  const sk = $("[data-sk]", el);
+  if (sk) dropZone(sk, files => setSketch(a, files[0], sk));
+  const cam = $('[data-cam="sketch"]', el);
+  if (cam) cam.onclick = () => pickFile(true, f => setSketch(a, f, sk));
+}
+async function setSketch(p, file, el) {
+  const r = await upload(file, 2048, el);
+  if (!r) return;
+  p.sketch = r.path; p.render = null; p.use_render = false; save(); renderSide();
+}
+function select(id) {
+  if (!byId(id) || D.active_piece === id) return;
+  D.active_piece = id; save(); renderSide(); applyMode(); redrawStage();
+}
+function setChip(p, key, v) {
+  if (key === "type") {
+    p.type = p.type === v ? null : v; p.label = p.type ? CAT.pieces[v].de : "";
+    if (p.type && !p.w && !p.h && !p.d) { [p.w, p.h, p.d] = catDims(p.type); afterDims(p); }
+  } else if (key === "material") {
+    p.material = v; p.material_label = v === "custom" ? (p.material_custom || "").slice(0, 80) : CAT.materials[v].de;
+  } else if (key === "handles") {
+    p.handles = p.handles === v ? null : v; p.handles_label = p.handles ? CAT.handles[v].de : "";
+  }
+  save(); renderSide(); redrawStage();
+}
+function pieceInput(p, el) {
+  const k = el.dataset.pk;
+  if (k === "w" || k === "h" || k === "d") {
+    const n = parseInt(el.value, 10);
+    p[k] = n >= 1 ? Math.min(2000, n) : null;
+    afterDims(p);
+  } else if (k === "use_render") p.use_render = el.checked;
+  else {
+    p[k] = el.value;
+    if (k === "material_custom" && p.material === "custom") p.material_label = el.value.slice(0, 80);
+  }
+  updateLive(p); save();
+}
+/* Cheap in-place refresh of the active card while typing or dragging (a full re-render would steal the focus). */
+function updateLive(p) {
+  const card = $(`#pc-${p.id}`);
+  if (card) {
+    $(".dimsum", card).textContent = dimSum(p); $(".pst", card).textContent = placeState(p);
+    $("b", card).textContent = pieceLabel(p);
+    const w = $("#pwarn", card); if (w) w.innerHTML = warnings(p).map(x => `<span>${esc(x)}</span>`).join("");
+  }
+  renderProtect();
+}
+async function pieceAction(p, act, btn) {
+  const pl = p.placement;
+  if (act === "rmpiece") {
+    if (!confirm(`„${pieceLabel(p)}“ entfernen?`)) return;
+    D.pieces = D.pieces.filter(x => x !== p); D.active_piece = D.pieces[0].id;
+    save(); renderSide(); renderStage();
+  } else if (act === "wall") {
+    let nw = null; try { nw = SCENE.nearestWall(pl.pose.x, pl.pose.z); } catch (e) { console.error(e); }
+    const s = nw && SCENE.snapToWall(pl.pose, p, nw.wall.id);
+    if (!s) return toast("Keine passende Wand in der Nähe.", true);
+    pl.pose = s; reproject(p); save(); renderSide(); redrawStage();
+  } else if (act === "free") {
+    pl.pose = { ...pl.pose, wall: null }; save(); renderSide();
+  } else if (act === "to2d") {
+    p.placement = { mode: "2d", pose: pl.pose || null, box: pl.box || [300, 350, 700, 650] };
+    TOOL = "build"; VIEW = "place"; save(); renderSide(); renderStage();
+  } else if (act === "to3d") {
+    p.placement = pl.pose ? { mode: "3d", pose: pl.pose, box: null } : NONE();
+    reproject(p); TOOL = "build"; VIEW = "place"; save(); renderSide(); renderStage();
+  } else if (act === "skrm") {
+    p.sketch = null; p.render = null; p.use_render = false; save(); renderSide();
+  } else if (act === "render") {
+    submit("generate", { kind: "render", piece_id: p.id }, `Skizze: ${pieceLabel(p)}`);
+  } else if (act === "showrender") {
+    const v = D.variants.find(x => x.image === p.render);
+    if (v) { D.selected = v.id; VIEW = "result"; save(); renderVariants(); renderStage(); } else lightbox(img(p.render));
+  } else if (act === "readdims") {
+    btn.disabled = true; btn.textContent = "liest…";
+    try {
+      await saveNow();
+      const r = await api("POST", `/api/workshop/${D.id}/sketch_dims`, { piece_id: p.id });
+      if (r.status !== "ok") return toast(r.comment || "Prüfer nicht verfügbar", true);
+      const was = dimSum(p), got = ["w", "h", "d"].filter(k => r[k]);
+      if (!got.length) return toast(`Keine Maße in der Skizze gefunden.${r.comment ? " " + r.comment : ""}`, true);
+      for (const k of got) p[k] = r[k];  // written on the drawing: they win over the catalog defaults
+      afterDims(p); save(); renderSide();
+      const now = dimSum(p);
+      toast(`${now === was ? "Maße stimmen mit der Skizze überein" : "Maße aus der Skizze übernommen"}: ${now}${was && now !== was ? ` (vorher ${was})` : ""}.${r.comment ? " " + r.comment : ""}`);
+    } catch (e) { toast(e.message, true); }
+    finally { btn.disabled = false; btn.textContent = "Maße aus Skizze lesen"; }
+  }
+}
+$("#addPiece").onclick = () => {
+  if (D.pieces.length >= (CAT.max_pieces || 4)) return toast("Höchstens 4 Möbel pro Projekt.", true);
+  const p = newPiece(ap());
+  D.pieces.push(p); D.active_piece = p.id; TOOL = "build"; if (D.room) VIEW = "place";
+  save(); renderSide(); renderStage();
+};
+
+/* ---------- stage ---------- */
+function render() { renderSide(); renderVariants(); renderStage(); }
+$$("#viewSeg button").forEach(b => b.onclick = () => { VIEW = b.dataset.v; renderStage(); });
+$$("#toolSeg button").forEach(b => b.onclick = () => { TOOL = b.dataset.t; renderStage(); });
+$("#showRoom").onchange = e => { SHOW_ROOM = e.target.checked; try { CTRL?.setShowRoom(SHOW_ROOM); } catch {} };
+$("#remeasureBtn").onclick = () => analyze(true);
+
+function fitBox(aspect) {
+  const st = $("#stage"), cs = getComputedStyle(st);
+  const W = st.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+  const H = st.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+  let w = W, h = W / aspect; if (h > H) { h = H; w = H * aspect; }
+  return [Math.max(50, w), Math.max(50, h)];
+}
+/* Sizes the stage canvas to the available space; the DOM boxes are in % and the overlay re-reads its size. */
+function fitCanvas() {
+  const c = $("#stage > .canvas");
+  if (!c) return;
+  const [w, h] = fitBox(+c.dataset.aspect || 4 / 3);
+  c.style.width = `${w}px`; c.style.height = `${h}px`;
+  const ai = $(".after-clip img", c); if (ai) ai.style.width = `${w}px`;
+  try { CTRL?.resize(); } catch {}
+}
+if (window.ResizeObserver) {
+  let queued = false;
+  new ResizeObserver(() => { if (queued) return; queued = true; requestAnimationFrame(() => { queued = false; fitCanvas(); }); }).observe($("#stage"));
+} else window.addEventListener("resize", debounce(fitCanvas, 100));
+
+function shownVariants() {
+  const seen = new Set(), del = new Set(D.deleted_variants);
+  const list = D.variants.filter(v => !del.has(v.id) && !seen.has(v.image) && seen.add(v.image));
+  const score = v => v.judge?.status === "ok" && v.judge.overall != null ? v.judge.overall : -1;
+  return SORT === "best" ? list.sort((a, b) => score(b) - score(a) || (b.image > a.image ? 1 : -1)) : list;
+}
+function current() { return D.variants.find(v => v.id === D.selected) || shownVariants()[0]; }
+function ctrlMode() {
+  if (VIEW !== "place" || !SCENE || !D.room) return "off";
+  if (TOOL === "measure") return "measure";
+  return TOOL === "build" && ap()?.placement?.mode !== "2d" ? "place" : "off";
+}
+/* Switches between W3D (place/measure) and the DOM box editor (2D pieces, removes) without rebuilding the stage. */
+function applyMode() {
+  const m = ctrlMode();
+  if (CTRL && m !== MODE) try { CTRL.setMode(m); } catch (e) { console.error(e); }
+  MODE = m;
+  $$("#toolSeg button").forEach(b => b.classList.toggle("active", b.dataset.t === TOOL));
+  $("#cv")?.classList.toggle("editing", VIEW === "place" && m === "off" && TOOL !== "measure");
+  const p = ap();
+  $("#stageHint").textContent = VIEW !== "place" || !D.room ? $("#stageHint").textContent
+    : m === "measure" ? "Linie über etwas Bekanntem ziehen (z. B. Türhöhe, Fliese, Tischbreite)."
+    : m === "place" ? (p.placement?.mode === "3d" ? "Ziehen zum Verschieben, Kreis ziehen zum Drehen. Nahe an der Wand rastet es ein." : "Auf den Boden tippen, wo das Möbel stehen soll.")
+    : TOOL === "remove" ? "Rahmen um Dinge ziehen, die verschwinden sollen (alter Schrank, Kartons…)."
+    : `Rahmen aufziehen, wo „${pieceLabel(p)}“ stehen soll (optional; sonst Angabe „Wo?“).`;
+}
+function renderStage() {
+  if (CTRL) { try { CTRL.destroy(); } catch {} CTRL = null; }
+  MODE = "off";
+  const st = $("#stage"), v = current();
+  $$("#viewSeg button").forEach(b => b.classList.toggle("active", b.dataset.v === VIEW));
+  const placing = VIEW === "place" && !!D.room;
+  $("#toolSeg").hidden = !placing; $("#measureBtn").hidden = !SCENE;
+  $("#showRoomWrap").hidden = !(placing && SCENE); $("#showRoom").checked = SHOW_ROOM;
+  $("#remeasureBtn").hidden = !placing; $("#presentBtn").hidden = !v && !D.room;
+  if (VIEW === "result" && v) renderResult(st, v);
+  else if (!D.room) {
+    $("#stageHint").textContent = "";
+    st.innerHTML = `<div class="empty"><p><b>Raumfoto hochladen</b> (Feld „Raumfoto“ ${matchMedia("(max-width: 900px)").matches ? "unten" : "links"}), dann hier platzieren, wo die Möbel hinkommen.</p>
+      <p>Ohne Raumfoto entsteht eine freie Visualisierung: aus der Beschreibung, oder aus einer Skizze als fotorealistisches Bild.</p>
+      ${D.variants.length ? "" : `<p class="hint">Danach „Visualisieren“: ${D.count} Variante(n) in etwa ${estMin(D.count)} Minuten.</p>`}</div>`;
+  } else if (!D.room_size) {
+    st.innerHTML = "";
+    imageSize(img(D.room)).then(s => { D.room_size = s; renderStage(); }).catch(() => {});
+  } else {
+    st.innerHTML = `<div class="canvas" id="cv" data-aspect="${D.room_size[0] / D.room_size[1]}"><img src="${img(D.room)}" draggable="false" alt="">${boxesHtml()}${SCENE ? `<canvas class="ov" id="ov"></canvas>` : ""}</div>`;
+    wireCanvas($("#cv"));
+    if (SCENE) try {
+      CTRL = W3D.attach($("#ov"), { scene: SCENE, imgSize: SCENE.size || D.room_size, getPieces: () => D.pieces, getActiveId: () => D.active_piece,
+        onChange: onPose, onSelect: select, onMeasure: openCal, mode: "off", showRoom: SHOW_ROOM, touch: COARSE });
+    } catch (e) { console.error(e); CTRL = null; }
+  }
+  fitCanvas(); applyMode(); renderGeoStat();
+}
+/* Cheap stage refresh after piece edits: DOM boxes + overlay, keeping the controller. */
+function redrawStage() {
+  const c = $("#cv");
+  if (!c) return;
+  $$(".bx", c).forEach(n => n.remove());
+  const ov = $("#ov", c);
+  if (ov) ov.insertAdjacentHTML("beforebegin", boxesHtml()); else c.insertAdjacentHTML("beforeend", boxesHtml());
+  try { CTRL?.redraw(); } catch {}
+}
+function onPose(id, pose, opt) {
+  const p = byId(id);
+  if (!p) return;
+  fillDims(p);
+  p.placement = { mode: "3d", pose, box: null };
+  reproject(p);
+  try { CTRL?.redraw(); } catch {}
+  if (opt?.final) { D.active_piece = id; save(); renderSide(); applyMode(); } else updateLive(p);
+}
+
+const rectStyle = r => `top:${r[0] / 10}%;left:${r[1] / 10}%;height:${(r[2] - r[0]) / 10}%;width:${(r[3] - r[1]) / 10}%`;
+function boxesHtml() {
+  let s = "";
+  D.pieces.forEach((p, i) => {
+    const pl = p.placement, fixed = pl.mode === "3d" && !SCENE;  // a 3d piece without a scene: show its last box
+    if (!pl.box || !(pl.mode === "2d" || fixed)) return;
+    s += `<div class="bx ${fixed ? "fixed" : ""} ${p.id === D.active_piece ? "act" : ""}" data-b="p:${p.id}" style="${rectStyle(pl.box)};--c:${COLORS[i % COLORS.length]}"><span>${esc(pieceLabel(p, i))}</span>${fixed ? "" : `<button data-x="p:${p.id}">×</button><i></i>`}</div>`;
+  });
+  D.removes.forEach((r, i) => s += `<div class="bx rm" data-b="r:${i}" style="${rectStyle(r)}"><span>entfernen</span><button data-x="r:${i}">×</button><i></i></div>`);
+  return s;
+}
+/* 2D editor: hand-drawn boxes for 2D pieces and removes (grid 0–1000). Active only while .canvas.editing. */
+function wireCanvas(c) {
+  let drag = null;
+  const pt = e => { const r = c.getBoundingClientRect(); return [Math.max(0, Math.min(1000, (e.clientY - r.top) / r.height * 1000)), Math.max(0, Math.min(1000, (e.clientX - r.left) / r.width * 1000))]; };
+  const norm = r => [Math.min(r[0], r[2]), Math.min(r[1], r[3]), Math.max(r[0], r[2]), Math.max(r[1], r[3])].map(Math.round);
+  const get = k => k[0] === "p" ? byId(k.slice(2))?.placement?.box : D.removes[+k.slice(2)];
+  const set = (k, r) => { if (k[0] === "p") { const p = byId(k.slice(2)); p.placement = { ...p.placement, mode: "2d", box: r }; } else D.removes[+k.slice(2)] = r; };
+  c.onpointerdown = e => {
+    if (e.button > 0 || !c.classList.contains("editing") || e.target.tagName === "CANVAS") return;
+    const x = e.target.dataset.x;
+    if (x != null) {
+      if (x[0] === "p") byId(x.slice(2)).placement = NONE(); else D.removes.splice(+x.slice(2), 1);
+      save(); redrawStage(); renderSide(); return;
+    }
+    try { c.setPointerCapture(e.pointerId); } catch {}
+    const p = pt(e), bx = e.target.closest(".bx");
+    if (bx && get(bx.dataset.b)) {
+      const k = bx.dataset.b;
+      if (k[0] === "p" && k.slice(2) !== D.active_piece) { D.active_piece = k.slice(2); renderSide(); applyMode(); }
+      drag = { k, mode: e.target.tagName === "I" ? "size" : "move", p0: p, r0: get(k).slice() };
+    } else if (TOOL === "remove") {
+      D.removes.push([p[0], p[1], p[0], p[1]]); drag = { k: `r:${D.removes.length - 1}`, mode: "new", p0: p };
+    } else {
+      const a = ap();
+      drag = { k: `p:${a.id}`, mode: "new", p0: p, prev: structuredClone(a.placement) };
+      a.placement = { mode: "2d", pose: a.placement?.pose || null, box: [p[0], p[1], p[0], p[1]] };
+    }
+  };
+  c.onpointermove = e => {
+    if (!drag) return;
+    const p = pt(e), r0 = drag.r0;
+    if (drag.mode === "new") set(drag.k, norm([drag.p0[0], drag.p0[1], p[0], p[1]]));
+    else if (drag.mode === "size") set(drag.k, norm([r0[0], r0[1], p[0], p[1]]));
+    else {
+      const dy = Math.max(-r0[0], Math.min(1000 - r0[2], p[0] - drag.p0[0])), dx = Math.max(-r0[1], Math.min(1000 - r0[3], p[1] - drag.p0[1]));
+      set(drag.k, [r0[0] + dy, r0[1] + dx, r0[2] + dy, r0[3] + dx].map(Math.round));
+    }
+    redrawStage();
+  };
+  c.onpointerup = c.onpointercancel = () => {
+    if (!drag) return;
+    const r = get(drag.k);
+    if (drag.mode === "new" && (!r || r[2] - r[0] < 20 || r[3] - r[1] < 20)) {
+      if (drag.k[0] === "p") byId(drag.k.slice(2)).placement = drag.prev || NONE(); else D.removes.pop();
+    }
+    drag = null; redrawStage(); save(); renderSide();
+  };
+}
+
+/* Before/after slider: drag, tap, arrow keys; double-tap/double-click jumps to 0 % / 100 %. */
+function renderResult(st, v) {
+  const kind = v.kind || (D.room ? "room" : "free");
+  const aspect = v.size ? v.size[0] / v.size[1] : D.room_size ? D.room_size[0] / D.room_size[1] : 4 / 3;
+  let base = null, labs = null;
+  const parent = v.from && D.variants.find(x => x.id === v.from);
+  const sameAspect = s => s && Math.abs(s[0] / s[1] - aspect) < 0.02;
+  if (kind === "render") { const sk = v.sketch || byId(v.piece_ids?.[0])?.sketch; if (sk) { base = sk; labs = ["Entwurf", "Skizze"]; } }
+  else if (v.from) { if (parent) { base = parent.image; labs = ["Nachher", "Vorher"]; } }  // edit/material/print: its source
+  else if (kind === "room") {
+    // the photo it was generated from; older variants did not store it: the current photo only if it fits
+    if (v.room) base = v.room; else if (D.room && sameAspect(D.room_size)) base = D.room;
+    if (base) labs = ["Nachher", "Vorher"];
+  }
+  if (!base) {
+    $("#stageHint").textContent = "";
+    st.innerHTML = `<div class="canvas single" data-aspect="${aspect}" style="cursor:zoom-in"><img src="${img(v.image)}" draggable="false" alt="">${kind === "render" ? `<span class="lab" style="left:10px">Entwurf</span>` : ""}</div>`;
+    $(".canvas", st).onclick = () => lightbox(img(v.image));
+    return;
+  }
+  $("#stageHint").textContent = kind === "render" ? "Schieber ziehen: Skizze / Entwurf." : "Schieber ziehen: vorher / nachher. Doppeltippen: ganz vorher / ganz nachher.";
+  st.innerHTML = `<div class="canvas cmp ${kind === "render" ? "sk" : ""}" tabindex="0" data-aspect="${aspect}"><img class="base" src="${img(base)}" draggable="false" alt="">
+    <div class="after-clip" style="width:${SL.p}%"><img src="${img(v.image)}" draggable="false" alt=""></div>
+    <div class="handle" style="left:${SL.p}%"></div><span class="lab" style="left:10px">${labs[0]}</span><span class="lab" style="right:10px">${labs[1]}</span></div>`;
+  const c = $(".cmp", st);
+  const set = p => { SL.p = Math.max(0, Math.min(100, p)); $(".after-clip", c).style.width = `${SL.p}%`; $(".handle", c).style.left = `${SL.p}%`; };
+  const at = e => { const r = c.getBoundingClientRect(); set((e.clientX - r.left) / r.width * 100); };
+  let drag = null, last = { t: -1e9, x: 0, y: 0 };
+  c.onpointerdown = e => {
+    if (e.button > 0) return;
+    drag = { id: e.pointerId, moved: false, x: e.clientX };
+    try { c.setPointerCapture(e.pointerId); } catch {}
+    if (e.pointerType !== "touch") at(e);  // touch: wait — a vertical scroll would otherwise jump the slider first
+  };
+  c.onpointermove = e => { if (drag && (drag.moved || Math.abs(e.clientX - drag.x) > 3)) { drag.moved = true; at(e); } };
+  c.onpointerup = e => {
+    if (!drag) return;
+    if (!drag.moved) at(e);
+    drag = null;
+    if (e.timeStamp - last.t < 300 && Math.hypot(e.clientX - last.x, e.clientY - last.y) < 20) { SL.full = !SL.full; set(SL.full ? 100 : 0); last.t = -1e9; }
+    else last = { t: e.timeStamp, x: e.clientX, y: e.clientY };
+  };
+  c.onpointercancel = () => { drag = null; };
+  c.onkeydown = e => { if (e.key === "ArrowLeft" || e.key === "ArrowRight") { e.preventDefault(); set(SL.p + (e.key === "ArrowRight" ? 5 : -5)); } };
+}
+
+function renderGeoStat() {
+  const el = $("#geoStat"), g = D.geometry;
+  el.hidden = VIEW !== "place" || !D.room;
+  if (el.hidden) return;
+  if (ANALYZING) el.textContent = "Raum wird vermessen…";
+  else if (!g) el.innerHTML = `<span>Raum noch nicht vermessen.</span><a href="#" data-geo="analyze">Neu vermessen</a>`;
+  else if (!g.ok || !SCENE) el.innerHTML = `<span class="bad" title="${esc(g.error || "")}">Raumerkennung fehlgeschlagen – Rahmen von Hand zeichnen.</span>`;
+  else {
+    const parts = ["<span>Raum vermessen ✓</span>"];
+    if (g.ceiling?.height) parts.push(`<a href="#" data-geo="cal">Deckenhöhe ≈ ${Math.round(g.ceiling.height)} cm</a>`);
+    if (g.floor?.d) parts.push(`<span>Kamerahöhe ≈ ${Math.round(g.floor.d)} cm</span>`);
+    parts.push(`<span>Genauigkeit: ${CONF_DE[g.confidence] || "niedrig"}</span>`);
+    if (Math.abs((g.scale || 1) - 1) > 0.005) parts.push(`<span>Maßstab ×${de2(g.scale)}</span>`);
+    if (!g.ceiling?.height) parts.push(`<a href="#" data-geo="cal">Raumhöhe eingeben</a>`);
+    if (g.depth_preview) parts.push(`<a href="#" data-geo="depth">Tiefenkarte</a>`);
+    el.innerHTML = parts.join("<span class='muted'>·</span>");
+  }
+  $$("[data-geo]", el).forEach(a => a.onclick = e => {
+    e.preventDefault();
+    if (a.dataset.geo === "analyze") analyze(false);
+    else if (a.dataset.geo === "cal") openCal();
+    else lightbox(img(g.depth_preview));
+  });
+}
+
+/* ---------- room analysis & calibration ---------- */
+async function analyze(force) {
+  if (!D?.room || ANALYZING) return;
+  const pid = D.id, room = D.room, st = $("#stage");
+  ANALYZING = true; st.classList.add("busy"); st.dataset.busy = "Raum wird vermessen…"; renderGeoStat();
+  try {
+    const g = await api("POST", "/api/geometry/analyze", { room, force: !!force });
+    if (D?.id !== pid || D.room !== room) return;
+    if (!g.ok && D.geometry?.ok) {  // busy GPU, low memory, no floor this time: the last good measurement stays
+      toast(`${g.error || "Raumerkennung fehlgeschlagen."} Die bisherige Vermessung bleibt.`, true);
+      return;
+    }
+    D.geometry = g; initScene();
+    if (SCENE) D.pieces.forEach(reproject);
+    else D.pieces.forEach(p => { if (p.placement.mode === "3d") p.placement = p.placement.box ? { ...p.placement, mode: "2d" } : NONE(); });
+    if (!g.ok) toast(g.error || "Raumerkennung fehlgeschlagen – Rahmen von Hand zeichnen.", true);
+    save();
+  } catch (e) { toast(`Raumerkennung fehlgeschlagen – Rahmen von Hand zeichnen. (${e.message})`, true); }
+  finally {
+    ANALYZING = false; st.classList.remove("busy");
+    if (D?.id === pid) { renderSide(); renderStage(); }
+  }
+}
+function openCal(p1, p2) {
+  if (!D.geometry?.ok) return;
+  const v = p1 && p2 && Math.abs(p2[1] - p1[1]) > 1.5 * Math.abs(p2[0] - p1[0]);
+  CAL = { p1: p1 || null, p2: p2 || null, mode: v ? "vertical" : "floor" };
+  $("#calPts").hidden = !p1;
+  $("#calLen").value = "";
+  const ch = D.geometry.ceiling?.height;
+  $("#calH").value = ch ? Math.round(ch) : D.calibration?.room_height_cm || "";
+  $("#calReset").hidden = Math.abs((D.geometry.scale || 1) - 1) < 0.001;
+  calMeasured();
+  $("#calModal").classList.add("open");
+  setTimeout(() => (p1 ? $("#calLen") : $("#calH")).focus(), 50);
+}
+function calMeasured() {
+  $$("#calMode button").forEach(b => b.classList.toggle("active", b.dataset.m === CAL.mode));
+  if (!CAL.p1) return;
+  let m = null; try { m = SCENE?.measure(CAL.p1, CAL.p2, CAL.mode); } catch (e) { console.error(e); }
+  CAL.measured = m;
+  $("#calMeasured").textContent = m ? `Gemessen: ≈ ${Math.round(m)} cm` : "Messung nicht möglich: Punkte liegen nicht auf dem Boden.";
+}
+$$("#calMode button").forEach(b => b.onclick = () => { CAL.mode = b.dataset.m; calMeasured(); });
+$("#calCancel").onclick = () => $("#calModal").classList.remove("open");
+$("#calModal").onclick = e => { if (e.target === e.currentTarget) e.currentTarget.classList.remove("open"); };
+/* A new scale multiplies the stored poses too (they are in the old units, §2), then every 3d box is recomputed. */
+function adoptGeo(geo, oldScale, cal) {
+  const k = (geo.scale || 1) / oldScale;
+  if (window.W3D && Math.abs(k - 1) > 1e-9) W3D.scalePoses(D.pieces, k);
+  D.geometry = geo; D.calibration = cal; initScene();
+  // poses scale with k but W/H/D stay in real cm: a wall piece would float (k > 1) or sink (k < 1) by (k-1)·D/2
+  if (SCENE) for (const p of D.pieces) {
+    const pose = p.placement?.mode === "3d" && p.placement.pose;
+    if (pose?.wall) try { const s = SCENE.snapToWall(pose, p, pose.wall); if (s) p.placement.pose = s; } catch (e) { console.error(e); }
+  }
+  D.pieces.forEach(reproject);
+  save(); renderSide(); renderStage();
+}
+$("#calOk").onclick = async () => {
+  const pid = D.id, room = D.room, old = D.geometry?.scale || 1, curH = D.geometry?.ceiling?.height;
+  const len = parseFloat($("#calLen").value), hgt = parseFloat($("#calH").value);
+  const pts = !!CAL.p1 && len > 0, height = hgt > 0 && (!curH || Math.abs(hgt - curH) >= 1);
+  if (!pts && !height) return $("#calModal").classList.remove("open");
+  const btn = $("#calOk"); btn.disabled = true;
+  let geo = null, measured = null, err = null, scaled = pts;
+  try {
+    if (pts) ({ geometry: geo, measured_cm: measured } = await api("POST", "/api/geometry/calibrate", { room, p1: CAL.p1, p2: CAL.p2, length_cm: len, mode: CAL.mode }));
+    if (height) { const r = await api("POST", "/api/geometry/calibrate", { room, room_height_cm: hgt }); geo = r.geometry; scaled ||= r.scaled !== false; }
+  } catch (e) { err = e; }
+  btn.disabled = false;
+  if (geo && D?.id === pid) adoptGeo(geo, old, {
+    p1: pts ? CAL.p1 : D.calibration?.p1 ?? null, p2: pts ? CAL.p2 : D.calibration?.p2 ?? null,
+    length_cm: pts ? len : D.calibration?.length_cm ?? null, mode: pts ? CAL.mode : D.calibration?.mode || "room_height",
+    measured_cm: pts ? measured : D.calibration?.measured_cm ?? null, scale: geo.scale,
+    room_height_cm: height ? hgt : D.calibration?.room_height_cm ?? null });
+  if (err) return toast(err.message, true);
+  $("#calModal").classList.remove("open");
+  toast(scaled ? `Maßstab gesetzt (×${de2(geo.scale || 1)}).`
+    : "Raumhöhe gespeichert. Die Decke ist nicht im Bild, daher bleibt der Maßstab geschätzt – für genaue Maße mit 📏 eine bekannte Länge messen.", !scaled);
+};
+$("#calReset").onclick = async () => {
+  const pid = D.id, old = D.geometry?.scale || 1;
+  try {
+    const r = await api("POST", "/api/geometry/calibrate", { room: D.room, reset: true });
+    if (D?.id === pid) adoptGeo(r.geometry, old, null);
+    $("#calModal").classList.remove("open");
+    toast(`Maßstab gesetzt (×${de2(r.geometry.scale || 1)}).`);
+  } catch (e) { toast(e.message, true); }
+};
+
+/* ---------- jobs: the server builds prompts, runs them and records the variants ---------- */
+function setGo() { const b = $("#goBtn"); b.disabled = SENDING; b.textContent = SENDING ? "Läuft…" : "Visualisieren"; }
+async function submit(path, body, label) {
+  if (SENDING) return toast("Es läuft schon ein Auftrag, bitte kurz warten.");
+  SENDING = true; setGo();
+  try {
+    await saveNow();
+    const r = await api("POST", `/api/workshop/${D.id}/${path}`, body);
+    const w = r.plan?.warnings || [];
+    if (w.length) toast(w.join(" · "));
+    if (r.job) {
+      if (!D.pending_jobs.includes(r.job.id)) D.pending_jobs.push(r.job.id);
+      track(r.job, label);
+    }
+  } catch (e) { toast(e.message, true); }
+  finally { SENDING = false; setGo(); }
+}
+$("#goBtn").onclick = () => submit("generate", { kind: D.room ? "room" : "free" }, `${D.count} Variante(n)`);
+
+async function track(job, label) {
+  if (TRACKING.has(job.id)) return;
+  const pid = D.id, sig = j => (j.results || []).map(r => r.judge?.status || "").join();
+  TRACKING.set(job.id, pid);
+  let done = job.state === "done", last = null;
+  try {
+    const fin = await trackJob(job, label, j => {
+      if (D?.id !== pid || j.state !== "done") return;
+      if (!done) { done = true; last = sig(j); refreshVariants(j.id); }
+      else if (sig(j) !== last) { last = sig(j); refreshVariants(); }
+    });
+    if (D?.id !== pid) return;
+    await refreshVariants();
+    if (fin.retry_job && !TRACKING.has(fin.retry_job)) {
+      toast("Keine Variante hat die Prüfung bestanden – neuer Versuch mit Korrektur…");
+      if (!D.pending_jobs.includes(fin.retry_job)) D.pending_jobs.push(fin.retry_job);
+      resumeJob(fin.retry_job, "Korrektur");
+    }
+  } catch (e) {
+    if (!e.gone && D?.id === pid) { toast(e.message, true); refreshVariants(); }  // images saved before a failure are kept
+  } finally {
+    TRACKING.delete(job.id);
+    if (D?.id === pid && D.pending_jobs.includes(job.id)) { D.pending_jobs = D.pending_jobs.filter(x => x !== job.id); save(); }
+  }
+}
+async function resumeJob(id, label) {
+  if (TRACKING.has(id)) return;
+  const pid = D.id;
+  let r;
+  try { r = await fetch(`/api/jobs/${id}`); } catch { return; }
+  if (D?.id !== pid) return;
+  if (r.status === 404) { D.pending_jobs = D.pending_jobs.filter(x => x !== id); save(); return; }  // lost in a restart
+  if (r.ok) track(await r.json(), label);
+}
+/* Page open / tab visible again: adopt the server's variants, then follow every job still pending. */
+async function resume() {
+  if (!D) return;
+  await refreshVariants();
+  for (const id of [...D.pending_jobs]) resumeJob(id, "Visualisierung");
+}
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") resume(); });
+
+async function refreshVariants(selectJob) {
+  if (!D) return;
+  const pid = D.id;
+  await settle();   // local fav/note/deletes first, so the GET cannot revert them
+  let doc;
+  try { doc = await api("GET", `/api/projects/workshop/${pid}`); } catch { return; }
+  if (D?.id !== pid) return;
+  const before = stageKey();
+  adoptVariants(doc.variants, false);
+  const mine = [...TRACKING].filter(([, p]) => p === pid).map(([id]) => id);
+  D.pending_jobs = [...new Set([...(doc.pending_jobs || []), ...mine])];
+  if (selectJob) { const v = D.variants.find(x => x.job === selectJob); if (v) { D.selected = v.id; VIEW = "result"; } }
+  if (autoRender()) { save(); renderPieces(); }
+  renderVariants();
+  if (stageKey() !== before) renderStage();
+}
+/* A piece without a chosen render gets its best-graded (else newest) render variant once grading is over. */
+function autoRender() {
+  let changed = false;
+  for (const p of D.pieces) {
+    if (p.render) continue;
+    const rv = D.variants.filter(v => v.kind === "render" && (v.piece_ids || []).includes(p.id) && (!v.sketch || v.sketch === p.sketch));
+    if (!rv.length || rv.some(v => v.judge?.status === "pending")) continue;
+    const ok = rv.filter(v => v.judge?.status === "ok" && v.judge.overall != null);
+    p.render = (ok.length ? ok.reduce((a, b) => b.judge.overall > a.judge.overall ? b : a) : rv[0]).image;
+    changed = true;
+  }
+  return changed;
+}
+
+/* ---------- variants ---------- */
+$("#vSort").onchange = e => { SORT = e.target.value; try { localStorage.setItem("werkstatt.sort", SORT); } catch {} renderVariants(); };
+function badge(j) {
+  if (!j) return "";
+  if (j.status === "ok" && j.overall != null) return `<span class="badge ${j.pass ? "pass" : j.overall >= 5 ? "mid" : "fail"}">${de1(j.overall)}</span>`;
+  if (j.status === "pending") return `<span class="badge pend">prüft…</span>`;
+  return `<span class="badge na"><span class="l">nicht verfügbar</span><span class="s">–</span></span>`;
+}
+function judgeHtml(v) {
+  const j = v.judge;
+  if (!j && v.kind === "upscale") return "";
+  let t;
+  if (!j) t = "KI-Prüfung: –";
+  else if (j.status === "pending") t = "KI-Prüfung: prüft…";
+  else if (j.status === "ok" && j.overall != null) {
+    t = `KI-Prüfung: ${de1(j.overall)}/10 · <b class="${j.pass ? "ok" : "no"}">${j.pass ? "bestanden" : "nicht bestanden"}</b>${j.comment ? ` — ${esc(j.comment)}` : ""}`;
+    if (j.scores) t += `<details><summary>Details</summary><table>${Object.entries(SCORE_DE).map(([k, de]) =>
+      `<tr><td>${de}</td><td>${j.scores[k] ?? "–"}</td></tr>`).join("")}<tr><td><b>Gesamt</b></td><td><b>${de1(j.overall)}</b></td></tr></table></details>`;
+  } else t = `KI-Prüfung: nicht verfügbar${j.comment ? ` — ${esc(j.comment)}` : ""}`;
+  return `<div class="jt">${t}</div>${j?.status === "pending" ? "" : `<button class="btn small" id="vRegrade">Neu bewerten</button>`}`;
+}
+function renderVariants() {
+  const el = $("#variants"), list = shownVariants();
+  el.hidden = !list.length;
+  $("#vSort").value = SORT;
+  if (!list.length) return;
+  const v = current();
+  $("#vstrip").innerHTML = list.map(x => `<button class="${x === v ? "sel" : ""}" data-v="${x.id}"><img src="${img(x.image)}" loading="lazy" alt="">${badge(x.judge)}${x.fav ? `<span class="star">★</span>` : ""}<small>${esc([KIND_DE[x.kind], x.material].filter(Boolean).join(" · "))}${x.judge && !["ok", "pending"].includes(x.judge.status) ? `<span class="nat"> · nicht verfügbar</span>` : ""}</small></button>`).join("");
+  $$("#vstrip button").forEach(b => b.onclick = () => { D.selected = b.dataset.v; VIEW = "result"; save(); renderStage(); renderVariants(); });
+  // the action row is rebuilt only when it really changes: grading polls and tab switches must not wipe a half-typed
+  // change text, the chosen wood or the tablet keyboard; handlers read the current copy of the variant at click time
+  const acts = $("#vacts"), vid = v.id, cv = () => D.variants.find(x => x.id === vid) || v;
+  const key = JSON.stringify([vid, v.image, !!v.keep, (v.pieces || []).map(p => [p.id, p.label])]);
+  if (acts.dataset.key !== key) {
+    acts.dataset.key = key;
+    const multi = (v.pieces || []).length > 1;
+    $("#vacts").innerHTML = `
+      <button class="btn small" id="vFav"></button>
+      <select id="vMat">${Object.entries(CAT.materials).filter(([k]) => k !== "custom").map(([k, m]) => `<option value="${k}">${esc(m.de)}</option>`).join("")}</select>
+      ${multi ? `<select id="vMatPiece"><option value="">alle Möbel</option>${v.pieces.map(p => `<option value="${esc(p.id)}">${esc(p.label || "Möbel")}</option>`).join("")}</select>` : ""}
+      <button class="btn small" id="vMatGo">Holz tauschen</button>
+      <input type="text" id="vEdit" placeholder="Änderung, z. B. Türen in Salbeigrün lackieren, Sockel schwarz">
+      ${v.keep ? `<label class="lbl" style="margin:0" title="Außerhalb der markierten Bereiche bleibt diese Variante pixelgenau gleich"><input type="checkbox" id="vKeep" checked> nur Möbelbereich</label>` : ""}
+      <button class="btn small" id="vEditGo">Ändern</button>
+      <button class="btn small" id="vUp" title="Für den Druck auf etwa doppelte Auflösung neu rechnen (2–3 min)">Druckqualität</button>
+      <a class="btn small" href="${img(v.image)}" download>Download</a>
+      <button class="btn small danger" id="vDel">Löschen</button>`;
+    $("#vFav").onclick = () => { const x = cv(); x.fav = !x.fav; save(); renderVariants(); };
+    $("#vDel").onclick = () => {
+      D.deleted_variants = [...D.deleted_variants, vid].slice(-500);
+      D.variants = D.variants.filter(x => x.id !== vid); D.selected = shownVariants()[0]?.id || null;
+      if (!D.variants.length) VIEW = "place";
+      save(); render();
+    };
+    $("#vMatGo").onclick = () => {
+      const k = $("#vMat").value;
+      submit("edit", { op: "material", variant_id: vid, material: k, piece_id: $("#vMatPiece")?.value || null }, `Holz: ${CAT.materials[k]?.de || k}`);
+    };
+    $("#vEditGo").onclick = () => {
+      const t = $("#vEdit").value.trim();
+      if (!t) return toast("Bitte die Änderung beschreiben.", true);
+      submit("edit", { op: "edit", variant_id: vid, text: t, keep_only: !!$("#vKeep")?.checked }, "Änderung");
+    };
+    $("#vEdit").onkeydown = e => { if (e.key === "Enter") $("#vEditGo").click(); };
+    $("#vUp").onclick = () => {
+      const [w, h] = cv().size || [1536, 1152];
+      if (Math.sqrt(w * h) >= 2000) return toast("Das Bild ist schon groß genug.");
+      submit("edit", { op: "upscale", variant_id: vid }, "Druckqualität");
+    };
+  }
+  $("#vFav").textContent = v.fav ? "★ Favorit" : "☆ Favorit";
+  $("#vjudge").innerHTML = judgeHtml(v);
+  const rg = $("#vRegrade");
+  if (rg) rg.onclick = async () => {
+    rg.disabled = true; rg.textContent = "prüft…";
+    try {
+      const r = await api("POST", `/api/workshop/${D.id}/judge/${v.id}`);
+      if (r?.status && r.status !== "ok") toast(r.comment || "Prüfer nicht verfügbar", true);
+    } catch (e) { toast(e.message, true); }
+    await refreshVariants();
+    renderVariants();
+  };
+}
+
+/* ---------- presentation ---------- */
+$("#presentBtn").onclick = async () => {
+  const el = $("#stageWrap");
+  if (current() && VIEW !== "result") { VIEW = "result"; renderStage(); }
+  el.classList.add("presenting");
+  const fs = el.requestFullscreen || el.webkitRequestFullscreen;
+  try { if (!fs) throw 0; await fs.call(el); } catch { el.classList.add("present"); }  // iPhone Safari: no element fullscreen
+  $(".cmp")?.focus();
+};
+function endPresent() { $("#stageWrap").classList.remove("presenting", "present"); }
+$("#presentExit").onclick = () => {
+  const fe = document.fullscreenElement || document.webkitFullscreenElement;
+  if (fe) (document.exitFullscreen || document.webkitExitFullscreen).call(document); else endPresent();
+};
+for (const ev of ["fullscreenchange", "webkitfullscreenchange"])
+  document.addEventListener(ev, () => { if (!(document.fullscreenElement || document.webkitFullscreenElement) && !$("#stageWrap").classList.contains("present")) endPresent(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && $("#stageWrap").classList.contains("present")) endPresent(); });
+
+/* ---------- sheet, company, judge pill ---------- */
+$("#sheetBtn").onclick = async () => {
+  if (!D.variants.length) return toast("Erst visualisieren.", true);
+  if (!company().name && !confirm("Noch keine Firmenangaben hinterlegt (Knopf „Firma“ oben rechts). Trotzdem erstellen?")) return;
+  const tab = window.open("", "_blank");  // open now: browsers block popups opened after an await
+  try {
+    await saveNow();
+    const r = await api("POST", `/api/workshop/${D.id}/sheet`);
+    if (tab) tab.location = r.pdf; else location.href = r.pdf;
+    if (r.skipped?.length) toast(`${r.skipped.length} Variante(n) übersprungen (Bild gelöscht).`);
+    else if (!D.variants.some(v => v.fav)) toast("Tipp: Mit ☆ Favorit markierte Varianten kommen alle aufs Blatt (je eine Seite).");
+  } catch (e) { tab?.close(); toast(e.message, true); }
+};
+let coLogo = null;
+$("#companyBtn").onclick = () => {
+  const c = company(); coLogo = c.logo || null;
+  $("#coName").value = c.name || ""; $("#coContact").value = c.contact || ""; $("#coColor").value = c.color || "";
+  $("#coLogo").innerHTML = coLogo ? `<img src="${img(coLogo)}" style="max-height:60px">` : "";
+  $("#companyModal").classList.add("open");
+};
+$("#coLogoBtn").onclick = () => pickFile(false, async f => {
+  const r = await upload(f, 2048); if (!r) return;
+  coLogo = r.path; $("#coLogo").innerHTML = `<img src="${img(coLogo)}" style="max-height:60px">`;
+});
+$("#coSave").onclick = () => {
+  const c = { name: $("#coName").value.trim(), contact: $("#coContact").value.trim(), color: /^#[0-9a-f]{6}$/i.test($("#coColor").value.trim()) ? $("#coColor").value.trim() : "", logo: coLogo };
+  try { localStorage.setItem("werkstatt.company", JSON.stringify(c)); } catch {}
+  $("#companyModal").classList.remove("open"); save(); toast("Gespeichert.");
+};
+function onStatus(s) {
+  const was = !!JUDGE?.available, j = s?.judge || null;
+  JUDGE = j;
+  // first pill inside the (scrollable) status bar, which pollStatus has just rewritten
+  $("#status").insertAdjacentHTML("afterbegin", `<span class="pill ${j?.available ? "on" : ""}" title="${esc(j?.model || "")}">${
+    j?.available ? "Prüfer an" : j?.state === "activating" ? "Prüfer startet…" : "Prüfer aus"}</span>`);
+  // "Maße aus Skizze lesen" depends on the judge; re-render only when nothing in the card has the focus
+  if (D && was !== !!j?.available && ap()?.sketch && !$("#pieces").contains(document.activeElement)) renderPieces();
+}
+
+/* ---------- init ---------- */
+(async () => {
+  try { CAT = { ...CAT, ...(await api("GET", "/api/workshop/catalog")) }; } catch (e) { toast("Server noch nicht bereit.", true); }
+  await loadList();
+  let last = null; try { last = localStorage.getItem("werkstatt.last"); } catch {}
+  await openProj(LIST.find(p => p.id === last)?.id || LIST[0]?.id);
+  pollStatus(onStatus);
+})();
+</script>
+</body>
+</html>
